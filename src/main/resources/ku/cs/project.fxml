@@ -20,11 +20,11 @@
       </ImageView>
       <AnchorPane layoutX="248.0" layoutY="94.0" prefHeight="580.0" prefWidth="527.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <Button layoutX="218.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="35.0" prefWidth="92.0" style="-fx-background-radius: 90; -fx-background-color: transparent;" text="About Us" textFill="#004dff">
-               <font>
-                  <Font name="THChakraPetch" size="20.0" />
-               </font>
-            </Button>
+<!--            <Button layoutX="218.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="35.0" prefWidth="92.0" style="-fx-background-radius: 90; -fx-background-color: transparent;" text="About Us" textFill="#004dff">-->
+<!--               <font>-->
+<!--                  <Font name="THChakraPetch" size="20.0" />-->
+<!--               </font>-->
+<!--            </Button>-->
             <TextField layoutX="145.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0" />
             <Button layoutX="305.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
                <font>

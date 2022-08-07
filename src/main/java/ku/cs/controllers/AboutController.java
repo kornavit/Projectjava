@@ -13,9 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import ku.cs.models.modelAbout.AboutNisitHardCode;
-import ku.cs.models.modelAbout.modelAbout;
-import ku.cs.models.modelAbout.modelAboutList;
+import ku.cs.models.modelAboutNisitHardCode;
+import ku.cs.models.modelAbout;
+import ku.cs.models.modelAboutList;
 
 public class AboutController {
     @FXML
@@ -26,13 +26,13 @@ public class AboutController {
 
     @FXML private ImageView Imageauditor;
 
-    private AboutNisitHardCode dataSource;
+    private modelAboutNisitHardCode dataSource;
 
     private modelAboutList nisitList;
 
     @FXML
     public void initialize() {
-        dataSource = new AboutNisitHardCode();
+        dataSource = new modelAboutNisitHardCode();
         nisitList = dataSource.getnisitList();
         showListView();
         clearSelectedAbout();

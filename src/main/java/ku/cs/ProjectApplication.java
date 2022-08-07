@@ -17,6 +17,8 @@ public class ProjectApplication extends Application {
     private static void configRoute() {
         String packageStr = "ku/cs/";
         FXRouter.when("start", packageStr+"project.fxml");
+        FXRouter.when("nisit_register",packageStr+"register/nisit_register.fxml");
+        FXRouter.when("success",packageStr+"register/success.fxml");
     }
 
     public static void main(String[] args) {
