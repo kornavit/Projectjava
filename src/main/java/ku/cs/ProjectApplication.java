@@ -19,6 +19,7 @@ public class ProjectApplication extends Application {
         FXRouter.when("start", packageStr+"project.fxml");
         FXRouter.when("nisit_register",packageStr+"register/nisit_register.fxml");
         FXRouter.when("success",packageStr+"register/success.fxml");
+        FXRouter.when("about",packageStr+"about.fxml");
     }
 
     public static void main(String[] args) {

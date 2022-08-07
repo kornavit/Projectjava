@@ -17,4 +17,13 @@ public class ProjectController {
     public void handleForgetPasswordButton(ActionEvent actionEvent) {
         //...
     }
+
+    public void handleAboutButton(ActionEvent actionEvent) {
+        try{
+            com.github.saacsos.FXRouter.goTo("about");
+        }catch (IOException e){
+            System.err.println("ไปหน้า about ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 }
