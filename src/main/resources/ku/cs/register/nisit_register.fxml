@@ -9,38 +9,58 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.NisitRegister">
    <children>
-      <Label layoutX="421.0" layoutY="138.0" text="สมัครสมาชิกใหม่">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="330.0" layoutY="225.0" text="ชื่อสำหรับเข้าสู่ระบบ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="330.0" layoutY="275.0" text="รหัสผ่าน" />
-      <Label layoutX="330.0" layoutY="325.0" text="ยืนยันรหัสผ่าน" />
-      <TextField layoutX="460.0" layoutY="220.0" />
-      <TextField layoutX="460.0" layoutY="270.0" />
-      <TextField layoutX="460.0" layoutY="320.0" />
-      <Button layoutX="630.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleCheckUsernameButton" text="Check" />
-      <Label layoutX="330.0" layoutY="375.0" text="ชื่อผู้ใช้ระบบ" />
-      <TextField layoutX="460.0" layoutY="370.0" />
-      <Label layoutX="330.0" layoutY="425.0" text="อัพโหลดรูปโปรไฟล์" />
-      <Button layoutX="460.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleUploadNisitPhotoButton" text="Upload File" />
-      <Button layoutX="491.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-      <Label layoutX="705.0" layoutY="224.0" />
-      <CheckBox layoutX="630.0" layoutY="275.0" mnemonicParsing="false" text="Show Password" />
-      <CheckBox layoutX="630.0" layoutY="324.0" mnemonicParsing="false" text="Show Password" />
-      <ImageView fx:id="nisitPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="460.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="768.0" fitWidth="1030.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../default-user-icon-13.jpg" />
+            <Image url="@../images/Bg_2.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="resultCheckUsername" layoutX="698.0" layoutY="227.0" prefHeight="18.0" prefWidth="117.0" text="resultCheckUsername" textFill="RED" />
+      <AnchorPane layoutX="178.0" layoutY="124.0" prefHeight="518.0" prefWidth="690.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
+         <children>
+            <Button layoutX="283.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleBackNisitRegisterButton" prefHeight="26.0" prefWidth="49.0" style="-fx-background-radius: 90;" text="Back" />
+            <Button layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleSubmitButton" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE" />
+            <Label layoutX="126.0" layoutY="42.0" text="ชื่อสำหรับเข้าสู่ระบบ">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="126.0" layoutY="88.0" text="รหัสผ่าน">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="126.0" layoutY="138.0" text="ยืนยันรหัสผ่าน">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="126.0" layoutY="188.0" text="ชื่อผู้ใช้ระบบ">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="128.0" layoutY="238.0" text="อัพโหลดรูปโปรไฟล์">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultCheckUsername" layoutX="517.0" layoutY="46.0" prefHeight="18.0" prefWidth="117.0" text="resultCheckUsername" textFill="RED" />
+         </children>
+      </AnchorPane>
+      <TextField layoutX="461.0" layoutY="163.0" />
+      <TextField layoutX="461.0" layoutY="213.0" />
+      <TextField layoutX="461.0" layoutY="263.0" />
+      <Button layoutX="631.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleCheckUsernameButton" style="-fx-background-radius: 90;" text="Check" />
+      <TextField layoutX="461.0" layoutY="313.0" />
+      <Button layoutX="461.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleUploadNisitPhotoButton" style="-fx-background-radius: 90;" text="Upload File" />
+      <Label layoutX="705.0" layoutY="224.0" />
+      <CheckBox layoutX="631.0" layoutY="218.0" mnemonicParsing="false" text="Show Password" />
+      <CheckBox layoutX="631.0" layoutY="267.0" mnemonicParsing="false" text="Show Password" />
+      <ImageView fx:id="nisitPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="461.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/default-profile.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

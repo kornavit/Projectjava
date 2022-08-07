@@ -5,43 +5,74 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ProjectController">
    <children>
-      <TextField layoutX="425.0" layoutY="306.0" prefHeight="34.0" prefWidth="236.0" />
-      <Button layoutX="426.0" layoutY="444.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="26.0" prefWidth="92.0" text="สมัครสมาชิกใหม่" />
-      <Button layoutX="426.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" text="ลืมรหัสผ่าน" />
-      <Label layoutX="292.0" layoutY="305.0" prefHeight="35.0" prefWidth="125.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="333.0" layoutY="383.0" prefHeight="35.0" prefWidth="81.0" text="รหัสผ่าน" textAlignment="RIGHT">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="345.0" layoutY="68.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="333.0" layoutY="114.0" prefHeight="46.0" prefWidth="395.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="126.0" fitWidth="81.0" layoutX="218.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="778.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../KU_Logo_PNG.png" />
+            <Image url="@images/Bg_1.jpg" />
          </image>
       </ImageView>
-      <PasswordField layoutX="425.0" layoutY="388.0" prefHeight="34.0" prefWidth="236.0" />
-      <CheckBox layoutX="676.0" layoutY="396.0" mnemonicParsing="false" text="Show Password" />
+      <AnchorPane layoutX="248.0" layoutY="94.0" prefHeight="580.0" prefWidth="527.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
+         <children>
+            <Button layoutX="218.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="35.0" prefWidth="92.0" style="-fx-background-radius: 90; -fx-background-color: transparent;" text="About Us" textFill="#004dff">
+               <font>
+                  <Font name="THChakraPetch" size="20.0" />
+               </font>
+            </Button>
+            <TextField layoutX="145.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0" />
+            <Button layoutX="305.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
+               <font>
+                  <Font name="THChakraPetch" size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </Button>
+            <Button layoutX="232.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" prefHeight="18.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="ลืมรหัสผ่าน" underline="true">
+               <font>
+                  <Font name="THChakraPetch" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="53.0" layoutY="262.0" prefHeight="35.0" prefWidth="92.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="336.0" prefHeight="35.0" prefWidth="61.0" text="รหัสผ่าน" textAlignment="RIGHT">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="179.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="94.0" layoutY="137.0" prefHeight="42.0" prefWidth="350.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <PasswordField layoutX="144.0" layoutY="336.0" prefHeight="34.0" prefWidth="236.0" />
+            <CheckBox layoutX="395.0" layoutY="345.0" mnemonicParsing="false" text="Show Password" />
+            <Button layoutX="176.0" layoutY="449.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="เข้าสู่ระบบ" textFill="WHITE">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="103.0" fitWidth="74.0" layoutX="227.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/KU_Logo_PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="303.0" layoutY="378.0" text="|" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
