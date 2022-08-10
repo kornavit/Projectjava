@@ -1,4 +1,7 @@
-package ku.cs.models;
+package ku.cs.services;
+
+import ku.cs.models.modelAbout;
+import ku.cs.models.modelAboutList;
 
 public class modelAboutNisitHardCode {
     private modelAboutList nisitList;

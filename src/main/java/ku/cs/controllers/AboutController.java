@@ -6,14 +6,12 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import com.github.saacsos.FXRouter;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import ku.cs.models.modelAboutNisitHardCode;
+import ku.cs.services.modelAboutNisitHardCode;
 import ku.cs.models.modelAbout;
 import ku.cs.models.modelAboutList;
 

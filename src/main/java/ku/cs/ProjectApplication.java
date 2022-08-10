@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ProjectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXRouter.bind(this, stage, "white_nisit_shirt", 1240, 800);
+        FXRouter.bind(this, stage, "white_nisit_shirt", 1024, 768);
         configRoute();
         FXRouter.goTo("start");
     }

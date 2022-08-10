@@ -7,7 +7,6 @@ public class modelregister {
     private String name;
     private String username;
     private String password;
-
     private String image; // keep path
 
     public modelregister(String name,String username,String password,String image){

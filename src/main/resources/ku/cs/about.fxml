@@ -9,58 +9,66 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.AboutController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.AboutController">
    <children>
-      <Label layoutX="144.0" layoutY="244.0" prefHeight="38.0" prefWidth="173.0" text="list Auditor ">
-         <font>
-            <Font name="Wingdings 3" size="32.0" />
-         </font>
-      </Label>
-      <ListView fx:id="Auditorlist" layoutX="69.0" layoutY="310.0" prefHeight="158.0" prefWidth="315.0" />
-      <Separator layoutX="478.0" layoutY="125.0" orientation="VERTICAL" prefHeight="527.0" prefWidth="7.0" />
-      <Label layoutX="702.0" layoutY="165.0" prefHeight="38.0" prefWidth="163.0" text="list Auditor ">
-         <font>
-            <Font name="Wingdings 3" size="32.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="684.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Button layoutX="1005.0" layoutY="652.0" mnemonicParsing="false" onAction="#handleBackToProjectButtom" prefHeight="38.0" prefWidth="51.0" text="back">
+      <ListView fx:id="Auditorlist" layoutX="57.0" layoutY="310.0" prefHeight="158.0" prefWidth="315.0" />
+      <Separator layoutX="405.0" layoutY="125.0" orientation="VERTICAL" prefHeight="527.0" prefWidth="7.0" />
+      <Button layoutX="836.0" layoutY="638.0" mnemonicParsing="false" onAction="#handleBackToProjectButtom" prefHeight="24.0" prefWidth="49.0" text="back">
          <font>
             <Font name="Wingdings 3" size="14.0" />
          </font></Button>
-      <Label layoutX="497.0" layoutY="504.0" prefHeight="38.0" prefWidth="90.0" text="name :">
+      <Label layoutX="424.0" layoutY="504.0" prefHeight="38.0" prefWidth="90.0" text="name :">
          <font>
             <Font name="Wingdings 3" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="nameLabel" layoutX="587.0" layoutY="504.0" prefHeight="38.0" prefWidth="345.0" text="nameLabel">
+      <Label fx:id="nameLabel" layoutX="514.0" layoutY="504.0" prefHeight="38.0" prefWidth="345.0" text="nameLabel">
          <font>
             <Font name="Wingdings 3" size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="Imageauditor" fitHeight="245.0" fitWidth="226.0" layoutX="671.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="497.0" layoutY="552.0" prefHeight="38.0" prefWidth="140.0" text="Nickname :">
+      <ImageView fx:id="Imageauditor" fitHeight="245.0" fitWidth="226.0" layoutX="539.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="418.0" layoutY="552.0" prefHeight="38.0" prefWidth="140.0" text="Nickname :">
          <font>
             <Font name="Wingdings 3" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="nicknameLabel" layoutX="637.0" layoutY="552.0" prefHeight="38.0" prefWidth="226.0" text="nicknameLabel">
+      <Label fx:id="nicknameLabel" layoutX="558.0" layoutY="552.0" prefHeight="38.0" prefWidth="226.0" text="nicknameLabel">
          <font>
             <Font name="Wingdings 3" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="497.0" layoutY="598.0" prefHeight="38.0" prefWidth="151.0" text="Codename :">
+      <Label layoutX="418.0" layoutY="598.0" prefHeight="38.0" prefWidth="151.0" text="Codename :">
          <font>
             <Font name="Wingdings 3" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="codenameLabel" layoutX="652.0" layoutY="598.0" prefHeight="38.0" prefWidth="213.0" text="codenameLabel">
+      <Label fx:id="codenameLabel" layoutX="569.0" layoutY="598.0" prefHeight="38.0" prefWidth="213.0" text="codenameLabel">
          <font>
             <Font name="Wingdings 3" size="24.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="127.0" layoutY="241.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <Separator layoutY="696.0" prefHeight="11.0" prefWidth="1240.0" />
-      <Separator layoutY="96.0" prefHeight="11.0" prefWidth="1240.0" />
+      <Separator layoutX="6.0" layoutY="678.0" prefHeight="11.0" prefWidth="1016.0" />
+      <Separator layoutY="82.0" prefHeight="11.0" prefWidth="1024.0" />
+      <AnchorPane layoutX="552.0" layoutY="183.0" prefHeight="47.0" prefWidth="200.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Label layoutX="23.0" layoutY="3.0" prefHeight="38.0" prefWidth="163.0" text="list Auditor ">
+               <font>
+                  <Font name="Wingdings 3" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="115.0" layoutY="242.0" prefHeight="41.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="14.0" layoutY="3.0" prefHeight="38.0" prefWidth="173.0" text="list Auditor ">
+               <font>
+                  <Font name="Wingdings 3" size="32.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
