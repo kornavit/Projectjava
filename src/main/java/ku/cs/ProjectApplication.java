@@ -1,6 +1,7 @@
 package ku.cs;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,7 +13,7 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "white_nisit_shirt", 1240, 800);
         configRoute();
-        FXRouter.goTo("start");
+        FXRouter.goTo("staff_main_menu");
     }
     private static void configRoute() {
         String packageStr = "ku/cs/";
@@ -20,6 +21,8 @@ public class ProjectApplication extends Application {
         FXRouter.when("nisit_register",packageStr+"register/nisit_register.fxml");
         FXRouter.when("success",packageStr+"register/success.fxml");
         FXRouter.when("about",packageStr+"about.fxml");
+        FXRouter.when("staff_register",packageStr+"staff/staff_register.fxml",600,400);
+        FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",900,600);
     }
 
     public static void main(String[] args) {
