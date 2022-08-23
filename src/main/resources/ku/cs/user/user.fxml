@@ -16,24 +16,29 @@
             <Image url="@../images/Bg_1.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="97.0" layoutY="138.0" prefHeight="533.0" prefWidth="818.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
+      <AnchorPane layoutX="97.0" layoutY="122.0" prefHeight="567.0" prefWidth="818.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <Button fx:id="requestLabel" layoutX="92.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="107.0" prefWidth="218.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="แจ้งเรื่องร้องเรียน" textFill="WHITE">
+            <Button fx:id="requestLabel11" layoutX="408.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="136.0" prefWidth="378.0" style="-fx-background-radius: 90; -fx-background-color: #86cbd1;" textFill="POWDERBLUE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="475.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleTotalComplaintsButton" prefHeight="107.0" prefWidth="262.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="รวมเรื่องร้องเรียนทั้งหมด" textFill="WHITE">
+            <Button fx:id="requestLabel1" layoutX="20.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="136.0" prefWidth="352.0" style="-fx-background-radius: 90; -fx-background-color: #bf94bf;" textFill="THISTLE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <ImageView fitHeight="128.0" fitWidth="131.0" layoutX="146.0" layoutY="190.0">
-               <image>
-                  <Image url="@../images/request.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="128.0" fitWidth="131.0" layoutX="540.0" layoutY="190.0">
+            <Button fx:id="requestLabel" layoutX="138.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="107.0" prefWidth="218.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="แจ้งเรื่องร้องเรียน" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="513.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleTotalComplaintsButton" prefHeight="107.0" prefWidth="262.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="รวมเรื่องร้องเรียนทั้งหมด" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="82.0" fitWidth="83.0" layoutX="428.0" layoutY="243.0">
                <image>
                   <Image url="@../images/totalComplaints.png" />
                </image>
@@ -72,6 +77,31 @@
                   <Font size="26.0" />
                </font>
             </Label>
+            <Label layoutX="82.0" layoutY="374.0" prefHeight="54.0" prefWidth="399.0" text="• นิสิตต้องเข้าสู่ระบบก่อนจึงจะใช้งานโปรแกรมนี้ได้" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="79.0" layoutY="428.0" prefHeight="35.0" prefWidth="643.0" text="• ปุ่มแจ้งเรื่องร้องเรียน คือปุ่มแจ้งเรื่องร้องเรียนภายในมหาวิทยาลัย โปรดแจ้งเรื่องเกี่ยวกับมหาวิทยาลัยเท่านั้น" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="455.0" prefHeight="54.0" prefWidth="698.0" text="• ปุ่มรวมเรื่องร้องเรียนทั้งหมด คือปุ่มตรวจสอบความคืบหน้าของเรื่องที่แจ้ง" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="87.0" layoutY="498.0" prefHeight="54.0" prefWidth="698.0" text=" โดยจะรวมเรื่องที่แจ้งทั้งหมดของผู้ใช้ในมหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="82.0" fitWidth="83.0" layoutX="48.0" layoutY="240.0">
+               <image>
+                  <Image url="@../images/request.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

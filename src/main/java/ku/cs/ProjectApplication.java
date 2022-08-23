@@ -12,7 +12,7 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "white_nisit_shirt", 1240, 800);
         configRoute();
-        FXRouter.goTo("user");
+        FXRouter.goTo("start");
     }
     private static void configRoute() {
         String packageStr = "ku/cs/";
