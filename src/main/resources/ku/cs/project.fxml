@@ -61,7 +61,7 @@
             </Label>
             <PasswordField layoutX="144.0" layoutY="336.0" prefHeight="34.0" prefWidth="236.0" />
             <CheckBox layoutX="395.0" layoutY="345.0" mnemonicParsing="false" text="Show Password" />
-            <Button layoutX="176.0" layoutY="449.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="เข้าสู่ระบบ" textFill="WHITE">
+            <Button layoutX="176.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="เข้าสู่ระบบ" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
