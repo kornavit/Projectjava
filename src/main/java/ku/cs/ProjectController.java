@@ -26,4 +26,13 @@ public class ProjectController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+
+    public void handleLoginButton(ActionEvent actionEvent){
+        try{
+            com.github.saacsos.FXRouter.goTo("user");
+        }catch (IOException e){
+            System.err.println("ไปหน้า user ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
 }
