@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -57,11 +58,57 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="756.0" layoutY="162.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #6600FF;" text="แจ้งเรื่องร้องเรียน" textFill="WHITE">
+            <Button layoutX="561.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #6600FF;" text="แจ้งเรื่องร้องเรียน" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Button>
+            <ListView fx:id="complainList" layoutX="62.0" layoutY="226.0" prefHeight="366.0" prefWidth="364.0" />
+            <Label layoutX="485.0" layoutY="395.0" text="หัวเรื่อง :">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="484.0" layoutY="325.0" text="ผู้ร้องเรียน :">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="485.0" layoutY="465.0" text="รายละเอียด :">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="485.0" layoutY="255.0" text="หมวดหมู่ :">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="763.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleReportButton" prefHeight="43.0" prefWidth="199.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="รายงานความไม่เหมาะสม" textFill="WHITE">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Button>
+            <Label fx:id="catagoryLabel" layoutX="654.0" layoutY="255.0" prefWidth="154.0" text="catagoryLabel">
+               <font>
+                  <Font name="THChakraPetch" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLabel" layoutX="654.0" layoutY="325.0" text="nameLabel">
+               <font>
+                  <Font name="THChakraPetch" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="headLabel" layoutX="654.0" layoutY="395.0" text="headLabel">
+               <font>
+                  <Font name="THChakraPetch" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="detailLabel" layoutX="654.0" layoutY="465.0" prefHeight="42.0" prefWidth="271.0" text="detailLabel">
+               <font>
+                  <Font name="THChakraPetch" size="36.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
