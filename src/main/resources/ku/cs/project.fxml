@@ -26,7 +26,7 @@
                </font>
             </Button>
             <TextField layoutX="146.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0" />
-            <Button layoutX="305.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
+            <Button layoutX="275.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
                <font>
                   <Font name="THChakraPetch" size="14.0" />
                </font>
@@ -34,9 +34,9 @@
                   <ColorAdjust />
                </effect>
             </Button>
-            <Button layoutX="222.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: transparent;" text="ลืมรหัสผ่าน" underline="true">
+            <Button layoutX="165.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
                <font>
-                  <Font name="THChakraPetch" size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
             <Label layoutX="21.0" layoutY="262.0" prefHeight="35.0" prefWidth="124.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
@@ -71,7 +71,7 @@
                   <Image url="@images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Label layoutX="303.0" layoutY="378.0" text="|" />
+            <Label layoutX="275.0" layoutY="380.0" text="|" />
          </children>
       </AnchorPane>
    </children>
