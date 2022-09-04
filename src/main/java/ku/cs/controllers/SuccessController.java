@@ -6,9 +6,6 @@ import javafx.fxml.FXML;
 import java.io.IOException;
 
 public class SuccessController {
-    @FXML
-    public void initialize(){
-    }
     public void handleBackToLoginButton(ActionEvent actionEvent) {
         try {
             com.github.saacsos.FXRouter.goTo("start");

@@ -7,11 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import com.github.saacsos.FXRouter;
-
 import java.io.*;
-import java.util.ArrayList;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import ku.cs.models.modelregister;
 
 public class NisitRegisterController {
     @FXML private TextField username;
@@ -22,51 +22,24 @@ public class NisitRegisterController {
     @FXML private TextField name;
     @FXML private CheckBox showPassword;
     @FXML private Label resultCheckUsername; // บอกว่ามันใช่ชื่อนี้ได้ไหม
-
     @FXML private Label showerror;
+    @FXML private ImageView nisitPhoto; // ไฟล์รูปภาพ
 
-    public String handleCheckUsernameButton(ActionEvent actionEvent) {
-        String filePath = "data" + File.separator + "user.csv";
-        File file = new File(filePath);
-
-        FileReader reader = null;
-        BufferedReader buffer = null;
-        try {
-            reader = new FileReader(file);
-            buffer = new BufferedReader(reader);
-
-            String line_name = "";
-            while ( (line_name = buffer.readLine()) != null){
-                if (line_name.equals(username.getText())){
-                    resultCheckUsername.setTextFill(Color.RED);
-                    resultCheckUsername.setText("มีชื่อนี้อยู่แล้ว");
-                    try{
-                        buffer.close();
-                        reader.close();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    return "กรุณาใส่ชื่อของคุณ";
-                }
-            }
+    public boolean handleCheckUsernameButton() {
+        modelregister user = new modelregister(name.getText(),username.getText(),passwordReal.getText(),null,"user");
+        if (user.checkusername()){
             resultCheckUsername.setTextFill(Color.GREEN);
             resultCheckUsername.setText("ชื่อนี้ใช้ได้");
-            return "ชื่อนี้ใช้ได้";
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }finally {
-            try{
-                buffer.close();
-                reader.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            return true;
+        }else{
+            resultCheckUsername.setTextFill(Color.RED);
+            resultCheckUsername.setText("มีชื่อนี้อยู่แล้ว");
+            return false;
         }
     }
 
     public void handleUploadNisitPhotoButton(ActionEvent actionEvent) {
+
     }
 
     @FXML
@@ -99,16 +72,24 @@ public class NisitRegisterController {
         // check username for user
         if (username.getText().equals("")){
             checkError += "กรุณาใส่ชื่อของคุณ\n";
-        } else if (handleCheckUsernameButton(actionEvent).equals("กรุณาใส่ชื่อของคุณ")) {
+        } else if (!handleCheckUsernameButton()) {
             checkError += "ระบบมีชื่อนี้แล้ว กรุณาใส่ชื่อใหม่ของคุณ\n";
         }
 
+        // check name for user
+        if (name.getText().equals("")){
+            checkError += "กรุณาใส่ชื่อในระบบของคุณ\n";
+        }
+
         try {
-            showerror.setTextFill(Color.RED);
-            showerror.setText(checkError);
-            showerror.setWrapText(true);
             if (checkError.equals("")){
+                modelregister user = new modelregister(name.getText(),username.getText(),passwordReal.getText(),"user",nisitPhoto.getImage().getUrl());
+                user.add(user);
                 FXRouter.goTo("success");
+            }else{
+                showerror.setTextFill(Color.RED);
+                showerror.setText(checkError);
+                showerror.setWrapText(true);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า success ไม่ได้");

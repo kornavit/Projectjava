@@ -1,4 +1,5 @@
-anna
-heren
-yourt
-nope
+name,username,password,role,image path
+anna,anna1345,annakek,user,null
+joe,joesight,joeeee,officer,null
+boss,doss123,bossegh,admin,null
+ghost,noth,hello,user,null
