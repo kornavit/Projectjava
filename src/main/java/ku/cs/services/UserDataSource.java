@@ -1,14 +1,14 @@
 package ku.cs.services;
 
-import ku.cs.models.modelregister;
+import ku.cs.models.modelRegister;
 
 import java.io.*;
 
-public class NisitDataSource {
+public class UserDataSource { // login and register
     private String directoryName;
     private String fileName;
 
-    public NisitDataSource(String directoryName, String fileName){
+    public UserDataSource(String directoryName, String fileName){
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -45,14 +45,7 @@ public class NisitDataSource {
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
                 // name,username,password,image path
-                modelregister nisit = new modelregister(
-                        data[0].trim(),
-                        data[1].trim(),
-                        data[2].trim(),
-                        data[3].trim(),
-                        null
-                );
-                if (nisit.getUsername().equals(username)){
+                if (data[1].equals(username)){
                     return false;
                 }
             }
@@ -69,7 +62,7 @@ public class NisitDataSource {
         }
     }
 
-    public void writefile_user(modelregister user){
+    public void writefile_user(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -105,7 +98,7 @@ public class NisitDataSource {
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
                 // name,username,password,image path
-                modelregister nisit = new modelregister(
+                modelRegister nisit = new modelRegister(
                         data[0].trim(),
                         data[1].trim(),
                         data[2].trim(),
@@ -116,7 +109,7 @@ public class NisitDataSource {
                     return nisit.getrole();
                 }
             }
-            return "ไม่มีชื่อนี้อยู่ในระบบ กรุณากรอกใหม่";
+            return "กรอก username หรือ password ผิด";
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {

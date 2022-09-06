@@ -1,15 +1,15 @@
 package ku.cs.models;
 
-import ku.cs.services.NisitDataSource;
+import ku.cs.services.UserDataSource;
 
-public class modelregister {
+public class modelRegister {
     private String name;
     private String username;
     private String password;
     private String imagePath; // keep path
     private String role;
-    private NisitDataSource person;
-    public modelregister(String name,String username,String password,String role,String image){
+    private UserDataSource person;
+    public modelRegister(String name, String username, String password, String role, String image){
         this.name = name;
         this.username = username;
         this.password = password;
@@ -18,22 +18,26 @@ public class modelregister {
     }
 
     // use on login
-    public modelregister(String username,String password){
+    public modelRegister(String username, String password){
         this("",username,password,"","");
     }
 
+    public modelRegister(){
+        this("","","","","");
+    }
+
     public boolean checkusername(){
-        person = new NisitDataSource("data","user.csv");
+        person = new UserDataSource("data","user.csv");
         return person.readfile_user(username);
     }
 
-    public void add(modelregister user){
-        person = new NisitDataSource("data","user.csv");
+    public void add(modelRegister user){
+        person = new UserDataSource("data","user.csv");
         person.writefile_user(user);
     }
 
     public String role(){
-        person = new NisitDataSource("data","user.csv");
+        person = new UserDataSource("data","user.csv");
         return person.search_role(this.username,this.password);
     }
 
@@ -46,4 +50,6 @@ public class modelregister {
 
     public void setName(String name) {this.name = name;}
     public void setPassword(String password) {this.password = password;}
+
+    public void setImagePath(String imagePath){this.imagePath = imagePath;}
 }

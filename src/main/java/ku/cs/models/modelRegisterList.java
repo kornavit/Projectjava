@@ -3,16 +3,16 @@ package ku.cs.models;
 import java.util.ArrayList;
 
 public class modelRegisterList {
-    private ArrayList<modelregister> users;
+    private ArrayList<modelRegister> users;
 
     public modelRegisterList() {
         users = new ArrayList<>();
     }
-    public void addUser(modelregister user) {
+    public void addUser(modelRegister user) {
 
         users.add(user);
     }
-    public ArrayList<modelregister> getAllUsers() {
+    public ArrayList<modelRegister> getAllUsers() {
         return users;
     }
 }

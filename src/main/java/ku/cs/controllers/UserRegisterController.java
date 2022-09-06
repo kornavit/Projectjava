@@ -11,9 +11,9 @@ import java.io.*;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import ku.cs.models.modelregister;
+import ku.cs.models.modelRegister;
 
-public class NisitRegisterController {
+public class UserRegisterController {
     @FXML private TextField username;
     @FXML private PasswordField passwordReal; // รหัสผ่าน password field
     @FXML private TextField textRealpassword; // รหัสนิสิต text
@@ -26,7 +26,7 @@ public class NisitRegisterController {
     @FXML private ImageView nisitPhoto; // ไฟล์รูปภาพ
 
     public boolean handleCheckUsernameButton() {
-        modelregister user = new modelregister(name.getText(),username.getText(),passwordReal.getText(),null,"user");
+        modelRegister user = new modelRegister(name.getText(),username.getText(),passwordReal.getText(),null,"user");
         if (user.checkusername()){
             resultCheckUsername.setTextFill(Color.GREEN);
             resultCheckUsername.setText("ชื่อนี้ใช้ได้");
@@ -64,7 +64,7 @@ public class NisitRegisterController {
         // check password for user
         String checkError = "";
         if (passwordReal.getText().equals("") || passwordAgain.getText().equals("")) {
-            checkError += "กรุณาปลอก รหัสผ่าน หรือ รหัสผ่าน\n";
+            checkError += "กรุณาปลอก รหัสผ่าน\n";
         } else if (! passwordReal.getText().equals(passwordAgain.getText())) {
             checkError += "กรุณาปลอก รหัสผ่านให้ตรงกัน\n";
         }
@@ -83,7 +83,7 @@ public class NisitRegisterController {
 
         try {
             if (checkError.equals("")){
-                modelregister user = new modelregister(name.getText(),username.getText(),passwordReal.getText(),"user",nisitPhoto.getImage().getUrl());
+                modelRegister user = new modelRegister(name.getText(),username.getText(),passwordReal.getText(),"user",nisitPhoto.getImage().getUrl());
                 user.add(user);
                 FXRouter.goTo("success");
             }else{
@@ -98,7 +98,7 @@ public class NisitRegisterController {
     }
     public void handleBackNisitRegisterButton(ActionEvent actionEvent) {
         try {
-            com.github.saacsos.FXRouter.goTo("start");
+            FXRouter.goTo("start");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า start ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
