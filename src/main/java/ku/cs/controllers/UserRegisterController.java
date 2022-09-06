@@ -13,7 +13,7 @@ import ku.cs.services.ImageDataSource;
 import java.io.IOException;
 
 
-public class NisitRegisterController {
+public class UserRegisterController {
     private modelRegister selectedPhoto;
 
 

@@ -1,37 +1,31 @@
 package ku.cs.models;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-public class modelregister {
+public class modelRegister {
     private String name;
     private String username;
     private String password;
-    private String image; // keep path
+    private String imagePath; // keep path
 
-    public modelregister(String name,String username,String password,String image){
+    public modelRegister(String name, String username, String password){
         this.name = name;
         this.username = username;
         this.password = password;
-        this.image = image;
+        this.imagePath = getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm();
     }
 
-//    public String checkusername(){
-//        while(/*check csv file in username*/){
-//            if (/*check username.equals(username)*/){
-//                return "please change the username";
-//            }
-//        }
-//        return "Correct";
-//    }
-
-    public int checkpassword(String password_one,String password_two){
+    public boolean checkpassword(String password_one,String password_two){
         if (password_one.equals(password_two)){
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
+    }
+    public String getImagePath() {
+        return imagePath;
     }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
     public String getName() {return name;}
 
     public void setName(String name) {this.name = name;}
@@ -40,7 +34,7 @@ public class modelregister {
 
     public String getPassword() {return password;}
 
-    public String getImage() {return image;}
-
     public void setPassword(String password) {this.password = password;}
+
+
 }
