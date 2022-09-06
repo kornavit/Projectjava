@@ -1,46 +1,55 @@
 package ku.cs.models;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import ku.cs.services.UserDataSource;
 
-public class modelregister {
+public class modelRegister {
     private String name;
     private String username;
     private String password;
-    private String image; // keep path
-
-    public modelregister(String name,String username,String password,String image){
+    private String imagePath; // keep path
+    private String role;
+    private UserDataSource person;
+    public modelRegister(String name, String username, String password, String role, String image){
         this.name = name;
         this.username = username;
         this.password = password;
-        this.image = image;
+        this.imagePath = image;
+        this.role = role;
     }
 
-//    public String checkusername(){
-//        while(/*check csv file in username*/){
-//            if (/*check username.equals(username)*/){
-//                return "please change the username";
-//            }
-//        }
-//        return "Correct";
-//    }
+    // use on login
+    public modelRegister(String username, String password){
+        this("",username,password,"","");
+    }
 
-    public int checkpassword(String password_one,String password_two){
-        if (password_one.equals(password_two)){
-            return 1;
-        }
-        return 0;
+    public modelRegister(){
+        this("","","","","");
+    }
+
+    public boolean checkusername(){
+        person = new UserDataSource("data","user.csv");
+        return person.readfile_user(username);
+    }
+
+    public void add(modelRegister user){
+        person = new UserDataSource("data","user.csv");
+        person.writefile_user(user);
+    }
+
+    public String role(){
+        person = new UserDataSource("data","user.csv");
+        return person.search_role(this.username,this.password);
     }
 
     public String getName() {return name;}
+    public String getUsername(){return username;}
+    public String getPassword() {return password;}
+    public String getImagePath() {return imagePath;}
+
+    public String getrole(){return role;}
 
     public void setName(String name) {this.name = name;}
-
-    public String getUsername(){return username;}
-
-    public String getPassword() {return password;}
-
-    public String getImage() {return image;}
-
     public void setPassword(String password) {this.password = password;}
+
+    public void setImagePath(String imagePath){this.imagePath = imagePath;}
 }

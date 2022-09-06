@@ -13,14 +13,12 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "white_nisit_shirt", 1024, 768);
         configRoute();
-        FXRouter.goTo("total_complaint");
+        FXRouter.goTo("start");
     }
     private static void configRoute() {
         String packageStr = "ku/cs/";
         FXRouter.when("start", packageStr+"project.fxml");
-
-        //login
-        FXRouter.when("nisit_register",packageStr+"register/nisit_register.fxml");
+        FXRouter.when("user_register",packageStr+"register/user_register.fxml");
         FXRouter.when("success",packageStr+"register/success.fxml");
         FXRouter.when("about",packageStr+"about.fxml");
 

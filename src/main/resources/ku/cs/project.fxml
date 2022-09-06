@@ -25,8 +25,8 @@
                   <Font name="THChakraPetch" size="20.0" />
                </font>
             </Button>
-            <TextField layoutX="146.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0" />
-            <Button layoutX="305.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
+            <TextField fx:id="username" layoutX="146.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0" />
+            <Button layoutX="275.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
                <font>
                   <Font name="THChakraPetch" size="14.0" />
                </font>
@@ -34,9 +34,9 @@
                   <ColorAdjust />
                </effect>
             </Button>
-            <Button layoutX="222.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: transparent;" text="ลืมรหัสผ่าน" underline="true">
+            <Button layoutX="165.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
                <font>
-                  <Font name="THChakraPetch" size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
             <Label layoutX="21.0" layoutY="262.0" prefHeight="35.0" prefWidth="124.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
@@ -59,10 +59,9 @@
                   <Font name="Ravie" size="36.0" />
                </font>
             </Label>
-            <PasswordField layoutX="144.0" layoutY="336.0" prefHeight="34.0" prefWidth="236.0" />
-
-            <CheckBox layoutX="395.0" layoutY="345.0" mnemonicParsing="false" text="Show Password" />
-            <Button layoutX="176.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="เข้าสู่ระบบ" textFill="WHITE">
+            <PasswordField fx:id="password" layoutX="146.0" layoutY="337.0" prefHeight="34.0" prefWidth="236.0" />
+            <CheckBox layoutX="409.0" layoutY="345.0" mnemonicParsing="false" text="Show Password" />
+            <Button layoutX="176.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleloginButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="เข้าสู่ระบบ" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
@@ -72,7 +71,8 @@
                   <Image url="@images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Label layoutX="303.0" layoutY="378.0" text="|" />
+            <Label layoutX="275.0" layoutY="380.0" text="|" />
+            <Label fx:id="resultlogin" layoutX="165.0" layoutY="416.0" prefHeight="17.0" prefWidth="208.0" textFill="RED" />
          </children>
       </AnchorPane>
    </children>
