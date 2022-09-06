@@ -1,15 +1,14 @@
 package ku.cs.controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 
-public class RequestNextController {
+public class RequestTrafficNextController {
 
-    @FXML public void initialize(){
+    @FXML
+    public void initialize(){
     }
 
     public void handleSubmitButton(ActionEvent actionEvent) {
