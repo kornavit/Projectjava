@@ -1,16 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.ReportController">
    <children>
-      <ImageView fitHeight="809.0" fitWidth="1058.0" layoutX="-7.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Bg_1.jpg" />
          </image>
       </ImageView>
+      <AnchorPane layoutX="115.0" layoutY="18.0" prefHeight="732.0" prefWidth="793.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
+         <children>
+            <Separator layoutX="24.0" layoutY="119.0" prefHeight="9.0" prefWidth="750.0" style="-fx-background-color: #006600;" />
+            <ImageView fitHeight="103.0" fitWidth="92.0" layoutX="38.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/KU_Logo_PNG.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="131.0" layoutY="52.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="131.0" layoutY="14.0" prefHeight="54.0" prefWidth="465.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="174.0" layoutY="129.0" text="รายงานเรื่องร้องเรียนที่ไม่เหมาะสม" textAlignment="CENTER" textFill="#302086">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="225.0" text="รายงาน :">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="285.0" text="ประเภท :">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="345.0" text="รายละเอียด :">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="62.0" layoutY="640.0" mnemonicParsing="false" onAction="#handleBackReportButton" style="-fx-background-radius: 90;" text="กลับ">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Button>
+            <ChoiceBox fx:id="reportCatagoryChoiceBox" layoutX="232.0" layoutY="230.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="typeReportCatagoryChoiceBox" layoutX="232.0" layoutY="286.0" prefWidth="150.0" />
+            <TextArea fx:id="detailReportTextArea" layoutX="232.0" layoutY="345.0" prefHeight="254.0" prefWidth="482.0" />
+            <Button layoutX="594.0" layoutY="640.0" mnemonicParsing="false" onAction="#handleReportButton" prefHeight="43.0" prefWidth="130.0" style="-fx-background-color: #1d8700; -fx-background-radius: 90;" text="รายงาน" textFill="WHITE">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
