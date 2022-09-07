@@ -92,7 +92,7 @@
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Button>
-            <Label fx:id="catagoryLabel" layoutX="798.0" layoutY="255.0" prefWidth="154.0" text="catagoryLabel">
+            <Label fx:id="categoryLabel" layoutX="798.0" layoutY="255.0" prefWidth="154.0" text="categoryLabel">
                <font>
                   <Font size="20.0" />
                </font>
