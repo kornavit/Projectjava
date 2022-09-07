@@ -17,7 +17,7 @@
             <Image url="@../images/Bg_2.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="167.0" layoutY="125.0" prefHeight="552.0" prefWidth="690.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
+      <AnchorPane layoutX="167.0" layoutY="125.0" prefHeight="585.0" prefWidth="697.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
             <TextField fx:id="textPasswordAgin" layoutX="291.0" layoutY="143.0" />
             <TextField fx:id="textRealpassword" layoutX="291.0" layoutY="93.0" />
@@ -61,7 +61,7 @@
                   <Image url="@../images/default-profile.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="showerror" layoutX="264.0" layoutY="492.0" prefHeight="46.0" prefWidth="189.0" />
+            <Label fx:id="showerror" layoutX="283.0" layoutY="495.0" prefHeight="76.0" prefWidth="210.0" />
          </children>
       </AnchorPane>
    </children>

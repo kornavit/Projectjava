@@ -9,10 +9,11 @@ import javafx.scene.control.TextField;
 import com.github.saacsos.FXRouter;
 import java.io.*;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import ku.cs.models.modelRegister;
-
+import ku.cs.services.ImageDataSource;
 public class UserRegisterController {
     @FXML private TextField username;
     @FXML private PasswordField passwordReal; // รหัสผ่าน password field
@@ -24,6 +25,12 @@ public class UserRegisterController {
     @FXML private Label resultCheckUsername; // บอกว่ามันใช่ชื่อนี้ได้ไหม
     @FXML private Label showerror;
     @FXML private ImageView nisitPhoto; // ไฟล์รูปภาพ
+
+    private ImageDataSource getImage;
+
+    @FXML public void initialize(){
+        nisitPhoto.setImage(new Image(getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm()));
+    }
 
     public boolean handleCheckUsernameButton() {
         modelRegister user = new modelRegister(name.getText(),username.getText(),passwordReal.getText(),null,"user");
@@ -39,7 +46,9 @@ public class UserRegisterController {
     }
 
     public void handleUploadNisitPhotoButton(ActionEvent actionEvent) {
-
+        getImage = new ImageDataSource();
+        String pic_target = getImage.chooseImage("user_images");
+        nisitPhoto.setImage(new Image(pic_target));
     }
 
     @FXML
@@ -61,32 +70,32 @@ public class UserRegisterController {
         textPasswordAgin.setVisible(false);
     }
     public void handleSubmitButton(ActionEvent actionEvent) {
-        // check password for user
         String checkError = "";
-        if (passwordReal.getText().equals("") || passwordAgain.getText().equals("")) {
-            checkError += "กรุณาปลอก รหัสผ่าน\n";
-        } else if (! passwordReal.getText().equals(passwordAgain.getText())) {
-            checkError += "กรุณาปลอก รหัสผ่านให้ตรงกัน\n";
-        }
-
         // check username for user
-        if (username.getText().equals("")){
+        if (username.getText().equals("")) {
             checkError += "กรุณาใส่ชื่อของคุณ\n";
         } else if (!handleCheckUsernameButton()) {
             checkError += "ระบบมีชื่อนี้แล้ว กรุณาใส่ชื่อใหม่ของคุณ\n";
         }
 
+        // check password for user
+        if (passwordReal.getText().equals("") || passwordAgain.getText().equals("")) {
+            checkError += "กรุณาปลอก รหัสผ่าน\n";
+        } else if (!passwordReal.getText().equals(passwordAgain.getText())) {
+            checkError += "กรุณาปลอก รหัสผ่านให้ตรงกัน\n";
+        }
+
         // check name for user
-        if (name.getText().equals("")){
+        if (name.getText().equals("")) {
             checkError += "กรุณาใส่ชื่อในระบบของคุณ\n";
         }
 
         try {
-            if (checkError.equals("")){
-                modelRegister user = new modelRegister(name.getText(),username.getText(),passwordReal.getText(),"user",nisitPhoto.getImage().getUrl());
+            if (checkError.equals("")) {
+                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", nisitPhoto.getImage().getUrl());
                 user.add(user);
                 FXRouter.goTo("success");
-            }else{
+            } else {
                 showerror.setTextFill(Color.RED);
                 showerror.setText(checkError);
                 showerror.setWrapText(true);
@@ -96,6 +105,7 @@ public class UserRegisterController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+
     public void handleBackNisitRegisterButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("start");

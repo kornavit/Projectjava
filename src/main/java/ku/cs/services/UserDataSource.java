@@ -98,15 +98,8 @@ public class UserDataSource { // login and register
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
                 // name,username,password,image path
-                modelRegister nisit = new modelRegister(
-                        data[0].trim(),
-                        data[1].trim(),
-                        data[2].trim(),
-                        data[3].trim(),
-                        null
-                );
-                if (nisit.getUsername().equals(username) && nisit.getPassword().equals(password)){
-                    return nisit.getrole();
+                if (data[1].equals(username) && data[2].equals(password)){
+                    return data[3];
                 }
             }
             return "กรอก username หรือ password ผิด";

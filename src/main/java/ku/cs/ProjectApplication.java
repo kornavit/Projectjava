@@ -21,21 +21,25 @@ public class ProjectApplication extends Application {
         FXRouter.when("user_register",packageStr+"register/user_register.fxml");
         FXRouter.when("success",packageStr+"register/success.fxml");
         FXRouter.when("about",packageStr+"about.fxml");
-
-        FXRouter.when("staff_register",packageStr+"staff/staff_register.fxml",600,400);
-        FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",900,600);
-
+        FXRouter.when("user_change_password",packageStr+"register/user_change_password.fxml",517,390);
 
         //testUser
         FXRouter.when("user", packageStr+"user/user.fxml");
         FXRouter.when("request", packageStr+"user/request.fxml");
-        FXRouter.when("request_next", packageStr+"user/requestNext.fxml");
+
+        FXRouter.when("request_learning", packageStr+"user/requestLearningNext.fxml");
+        FXRouter.when("request_building", packageStr+"user/requestBuildingNext.fxml");
+        FXRouter.when("request_traffic", packageStr+"user/requestTrafficNext.fxml");
+        FXRouter.when("request_other", packageStr+"user/requestOtherNext.fxml");
+
         FXRouter.when("total_complaint", packageStr+"user/totalComplaints.fxml");
         FXRouter.when("success_request", packageStr+"user/successRequest.fxml");
         FXRouter.when("report", packageStr+"user/report.fxml");
         FXRouter.when("success_report", packageStr+"user/successReport.fxml");
 
-
+        //staff
+        FXRouter.when("staff_register",packageStr+"staff/staff_register.fxml",600,400);
+        FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",900,600);
     }
 
     public static void main(String[] args) {

@@ -1,25 +1,36 @@
 package ku.cs.controllers;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import ku.cs.models.modelAbout;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
-public class TotalComplaintsController {
+public class TotalComplaintsController{
 
-    //@FXML private ListView<modelTotalComplaints> complaintsList;
+//    @FXML private ListView<modelTotalComplaints> complaintsList;
+    @FXML private TableView tableView;
+    @FXML private TableColumn subjectList;
+    @FXML private TableColumn categoryList;
+    @FXML private TableColumn scoreList;
+    @FXML private TableColumn statusList;
+    @FXML private TableColumn timeList;
 
     @FXML private Label catagoryLabel;
-
     @FXML private Label nameLabel;
-
     @FXML private Label headLabel;
-
     @FXML private Label detailLabel;
-
-
 
 
     @FXML public void initialize(){
@@ -64,6 +75,5 @@ public class TotalComplaintsController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
 
 }

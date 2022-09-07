@@ -11,11 +11,11 @@ public class modelAboutNisitHardCode {
     }
     public void readData() {
         modelAbout boss = new modelAbout("Kornavit Pattanachokvanich","boss","6410450079");
-        modelAbout jo = new modelAbout("Sornsiri Hongsa","jo","6410451431");
+        modelAbout joe = new modelAbout("Sornsiri Hongsa","joe","6410451431");
         modelAbout poy = new modelAbout("Waralee Srimakplaem","poy","6410451377");
         modelAbout Forrence = new modelAbout("Porrin Khongcharoenket","Forrence","6410451156");
         nisitList.addnisit(boss);
-        nisitList.addnisit(jo);
+        nisitList.addnisit(joe);
         nisitList.addnisit(poy);
         nisitList.addnisit(Forrence);
     }
