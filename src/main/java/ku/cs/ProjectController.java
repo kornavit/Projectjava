@@ -56,7 +56,7 @@ public class ProjectController {
 
     public void handleForgetPasswordButton(ActionEvent actionEvent) {
         try{
-            com.github.saacsos.FXRouter.goTo("user_change_password");
+            FXRouter.goTo("user_change_password");
         } catch (IOException e){
             System.err.println("ไปที่หน้า user_change_password ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

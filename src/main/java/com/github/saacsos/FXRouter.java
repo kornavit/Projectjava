@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.HashMap;
 
-public final class FXRouter {
+public class FXRouter {
     private static final String WINDOW_TITLE = "";
     private static final Double WINDOW_WIDTH = 800.0D;
     private static final Double WINDOW_HEIGHT = 600.0D;
@@ -27,7 +28,7 @@ public final class FXRouter {
     private static AbstractMap<String, RouteScene> routes = new HashMap();
     private static RouteScene currentRoute;
 
-    private FXRouter() {
+    protected FXRouter() {
     }
 
     public static void bind(Object ref, Stage win) {
@@ -104,7 +105,10 @@ public final class FXRouter {
         Parent resource = (Parent)FXMLLoader.load((new Object() {
         }).getClass().getResource(scenePath));
         window.setTitle(route.windowTitle);
-        window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
+        Scene scene = new Scene(resource, route.sceneWidth, route.sceneHeight);
+//        scene.getStylesheets().add("style.css");
+//        Font.loadFont(scene.getClass().getResourceAsStream(".../resource/style/TH_CHAKRA_PETCH.TTF"),14);
+        window.setScene(scene);
         window.show();
         routeAnimation(resource);
     }
