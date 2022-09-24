@@ -2,13 +2,12 @@ package ku.cs.models;
 
 //import ku.cs.services.RequestDataSource;
 
+import ku.cs.services.UserDataSource;
+
 public class modelRequest {
     private String category;
     private String subject;
     private String name;
-    private String faculty;
-    private String department;
-    private String telephone;
     private String status;
 
     //private time;
@@ -19,13 +18,10 @@ public class modelRequest {
 
 
 
-    public modelRequest(String category, String subject, String name, String faculty, String department, String telephone, String status) {
+    public modelRequest(String name,String category, String subject, String status) {
+        this.name = name;
         this.category = category;
         this.subject = subject;
-        this.name = name;
-        this.faculty = faculty;
-        this.department = department;
-        this.telephone = telephone;
         this.status = status;
     }
 
@@ -58,30 +54,6 @@ public class modelRequest {
         this.name = name;
     }
 
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -89,6 +61,14 @@ public class modelRequest {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    private UserDataSource user;
+    public void addLearning(modelRequest request){
+        user = new UserDataSource("data/category", "learning.csv");
+        user.writefile_learning1(request);
+    }
+
+
 }
 
 

@@ -45,7 +45,7 @@ public class modelRegister {
 
     public String role() {
         person = new UserDataSource("data", "user.csv");
-        return person.search_role(this.username, this.password);
+        return person.search_role(this);
     }
 
 
@@ -57,4 +57,8 @@ public class modelRegister {
 
     public void setName(String name) {this.name = name;}
     public void setPassword(String password) {this.password = password;}
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 }

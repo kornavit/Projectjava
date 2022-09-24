@@ -25,7 +25,7 @@ public class ProjectApplication extends Application {
 
         //testUser
         FXRouter.when("user", packageStr+"user/user.fxml");
-        FXRouter.when("request", packageStr+"user/request.fxml");
+        FXRouter.when("request", packageStr+"user/request.fxml",796,598);
 
         FXRouter.when("request_learning", packageStr+"user/requestLearningNext.fxml");
         FXRouter.when("request_building", packageStr+"user/requestBuildingNext.fxml");
@@ -34,7 +34,7 @@ public class ProjectApplication extends Application {
 
         FXRouter.when("total_complaint", packageStr+"user/totalComplaints.fxml");
         FXRouter.when("success_request", packageStr+"user/successRequest.fxml");
-        FXRouter.when("report", packageStr+"user/report.fxml");
+        FXRouter.when("report", packageStr+"user/report.fxml",845,647);
         FXRouter.when("success_report", packageStr+"user/successReport.fxml");
 
         //staff

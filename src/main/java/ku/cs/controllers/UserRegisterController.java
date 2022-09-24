@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import ku.cs.models.modelRegister;
 import ku.cs.services.ImageDataSource;
 public class UserRegisterController {
+    private String pickTarge;
     @FXML private TextField username;
     @FXML private PasswordField passwordReal; // รหัสผ่าน password field
     @FXML private TextField textRealpassword; // รหัสนิสิต text
@@ -47,8 +48,9 @@ public class UserRegisterController {
 
     public void handleUploadNisitPhotoButton(ActionEvent actionEvent) {
         getImage = new ImageDataSource();
-        String pic_target = getImage.chooseImage("user_images");
-        nisitPhoto.setImage(new Image(pic_target));
+        pickTarge = getImage.chooseImage("user_images");
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
+        nisitPhoto.setImage(new Image(destDir.toURI().toString()));
     }
 
     @FXML
@@ -92,7 +94,7 @@ public class UserRegisterController {
 
         try {
             if (checkError.equals("")) {
-                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", nisitPhoto.getImage().getUrl());
+                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", pickTarge);
                 user.add(user);
                 FXRouter.goTo("success");
             } else {
