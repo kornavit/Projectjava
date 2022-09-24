@@ -10,6 +10,9 @@ import javafx.scene.control.TextArea;
 import javafx.fxml.Initializable;
 
 import com.github.saacsos.FXRouter;
+import javafx.scene.paint.Color;
+import ku.cs.models.modelRequest;
+import ku.cs.models.modelUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,20 +20,18 @@ import java.util.ResourceBundle;
 
 public class RequestController implements Initializable{
 
+    private modelUser name;
     @FXML private ComboBox<String> complaintCategory;
-    @FXML private Label test1;
-    @FXML private ComboBox<String> complaintStatus;
     @FXML private TextField headTextField;
-    @FXML private TextArea bodyTextArea;
+    @FXML private Label test1;
+    @FXML private Label showerror;
 
 //    @FXML public void initialize(){
 //    }
     ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย", "อื่นๆ");
-    ObservableList<String> status = FXCollections.observableArrayList("นิสิต(Student)", "บุคลากร(Staff)", "ศิษย์เก่า(Alumni)");
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
         complaintCategory.setItems(list);
-        complaintStatus.setItems(status);
     }
     public void handleBackUserButton(ActionEvent actionEvent) {
         try {
@@ -60,15 +61,29 @@ public class RequestController implements Initializable{
     }
 
     public void handleNextButton(ActionEvent actionEvent) {
+        name = (modelUser) FXRouter.getData();
+        modelRequest request = new modelRequest(name.getName(),test1.getText(), headTextField.getText(),"ยังไม่ดำเนินการ" );
         try {
-            if (changCategory(actionEvent) == 1)
-                FXRouter.goTo("request_learning");
-            else if (changCategory(actionEvent) == 2)
-                FXRouter.goTo("request_building");
-            else if (changCategory(actionEvent) == 3)
-                FXRouter.goTo("request_traffic");
-            else  if (changCategory(actionEvent) == 4)
-                FXRouter.goTo("request_other");
+            String checkError = "";
+            if (changCategory(actionEvent) == 1 && !headTextField.getText().equals("")) {
+                FXRouter.goTo("request_learning", request);
+                request.addLearning(request);
+            }
+            else if (changCategory(actionEvent) == 2 && !headTextField.getText().equals("")){
+                FXRouter.goTo("request_building", request);
+                request.addLearning(request);
+            }
+            else if (changCategory(actionEvent) == 3 && !headTextField.getText().equals(""))
+                FXRouter.goTo("request_traffic", request);
+            else  if (changCategory(actionEvent) == 4 && !headTextField.getText().equals(""))
+                FXRouter.goTo("request_other", request);
+            else {
+                checkError += "กรุณากรอกหัวเรื่อง หรือเลือกหมวดหมู่เรื่องร้องเรียน\n";
+                showerror.setTextFill(Color.RED);
+                showerror.setText(checkError);
+                showerror.setWrapText(true);
+                System.err.println("ยังไม่ได้กรอกหัวเรื่อง หรือเลือกหมวดหมู่");
+            }
 
 
         } catch (IOException e) {

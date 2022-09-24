@@ -30,9 +30,9 @@ public class ProjectController {
         modelRegister user = new modelRegister(username.getText(),password.getText());
         if (user.role().equals("user")){
             try{
-                FXRouter.goTo("user");
+                FXRouter.goTo("user", user);
             }catch (IOException e){
-                System.err.println("ไปที่หน้า nisit_register ไม่ได้");
+                System.err.println("ไปที่หน้า user ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
             }
         }else if (user.role().equals("admin")){

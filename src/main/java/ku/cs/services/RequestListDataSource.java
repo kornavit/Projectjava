@@ -76,9 +76,6 @@ public class RequestListDataSource {
                     +request.getCategory() + ","
                     +request.getSubject() + ","
                     +request.getName() + ","
-                    +request.getFaculty() + ","
-                    +request.getDepartment() + ","
-                    +request.getTelephone() + ","
                     +request.getStatus());
             buffer.newLine();
             buffer.close();

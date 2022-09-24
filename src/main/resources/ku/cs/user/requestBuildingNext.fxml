@@ -33,17 +33,12 @@
                   <Image url="@../images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Button layoutX="529.0" layoutY="639.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
+            <Button layoutX="287.0" layoutY="635.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Button>
             <Separator layoutX="20.0" layoutY="128.0" prefHeight="9.0" prefWidth="750.0" style="-fx-background-color: #006600;" />
-            <Button layoutX="49.0" layoutY="639.0" mnemonicParsing="false" onAction="#handleBackRequestButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Back" textFill="WHITE">
-               <font>
-                  <Font name="THChakraPetch" size="24.0" />
-               </font>
-            </Button>
             <Label layoutX="23.0" layoutY="203.0" prefHeight="35.0" prefWidth="175.0" text="อุปกรณ์ที่เสียหาย :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />

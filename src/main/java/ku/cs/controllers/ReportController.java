@@ -11,12 +11,12 @@ import java.io.IOException;
 public class ReportController {
 
     @FXML private ChoiceBox reportCatagoryChoiceBox;
-
-    @FXML private ChoiceBox typeReportCatagoryChoiceBox;
+    private String[] report = {"รายงานเนื้อหา","รายงานผู้ใช้"};
 
     @FXML private TextArea detailReportTextArea;
 
     @FXML public void initialize(){
+        reportCatagoryChoiceBox.getItems().addAll(report);
     }
 
     public void handleBackReportButton(ActionEvent actionEvent) {

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.UserController">
+<AnchorPane prefHeight="400.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.UserController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="1045.0" layoutX="-16.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -48,7 +48,7 @@
                   <Image url="@../images/default-profile.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="nameLabel" layoutX="491.0" layoutY="42.0" text="ชื่อสำหรับเข้าสู่ระบบ" textFill="#1400c4">
+            <Label fx:id="nameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="452.0" layoutY="39.0" prefHeight="35.0" prefWidth="218.0" text="ชื่อสำหรับเข้าสู่ระบบ" textAlignment="RIGHT" textFill="#1400c4">
                <font>
                   <Font size="24.0" />
                </font>
