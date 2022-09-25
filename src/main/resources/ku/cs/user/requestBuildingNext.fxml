@@ -44,8 +44,8 @@
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="202.0" layoutY="203.0" prefHeight="35.0" prefWidth="539.0" />
-            <TextField layoutX="199.0" layoutY="314.0" prefHeight="122.0" prefWidth="539.0" />
+            <TextField fx:id="equiumentTextField" layoutX="202.0" layoutY="203.0" prefHeight="35.0" prefWidth="539.0" />
+            <TextField fx:id="detailTextField" layoutX="199.0" layoutY="314.0" prefHeight="122.0" prefWidth="539.0" />
             <Label layoutX="50.0" layoutY="314.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
@@ -67,7 +67,7 @@
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="202.0" layoutY="255.0" prefHeight="35.0" prefWidth="539.0" />
+            <TextField fx:id="locationTextField" layoutX="202.0" layoutY="255.0" prefHeight="35.0" prefWidth="539.0" />
             <Label layoutX="62.0" layoutY="138.0" text="หมวดหมู่ : อาคาร สถานที่และสิ่งอำนวยความสะดวก" textAlignment="CENTER" textFill="#302086">
                <font>
                   <Font size="36.0" />

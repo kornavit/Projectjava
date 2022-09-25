@@ -63,9 +63,24 @@ public class modelRequest {
     }
 
     private UserDataSource user;
-    public void addLearning(modelRequest request){
-        user = new UserDataSource("data/category", "learning.csv");
-        user.writefile_learning1(request);
+    public void addRequestLearning(modelRequest request){  //ตัวนี้ใช้เหมือนกันหมดทุก Request น่าจะต้องต้องเขียน if() แล้ว
+        user = new UserDataSource("data/category", "learning.csv"); //if
+        user.writefile_request(request); //Same
+    }
+
+    public void addRequestTraffic(modelRequest request){  //ตัวนี้ใช้เหมือนกันหมดทุก Request น่าจะต้องต้องเขียน if() แล้ว
+        user = new UserDataSource("data/category", "traffic.csv"); //if
+        user.writefile_request(request);
+    }
+
+    public void addRequestBuilding(modelRequest request){
+        user = new UserDataSource("data/category","building.csv");
+        user.writefile_request(request);
+    }
+
+    public void addRequestOther(modelRequest request){
+        user = new UserDataSource("data/category", "other.csv");
+        user.writefile_request(request);
     }
 
 

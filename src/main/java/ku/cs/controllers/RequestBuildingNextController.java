@@ -2,10 +2,16 @@ package ku.cs.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import ku.cs.models.request.modelBuilding;
 
 import java.io.IOException;
 
 public class RequestBuildingNextController {
+
+    @FXML private TextField equiumentTextField;
+    @FXML private TextField locationTextField;
+    @FXML private TextField detailTextField;
 
     @FXML
     public void initialize(){
@@ -13,6 +19,9 @@ public class RequestBuildingNextController {
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
+            modelBuilding request = new modelBuilding(0,equiumentTextField.getText(),locationTextField.getText()
+                                                        ,detailTextField.getText());
+            request.addBuilding(request);
             com.github.saacsos.FXRouter.goTo("success_request");
 
         } catch (IOException e) {

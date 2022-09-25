@@ -2,7 +2,10 @@ package ku.cs.services;
 
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
+import ku.cs.models.request.modelBuilding;
 import ku.cs.models.request.modelLearning;
+import ku.cs.models.request.modelOther;
+import ku.cs.models.request.modelTraffic;
 
 import java.io.*;
 
@@ -119,7 +122,7 @@ public class UserDataSource { // login and register
         }
     }
 
-    public void writefile_learning1(modelRequest user){
+    public void writefile_request(modelRequest user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -138,7 +141,7 @@ public class UserDataSource { // login and register
             throw new RuntimeException(e);
         }
     }
-    public void writefile_learning2(modelLearning user){
+    public void writefile_learning(modelLearning user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -152,6 +155,66 @@ public class UserDataSource { // login and register
                     +user.getCourse() + ","
                     +user.getTeacher() + ","
                     +user.getGroup() + ","
+                    +user.getDetail());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void writefile_building(modelBuilding user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try {
+            writer = new FileWriter(file,true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    +user.getEquiument() + ","
+                    +user.getLocation() + ","
+                    +user.getDetail());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writefile_traffic(modelTraffic user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try {
+            writer = new FileWriter(file, true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    +user.getLocation() + ","
+                    +user.getDetailTraffic());
+            buffer.newLine();
+            buffer.close();
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public void writefile_other(modelOther user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try {
+            writer = new FileWriter(file,true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
                     +user.getDetail());
             buffer.newLine();
             buffer.close();

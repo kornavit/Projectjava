@@ -1,2 +1,3 @@
-name,category,head,status,detail,vote,equipment,location,detail,image path
-
+name,category,head,status,vote,equipment,location,detail,image path
+123,อาคาร สถานที่และสิ่งอำนวยความสะดวก,อาคารร้าว,ยังไม่ดำเนินการ,0,0,กำแพงข้างๆที่จอดรถ,ตึก SCL,มีรอยแรกของปูนเยอะแยะมากมาย
+123,อาคาร สถานที่และสิ่งอำนวยความสะดวก,อาคารร้าว,ยังไม่ดำเนินการ,0,กำแพง,ตึก 8,มีรอบร้าวของปูนเยอะแยะมากมาย

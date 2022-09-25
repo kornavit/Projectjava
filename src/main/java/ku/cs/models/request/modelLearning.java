@@ -1,6 +1,5 @@
 package ku.cs.models.request;
 
-import ku.cs.models.modelRequest;
 import ku.cs.services.UserDataSource;
 
 public class modelLearning {
@@ -21,7 +20,7 @@ public class modelLearning {
 
     public void addLearning(modelLearning learning){
         request = new UserDataSource("data/category","learning.csv");
-        request.writefile_learning2(learning);
+        request.writefile_learning(learning);
     }
 
     public String getCourse() {

@@ -44,8 +44,8 @@
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="181.0" layoutY="209.0" prefHeight="35.0" prefWidth="578.0" />
-            <TextField layoutX="180.0" layoutY="253.0" prefHeight="146.0" prefWidth="578.0" />
+            <TextField fx:id="location" layoutX="181.0" layoutY="209.0" prefHeight="35.0" prefWidth="578.0" />
+            <TextField fx:id="detail" layoutX="180.0" layoutY="253.0" prefHeight="146.0" prefWidth="578.0" />
             <Label layoutX="31.0" layoutY="253.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />

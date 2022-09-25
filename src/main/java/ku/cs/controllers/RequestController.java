@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
 import javafx.fxml.Initializable;
 
 import com.github.saacsos.FXRouter;
@@ -67,16 +66,17 @@ public class RequestController implements Initializable{
             String checkError = "";
             if (changCategory(actionEvent) == 1 && !headTextField.getText().equals("")) {
                 FXRouter.goTo("request_learning", request);
-                request.addLearning(request);
-            }
-            else if (changCategory(actionEvent) == 2 && !headTextField.getText().equals("")){
+                request.addRequestLearning(request);
+            } else if (changCategory(actionEvent) == 2 && !headTextField.getText().equals("")) {
                 FXRouter.goTo("request_building", request);
-                request.addLearning(request);
-            }
-            else if (changCategory(actionEvent) == 3 && !headTextField.getText().equals(""))
+                request.addRequestBuilding(request);
+            } else if (changCategory(actionEvent) == 3 && !headTextField.getText().equals("")) {
                 FXRouter.goTo("request_traffic", request);
-            else  if (changCategory(actionEvent) == 4 && !headTextField.getText().equals(""))
+                request.addRequestTraffic(request);
+            } else if (changCategory(actionEvent) == 4 && !headTextField.getText().equals("")){
                 FXRouter.goTo("request_other", request);
+                request.addRequestOther(request);
+            }
             else {
                 checkError += "กรุณากรอกหัวเรื่อง หรือเลือกหมวดหมู่เรื่องร้องเรียน\n";
                 showerror.setTextFill(Color.RED);
