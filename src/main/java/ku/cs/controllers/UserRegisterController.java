@@ -26,11 +26,14 @@ public class UserRegisterController {
     @FXML private Label resultCheckUsername; // บอกว่ามันใช่ชื่อนี้ได้ไหม
     @FXML private Label showError;
     @FXML private ImageView nisitPhoto; // ไฟล์รูปภาพ
+    private String pickTarge;
 
     private ImageDataSource getImage;
 
     @FXML public void initialize(){
-        nisitPhoto.setImage(new Image(getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm()));
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
+        nisitPhoto.setImage(new Image(destDir.toURI().toString()));
+        pickTarge = "default-profile.jpg";
     }
 
     public boolean handleCheckUsernameButton() {
@@ -94,7 +97,10 @@ public class UserRegisterController {
 
         try {
             if (checkError.equals("")) {
-                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", pickTarget);
+                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", pickTarge);
+                user.setValue_ban("false");
+                user.setCategory("-");
+
                 user.add(user);
                 FXRouter.goTo("success");
             } else {
