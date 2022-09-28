@@ -33,7 +33,7 @@ public class modelRegister {
         this.imagePath = getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm();
     }
 
-    public boolean checkusername(){
+    public boolean checkUsername(){
         person = new UserDataSource("data","user.csv");
         return person.readfile_user(username);
     }
@@ -52,7 +52,7 @@ public class modelRegister {
     public String getName() {return name;}
     public String getUsername(){return username;}
     public String getPassword() {return password;}
-    public String getrole(){return role;}
+    public String getRole(){return role;}
     public String getImagePath() {return imagePath;}
 
     public void setName(String name) {this.name = name;}

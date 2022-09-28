@@ -104,9 +104,9 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
 
-            String input_user = "";
-            while (     (input_user = buffer.readLine())    != null     ){
-                String[] data = input_user.split(",");
+            String userDataPath = "";
+            while (     (userDataPath = buffer.readLine())    != null     ){
+                String[] data = userDataPath.split(",");
                 modelRegister user = new modelRegister(
                         data[0].trim(), //Real Name
                         data[1].trim(), //User Name
@@ -147,13 +147,13 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
                 if (user.getUsername().equals(user_checkUsername) ){
                     user.setPassword(user_newPassword);
                 }
-                String input_user = user.getName() + ","
+                String userInfo = user.getName() + ","
                         +user.getUsername() + ","
                         +user.getPassword() + ","
-                        +user.getrole() + ","
+                        +user.getRole() + ","
                         +user.getImagePath();
 
-                buffer.append(input_user);
+                buffer.append(userInfo);
                 buffer.newLine();
             }
             buffer.close();

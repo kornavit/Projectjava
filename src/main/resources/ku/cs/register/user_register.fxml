@@ -55,13 +55,13 @@
             <Button layoutX="459.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleCheckUsernameButton" style="-fx-background-radius: 90;" text="Check" />
             <TextField fx:id="name" layoutX="291.0" layoutY="193.0" />
             <Button layoutX="320.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleUploadNisitPhotoButton" style="-fx-background-radius: 90;" text="Upload File" />
-            <CheckBox fx:id="showPassword" layoutX="456.0" layoutY="123.0" mnemonicParsing="false" onAction="#handlecheckpassword" text="Show Password" />
+            <CheckBox fx:id="showPassword" layoutX="456.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleCheckPassword" text="Show Password" />
             <ImageView fx:id="nisitPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="283.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/default-profile.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="showerror" layoutX="283.0" layoutY="495.0" prefHeight="76.0" prefWidth="210.0" />
+            <Label fx:id="showError" layoutX="283.0" layoutY="495.0" prefHeight="76.0" prefWidth="210.0" />
          </children>
       </AnchorPane>
    </children>

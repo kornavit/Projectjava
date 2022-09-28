@@ -65,16 +65,4 @@ public class StaffMainMenuController implements Initializable {
     }
 
 
-
-    //    @FXML
-//    public void handleChangePasswordButton(ActionEvent actionEvent){
-//        try {
-//            com.github.saacsos.FXRouter.goTo("staff_change_password");
-//        } catch (IOException e) {
-//            System.err.println("ไปที่หน้า change password ไม่ได้");
-//            System.err.println("ให้ตรวจสอบการกำหนด route");
-//        }
-//    }
-
-
 }

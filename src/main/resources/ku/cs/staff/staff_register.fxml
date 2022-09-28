@@ -42,7 +42,7 @@
       </Label>
       <PasswordField fx:id="hiddenPassword" layoutX="357.0" layoutY="151.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="staffPassword" layoutX="357.0" layoutY="151.0" prefHeight="27.0" prefWidth="200.0" visible="false" />
-      <CheckBox fx:id="ShowPassword" layoutX="472.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleShowPassword" text="แสดงรหัสผ่าน" />
+      <CheckBox fx:id="showPassword" layoutX="472.0" layoutY="191.0" mnemonicParsing="false" onAction="#handleShowPassword" text="แสดงรหัสผ่าน" />
       <Label layoutX="232.0" layoutY="216.0" text="ยืนยันรหัสผ่าน">
          <font>
             <Font size="18.0" />

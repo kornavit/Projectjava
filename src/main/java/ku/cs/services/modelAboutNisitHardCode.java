@@ -14,12 +14,12 @@ public class modelAboutNisitHardCode {
         modelAbout joe = new modelAbout("Sornsiri Hongsa","joe","6410451431");
         modelAbout poy = new modelAbout("Waralee Srimakplaem","poy","6410451377");
         modelAbout Forrence = new modelAbout("Porrin Khongcharoenket","Forrence","6410451156");
-        nisitList.addnisit(boss);
-        nisitList.addnisit(joe);
-        nisitList.addnisit(poy);
-        nisitList.addnisit(Forrence);
+        nisitList.addNisit(boss);
+        nisitList.addNisit(joe);
+        nisitList.addNisit(poy);
+        nisitList.addNisit(Forrence);
     }
-    public modelAboutList getnisitList() {
+    public modelAboutList getNisitList() {
         return nisitList;
     }
 }

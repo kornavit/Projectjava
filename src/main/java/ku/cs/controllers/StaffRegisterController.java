@@ -6,17 +6,15 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
-import com.github.saacsos.FXRouter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
 public class StaffRegisterController
 {
     @FXML private TextField staffUsername;
     @FXML private PasswordField hiddenPassword;
     @FXML private TextField staffPassword;
-    @FXML private CheckBox ShowPassword;
+    @FXML private CheckBox showPassword;
 
     @FXML private PasswordField confirmPassword;
 
@@ -37,7 +35,7 @@ public class StaffRegisterController
     @FXML
     public void handleShowPassword(ActionEvent actionEvent){
         staffPassword.setVisible(false);
-        if (ShowPassword.isSelected()) {
+        if (showPassword.isSelected()) {
             staffPassword.setText(hiddenPassword.getText());
             staffPassword.setVisible(true);
             hiddenPassword.setVisible(false);
@@ -51,10 +49,6 @@ public class StaffRegisterController
 
     @FXML
     public void ConfirmBtn(){
-    }
-
-    @FXML
-    public void StaffGroupBtn(){
     }
 
     @FXML

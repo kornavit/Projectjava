@@ -17,12 +17,12 @@ import ku.cs.models.modelAboutList;
 
 public class AboutController {
     @FXML
-    private ListView<modelAbout> Auditorlist;
+    private ListView<modelAbout> auditorList;
     @FXML private Label nameLabel;
     @FXML private Label nicknameLabel;
     @FXML private Label codenameLabel;
 
-    @FXML private ImageView Imageauditor;
+    @FXML private ImageView imageAuditor;
 
     private modelAboutNisitHardCode dataSource;
 
@@ -31,14 +31,14 @@ public class AboutController {
     @FXML
     public void initialize() {
         dataSource = new modelAboutNisitHardCode();
-        nisitList = dataSource.getnisitList();
+        nisitList = dataSource.getNisitList();
         showListView();
         clearSelectedAbout();
         handleSelectedListView();
     }
     private void handleSelectedListView() {
 
-        Auditorlist.getSelectionModel().selectedItemProperty().addListener(
+        auditorList.getSelectionModel().selectedItemProperty().addListener(
                 new ChangeListener<modelAbout>() {
                     @Override
                     public void changed(ObservableValue<? extends modelAbout>
@@ -50,8 +50,8 @@ public class AboutController {
                 });
     }
     private void showListView() {
-        Auditorlist.getItems().addAll(nisitList.getAllnisits());
-        Auditorlist.refresh();
+        auditorList.getItems().addAll(nisitList.getAllNisits());
+        auditorList.refresh();
     }
 
     private void showSelectedAbout(modelAbout nisit) {
@@ -59,16 +59,16 @@ public class AboutController {
         nicknameLabel.setText(nisit.getNickname());
         codenameLabel.setText(nisit.getCodename());
         String url = getClass().getResource("/ku/cs/images/"+nisit.getNickname()+".jpg").toExternalForm();
-        Imageauditor.setImage(new Image(url));
+        imageAuditor.setImage(new Image(url));
     }
     private void clearSelectedAbout() {
         nameLabel.setText("");
         nicknameLabel.setText("");
         codenameLabel.setText("");
         String url = getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm();
-        Imageauditor.setImage(new Image(url));
+        imageAuditor.setImage(new Image(url));
     }
-    public void handleBackToProjectButtom(ActionEvent actionEvent) {
+    public void handleBackToProjectButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("start");
         } catch (IOException e) {

@@ -26,9 +26,9 @@ public class ImageDataSource {
                 String[] fileSplit = file.getName().split("\\.");
                 String filename = LocalDate.now() + "_"+System.currentTimeMillis() + "."
                         + fileSplit[fileSplit.length - 1];
-                Path pic_target = FileSystems.getDefault().getPath(
+                Path picTarget = FileSystems.getDefault().getPath(
                         destDir.getAbsolutePath()+System.getProperty("file.separator")+filename);
-                Files.copy(file.toPath(), pic_target, StandardCopyOption.REPLACE_EXISTING );
+                Files.copy(file.toPath(), picTarget, StandardCopyOption.REPLACE_EXISTING );
                 return filename;
 
             } catch (IOException e) {

@@ -77,7 +77,7 @@ public class UserDataSource { // login and register
             buffer.append(user.getName() + ","
                     +user.getUsername() + ","
                     +user.getPassword() + ","
-                    +user.getrole() + ","
+                    +user.getRole() + ","
                     +user.getImagePath());
             buffer.newLine();
             buffer.close();

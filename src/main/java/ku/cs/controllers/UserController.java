@@ -21,7 +21,6 @@ public class UserController {
         modelRegister user = (modelRegister) FXRouter.getData();
         userName = new modelUser(user.getName());
         nameLabel.setText(userName.getName());
-//        System.out.println(user.getName());
 
         /*set Image*/
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + user.getImagePath());

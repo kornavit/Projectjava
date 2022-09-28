@@ -31,7 +31,7 @@ public class RequestListDataSource {
         }
     }
 
-    public boolean readfile_request(String subject){
+    public boolean readfileRequest(String subject){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -62,7 +62,7 @@ public class RequestListDataSource {
         }
     }
 
-    public void writefile_request(modelRequest request){
+    public void writefileRequest(modelRequest request){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
