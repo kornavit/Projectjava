@@ -25,11 +25,14 @@ public class UserRegisterController {
     @FXML private Label resultCheckUsername; // บอกว่ามันใช่ชื่อนี้ได้ไหม
     @FXML private Label showerror;
     @FXML private ImageView nisitPhoto; // ไฟล์รูปภาพ
+    private String pickTarge;
 
     private ImageDataSource getImage;
 
     @FXML public void initialize(){
-        nisitPhoto.setImage(new Image(getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm()));
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
+        nisitPhoto.setImage(new Image(destDir.toURI().toString()));
+        pickTarge = "default-profile.jpg";
     }
 
     public boolean handleCheckUsernameButton() {
@@ -47,8 +50,9 @@ public class UserRegisterController {
 
     public void handleUploadNisitPhotoButton(ActionEvent actionEvent) {
         getImage = new ImageDataSource();
-        String pic_target = getImage.chooseImage("user_images");
-        nisitPhoto.setImage(new Image(pic_target));
+        pickTarge = getImage.chooseImage("user_images");
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
+        nisitPhoto.setImage(new Image(destDir.toURI().toString()));
     }
 
     @FXML
@@ -92,7 +96,9 @@ public class UserRegisterController {
 
         try {
             if (checkError.equals("")) {
-                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", nisitPhoto.getImage().getUrl());
+                modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", pickTarge);
+                user.setValue_ban("false");
+                user.setCategory("-");
                 user.add(user);
                 FXRouter.goTo("success");
             } else {

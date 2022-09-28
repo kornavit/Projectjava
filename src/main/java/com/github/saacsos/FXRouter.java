@@ -106,8 +106,6 @@ public class FXRouter {
         }).getClass().getResource(scenePath));
         window.setTitle(route.windowTitle);
         Scene scene = new Scene(resource, route.sceneWidth, route.sceneHeight);
-//        scene.getStylesheets().add("style.css");
-//        Font.loadFont(scene.getClass().getResourceAsStream(".../resource/style/TH_CHAKRA_PETCH.TTF"),14);
         window.setScene(scene);
         window.show();
         routeAnimation(resource);

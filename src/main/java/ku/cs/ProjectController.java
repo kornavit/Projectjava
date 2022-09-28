@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ProjectController {
     @FXML private PasswordField password;
@@ -27,30 +29,32 @@ public class ProjectController {
         }
     }
     public void handleLoginButton(ActionEvent actionEvent){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+        System.out.println("time: " + formattedDate);
+
         modelRegister user = new modelRegister(username.getText(),password.getText());
-        if (user.role().equals("user")){
-            try{
+
+        try {
+            if (user.role().equals("user")) {
                 FXRouter.goTo("user");
-            }catch (IOException e){
-                System.err.println("ไปที่หน้า nisit_register ไม่ได้");
-                System.err.println("ให้ตรวจสอบการกำหนด route");
+//                if (user.getValue_ban().equals("true")){
+//
+//                    FXRouter.goTo("user");
+//                }//else{
+//                    FXRouter.goTo("");
+//                }
+            } else if (user.role().equals("admin")) {
+                FXRouter.goTo("admin_main");
+            } else if (user.role().equals("staff")) {
+                FXRouter.goTo("staff_register");
+            } else {
+                resultlogin.setText(user.role());
             }
-        }else if (user.role().equals("admin")){
-            try{
-                FXRouter.goTo("admin");
-            }catch (IOException e){
-                System.err.println("ไปที่หน้า admin ไม่ได้");
+        }catch (IOException e){
+                System.err.println("ไปที่หน้าที่กำลัง login ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
-            }
-        }else if (user.role().equals("staff")){
-            try{
-                FXRouter.goTo("staff_main_menu");
-            }catch(IOException e){
-                System.err.println("ไปที่หน้า staff ไม่ได้");
-                System.err.println("ให้ตรวจสอบการกำหนด route");
-            }
-        }else{
-            resultlogin.setText(user.role());
         }
     }
 

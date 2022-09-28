@@ -21,7 +21,7 @@ public class ImageDataSource {
         File file = chooser.showOpenDialog(new Stage());
         if (file != null){
             try {
-                File destDir = new File("src\\main\\resources\\ku\\cs\\images\\user_images");
+                File destDir = new File("image_user" + System.getProperty("file.separator") + image_directory);
                 if (!destDir.exists()) destDir.mkdirs();
                 String[] fileSplit = file.getName().split("\\.");
                 String filename = LocalDate.now() + "_"+System.currentTimeMillis() + "."
@@ -29,7 +29,7 @@ public class ImageDataSource {
                 Path pic_target = FileSystems.getDefault().getPath(
                         destDir.getAbsolutePath()+System.getProperty("file.separator")+filename);
                 Files.copy(file.toPath(), pic_target, StandardCopyOption.REPLACE_EXISTING );
-                return pic_target.toString();
+                return filename;
 
             } catch (IOException e) {
                 e.printStackTrace();

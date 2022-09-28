@@ -13,7 +13,7 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "white_nisit_shirt", 1024, 768);
         configRoute();
-        FXRouter.goTo("start");
+        FXRouter.goTo("admin_main");
     }
     private static void configRoute() {
         String packageStr = "ku/cs/";
@@ -40,6 +40,13 @@ public class ProjectApplication extends Application {
         //staff
         FXRouter.when("staff_register",packageStr+"staff/staff_register.fxml",600,400);
         FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",900,600);
+
+        //admin
+        FXRouter.when("admin_main",packageStr + "admin/admin_main.fxml");
+        FXRouter.when("ban_page",packageStr + "admin/ban.fxml");
+        FXRouter.when("change_password_admin",packageStr + "admin/changepasswordAdmin.fxml",513,384);
+        FXRouter.when("create_staff",packageStr + "admin/createStaff.fxml");
+        FXRouter.when("unban",packageStr + "admin/unban.fxml",686,510);
     }
 
     public static void main(String[] args) {
