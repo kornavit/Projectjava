@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.admins.AdminUnbanController">
+   <children>
+      <ImageView fitHeight="527.0" fitWidth="686.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Bg_3.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="38.0" layoutY="20.0" prefHeight="473.0" prefWidth="611.0" style="-fx-background-color: #ffffff; -fx-background-radius: 50;">
+         <children>
+            <Pane prefHeight="67.0" prefWidth="611.0" style="-fx-background-radius: 50 50 0 0; -fx-background-color: #000000;">
+               <children>
+                  <Label layoutX="268.0" layoutY="16.0" text="unban" textFill="#00ffdb" underline="true">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <ListView layoutX="20.0" layoutY="109.0" prefHeight="284.0" prefWidth="185.0" />
+            <Label layoutX="21.0" layoutY="73.0" prefHeight="30.0" prefWidth="114.0" text="รายชื่อคนที่ถูกแบน :" underline="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="233.0" layoutY="127.0" text="ชื่อ :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="233.0" layoutY="172.0" prefHeight="20.0" prefWidth="114.0" text="คำร้องข้อคืนสิทธิ์ :">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="274.0" layoutY="129.0" prefHeight="17.0" prefWidth="299.0" />
+            <Label alignment="TOP_LEFT" layoutX="233.0" layoutY="192.0" prefHeight="201.0" prefWidth="331.0" />
+            <Button layoutX="475.0" layoutY="88.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" style="-fx-background-radius: 80; -fx-background-color: #00CC00;" text="ปลดล็อคจากการแบน" />
+            <Button layoutX="257.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleBackAdmin" prefHeight="36.0" prefWidth="114.0" style="-fx-background-radius: 80;" text="กลับไปยังหน้าหลัก">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

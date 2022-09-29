@@ -15,7 +15,7 @@ public class SuccessReportController {
         try {
             com.github.saacsos.FXRouter.goTo("total_complaint");
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า total_complaint ไม่ได้");
+            System.err.println("ไปที่หน้า total complaint ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }

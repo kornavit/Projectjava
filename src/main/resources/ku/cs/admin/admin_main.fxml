@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.admins.AdminMainController">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Bg_3.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="47.0" prefHeight="744.0" prefWidth="946.0" style="-fx-background-color: #ffff; -fx-background-radius: 0 0 80 80;">
+         <children>
+            <AnchorPane prefHeight="201.0" prefWidth="946.0" style="-fx-background-color: #99FFCC; -fx-background-radius: 0 0 50 50;">
+               <children>
+                  <ImageView fitHeight="125.0" fitWidth="99.0" layoutX="22.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/KU_Logo_PNG.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="image_admin" fitHeight="163.0" fitWidth="154.0" layoutX="763.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/default-profile.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="611.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleGotoChangePasswordAdmin" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" textFill="#36b0f2" underline="true">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </Button>
+                  <Label fx:id="name_admin" alignment="CENTER_RIGHT" layoutX="183.0" layoutY="40.0" prefHeight="30.0" prefWidth="547.0" text="ชื่อ admin" textAlignment="RIGHT">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="611.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleGotoLogin" prefHeight="31.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="ออกจากระบบ" textFill="#f80000" underline="true">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Button layoutX="775.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleBanlist" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 80;" text="คนโดนแบน" textFill="RED">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button layoutX="69.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleCreateStaffpage" prefHeight="52.0" prefWidth="131.0" style="-fx-background-radius: 80; -fx-background-color: #CCFFFF;" text="สร้างเจ้าหน้าที่" textFill="BLUE">
+               <font>
+                  <Font size="19.0" />
+               </font></Button>
+            <TableView fx:id="user_board" layoutX="24.0" layoutY="233.0" prefHeight="392.0" prefWidth="524.0" style="-fx-background-color: #99FFCC; -fx-background-radius: 19;">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="86.0" text="ชื่อ(name)" />
+                <TableColumn fx:id="username" prefWidth="111.0" text="ชื่อระบบ(username)" />
+                  <TableColumn fx:id="category" prefWidth="127.0" text="หน่วยงาน(category)" />
+                  <TableColumn fx:id="time" prefWidth="199.0" text="วันและเวลาที่ใช้ล่าสุด(date)" />
+              </columns>
+            </TableView>
+            <ImageView fx:id="image_user" fitHeight="201.0" fitWidth="162.0" layoutX="660.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="text_username" layoutX="567.0" layoutY="483.0" prefHeight="42.0" prefWidth="99.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="text_name" layoutX="570.0" layoutY="434.0" prefHeight="42.0" prefWidth="65.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="text_category" layoutX="571.0" layoutY="532.0" prefHeight="42.0" prefWidth="92.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="text_time" layoutX="570.0" layoutY="586.0" prefHeight="42.0" prefWidth="55.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="user_name" layoutX="635.0" layoutY="440.0" prefHeight="31.0" prefWidth="248.0" />
+            <Label fx:id="user_username" layoutX="666.0" layoutY="489.0" prefHeight="31.0" prefWidth="220.0" />
+            <Label fx:id="user_category" layoutX="661.0" layoutY="538.0" prefHeight="30.0" prefWidth="229.0" />
+            <Label fx:id="time_login" layoutX="623.0" layoutY="592.0" prefHeight="31.0" prefWidth="272.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -8,6 +8,10 @@ public class modelRegister {
     private String password;
     private String imagePath; // keep path
     private String role;
+    private String value_ban;
+    private String category;
+
+    private String time;
     private UserDataSource person;
     public modelRegister(String name, String username, String password, String role, String image){
         this.name = name;
@@ -22,28 +26,25 @@ public class modelRegister {
         this("",username,password,"","");
     }
 
-    public modelRegister(){
-        this("","","","","");
-    }
+    public modelRegister(){}
 
-    public modelRegister(String name, String username, String password){
+    public modelRegister(String name, String username, String imagePath){ //name,username,category,date and time,image_name form admin
         this.name = name;
         this.username = username;
-        this.password = password;
-        this.imagePath = getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm();
+        this.imagePath = imagePath;
     }
 
-    public boolean checkusername(){
+    public boolean checkUsername(){
         person = new UserDataSource("data","user.csv");
         return person.readfile_user(username);
     }
 
     public void add(modelRegister user){
-        person = new UserDataSource("data","user.csv");
+        person = new UserDataSource("data","test_user_ban.csv");
         person.writefile_user(user);
     }
 
-    public String role() {
+    public String search_role() {
         person = new UserDataSource("data", "user.csv");
         return person.search_role(this);
     }
@@ -52,8 +53,11 @@ public class modelRegister {
     public String getName() {return name;}
     public String getUsername(){return username;}
     public String getPassword() {return password;}
-    public String getrole(){return role;}
+    public String getRole(){return role;}
     public String getImagePath() {return imagePath;}
+    public String getValue_ban(){return value_ban;}
+    public String getCategory(){return category;}
+    public String getTime(){return time;}
 
     public void setName(String name) {this.name = name;}
     public void setPassword(String password) {this.password = password;}
@@ -61,4 +65,7 @@ public class modelRegister {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+    public void setValue_ban(String value_ban){this.value_ban = value_ban;}
+    public void setCategory(String category){this.category = category;}
+    public void setTime(String time){this.time = time;}
 }

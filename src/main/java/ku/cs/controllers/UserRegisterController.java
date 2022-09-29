@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 import ku.cs.models.modelRegister;
 import ku.cs.services.ImageDataSource;
 public class UserRegisterController {
-    private String pickTarge;
+    private String pickTarget;
     @FXML private TextField username;
     @FXML private PasswordField passwordReal; // รหัสผ่าน password field
     @FXML private TextField textRealpassword; // รหัสนิสิต text
@@ -24,18 +24,21 @@ public class UserRegisterController {
     @FXML private TextField name;
     @FXML private CheckBox showPassword;
     @FXML private Label resultCheckUsername; // บอกว่ามันใช่ชื่อนี้ได้ไหม
-    @FXML private Label showerror;
+    @FXML private Label showError;
     @FXML private ImageView nisitPhoto; // ไฟล์รูปภาพ
+    private String pickTarge;
 
     private ImageDataSource getImage;
 
     @FXML public void initialize(){
-        nisitPhoto.setImage(new Image(getClass().getResource("/ku/cs/images/default-profile.jpg").toExternalForm()));
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
+        nisitPhoto.setImage(new Image(destDir.toURI().toString()));
+        pickTarge = "default-profile.jpg";
     }
 
     public boolean handleCheckUsernameButton() {
         modelRegister user = new modelRegister(name.getText(),username.getText(),passwordReal.getText(),null,"user");
-        if (user.checkusername()){
+        if (user.checkUsername()){
             resultCheckUsername.setTextFill(Color.GREEN);
             resultCheckUsername.setText("ชื่อนี้ใช้ได้");
             return true;
@@ -48,13 +51,13 @@ public class UserRegisterController {
 
     public void handleUploadNisitPhotoButton(ActionEvent actionEvent) {
         getImage = new ImageDataSource();
-        pickTarge = getImage.chooseImage("user_images");
-        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
+        pickTarget = getImage.chooseImage("user_images");
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarget);
         nisitPhoto.setImage(new Image(destDir.toURI().toString()));
     }
 
     @FXML
-    public void handlecheckpassword(ActionEvent actionEvent){
+    public void handleCheckPassword(ActionEvent actionEvent){
         if (showPassword.isSelected()){
             textPasswordAgin.setText(passwordAgain.getText());
             textRealpassword.setText(passwordReal.getText());
@@ -95,12 +98,15 @@ public class UserRegisterController {
         try {
             if (checkError.equals("")) {
                 modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", pickTarge);
+                user.setValue_ban("false");
+                user.setCategory("-");
+
                 user.add(user);
                 FXRouter.goTo("success");
             } else {
-                showerror.setTextFill(Color.RED);
-                showerror.setText(checkError);
-                showerror.setWrapText(true);
+                showError.setTextFill(Color.RED);
+                showError.setText(checkError);
+                showError.setWrapText(true);
             }
         } catch (IOException e) {
             System.err.println("ไปที่หน้า success ไม่ได้");

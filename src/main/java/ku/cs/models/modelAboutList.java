@@ -7,11 +7,11 @@ public class modelAboutList {
         nisits = new ArrayList<>();
     }
 
-    public void addnisit(modelAbout nisit) {
+    public void addNisit(modelAbout nisit) {
         nisits.add(nisit);
     }
 
-    public ArrayList<modelAbout> getAllnisits() {
+    public ArrayList<modelAbout> getAllNisits() {
         return nisits;
     }
 }

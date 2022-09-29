@@ -22,7 +22,7 @@
       <AnchorPane layoutX="5.0" layoutY="49.0" opacity="0.38" prefHeight="670.0" prefWidth="1025.0" style="-fx-background-color: #E6E6FA; -fx-background-radius: 70;" />
       <AnchorPane layoutX="488.0" layoutY="124.0" prefHeight="554.0" prefWidth="531.0" style="-fx-background-color: #666666; -fx-background-radius: 70;">
          <children>
-            <ImageView fx:id="Imageauditor" fitHeight="245.0" fitWidth="226.0" layoutX="172.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageAuditor" fitHeight="245.0" fitWidth="226.0" layoutX="172.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
             <AnchorPane layoutX="228.0" layoutY="20.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="-45.0" layoutY="10.0" strokeType="INSIDE" width="200.0">
@@ -54,7 +54,7 @@
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="124.0" prefHeight="554.0" prefWidth="450.0" style="-fx-background-color: #ffff; -fx-background-radius: 70;">
          <children>
-            <ListView fx:id="Auditorlist" editable="true" fixedCellSize="90.0" layoutX="17.0" layoutY="97.0" prefHeight="371.0" prefWidth="416.0" />
+            <ListView fx:id="auditorList" editable="true" fixedCellSize="90.0" layoutX="17.0" layoutY="97.0" prefHeight="371.0" prefWidth="416.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" layoutX="125.0" layoutY="37.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
             <Label layoutX="140.0" layoutY="37.0" prefHeight="42.0" prefWidth="170.0" text="List Auditor ">
                <font>
@@ -97,7 +97,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button layoutX="903.0" layoutY="694.0" mnemonicParsing="false" onAction="#handleBackToProjectButtom" prefHeight="59.0" prefWidth="100.0" style="-fx-background-color: #990066; -fx-background-radius: 90;" text="Back" textFill="WHITE">
+      <Button layoutX="903.0" layoutY="694.0" mnemonicParsing="false" onAction="#handleBackToProjectButton" prefHeight="59.0" prefWidth="100.0" style="-fx-background-color: #990066; -fx-background-radius: 90;" text="Back" textFill="WHITE">
          <font>
             <Font name="Wingdings 3" size="14.0" />
          </font></Button>

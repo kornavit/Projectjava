@@ -19,8 +19,8 @@
       </ImageView>
       <AnchorPane layoutX="167.0" layoutY="125.0" prefHeight="585.0" prefWidth="697.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <TextField fx:id="textPasswordAgin" layoutX="291.0" layoutY="143.0" />
-            <TextField fx:id="textRealpassword" layoutX="291.0" layoutY="93.0" />
+            <TextField fx:id="textPasswordAgin" layoutX="291.0" layoutY="143.0" style="-fx-background-radius: 80;" />
+            <TextField fx:id="textRealpassword" layoutX="291.0" layoutY="93.0" style="-fx-background-radius: 80;" />
             <Button layoutX="283.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleBackNisitRegisterButton" prefHeight="26.0" prefWidth="49.0" style="-fx-background-radius: 90;" text="Back" />
             <Button layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleSubmitButton" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE" />
             <Label layoutX="93.0" layoutY="38.0" text="ชื่อสำหรับเข้าสู่ระบบ">
@@ -49,19 +49,19 @@
                </font>
             </Label>
             <Label fx:id="resultCheckUsername" layoutX="517.0" layoutY="46.0" prefHeight="18.0" prefWidth="117.0" />
-            <TextField fx:id="username" layoutX="291.0" layoutY="43.0" />
-            <PasswordField fx:id="passwordReal" layoutX="291.0" layoutY="93.0" />
-            <PasswordField fx:id="passwordAgain" layoutX="291.0" layoutY="143.0" />
+            <TextField fx:id="username" layoutX="291.0" layoutY="43.0" style="-fx-background-radius: 80;" />
+            <PasswordField fx:id="passwordReal" layoutX="291.0" layoutY="93.0" style="-fx-background-radius: 80;" />
+            <PasswordField fx:id="passwordAgain" layoutX="291.0" layoutY="143.0" style="-fx-background-radius: 80;" />
             <Button layoutX="459.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleCheckUsernameButton" style="-fx-background-radius: 90;" text="Check" />
-            <TextField fx:id="name" layoutX="291.0" layoutY="193.0" />
+            <TextField fx:id="name" layoutX="291.0" layoutY="193.0" style="-fx-background-radius: 80;" />
             <Button layoutX="320.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleUploadNisitPhotoButton" style="-fx-background-radius: 90;" text="Upload File" />
-            <CheckBox fx:id="showPassword" layoutX="456.0" layoutY="123.0" mnemonicParsing="false" onAction="#handlecheckpassword" text="Show Password" />
+            <CheckBox fx:id="showPassword" layoutX="456.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleCheckPassword" text="Show Password" />
             <ImageView fx:id="nisitPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="283.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/default-profile.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="showerror" layoutX="283.0" layoutY="495.0" prefHeight="76.0" prefWidth="210.0" />
+            <Label fx:id="showError" layoutX="283.0" layoutY="495.0" prefHeight="76.0" prefWidth="210.0" />
          </children>
       </AnchorPane>
    </children>
