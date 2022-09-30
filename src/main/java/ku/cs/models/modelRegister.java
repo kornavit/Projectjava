@@ -8,7 +8,10 @@ public class modelRegister {
     private String password;
     private String imagePath; // keep path
     private String role;
+    private String category;
     private UserDataSource person;
+
+
     public modelRegister(String name, String username, String password, String role, String image){
         this.name = name;
         this.username = username;
@@ -45,7 +48,7 @@ public class modelRegister {
 
     public String role() {
         person = new UserDataSource("data", "user.csv");
-        return person.search_role(this.username, this.password);
+        return person.search_role(this);
     }
 
 
@@ -57,4 +60,12 @@ public class modelRegister {
 
     public void setName(String name) {this.name = name;}
     public void setPassword(String password) {this.password = password;}
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

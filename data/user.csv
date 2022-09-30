@@ -1,7 +1,7 @@
-name,username,password,role,image path
-anna,anna1345,kek,user
-joe,joesight,joeeee,staff
-boss,doss123,bossegh,admin
-ghost,noth,hello,user
-ghost,ghost,nini,user
-kmo,g,uuuuuuuu,user,file:/D:/project_java/project211-whitenisitshirt/target/classes/ku/cs/images/default-profile.jpg
+realName,userName,password,role,category,image path
+anna,anna1345,kek,user,-,test1.jpg
+Sornsiri Hongsa,joesight,joestaff,staff,หน่วยงาน 1,ku/cs/images/joe.jpg
+boss,doss123,bossegh,admin,-,test2.jpg
+ghost,noth,hello,user,-,test3.jpg
+ghost,ghost,nini,user,-,test4.jpg
+kmo,g,uuuuuuuu,user,-,file:/D:/project_java/project211-whitenisitshirt/target/classes/ku/cs/images/default-profile.jpg

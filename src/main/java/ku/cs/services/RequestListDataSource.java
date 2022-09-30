@@ -72,14 +72,14 @@ public class RequestListDataSource {
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
-            buffer.append(request.getName() + ","
+            buffer.append(request.getRealName() + ","
                     +request.getCategory() + ","
                     +request.getSubject() + ","
-                    +request.getName() + ","
+                    +request.getRealName() + ","
                     +request.getFaculty() + ","
                     +request.getDepartment() + ","
                     +request.getTelephone() + ","
-                    +request.getStatus());
+                    +request.getRequestStatus());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {

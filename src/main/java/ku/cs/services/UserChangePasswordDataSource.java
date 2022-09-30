@@ -112,7 +112,8 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
                         data[1].trim(), //User Name
                         data[2].trim(), // Password
                         data[3].trim(), // role
-                        data[4].trim()); //User Picture
+                        data[5].trim()); //User Picture
+                user.setCategory(data[4]); // category
                 list.addUser(user);
             }
 
@@ -151,6 +152,7 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
                         +user.getUsername() + ","
                         +user.getPassword() + ","
                         +user.getrole() + ","
+                        +user.getCategory() + ","
                         +user.getImagePath();
 
                 buffer.append(input_user);

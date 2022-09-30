@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import ku.cs.models.modelRegister;
 import javafx.fxml.FXML;
+import ku.cs.services.StaffDataSource;
 
 
 import java.io.IOException;
@@ -18,6 +19,10 @@ public class ProjectController {
     @FXML private TextField username;
     @FXML private CheckBox ShowPassword;
     @FXML private Label resultlogin;
+
+    private modelRegister user;
+
+    private StaffDataSource staffDataSource;
     public void handleNewRegisterButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("user_register");
@@ -27,7 +32,7 @@ public class ProjectController {
         }
     }
     public void handleLoginButton(ActionEvent actionEvent){
-        modelRegister user = new modelRegister(username.getText(),password.getText());
+        user = new modelRegister(username.getText(),password.getText());
         if (user.role().equals("user")){
             try{
                 FXRouter.goTo("user");
@@ -44,7 +49,9 @@ public class ProjectController {
             }
         }else if (user.role().equals("staff")){
             try{
-                FXRouter.goTo("staff_main_menu");
+                staffDataSource = new StaffDataSource("data","user.csv");
+                staffDataSource.StaffLogin(user);
+                FXRouter.goTo("staff_main_menu", user);
             }catch(IOException e){
                 System.err.println("ไปที่หน้า staff ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -62,7 +69,6 @@ public class ProjectController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-    //25/8/2022 edit
     public void handleShowPassword(ActionEvent actionEvent){
         hiddenpassword.setVisible(false);
         if (ShowPassword.isSelected()) {

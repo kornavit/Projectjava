@@ -84,7 +84,7 @@ public class UserDataSource { // login and register
         }
     }
 
-    public String search_role(String username,String password){
+    public String search_role(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -98,7 +98,8 @@ public class UserDataSource { // login and register
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
                 // name,username,password,image path
-                if (data[1].equals(username) && data[2].equals(password)){
+                if (data[1].equals(user.getUsername()) && data[2].equals(user.getPassword())){
+                    user.setName(data[0]);
                     return data[3];
                 }
             }
