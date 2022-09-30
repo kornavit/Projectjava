@@ -108,7 +108,7 @@ public class UserDataSource { // login and register
                 // name,username,password,image path
                 if (data[1].equals(user.getUsername()) && data[2].equals(user.getPassword())){
                     user.setName(data[0]);
-                    user.setImagePath(data[4]);
+                    user.setImagePath(data[5]);
                     return data[3];
                 }
             }
@@ -135,7 +135,7 @@ public class UserDataSource { // login and register
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
-            buffer.append(user.getName() + ","
+            buffer.append(user.getRealName() + ","
                     +user.getCategory() + ","
                     +user.getSubject() + ","
                     +user.getStatus());

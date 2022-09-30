@@ -10,7 +10,6 @@ public class SuccessReportController {
     @FXML
     public void initialize(){
     }
-
     public void handleBackToTotalComplaintsButton(ActionEvent actionEvent) {
         try {
             com.github.saacsos.FXRouter.goTo("total_complaint");

@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import ku.cs.models.modelRegister;
 import javafx.fxml.FXML;
+import ku.cs.services.StaffDataSource;
 
 
 import java.io.IOException;
@@ -20,6 +21,10 @@ public class ProjectController {
     @FXML private TextField username;
     @FXML private CheckBox ShowPassword;
     @FXML private Label resultlogin;
+
+    private modelRegister user;
+
+    private StaffDataSource staffDataSource;
     public void handleNewRegisterButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("user_register");
@@ -29,11 +34,13 @@ public class ProjectController {
         }
     }
     public void handleLoginButton(ActionEvent actionEvent){
+
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
         System.out.println("time: " + formattedDate);
 
+        //System.out.println(password.getText());
         modelRegister user = new modelRegister(username.getText(),password.getText());
         try {
             if (user.search_role().equals("user")) {
@@ -46,11 +53,14 @@ public class ProjectController {
             } else if (user.search_role().equals("admin")) {
                 FXRouter.goTo("admin_main",user);
             } else if (user.search_role().equals("staff")) {
-                FXRouter.goTo("staff_register",user);
-            } else {
+                staffDataSource = new StaffDataSource("data", "user.csv");
+                staffDataSource.StaffLogin(user);
+                FXRouter.goTo("staff_main_menu", user);
+            }else {
                 resultlogin.setText(user.search_role());
             }
-        }catch (IOException e){
+        }
+        catch (IOException e){
                 System.err.println("ไปที่หน้าที่กำลัง login ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
         }
@@ -64,7 +74,6 @@ public class ProjectController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-    //25/8/2022 edit
     public void handleShowPassword(ActionEvent actionEvent){
         hiddenpassword.setVisible(false);
         if (ShowPassword.isSelected()) {
@@ -75,7 +84,6 @@ public class ProjectController {
         }
         password.setText(hiddenpassword.getText());
         password.setVisible(true);
-        hiddenpassword.clear();
     }
 
 
