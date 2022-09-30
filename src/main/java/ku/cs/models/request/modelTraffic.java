@@ -6,19 +6,22 @@ public class modelTraffic {
     private int vote;
     private String location;
     private String detail;
-    //Image
+    private String imagePath;
 
-    private UserDataSource request;
+    private UserDataSource request, requests;
 
     public modelTraffic(Integer vote, String location, String detail) {
         this.vote = vote;
         this.location = location;
         this.detail = detail;
+        this.imagePath = getClass().getResource("/ku/cs/images/default-image.jpg").toExternalForm();
     }
 
     public void addTraffic(modelTraffic traffic){
         request = new UserDataSource("data/category","traffic.csv");
         request.writefile_traffic(traffic);
+        requests = new UserDataSource("data", "nisit.csv");
+        requests.writefile_traffic(traffic);
     }
     public int getVote() {
         return vote;
@@ -30,4 +33,10 @@ public class modelTraffic {
     public String getDetailTraffic() {
         return detail;
     }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {return imagePath;}
 }

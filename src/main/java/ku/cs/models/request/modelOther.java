@@ -6,7 +6,7 @@ public class modelOther {
     private int vote;
     private String detail;
 
-    private UserDataSource request;
+    private UserDataSource request, requests;
 
     public modelOther(int vote, String detail) {
         this.vote = vote;
@@ -16,6 +16,8 @@ public class modelOther {
     public void addOther(modelOther other){
         request = new UserDataSource("data/category","other.csv");
         request.writefile_other(other);
+        requests = new UserDataSource("data","nisit.csv");
+        requests.writefile_other(other);
     }
 
     public int getVote() {

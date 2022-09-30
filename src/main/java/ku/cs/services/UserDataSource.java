@@ -180,7 +180,8 @@ public class UserDataSource { // login and register
             buffer.append("," + user.getVote() + ","
                     +user.getEquiument() + ","
                     +user.getLocation() + ","
-                    +user.getDetail());
+                    +user.getDetail() + ","
+                    +user.getImagePath());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {
@@ -200,7 +201,8 @@ public class UserDataSource { // login and register
             buffer = new BufferedWriter(writer);
             buffer.append("," + user.getVote() + ","
                     +user.getLocation() + ","
-                    +user.getDetailTraffic());
+                    +user.getDetailTraffic() + ","
+                    +user.getImagePath());
             buffer.newLine();
             buffer.close();
         }catch (IOException e){

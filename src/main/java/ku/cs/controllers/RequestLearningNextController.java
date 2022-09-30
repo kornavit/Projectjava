@@ -2,7 +2,6 @@ package ku.cs.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import ku.cs.models.modelRequest;
 import ku.cs.models.request.modelLearning;
 
 import java.io.IOException;
@@ -13,7 +12,6 @@ public class RequestLearningNextController {
     @FXML private TextField teacher;
     @FXML private TextField group;
     @FXML private TextField detail;
-    private RequestController requestUser;
 
     @FXML public void initialize(){
     }
@@ -30,14 +28,5 @@ public class RequestLearningNextController {
         }
     }
 
-    public void handleBackRequestButton(ActionEvent actionEvent) {
-        try {
-            com.github.saacsos.FXRouter.goTo("request");
-
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า request ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
 
 }

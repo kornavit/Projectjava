@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
-import ku.cs.services.modelRequestHardCode;
+
 
 import java.io.IOException;
 
@@ -27,7 +27,7 @@ public class TotalRequestsController {
     @FXML private Label headLabel;
     @FXML private Label detailLabel;
 
-    private modelRequestHardCode dataSource;
+
 
     private modelRequestList requestList;
 
@@ -39,11 +39,11 @@ public class TotalRequestsController {
         statusList.setCellValueFactory(new PropertyValueFactory<modelRequest, String>("status"));
         //timeColumn.setCellValueFactory(new PropertyValueFactory<modelRequest, String>("time"));
 
-        dataSource = new modelRequestHardCode();
-        requestList = dataSource.getRequestList();
-        ObservableList<modelRequest> requestList = tableView.getItems();
-        tableView.setItems(requestList);
-        showTableView();
+//        dataSource = new modelRequestHardCode();
+//        requestList = dataSource.getRequestList();
+//        ObservableList<modelRequest> requestList = tableView.getItems();
+//        tableView.setItems(requestList);
+//        showTableView();
     }
 
     public void handleBackStartButton(ActionEvent actionEvent) {
@@ -85,9 +85,9 @@ public class TotalRequestsController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-    private void showTableView() {
-        tableView.getItems().addAll(requestList.getAllRequest());
-        tableView.refresh();
-    }
+//    private void showTableView() {
+//        tableView.getItems().addAll(requestList.getAllRequest());
+//        tableView.refresh();
+//    }
 
 }

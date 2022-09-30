@@ -25,8 +25,6 @@ public class RequestController implements Initializable{
     @FXML private Label test;
     @FXML private Label showerror;
 
-//    @FXML public void initialize(){
-//    }
     ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย", "อื่นๆ");
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
@@ -72,7 +70,7 @@ public class RequestController implements Initializable{
                 request.addRequestBuilding(request);
             } else if (changeCategory(actionEvent) == 3 && !headTextField.getText().equals("")){
                 FXRouter.goTo("request_traffic", request);
-                request.addRequestBuilding(request);
+                request.addRequestTraffic(request);
             } else if (changeCategory(actionEvent) == 4 && !headTextField.getText().equals("")){
                 FXRouter.goTo("request_other", request);
                 request.addRequestOther(request);
@@ -81,7 +79,6 @@ public class RequestController implements Initializable{
                 showerror.setTextFill(Color.RED);
                 showerror.setText(checkError);
                 showerror.setWrapText(true);
-                System.err.println("ยังไม่ได้กรอกหัวเรื่อง หรือเลือกหมวดหมู่");
             }
 
 

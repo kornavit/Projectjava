@@ -13,7 +13,6 @@ public class modelRequest {
     //private time;
     //private int votePoint;
 
-    //private RequestDataSource complaint;
 
 
 
@@ -25,63 +24,49 @@ public class modelRequest {
         this.status = status;
     }
 
-    /*public void add(modelRequest request){
-        complaint = new RequestDataSource("data","request.csv");
-        complaint.writefile_request(request);
-    }*/
-
     public String getCategory() {
         return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    private UserDataSource user;
-    public void addRequestLearning(modelRequest request){  //ตัวนี้ใช้เหมือนกันหมดทุก Request น่าจะต้องต้องเขียน if() แล้ว
+    private UserDataSource user, requests;
+    public void addRequestLearning(modelRequest request){
         user = new UserDataSource("data/category", "learning.csv"); //if
-        user.writefile_request(request); //Same
+        addToAllRequest(request);
     }
 
-    public void addRequestTraffic(modelRequest request){  //ตัวนี้ใช้เหมือนกันหมดทุก Request น่าจะต้องต้องเขียน if() แล้ว
+    public void addRequestTraffic(modelRequest request){
         user = new UserDataSource("data/category", "traffic.csv"); //if
-        user.writefile_request(request);
+        addToAllRequest(request);
     }
 
     public void addRequestBuilding(modelRequest request){
         user = new UserDataSource("data/category","building.csv");
-        user.writefile_request(request);
+        addToAllRequest(request);
     }
 
     public void addRequestOther(modelRequest request){
         user = new UserDataSource("data/category", "other.csv");
-        user.writefile_request(request);
+        addToAllRequest(request);
     }
+
+    public void addToAllRequest(modelRequest request){
+        user.writefile_request(request);
+        requests = new UserDataSource("data","nisit.csv");
+        requests.writefile_request(request);
+    }
+
 
 
 }
