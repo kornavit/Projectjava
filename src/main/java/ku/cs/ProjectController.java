@@ -20,6 +20,7 @@ public class ProjectController {
     @FXML private TextField username;
     @FXML private CheckBox ShowPassword;
     @FXML private Label resultlogin;
+    private modelRegister user;
     public void handleNewRegisterButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("user_register");
@@ -34,13 +35,12 @@ public class ProjectController {
         String formattedDate = myDateObj.format(myFormatObj);
         System.out.println("time: " + formattedDate);
 
-        modelRegister user = new modelRegister(username.getText(),password.getText());
+        user = new modelRegister(username.getText(),password.getText());
 
         try {
             if (user.role().equals("user")) {
-                FXRouter.goTo("user");
+                FXRouter.goTo("user", user);
 //                if (user.getValue_ban().equals("true")){
-//
 //                    FXRouter.goTo("user");
 //                }//else{
 //                    FXRouter.goTo("");

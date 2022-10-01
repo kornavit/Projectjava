@@ -4,12 +4,13 @@ package ku.cs.models;
 
 public class modelRequest {
     private String category;
-    private String subject;
-    private String name;
+    private String subject; // คำร้อง
+    private String name; // ชื่อนิสิตที่เอาไว้ใช้ในหน้ารวมเรื่องร้องเรียนทั้งหมด
     private String faculty;
     private String department;
     private String telephone;
     private String status;
+    private String staffName; // ชื่อของ staff
 
     //private time;
     //private int votePoint;

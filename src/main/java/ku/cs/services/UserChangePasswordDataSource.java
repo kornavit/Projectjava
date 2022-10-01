@@ -162,5 +162,4 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
             throw new RuntimeException(e);
         }
     }
-
 }
