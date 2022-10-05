@@ -11,17 +11,27 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
+import ku.cs.services.ImageDataSource;
 import ku.cs.services.StaffDataSource;
+import ku.cs.services.UserDataSource;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class StaffMainMenuController implements Initializable {
+
+    private String target;
+    private ImageDataSource image;
+    @FXML
+    private ImageView staffProfile;
     @FXML private Label staff;
     @FXML private Label team;
 
@@ -48,7 +58,7 @@ public class StaffMainMenuController implements Initializable {
         staff.setText(staffLogin.getName());
         team.setText(staffLogin.getCategory());
 
-        dataSource = new StaffDataSource("data/staff","user_complaint");
+        dataSource = new StaffDataSource("data/staff","user_complaint.csv");
         requestList = dataSource.readData();
         dataRequestList = FXCollections.observableArrayList();
         setMenuTable();
@@ -86,6 +96,19 @@ public class StaffMainMenuController implements Initializable {
             event();
         });
     }
+    @FXML public void handleChangeProfilePic(ActionEvent actionEvent) {
+        UserDataSource data = new UserDataSource("data","user.csv");
+        image = new ImageDataSource();
+        target = image.chooseImage("user_images");
+        if(target.equals("")){
+            return;
+        }
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + target);
+        staffProfile.setImage(new Image(destDir.toURI().toString()));
+        staffLogin.setImagePath(target);
+        data.writeData(data.readData(),staffLogin);
+    }
+
     @FXML public void handleChangePass(ActionEvent actionEvent){
         try {
             com.github.saacsos.FXRouter.goTo("staff_change_password");

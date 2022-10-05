@@ -1,7 +1,8 @@
 realName,userName,password,role,category,image path
 anna,anna1345,kek,user,-,test1.jpg
-Sornsiri Hongsa,joesight,joestaff,staff,หน่วยงาน 1,joe.jpg
+Sornsiri Hongsa,joesight,joestaff,staff,Building,2022-10-05_1664970227026.jpg
+test,testza,123,staff,Learning,joe.jpg
 boss,doss123,bossegh,admin,-,test2.jpg
 ghost,noth,hello,user,-,test3.jpg
 ghost,ghost,nini,user,-,test4.jpg
-kmo,g,uuuuuuuu,user,-,file:/D:/project_java/project211-whitenisitshirt/target/classes/ku/cs/images/default-profile.jpg
+kmo,g,uuuuuuuu,user,-,default-profile.jpg
