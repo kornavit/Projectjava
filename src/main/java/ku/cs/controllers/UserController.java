@@ -16,9 +16,11 @@ public class UserController {
     @FXML private ImageView nisitPhoto;
 
     private modelUser userName;
+
+    private modelRegister user;
     @FXML public void initialize(){
         /*set User*/
-        modelRegister user = (modelRegister) FXRouter.getData();
+        user = (modelRegister) FXRouter.getData();
         userName = new modelUser(user.getName());
         nameLabel.setText(userName.getName());
 
@@ -52,7 +54,7 @@ public class UserController {
 
     public void handleTotalComplaintsButton(ActionEvent actionEvent){
         try {
-            FXRouter.goTo("total_complaint");
+            FXRouter.goTo("total_complaint", user);
 
         } catch (IOException e) {
             System.err.println("ไปที่หน้า total_complaint ไม่ได้");

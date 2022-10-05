@@ -1,6 +1,7 @@
 package ku.cs.services;
 
 import ku.cs.models.modelRequest;
+import ku.cs.models.modelRequestList;
 
 import java.io.*;
 
@@ -31,7 +32,8 @@ public class RequestListDataSource {
         }
     }
 
-    public boolean readfileRequest(String subject){
+    public modelRequestList readfileRequest(){
+        modelRequestList requestList = new modelRequestList();
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -41,18 +43,22 @@ public class RequestListDataSource {
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
 
-            String line_subject = "";
-            while ( (line_subject = buffer.readLine()) != null){
-                String[] data = line_subject.split(",");
-                // name,username,password,image path
-                if (data[1].equals(subject)){
-                    return false;
-                }
+            String line = "";
+            while((line = buffer.readLine()) != null){
+                String[] data = line.split(",");
+                modelRequest request = new modelRequest(data[0], //name
+                        data[1], //category
+                        data[2], //head
+                        data[3]); //status
+                request.setVotePoint(Integer.parseInt(data[4])); //vote
+                request.setDetail(data[5]); //detail
+                requestList.addRequest(request);
             }
-            return true;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
+        }finally {
             try{
                 buffer.close();
                 reader.close();
@@ -60,6 +66,7 @@ public class RequestListDataSource {
                 throw new RuntimeException(e);
             }
         }
+        return requestList;
     }
 
     public void writefileRequest(modelRequest request){

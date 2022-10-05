@@ -44,7 +44,7 @@ public class ProjectController {
 //                    FXRouter.goTo("");
 //                }
             } else if (user.search_role().equals("admin")) {
-                FXRouter.goTo("admin_main",user);
+                FXRouter.goTo("admin_main");
             } else if (user.search_role().equals("staff")) {
                 FXRouter.goTo("staff_register",user);
             } else {

@@ -9,9 +9,10 @@ public class modelRequest {
     private String subject;
     private String name;
     private String status;
+    private String detail;
 
     //private time;
-    //private int votePoint;
+    private int votePoint;
 
 
 
@@ -38,6 +39,14 @@ public class modelRequest {
 
     public String getStatus() {
         return status;
+    }
+
+    public void setVotePoint(int votePoint) {
+        this.votePoint = votePoint;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     private UserDataSource user, requests;
