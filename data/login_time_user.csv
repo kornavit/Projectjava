@@ -1,5 +1,6 @@
-name,username,category,date and time,image_name
-joe,joesight,building,2022-09-07 14:54:30,joe.jpg
-boss,doss123,-,2022-09-08 15:59:42,boss.jpg
-kmo,g,-,2022-09-08 12:43:56,default-profile.jpg
-poy,poy134,-,2022-09-08 09:54:34,default-profile.jpg
+name,username,category,date and time
+joe,joesight,building,2022-09-07 14:54:30
+kmo,g,-,2022-09-08 12:43:56
+poy,poy134,-,2022-09-08 09:54:34
+poy,poy134,-,2022-10-08 09:54:34
+kmo,g,-,06-10-2022 10:50:01

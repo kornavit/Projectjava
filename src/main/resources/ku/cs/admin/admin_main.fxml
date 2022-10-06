@@ -31,22 +31,27 @@
                         <Image url="@../images/default-profile.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="611.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleGotoChangePasswordAdmin" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" textFill="#36b0f2" underline="true">
+                  <Button layoutX="623.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleGotoChangePasswordAdmin" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" textFill="#36b0f2" underline="true">
                      <font>
-                        <Font name="System Bold Italic" size="15.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                      <effect>
                         <ColorAdjust />
                      </effect>
                   </Button>
-                  <Label fx:id="name_admin" alignment="CENTER_RIGHT" layoutX="183.0" layoutY="40.0" prefHeight="30.0" prefWidth="547.0" text="ชื่อ admin" textAlignment="RIGHT">
+                  <Label fx:id="name_admin" alignment="CENTER_RIGHT" layoutX="200.0" layoutY="27.0" prefHeight="30.0" prefWidth="547.0" text="ชื่อ admin" textAlignment="RIGHT">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="611.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleGotoLogin" prefHeight="31.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="ออกจากระบบ" textFill="#f80000" underline="true">
+                  <Button layoutX="623.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleGotoLogin" prefHeight="31.0" prefWidth="140.0" style="-fx-background-color: transparent;" text="ออกจากระบบ" textFill="#f80000" underline="true">
                      <font>
                         <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="623.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleChangeImage" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="เปลี่ยนรูป profile" underline="true">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
                </children>
@@ -62,10 +67,10 @@
                </font></Button>
             <TableView fx:id="user_board" layoutX="24.0" layoutY="233.0" prefHeight="392.0" prefWidth="524.0" style="-fx-background-color: #99FFCC; -fx-background-radius: 19;">
               <columns>
-                <TableColumn fx:id="name" prefWidth="86.0" text="ชื่อ(name)" />
-                <TableColumn fx:id="username" prefWidth="111.0" text="ชื่อระบบ(username)" />
-                  <TableColumn fx:id="category" prefWidth="127.0" text="หน่วยงาน(category)" />
-                  <TableColumn fx:id="time" prefWidth="199.0" text="วันและเวลาที่ใช้ล่าสุด(date)" />
+                <TableColumn fx:id="name" prefWidth="86.0" sortable="false" text="ชื่อ(name)" />
+                <TableColumn fx:id="username" prefWidth="111.0" sortable="false" text="ชื่อระบบ(username)" />
+                  <TableColumn fx:id="category" prefWidth="127.0" sortable="false" text="หน่วยงาน(category)" />
+                  <TableColumn fx:id="time" prefWidth="199.0" sortable="false" text="วันและเวลาที่ใช้ล่าสุด(date)" />
               </columns>
             </TableView>
             <ImageView fx:id="image_user" fitHeight="201.0" fitWidth="162.0" layoutX="660.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true" />

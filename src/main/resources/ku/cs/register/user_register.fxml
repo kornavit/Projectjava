@@ -25,27 +25,27 @@
             <Button layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleSubmitButton" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE" />
             <Label layoutX="93.0" layoutY="38.0" text="ชื่อสำหรับเข้าสู่ระบบ">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="195.0" layoutY="88.0" text="รหัสผ่าน">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="141.0" layoutY="138.0" text="ยืนยันรหัสผ่าน">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="160.0" layoutY="188.0" text="ชื่อผู้ใช้ระบบ">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="98.0" layoutY="235.0" text="อัพโหลดรูปโปรไฟล์">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label fx:id="resultCheckUsername" layoutX="517.0" layoutY="46.0" prefHeight="18.0" prefWidth="117.0" />

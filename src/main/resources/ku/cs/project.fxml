@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ProjectController">
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ProjectController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,54 +20,60 @@
       </ImageView>
       <AnchorPane layoutX="244.0" layoutY="94.0" prefHeight="580.0" prefWidth="536.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <Button layoutX="220.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="44.0" prefWidth="111.0" style="-fx-background-radius: 90; -fx-background-color: transparent;" text="About Us" textFill="#004dff">
+            <Button layoutX="209.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="44.0" prefWidth="111.0" style="-fx-background-radius: 90; -fx-background-color: transparent;" text="About Us" textFill="#004dff">
                <font>
-                  <Font name="THChakraPetch" size="20.0" />
+                  <Font size="19.0" />
                </font>
             </Button>
-            <TextField fx:id="username" layoutX="146.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0" />
-            <Button layoutX="275.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
+            <TextField fx:id="username" layoutX="146.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0">
                <font>
-                  <Font name="THChakraPetch" size="14.0" />
+                  <Font size="11.0" />
+               </font></TextField>
+            <Button layoutX="276.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
+               <font>
+                  <Font size="14.0" />
                </font>
                <effect>
                   <ColorAdjust />
                </effect>
             </Button>
-            <Button layoutX="165.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleForgetPasswordButton" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
+            <Button layoutX="176.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="15.0" />
                </font>
+               <effect>
+                  <ColorAdjust />
+               </effect>
             </Button>
-            <Label layoutX="21.0" layoutY="262.0" prefHeight="35.0" prefWidth="124.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
+            <Label layoutX="47.0" layoutY="263.0" prefHeight="35.0" prefWidth="96.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="30.0" layoutY="336.0" prefHeight="35.0" prefWidth="84.0" text="รหัสผ่าน" textAlignment="RIGHT">
+            <Label layoutX="64.0" layoutY="336.0" prefHeight="35.0" prefWidth="63.0" text="รหัสผ่าน" textAlignment="RIGHT">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="53.0" layoutY="179.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+            <Label layoutX="53.0" layoutY="179.0" prefHeight="45.0" prefWidth="454.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
                <font>
-                  <Font name="Times New Roman" size="36.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
             <Label layoutX="38.0" layoutY="134.0" prefHeight="45.0" prefWidth="475.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
                <font>
-                  <Font name="Ravie" size="36.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
 
             <PasswordField fx:id="password" layoutX="144.0" layoutY="336.0" prefHeight="34.0" prefWidth="236.0" />
-            <TextField fx:id="hiddenpassword" layoutX="144.0" layoutY="336.0" prefHeight="34.0" prefWidth="236.0" visible="false" />
+            <TextField fx:id="hiddenPassword" layoutX="144.0" layoutY="336.0" prefHeight="34.0" prefWidth="236.0" visible="false" />
 
             <CheckBox fx:id="ShowPassword" layoutX="395.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleShowPassword" text="Show Password" />
             <Button layoutX="176.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="เข้าสู่ระบบ" textFill="WHITE">
 
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="21.0" />
                </font>
             </Button>
             <ImageView fitHeight="114.0" fitWidth="104.0" layoutX="220.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
@@ -75,8 +81,8 @@
                   <Image url="@images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Label layoutX="275.0" layoutY="380.0" text="|" />
-            <Label fx:id="resultlogin" layoutX="165.0" layoutY="416.0" prefHeight="17.0" prefWidth="208.0" textFill="RED" />
+            <Label layoutX="285.0" layoutY="380.0" prefHeight="17.0" prefWidth="4.0" text="|" />
+            <Label fx:id="resultLogin" layoutX="165.0" layoutY="416.0" prefHeight="17.0" prefWidth="208.0" textFill="RED" />
          </children>
       </AnchorPane>
    </children>

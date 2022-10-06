@@ -33,7 +33,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="63.0" layoutY="677.0" mnemonicParsing="false" onAction="#handleBackAdmin" prefHeight="23.0" prefWidth="50.0" style="-fx-background-radius: 50;" text="Back" />
+            <Button layoutX="63.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleBackAdmin" prefHeight="31.0" prefWidth="59.0" style="-fx-background-radius: 50;" text="Back" />
             <Button layoutX="721.0" layoutY="674.0" mnemonicParsing="false" onAction="#handlegotounban" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 50; -fx-background-color: #000000;" text="ปลด ban" textFill="#00ffdb" />
             <ListView layoutX="50.0" layoutY="415.0" prefHeight="238.0" prefWidth="214.0" />
             <Label layoutX="50.0" layoutY="393.0" prefHeight="23.0" prefWidth="109.0" text="คนที่ถูกรายงานมา :" underline="true">

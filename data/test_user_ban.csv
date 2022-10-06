@@ -1,5 +1,5 @@
-name,username,password,role,image path,ban or unban,category
-joe,joesight,joeeee,staff,joe.jpg,false,building
-boss,doss123,bossegh,admin,boss.jpg,false,-
-kmo,g,uuuu,user,default-profile.jpg,false,-
-poy,poy134,hello,user,default-profile.jpg,false,-
+realName,username,password,role,category,ban or unban,image path
+joe,joesight,joeeee,staff,building,true,joe.jpg
+boss,doss123,bossegh,admin,-,true,boss.jpg
+kmo,g,uuuu,user,-,true,default-profile.jpg
+poy,poy134,hello,user,-,false,default-profile.jpg

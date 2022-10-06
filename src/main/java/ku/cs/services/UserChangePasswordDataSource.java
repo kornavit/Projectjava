@@ -37,7 +37,7 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
 
     }
     public String checkPassword(String userName,String oldPassword){
-        String filePath = "data" + File.separator + "user.csv";
+        String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
         FileReader reader = null;
@@ -106,13 +106,15 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
 
             String input_user = "";
             while (     (input_user = buffer.readLine())    != null     ){
-                String[] data = input_user.split(",");
+                String[] data = input_user.split(","); // realName,username,password,role,category,ban or unban,image path
                 modelRegister user = new modelRegister(
                         data[0].trim(), //Real Name
                         data[1].trim(), //User Name
                         data[2].trim(), // Password
                         data[3].trim(), // role
-                        data[4].trim()); //User Picture
+                        data[6].trim()); //User Picture
+                user.setCategory(data[4]); // category
+                user.setValue_ban(data[5]); // value ban
                 list.addUser(user);
             }
 
@@ -150,7 +152,9 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
                 String input_user = user.getName() + ","
                         +user.getUsername() + ","
                         +user.getPassword() + ","
-                        +user.getrole() + ","
+                        +user.getRole() + ","
+                        +user.getCategory() + ","
+                        +user.getValue_ban() + ","
                         +user.getImagePath();
 
                 buffer.append(input_user);

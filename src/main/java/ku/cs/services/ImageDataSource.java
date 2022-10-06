@@ -21,7 +21,7 @@ public class ImageDataSource {
         File file = chooser.showOpenDialog(new Stage());
         if (file != null){
             try {
-                File destDir = new File("image_user" + System.getProperty("file.separator") + image_directory);
+                File destDir = new File("image" + System.getProperty("file.separator") + image_directory);
                 if (!destDir.exists()) destDir.mkdirs();
                 String[] fileSplit = file.getName().split("\\.");
                 String filename = LocalDate.now() + "_"+System.currentTimeMillis() + "."

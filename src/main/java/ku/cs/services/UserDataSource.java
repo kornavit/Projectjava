@@ -62,6 +62,80 @@ public class UserDataSource { // login and register
             }
         }
     }
+    public modelRegisterList readData() {
+        modelRegisterList list = new modelRegisterList();
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+        FileReader reader = null;
+        BufferedReader buffer = null;
+
+        try {
+            reader = new FileReader(file);
+            buffer = new BufferedReader(reader);
+
+            String input_user = "";
+            while (     (input_user = buffer.readLine())    != null     ){
+                String[] data = input_user.split(",");
+                //realName,userName,password,role,category,ban or unban,image path
+                modelRegister user = new modelRegister(
+                        data[0].trim(), //Real Name
+                        data[1].trim(), //User Name
+                        data[2].trim(), // Password
+                        data[3].trim(), // role
+                        data[6].trim()); //User Picture
+                user.setCategory(data[4]);
+                user.setValue_ban(data[5]);
+                list.addUser(user);
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try{
+                buffer.close();
+                reader.close();
+            } catch (IOException e){
+                throw new RuntimeException(e);
+            }
+        }
+        return list;
+    }
+
+    public void writeImage(modelRegisterList userChangePicture, modelRegister person){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try{
+            writer = new FileWriter(file);
+            buffer = new BufferedWriter(writer);
+
+            for (modelRegister user : userChangePicture.getAllUsers()){
+                if (user.getUsername().equals(person.getUsername())){
+                    user.setImagePath(person.getImagePath());
+                    //realName,userName,password,role,team,image path
+                }
+                String userInfo = user.getName() + ","
+                        +user.getUsername() + ","
+                        +user.getPassword() + ","
+                        +user.getRole() + ","
+                        +user.getValue_ban() + ","
+                        +user.getCategory() + ","
+                        +user.getImagePath();
+
+                buffer.append(userInfo);
+                buffer.newLine();
+            }
+            buffer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void writefile_user(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
@@ -76,7 +150,7 @@ public class UserDataSource { // login and register
             buffer.append(user.getName() + ","
                     +user.getUsername() + ","
                     +user.getPassword() + ","
-                    +user.getrole() + ","
+                    +user.getRole() + ","
                     +user.getImagePath() + ","
                     +user.getValue_ban() + ","
                     +user.getCategory());
@@ -100,9 +174,12 @@ public class UserDataSource { // login and register
             String line_name = "";
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
-                // name,username,password,image path
+                // realName,userName,password,role,category,ban or unban,image path
                 if (data[1].equals(user.getUsername()) && data[2].equals(user.getPassword())){
-                    user.setName(data[0]);
+                    user.setName(data[0]);// realName
+                    user.setCategory(data[4]); // category
+                    user.setValue_ban(data[5]);// ban or unban
+                    user.setImagePath(data[6]); // image
                     return data[3];
                 }
             }
@@ -117,47 +194,5 @@ public class UserDataSource { // login and register
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    public modelRegisterList read_admin() {
-        modelRegisterList user_list = new modelRegisterList();
-        modelRegisterList user_list_sort = new modelRegisterList();
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileReader reader = null;
-        BufferedReader buffer = null;
-        try{
-            reader = new FileReader(file);
-            buffer = new BufferedReader(reader);
-
-            String input_user = "";
-            while (     (input_user = buffer.readLine())    != null     ){
-                String[] data = input_user.split(","); // name,username,category,date and time,image_name
-                modelRegister user = new modelRegister(
-                        data[0].trim(), // name
-                        data[1].trim(), // username
-                        data[4].trim() // image_name
-                );
-                user.setCategory(data[2]); // category
-                user.setTime(data[3]); // date and time
-                user_list.addUser(user);
-            }
-            for (int i = user_list.length() - 1;i > 0; i--){
-                user_list_sort.addUser(user_list.getuser(i));
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }finally {
-            try{
-                reader.close();
-                buffer.close();
-            }catch (IOException e){
-                throw new RuntimeException(e);
-            }
-        }
-        return user_list_sort;
     }
 }

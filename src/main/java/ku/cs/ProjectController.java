@@ -1,13 +1,11 @@
 package ku.cs;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import com.github.saacsos.FXRouter;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import ku.cs.models.modelRegister;
 import javafx.fxml.FXML;
+import ku.cs.services.AdminDataSource;
 
 
 import java.io.IOException;
@@ -16,10 +14,10 @@ import java.time.format.DateTimeFormatter;
 
 public class ProjectController {
     @FXML private PasswordField password;
-    @FXML private TextField hiddenpassword;
+    @FXML private TextField hiddenPassword;
     @FXML private TextField username;
     @FXML private CheckBox ShowPassword;
-    @FXML private Label resultlogin;
+    @FXML private Label resultLogin;
     private modelRegister user;
     public void handleNewRegisterButton(ActionEvent actionEvent) {
         try {
@@ -33,24 +31,25 @@ public class ProjectController {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("time: " + formattedDate);
 
         user = new modelRegister(username.getText(),password.getText());
-
+        user.setTime(formattedDate);
+        AdminDataSource adminDataSource = new AdminDataSource("data","login_time_user.csv");
         try {
             if (user.role().equals("user")) {
-                FXRouter.goTo("user", user);
-//                if (user.getValue_ban().equals("true")){
-//                    FXRouter.goTo("user");
-//                }//else{
-//                    FXRouter.goTo("");
-//                }
+                if (user.getValue_ban().equals("true")){
+                    adminDataSource.writeTimeLogin(user);
+                    FXRouter.goTo("user",user);
+                }else{
+                    FXRouter.goTo("ban");
+                }
             } else if (user.role().equals("admin")) {
-                FXRouter.goTo("admin_main");
+                FXRouter.goTo("admin_main",user);
             } else if (user.role().equals("staff")) {
-                FXRouter.goTo("staff_register");
+                adminDataSource.writeTimeLogin(user);
+                FXRouter.goTo("staff_main_menu",user);
             } else {
-                resultlogin.setText(user.role());
+                resultLogin.setText(user.role());
             }
         }catch (IOException e){
                 System.err.println("ไปที่หน้าที่กำลัง login ไม่ได้");
@@ -58,7 +57,7 @@ public class ProjectController {
         }
     }
 
-    public void handleForgetPasswordButton(ActionEvent actionEvent) {
+    public void handleChangePasswordButton(ActionEvent actionEvent) {
         try{
             FXRouter.goTo("user_change_password");
         } catch (IOException e){
@@ -68,16 +67,16 @@ public class ProjectController {
     }
     //25/8/2022 edit
     public void handleShowPassword(ActionEvent actionEvent){
-        hiddenpassword.setVisible(false);
+        hiddenPassword.setVisible(false);
         if (ShowPassword.isSelected()) {
-            hiddenpassword.setText(password.getText());
-            hiddenpassword.setVisible(true);
+            hiddenPassword.setText(password.getText());
+            hiddenPassword.setVisible(true);
             password.setVisible(false);
             return;
         }
-        password.setText(hiddenpassword.getText());
+        password.setText(hiddenPassword.getText());
         password.setVisible(true);
-        hiddenpassword.clear();
+        hiddenPassword.clear();
     }
 
 
