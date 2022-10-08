@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import ku.cs.models.modelRegister;
 import ku.cs.services.AdminDataSource;
 
 import java.io.IOException;
@@ -22,6 +23,13 @@ public class BanUserController {
     private TextField userUsername;
 
     private AdminDataSource adminDataSource;
+    private modelRegister user;
+
+    public void initialize(){ // username,login,detail
+        user = (modelRegister) FXRouter.getData();
+        adminDataSource = new AdminDataSource("data","ban.csv");
+        adminDataSource.countLoginBan(adminDataSource.readBanUser(),user);
+    }
     @FXML
     void handleSubmitToAdmin(ActionEvent event){
         if (userUsername.getText().equals("")){

@@ -41,7 +41,7 @@ public class ProjectController {
                     adminDataSource.writeTimeLogin(user);
                     FXRouter.goTo("user",user);
                 }else{
-                    FXRouter.goTo("ban");
+                    FXRouter.goTo("ban",user);
                 }
             } else if (user.role().equals("admin")) {
                 FXRouter.goTo("admin_main",user);

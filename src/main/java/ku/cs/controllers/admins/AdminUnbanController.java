@@ -20,14 +20,12 @@ public class AdminUnbanController {
     private ListView<modelBanUser> tableListBan;
     @FXML
     private Label textDetail;
-    @FXML
-    private Label textUsername;
-    @FXML
-    private Button unbanButton;
-    @FXML
-    private Label username;
-    @FXML
-    private Label detailFromUser;
+    @FXML private Label textUsername;
+    @FXML private Label textLogin;
+    @FXML private Button unbanButton;
+    @FXML private Label username;
+    @FXML private Label countLogin;
+    @FXML private Label detailFromUser;
     private AdminDataSource adminDataSource;
     private modelBanUserList banUserList;
     private modelBanUser user;
@@ -37,6 +35,7 @@ public class AdminUnbanController {
         detailFromUser.setWrapText(true);
         textUsername.setText("");
         textDetail.setText("");
+        textLogin.setText("");
         adminDataSource = new AdminDataSource("data","ban.csv");
         banUserList = adminDataSource.readBanUser();
         showListview();
@@ -59,19 +58,23 @@ public class AdminUnbanController {
     private void showSelectedUser(modelBanUser banUser){
         textUsername.setText("ชื่อ :");
         textDetail.setText("คำร้องข้อคืนสิทธิ์ :");
+        textLogin.setText("การพยายามเข้าถึง :");
         if (banUser != null){
             username.setText(banUser.getUsername());
             detailFromUser.setText(banUser.getDetailBan());
+            countLogin.setText(banUser.getCountLogin() + "");
             user = banUser;
-            unbanButton.setVisible(true);
+            unbanButton.setVisible(true); // true
         }
     }
     private void clearSelectedList(){
         unbanButton.setVisible(false);
         username.setText("");
         detailFromUser.setText("");
+        countLogin.setText("");
         textUsername.setText("");
         textDetail.setText("");
+        textLogin.setText("");
     }
     @FXML
     public void handleunbanUser(ActionEvent event) {

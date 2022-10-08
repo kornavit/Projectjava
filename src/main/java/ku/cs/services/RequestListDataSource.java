@@ -62,28 +62,28 @@ public class RequestListDataSource {
         }
     }
 
-    public void writefile_request(modelRequest request){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append(request.getName() + ","
-                    +request.getCategory() + ","
-                    +request.getSubject() + ","
-                    +request.getName() + ","
-                    +request.getFaculty() + ","
-                    +request.getDepartment() + ","
-                    +request.getTelephone() + ","
-                    +request.getStatus());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public void writefile_request(modelRequest request){
+//        String filePath = directoryName + File.separator + fileName;
+//        File file = new File(filePath);
+//
+//        FileWriter writer = null;
+//        BufferedWriter buffer = null;
+//
+//        try {
+//            writer = new FileWriter(file,true);
+//            buffer = new BufferedWriter(writer);
+//            buffer.append(request.getName() + ","
+//                    +request.getCategory() + ","
+//                    +request.getSubject() + ","
+//                    +request.getName() + ","
+//                    +request.getFaculty() + ","
+//                    +request.getDepartment() + ","
+//                    +request.getTelephone() + ","
+//                    +request.getStatus());
+//            buffer.newLine();
+//            buffer.close();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }

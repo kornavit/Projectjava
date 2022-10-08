@@ -18,6 +18,68 @@
       </ImageView>
       <AnchorPane layoutX="86.0" layoutY="27.0" prefHeight="713.0" prefWidth="853.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
+            <Pane fx:id="paneDeleteDetail" layoutX="262.0" layoutY="89.0" prefHeight="370.0" prefWidth="583.0" style="-fx-background-color: #313131; -fx-background-radius: 20;">
+               <children>
+                  <Button layoutX="500.0" layoutY="13.0" mnemonicParsing="false" onAction="#handledeleteDetail" prefHeight="39.0" prefWidth="69.0" style="-fx-background-radius: 80; -fx-background-color: #FFFF00;" text="ลบเนื้อหา" />
+                  <Label layoutX="10.0" layoutY="17.0" prefHeight="31.0" prefWidth="59.0" text="หัวเรื่อง :" textFill="#f66e0d">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="detailReport" alignment="TOP_LEFT" layoutX="24.0" layoutY="261.0" prefHeight="95.0" prefWidth="545.0" text="เนื้อเรื่องที่ถูกรายงานมา เกี่ยวกับเนื้อหา" textFill="#f66e0d">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="229.0" prefHeight="25.0" prefWidth="156.0" text="รายละเอียดที่ถูกแจ้งมา :" textFill="#f66e0d">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameReport" layoutX="129.0" layoutY="48.0" prefHeight="31.0" prefWidth="329.0" textFill="#f66e0d" />
+                  <Label layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="119.0" text="คนที่ถูกรายงานมา :" textFill="#f66e0d">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="head" layoutX="69.0" layoutY="21.0" prefHeight="23.0" prefWidth="421.0" textFill="#f66e0d" />
+                  <Label layoutX="10.0" layoutY="79.0" text="รายละเอียดของเนื้อหา :" textFill="#f66e0d">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="detail" alignment="TOP_LEFT" layoutX="20.0" layoutY="99.0" prefHeight="129.0" prefWidth="545.0" text="เนื้อหาของเรื่องนั้น" textFill="#f66e0d">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneBan" layoutX="238.0" layoutY="477.0" prefHeight="175.0" prefWidth="607.0" style="-fx-background-color: #323437; -fx-background-radius: 20;">
+               <children>
+                  <Button layoutX="534.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleBanUser" prefHeight="31.0" prefWidth="59.0" style="-fx-background-radius: 80; -fx-background-color: #ff0000;" text="แบน">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="usernameBan" layoutX="146.0" layoutY="12.0" prefHeight="31.0" prefWidth="377.0" textFill="#e2b714">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="17.0" text="คนที่ถูกรายงานมา :" textFill="#e2b714">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="53.0" text="รายละเอียด :" textFill="#e2b714">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="detailBan" alignment="TOP_LEFT" layoutX="24.0" layoutY="75.0" prefHeight="95.0" prefWidth="573.0" text="เนื้อเรื่องที่ถูกรายงานมาจาก BAN" textFill="#e2b714">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+               </children>
+            </Pane>
             <Pane layoutY="-1.0" prefHeight="87.0" prefWidth="853.0" style="-fx-background-color: #000000; -fx-background-radius: 80 80 1 1;">
                <children>
                   <Label alignment="CENTER" layoutX="287.0" layoutY="14.0" prefHeight="50.0" prefWidth="294.0" text="blacklist" textFill="RED" underline="true">
@@ -27,51 +89,20 @@
                   </Label>
                </children>
             </Pane>
-            <ListView layoutX="50.0" layoutY="138.0" prefHeight="238.0" prefWidth="294.0" />
-            <Label layoutX="50.0" layoutY="101.0" prefHeight="39.0" prefWidth="184.0" text="ข้อมูลที่เกี่ยวข้อง การลบเนื้อหา :" underline="true">
+            <ListView fx:id="tableRequest" layoutX="50.0" layoutY="138.0" prefHeight="314.0" prefWidth="200.0" />
+            <Label layoutX="50.0" layoutY="101.0" prefHeight="39.0" prefWidth="132.0" text="หัวข้อที่ถูกรายงานมา :" underline="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
             <Button layoutX="63.0" layoutY="671.0" mnemonicParsing="false" onAction="#handleBackAdmin" prefHeight="31.0" prefWidth="59.0" style="-fx-background-radius: 50;" text="Back" />
-            <Button layoutX="721.0" layoutY="674.0" mnemonicParsing="false" onAction="#handlegotounban" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 50; -fx-background-color: #000000;" text="ปลด ban" textFill="#00ffdb" />
-            <ListView layoutX="50.0" layoutY="415.0" prefHeight="238.0" prefWidth="214.0" />
-            <Label layoutX="50.0" layoutY="393.0" prefHeight="23.0" prefWidth="109.0" text="คนที่ถูกรายงานมา :" underline="true">
+            <Button layoutX="719.0" layoutY="671.0" mnemonicParsing="false" onAction="#handlegotounban" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 50; -fx-background-color: #000000;" text="ปลด ban" textFill="#00ffdb" />
+            <ListView fx:id="tableUserBan" layoutX="50.0" layoutY="478.0" prefHeight="175.0" prefWidth="179.0" />
+            <Label layoutX="50.0" layoutY="455.0" prefHeight="23.0" prefWidth="109.0" text="คนที่ถูกรายงานมา :" underline="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="721.0" layoutY="97.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="69.0" style="-fx-background-radius: 80; -fx-background-color: #FFFF00;" text="ลบเนื้อหา" />
-            <Button layoutX="737.0" layoutY="400.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="59.0" style="-fx-background-radius: 80; -fx-background-color: #FF0000;" text="แบน">
-               <font>
-                  <Font size="15.0" />
-               </font></Button>
-            <Label layoutX="354.0" layoutY="138.0" prefHeight="31.0" prefWidth="59.0" text="หัวเรื่อง :">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Label>
-            <Label layoutX="354.0" layoutY="169.0" prefHeight="31.0" prefWidth="119.0" text="คนที่ถูกรายงานมา :">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <Label layoutX="356.0" layoutY="208.0" prefHeight="25.0" prefWidth="82.0" text="รายละเอียด :">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Label>
-            <Label layoutX="274.0" layoutY="431.0" text="คนที่ถูกรายงานมา :">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Label>
-            <Label layoutX="274.0" layoutY="460.0" text="รายละเอียด :">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" layoutX="356.0" layoutY="233.0" prefHeight="140.0" prefWidth="424.0" text="เนื้อเรื่องที่ถูกรายงานมา เกี่ยวกับเนื้อหา" />
-            <Label layoutX="473.0" layoutY="169.0" prefHeight="31.0" prefWidth="302.0" />
-            <Label layoutX="423.0" layoutY="142.0" prefHeight="23.0" prefWidth="360.0" />
-            <Label alignment="TOP_LEFT" layoutX="274.0" layoutY="488.0" prefHeight="163.0" prefWidth="516.0" text="เนื้อเรื่องที่ถูกรายงานมาจาก BAN" />
-            <Label layoutX="413.0" layoutY="433.0" prefHeight="17.0" prefWidth="337.0" />
          </children>
       </AnchorPane>
    </children>

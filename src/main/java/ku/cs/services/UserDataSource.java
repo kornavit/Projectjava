@@ -4,6 +4,7 @@ import ku.cs.models.modelRegister;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class UserDataSource { // login and register
     private String directoryName;
@@ -87,9 +88,7 @@ public class UserDataSource { // login and register
                 user.setValue_ban(data[5]);
                 list.addUser(user);
             }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return list;
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -100,7 +99,6 @@ public class UserDataSource { // login and register
                 throw new RuntimeException(e);
             }
         }
-        return list;
     }
 
     public void writeImage(modelRegisterList userChangePicture, modelRegister person){
@@ -144,16 +142,16 @@ public class UserDataSource { // login and register
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
-        try {
+        try { // realName,username,password,role,category,ban or unban,image path
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
             buffer.append(user.getName() + ","
                     +user.getUsername() + ","
                     +user.getPassword() + ","
                     +user.getRole() + ","
-                    +user.getImagePath() + ","
+                    +user.getCategory() + ","
                     +user.getValue_ban() + ","
-                    +user.getCategory());
+                    +user.getImagePath());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {

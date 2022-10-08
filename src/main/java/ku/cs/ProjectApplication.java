@@ -45,7 +45,7 @@ public class ProjectApplication extends Application {
         FXRouter.when("admin_main",packageStr + "admin/admin_main.fxml");
         FXRouter.when("ban_page",packageStr + "admin/ban.fxml");
         FXRouter.when("change_password_admin",packageStr + "admin/changepasswordAdmin.fxml",513,384);
-        FXRouter.when("create_staff",packageStr + "admin/createStaff.fxml");
+        FXRouter.when("create_staff",packageStr + "admin/createStaff.fxml",955,716);
         FXRouter.when("unban",packageStr + "admin/unban.fxml",686,510);
         FXRouter.when("ban",packageStr+"user/userBan.fxml",600,450);
     }

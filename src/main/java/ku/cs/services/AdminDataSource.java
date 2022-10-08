@@ -34,7 +34,7 @@ public class AdminDataSource {
         }
     }
 
-    public modelRegisterList read_admin() {
+    public modelRegisterList read_admin() { // main admin program
         modelRegisterList user_list = new modelRegisterList();
         modelRegisterList user_list_sort = new modelRegisterList();
         String filePath = directoryName + File.separator + fileName;
@@ -60,11 +60,9 @@ public class AdminDataSource {
                 user_list_sort.addUser(user_list.getuser(i));
             }
             return user_list_sort;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try{
                 reader.close();
                 buffer.close();
@@ -92,11 +90,9 @@ public class AdminDataSource {
                 }
             }
             return false;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 reader.close();
                 buffer.close();
@@ -119,15 +115,13 @@ public class AdminDataSource {
             String Ban = "";
             buffer.readLine();
             while ((Ban = buffer.readLine()) != null ){
-                String[] data = Ban.split(",");
-                modelBanUser user = new modelBanUser(data[0],data[1]);
+                String[] data = Ban.split(","); // username,login,detail
+                modelBanUser user = new modelBanUser(data[0],Integer.parseInt(data[1]),data[2]);
                 list.addBanUsers(user);
             }return list;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 reader.close();
                 buffer.close();
@@ -135,6 +129,33 @@ public class AdminDataSource {
                 throw new RuntimeException(e);
             }
         }
+    }
+    public void countLoginBan(modelBanUserList userBan,modelRegister person){
+        String filePath = "data" + File.separator + "ban.csv";
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+        try{
+            writer = new FileWriter(file);
+            buffer = new BufferedWriter(writer);
+            buffer.append("username,login,detail");
+            buffer.newLine();
+            for (modelBanUser user : userBan.getAllUsers()){
+                if (user.getUsername().equals(person.getUsername())){
+                    user.setCountLogin(user.getCountLogin() + 1);
+                }
+                String input_user = user.getUsername()+ ","
+                        + user.getCountLogin() + ","
+                        + user.getDetailBan();
+                buffer.append(input_user);
+                buffer.newLine();
+            }
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void writeBanUser(modelBanUserList userBan, String detail, String username){
         String filePath = "data" + File.separator + "ban.csv";
@@ -146,12 +167,14 @@ public class AdminDataSource {
         try{
             writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
-            buffer.append("username,detail");
+            buffer.append("username,login,detail");
+            buffer.newLine();
             for (modelBanUser user : userBan.getAllUsers()){
                 if (user.getUsername().equals(username)){
                     user.setDetailBan(detail);
                 }
                 String input_user = user.getUsername()+ ","
+                        + user.getCountLogin() + ","
                         + user.getDetailBan();
                 buffer.append(input_user);
                 buffer.newLine();
@@ -173,10 +196,12 @@ public class AdminDataSource {
         try{
             writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
-
+            buffer.append("username,login,detail");
+            buffer.newLine();
             for (modelBanUser user : usersBan.getAllUsers()){
                 if (!user.getUsername().equals(userBan.getUsername())){
                     String input_user = user.getUsername()+ ","
+                            + userBan.getCountLogin() + ","
                             + user.getDetailBan();
                     buffer.append(input_user);
                     buffer.newLine();

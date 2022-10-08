@@ -3,31 +3,35 @@ package ku.cs.models;
 //import ku.cs.services.RequestDataSource;
 
 public class modelRequest {
+    // Porrink
     private String category;
-    private String subject; // คำร้อง
-    private String name; // ชื่อนิสิตที่เอาไว้ใช้ในหน้ารวมเรื่องร้องเรียนทั้งหมด
-    private String faculty;
+    private String subject; //คำร้อง
+    private String realName; // ชื่อจริงๆของแต่ละ Account
     private String department;
-    private String telephone;
     private String status;
+
     private String staffName; // ชื่อของ staff
-
-    //private time;
-    //private int votePoint;
-
-    //private RequestDataSource complaint;
+    private String staffGroup;
+    private String requestDetail;
+    private String manageDetail;
 
 
 
-
-    public modelRequest(String category, String subject, String name, String faculty, String department, String telephone, String status) {
-        this.category = category;
+    //user_complaint
+    public modelRequest(String realName, String subject, String category, String status) {
+        this.realName = realName;
         this.subject = subject;
-        this.name = name;
-        this.faculty = faculty;
-        this.department = department;
-        this.telephone = telephone;
+        this.category = category;
         this.status = status;
+    }
+
+    //staff
+    public modelRequest(String subject, String staffGroup,String category, String status, String staffName){
+        this.subject = subject;
+        this.staffGroup = staffGroup;
+        this.category = category;
+        this.status = status;
+        this.staffName = staffName;
     }
 
     /*public void add(modelRequest request){
@@ -35,60 +39,31 @@ public class modelRequest {
         complaint.writefile_request(request);
     }*/
 
-    public String getCategory() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    public String getCategory() {return category;}
 
-    public String getSubject() {
+    public String getSubject() {return subject;}
+
+    public void setSubject(String subject) {this.subject = subject;}
+
+    public String getRealName() {return realName;}
+    public void setRealName(String realName) {this.realName = realName;}
+    public String getDepartment() {return department;}
+    public void setDepartment(String department) {this.department = department;}
+    public String getStatus() {return status;}
+    public void setStatus(String status) {this.status = status;}
+    public String getRequestDetail() {return requestDetail;}
+    public void setRequestDetail(String requestDetail) {this.requestDetail = requestDetail;}
+    public String getManageDetail() {return manageDetail;}
+    public void setManageDetail(String manageDetail) {this.manageDetail = manageDetail;}
+    public String getStaffName() {return staffName;}
+    public void setStaffName(String staffName) {this.staffName = staffName;}
+
+    public String getStaffGroup() {return staffGroup;}
+    public void setStaffGroup(String staffGroup) {this.staffGroup = staffGroup;}
+    @Override
+    public String toString() {
         return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }
 
