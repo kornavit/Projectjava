@@ -62,9 +62,7 @@ public class AdminMainController {
         time.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
     private void loadTable(){
-        for (modelRegister user: user_list.getAllUsers()){
-            login_board.add(user);
-        }
+        login_board.addAll(user_list.getAllUsers());
         user_board.setItems(login_board);
         user_board.setOnMouseClicked(e ->{
             event();

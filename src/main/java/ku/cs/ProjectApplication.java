@@ -31,6 +31,7 @@ public class ProjectApplication extends Application {
         FXRouter.when("request_building", packageStr+"user/requestBuildingNext.fxml");
         FXRouter.when("request_traffic", packageStr+"user/requestTrafficNext.fxml");
         FXRouter.when("request_other", packageStr+"user/requestOtherNext.fxml");
+        FXRouter.when("request_finance",packageStr+ "user/requestFinanceNext.fxml");
 
         FXRouter.when("total_complaint", packageStr+"user/totalComplaints.fxml");
         FXRouter.when("success_request", packageStr+"user/successRequest.fxml");
@@ -39,7 +40,9 @@ public class ProjectApplication extends Application {
 
         //staff
         FXRouter.when("staff_register",packageStr+"staff/staff_register.fxml",600,400);
-        FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",900,600);
+        FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",960,600);
+        FXRouter.when("staff_change_password",packageStr+"staff/staff_change_password.fxml",517,390);
+        FXRouter.when("staff_working",packageStr+"staff/staff_working.fxml",800,600);
 
         //admin
         FXRouter.when("admin_main",packageStr + "admin/admin_main.fxml");

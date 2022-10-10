@@ -8,7 +8,7 @@ public class modelLearning {
     private String group;
     private String detail;
     private int vote;
-    private UserDataSource request, requests;
+    private UserDataSource request;
 
 
     public modelLearning(Integer vote, String course, String teacher, String group, String detail) {
@@ -22,8 +22,6 @@ public class modelLearning {
     public void addLearning(modelLearning learning){
         request = new UserDataSource("data/category","learning.csv");
         request.writefile_learning(learning);
-        requests = new UserDataSource("data","nisit.csv");
-        requests.writefile_learning(learning);
     }
 
     public String getCourse() {

@@ -10,7 +10,6 @@ public class modelBuilding {
     private String imagePath;
 
     private UserDataSource request;
-    private UserDataSource requests;
 
     public modelBuilding(int vote, String equiument, String location, String detail, String imagePath) {
         this.vote = vote;
@@ -23,8 +22,6 @@ public class modelBuilding {
     public void addBuilding(modelBuilding building){
         request = new UserDataSource("data/category","building.csv");
         request.writefile_building(building);
-        requests = new UserDataSource("data","nisit.csv");
-        requests.writefile_building(building);
     }
 
     public int getVote() {

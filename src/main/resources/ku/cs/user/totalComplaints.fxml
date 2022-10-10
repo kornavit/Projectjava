@@ -60,72 +60,22 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button layoutX="561.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #6600FF;" text="แจ้งเรื่องร้องเรียน" textFill="WHITE">
-               <font>
-                  <Font name="THChakraPetch" size="24.0" />
-               </font>
-            </Button>
-            <Label layoutX="715.0" layoutY="395.0" text="หัวเรื่อง :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="694.0" layoutY="325.0" text="ผู้ร้องเรียน :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="690.0" layoutY="465.0" text="รายละเอียด :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="705.0" layoutY="255.0" text="หมวดหมู่ :">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="763.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleReportButton" prefHeight="43.0" prefWidth="199.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="รายงานความไม่เหมาะสม" textFill="WHITE">
-               <font>
-                  <Font name="THChakraPetch" size="24.0" />
-               </font>
-            </Button>
-            <Label fx:id="categoryLabel" layoutX="798.0" layoutY="255.0" prefWidth="154.0" text="categoryLabel">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="nameLabel" layoutX="798.0" layoutY="325.0" text="nameLabel">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="headLabel" layoutX="798.0" layoutY="395.0" text="headLabel">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="detailLabel" layoutX="809.0" layoutY="459.0" prefHeight="42.0" prefWidth="271.0" text="detailLabel">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TableView fx:id="tableView" layoutX="20.0" layoutY="255.0" prefHeight="378.0" prefWidth="609.0">
-              <columns>
-                <TableColumn fx:id="subjectList" prefWidth="139.9999656677246" text="หัวข้อ" />
-                <TableColumn fx:id="categoryList" prefWidth="127.19999694824219" text="หมวดหมู่" />
-                  <TableColumn fx:id="timeList" prefWidth="132.00006103515625" text="เวลาแจ้ง" />
-                  <TableColumn fx:id="statusList" prefWidth="102.4000244140625" text="สถานะ" />
-                  <TableColumn fx:id="scoreList" prefWidth="104.0" text="คะแนนโหวต" />
-              </columns>
-            </TableView>
-            <Label layoutX="27.0" layoutY="197.0" text="ตัวกรอกการค้นหา :">
+            <Label layoutX="27.0" layoutY="197.0" text="เรียงตามสถานะ :">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Separator layoutX="651.0" layoutY="225.0" orientation="VERTICAL" prefHeight="438.0" prefWidth="0.0" style="-fx-background-color: #ff0000;" />
-            <ComboBox fx:id="sortByComboBox" layoutX="225.0" layoutY="202.0" prefHeight="26.0" prefWidth="295.0" />
+            <ComboBox fx:id="sortByComboBox" layoutX="193.0" layoutY="202.0" prefHeight="26.0" prefWidth="295.0" />
+            <TableView fx:id="tableView" layoutX="55.0" layoutY="251.0" prefHeight="370.0" prefWidth="644.0">
+              <columns>
+                <TableColumn fx:id="categoryColumn" prefWidth="129.59991455078125" text="หมวดหมู๋" />
+                <TableColumn fx:id="subjectColumn" prefWidth="161.60000610351562" text="หัวเรื่อง" />
+                  <TableColumn fx:id="timeColumn" prefWidth="103.2000732421875" text="เวลาร้องเรียน" />
+                  <TableColumn fx:id="statusColumn" prefWidth="117.5999755859375" text="สถานะ" />
+                  <TableColumn fx:id="voteColumn" prefWidth="134.4000244140625" text="คะแนนโหวต" />
+              </columns>
+            </TableView>
+            <AnchorPane layoutX="715.0" layoutY="251.0" prefHeight="370.0" prefWidth="238.0" style="-fx-background-color: #eaeaea; -fx-background-radius: 50;" />
          </children>
       </AnchorPane>
    </children>

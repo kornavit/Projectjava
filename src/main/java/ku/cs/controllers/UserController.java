@@ -57,8 +57,9 @@ public class UserController {
             FXRouter.goTo("total_complaint", user);
 
         } catch (IOException e) {
-            System.err.println("ไปที่หน้า total_complaint ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
+            throw new RuntimeException(e);
+//            System.err.println("ไปที่หน้า total_complaint ไม่ได้");
+//            System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
 

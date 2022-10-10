@@ -25,7 +25,7 @@ public class RequestController implements Initializable{
     @FXML private Label test;
     @FXML private Label showerror;
 
-    ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย", "อื่นๆ");
+    ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย","การเงินในมหาวิทยาลัย", "อื่นๆ");
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
         complaintCategory.setItems(list);
@@ -52,6 +52,8 @@ public class RequestController implements Initializable{
                 select = 3;
             } else if (testCategory.compareTo(list.get(3)) == 0) {
                 select = 4;
+            } else if (testCategory.compareTo(list.get(4)) == 0) {
+                select = 5;
             }
         }
         return select;
@@ -72,6 +74,9 @@ public class RequestController implements Initializable{
                 FXRouter.goTo("request_traffic", request);
                 request.addRequestTraffic(request);
             } else if (changeCategory(actionEvent) == 4 && !headTextField.getText().equals("")){
+                FXRouter.goTo("request_finance", request);
+                request.addRequestFinance(request);
+            }else if (changeCategory(actionEvent) == 5 && !headTextField.getText().equals("")){
                 FXRouter.goTo("request_other", request);
                 request.addRequestOther(request);
             }else {

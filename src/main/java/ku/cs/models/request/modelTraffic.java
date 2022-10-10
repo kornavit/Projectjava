@@ -8,7 +8,7 @@ public class modelTraffic {
     private String detail;
     private String imagePath;
 
-    private UserDataSource request, requests;
+    private UserDataSource request;
 
     public modelTraffic(Integer vote, String location, String detail) {
         this.vote = vote;
@@ -20,8 +20,6 @@ public class modelTraffic {
     public void addTraffic(modelTraffic traffic){
         request = new UserDataSource("data/category","traffic.csv");
         request.writefile_traffic(traffic);
-        requests = new UserDataSource("data", "nisit.csv");
-        requests.writefile_traffic(traffic);
     }
     public int getVote() {
         return vote;

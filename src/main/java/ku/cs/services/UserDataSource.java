@@ -2,10 +2,7 @@ package ku.cs.services;
 
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
-import ku.cs.models.request.modelBuilding;
-import ku.cs.models.request.modelLearning;
-import ku.cs.models.request.modelOther;
-import ku.cs.models.request.modelTraffic;
+import ku.cs.models.request.*;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
@@ -108,7 +105,7 @@ public class UserDataSource { // login and register
                 // name,username,password,image path
                 if (data[1].equals(user.getUsername()) && data[2].equals(user.getPassword())){
                     user.setName(data[0]);
-                    user.setImagePath(data[4]);
+                    user.setImagePath(data[5]);
                     return data[3];
                 }
             }
@@ -135,7 +132,7 @@ public class UserDataSource { // login and register
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
-            buffer.append(user.getName() + ","
+            buffer.append(user.getRealName() + ","
                     +user.getCategory() + ","
                     +user.getSubject() + ","
                     +user.getStatus());
@@ -206,6 +203,26 @@ public class UserDataSource { // login and register
             buffer.newLine();
             buffer.close();
         }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public void writefile_Finance(modelFinance user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try {
+            writer = new FileWriter(file, true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    + user.getAmount() + ","
+                    + user.getDetail() + ","
+                    + user.getImagePath());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,67 +1,107 @@
 package ku.cs.controllers;
 
+import com.github.saacsos.FXRouter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import ku.cs.models.modelNisitRequest;
+import ku.cs.models.modelRegister;
+import ku.cs.models.modelRequest;
+import ku.cs.models.modelRequestList;
+import ku.cs.services.StaffDataSource;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class StaffMainMenuController implements Initializable {
-    @FXML
-    private ImageView logo;
+    @FXML private Label staff;
+    @FXML private Label team;
 
-    @FXML
-    private TableView<modelNisitRequest> menuTable;
+    @FXML private TableView<modelRequest> menuTable;
 
-    @FXML
-    private TableColumn<modelNisitRequest, String> name;
+    @FXML private TableColumn<modelRequest, String> request;
 
-    @FXML
-    private TableColumn<modelNisitRequest, String> request;
-    @FXML
-    private TextField studentName;
+    @FXML private TableColumn<modelRequest, String> staffTeam;
+    @FXML private TableColumn<modelRequest, String> category;
+    @FXML private TableColumn<modelRequest, String> requestStatus;
+    @FXML private TableColumn<modelRequest, String> staffName;
 
-    @FXML
-    private TextField studentRequest;
+    private StaffDataSource dataSource;
 
+    private ObservableList<modelRequest> dataRequestList;
+    private modelRequestList requestList;
 
-    ObservableList<modelNisitRequest> observableList = FXCollections.observableArrayList(
-            new modelNisitRequest("สมชาย รักการเขียนโปรแกรม","อยากให้อัพเดตตารางสอบในเว็บ my.ku.th ครับ"),
+    private modelRegister staffLogin;
 
-            new modelNisitRequest("สรณ์สิริ หงษ์ษา","ทางเดินในมหาลัยขรุขระมากครับ อยากให้แก้ไขโดยเร็ว")
-    );
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setCellValueFactory(new PropertyValueFactory<modelNisitRequest, String>("name"));
-        request.setCellValueFactory(new PropertyValueFactory<modelNisitRequest, String>("request"));
-        menuTable.setItems(observableList);
+        staffLogin = (modelRegister) FXRouter.getData();
+        staff.setText(staffLogin.getName());
+        team.setText(staffLogin.getCategory());
+
+        dataSource = new StaffDataSource("data/staff","user_complaint");
+        requestList = dataSource.readData();
+        dataRequestList = FXCollections.observableArrayList();
+        setMenuTable();
+        loadTable();
+        event();
     }
 
-    @FXML
-    public void initialize() {
-        String url = getClass().getResource("/ku/cs/images/KU_Logo_PNG.png").toExternalForm();
-        logo.setImage(new Image(url));
+    private void setMenuTable(){
+        request.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        staffTeam.setCellValueFactory(new PropertyValueFactory<>("staffGroup"));
+        category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        requestStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        staffName.setCellValueFactory(new PropertyValueFactory<>("staffName"));
     }
 
-    @FXML
-    public void ConfirmBtn(ActionEvent actionEvent){
-    }
-    @FXML
-    public void ExitBtn(){
+    private void event(){
+        modelRequest request = menuTable.getSelectionModel().getSelectedItem();
+        if (request != null){
+            try {
+                request.setStaffName(staffLogin.getName());
+                FXRouter.goTo("staff_working", request); //go to Staff Working
 
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private void loadTable(){
+        for (modelRequest input_request : requestList.getAllRequest()){
+            dataRequestList.add(input_request);
+        }
+        menuTable.setItems(dataRequestList);
+        menuTable.setOnMouseClicked(e ->{
+            event();
+        });
+    }
+    @FXML public void handleChangePass(ActionEvent actionEvent){
+        try {
+            com.github.saacsos.FXRouter.goTo("staff_change_password");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า change password ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    @FXML public void ExitBtn(){
+        try {
+            com.github.saacsos.FXRouter.goTo("start");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า start ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
     }
 
 
