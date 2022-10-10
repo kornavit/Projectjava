@@ -4,11 +4,18 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StaffWorking">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StaffWorking">
    <children>
+      <ImageView fitHeight="641.0" fitWidth="958.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/greenBg.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="72.0" layoutY="44.0" prefHeight="49.0" prefWidth="63.0" text="คำร้อง :">
          <font>
             <Font size="18.0" />

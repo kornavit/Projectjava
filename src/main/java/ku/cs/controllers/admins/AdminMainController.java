@@ -49,7 +49,7 @@ public class AdminMainController {
         image_admin.setImage(new Image(image_fact.toURI().toString()));
 
         dataSource = new UserDataSource("data","login_time_user.csv");
-        user_list = dataSource.read_admin();
+        //user_list = dataSource.read_admin();
         login_board = FXCollections.observableArrayList();
         setMenuTable();
         loadTable();
