@@ -28,7 +28,7 @@ public class BanUserController {
     public void initialize(){ // username,login,detail
         user = (modelRegister) FXRouter.getData();
         adminDataSource = new AdminDataSource("data","ban.csv");
-        adminDataSource.countLoginBan(adminDataSource.readBanUser(),user);
+        adminDataSource.countLoginBan(adminDataSource.readBanUser("data","ban.csv"),user);
     }
     @FXML
     void handleSubmitToAdmin(ActionEvent event){
@@ -43,7 +43,7 @@ public class BanUserController {
             checkUsername.setText("มีชื่อนี้อยู่ในการแบน");
             if (!userDetail.getText().equals("")){
                 try {
-                    adminDataSource.writeBanUser(adminDataSource.readBanUser(),userDetail.getText(),userUsername.getText());
+                    adminDataSource.writeBanDetailUser(adminDataSource.readBanUser("data","ban.csv"),userDetail.getText(),userUsername.getText());
                     FXRouter.goTo("start");
                 } catch (IOException e) {
                     throw new RuntimeException(e);

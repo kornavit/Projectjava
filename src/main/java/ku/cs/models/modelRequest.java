@@ -6,14 +6,15 @@ public class modelRequest {
     // Porrink
     private String category;
     private String subject; //คำร้อง
-    private String realName; // ชื่อจริงๆของแต่ละ Account
-    private String department;
+    private String realName; // ชื่อจริงๆของแต่ละ Account username
     private String status;
+    private String time;
 
     private String staffName; // ชื่อของ staff
     private String staffGroup;
     private String requestDetail;
     private String manageDetail;
+    private String reportDetail;
 
 
 
@@ -34,11 +35,25 @@ public class modelRequest {
         this.staffName = staffName;
     }
 
+    // admin
+    public modelRequest(String realName,String subject,String category){
+        this.realName = realName;
+        this.subject = subject;
+        this.category = category;
+    }
+
     /*public void add(modelRequest request){
         complaint = new RequestDataSource("data","request.csv");
         complaint.writefile_request(request);
     }*/
 
+    public String getReportDetail() {
+        return reportDetail;
+    }
+
+    public void setReportDetail(String reportDetail) {
+        this.reportDetail = reportDetail;
+    }
 
     public String getCategory() {return category;}
 
@@ -48,8 +63,6 @@ public class modelRequest {
 
     public String getRealName() {return realName;}
     public void setRealName(String realName) {this.realName = realName;}
-    public String getDepartment() {return department;}
-    public void setDepartment(String department) {this.department = department;}
     public String getStatus() {return status;}
     public void setStatus(String status) {this.status = status;}
     public String getRequestDetail() {return requestDetail;}

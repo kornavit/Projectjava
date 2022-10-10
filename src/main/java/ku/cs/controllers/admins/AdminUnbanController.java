@@ -37,7 +37,7 @@ public class AdminUnbanController {
         textDetail.setText("");
         textLogin.setText("");
         adminDataSource = new AdminDataSource("data","ban.csv");
-        banUserList = adminDataSource.readBanUser();
+        banUserList = adminDataSource.readBanUser("data","ban.csv");
         showListview();
         clearSelectedList();
         handleSelectedListView();
@@ -61,7 +61,7 @@ public class AdminUnbanController {
         textLogin.setText("การพยายามเข้าถึง :");
         if (banUser != null){
             username.setText(banUser.getUsername());
-            detailFromUser.setText(banUser.getDetailBan());
+            detailFromUser.setText(banUser.getDetailBan().replace("|","\n"));
             countLogin.setText(banUser.getCountLogin() + "");
             user = banUser;
             unbanButton.setVisible(true); // true
@@ -79,10 +79,10 @@ public class AdminUnbanController {
     @FXML
     public void handleunbanUser(ActionEvent event) {
         UserDataSource userList = new UserDataSource("data","test_user_ban.csv");
-        adminDataSource.unBanUser(adminDataSource.readBanUser(),userList.readData(),user);
+        adminDataSource.unBanUser(adminDataSource.readBanUser("data","ban.csv"),userList.readData(),user);
         tableListBan.getItems().clear();
         clearSelectedList();
-        banUserList = adminDataSource.readBanUser();
+        banUserList = adminDataSource.readBanUser("data","ban.csv");
         showListview();
     }
     @FXML public void handleBackAdmin(){

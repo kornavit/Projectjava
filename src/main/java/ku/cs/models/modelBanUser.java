@@ -10,6 +10,10 @@ public class modelBanUser {
         this.detailBan = detailBan;
         this.countLogin = countLogin;
     }
+    public modelBanUser(String username,String detailBan){
+        this.username = username;
+        this.detailBan = detailBan;
+    }
 
     public String getUsername() {
         return username;

@@ -6,7 +6,7 @@ import ku.cs.models.modelRegister;
 
 import java.io.*;
 
-public class UserChangePasswordDataSource implements DataSource<modelRegisterList>{
+public class UserChangePasswordDataSource {
     private String directoryName;
     private String fileName;
 

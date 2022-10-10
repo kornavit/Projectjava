@@ -56,7 +56,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <Button layoutX="775.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleBanlist" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 80;" text="คนโดนแบน" textFill="RED">
+            <Button layoutX="775.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleBanlist" prefHeight="52.0" prefWidth="107.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 80;" text="แจ้งรายงาน" textFill="RED">
                <font>
                   <Font size="19.0" />
                </font>

@@ -1,6 +1,7 @@
 package ku.cs.services;
 
 import ku.cs.models.modelRequest;
+import ku.cs.models.modelRequestList;
 
 import java.io.*;
 
@@ -13,6 +14,7 @@ public class RequestListDataSource {
         this.fileName = fileName;
         checkFileIsExisted();
     }
+    public RequestListDataSource(){}
 
     private void checkFileIsExisted(){
         File file = new File(directoryName);
@@ -62,28 +64,41 @@ public class RequestListDataSource {
         }
     }
 
-//    public void writefile_request(modelRequest request){
-//        String filePath = directoryName + File.separator + fileName;
-//        File file = new File(filePath);
-//
-//        FileWriter writer = null;
-//        BufferedWriter buffer = null;
-//
-//        try {
-//            writer = new FileWriter(file,true);
-//            buffer = new BufferedWriter(writer);
-//            buffer.append(request.getName() + ","
-//                    +request.getCategory() + ","
-//                    +request.getSubject() + ","
-//                    +request.getName() + ","
-//                    +request.getFaculty() + ","
-//                    +request.getDepartment() + ","
-//                    +request.getTelephone() + ","
-//                    +request.getStatus());
-//            buffer.newLine();
-//            buffer.close();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    // admin read Request for delete
+    public modelRequestList readAdminRequest(String category){
+        modelRequestList list = new modelRequestList();
+        String filePath = "data" + File.separator + "category" + File.separator + category + ".csv";
+        File file = new File(filePath);
+
+        FileReader reader = null;
+        BufferedReader buffer = null;
+
+        try{
+            reader = new FileReader(file);
+            buffer = new BufferedReader(reader);
+
+            String input = "";
+            while( (input = buffer.readLine()) != null){
+                // username,category,head
+                String[] data = input.split(",",4);
+                // realName,subject,category
+                modelRequest request = new modelRequest(data[0],data[2],data[1]);
+                request.setRequestDetail(data[3]);
+//                123
+//                ถนนชอบติดออกมาจากโรงเรียนสาธิตเวลาเลิกเรียน
+//                traffic
+//                ยังไม่ดำเนินการ,0,-,ซอยจักรพันธ์,พอถึงเวลาเลิกเรียนของนักเรียนโรงเรียนสาธิตทำให้ผู้ปกตรองที่รับนักเรียนมากันเยอะจนรถติดมาถึง ซอยสุวรรณวาจกกสิกิจ,-,ยังไม่มีคนรับเรื่อง,,
+                list.addRequest(request);
+            }return list;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                reader.close();
+                buffer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
