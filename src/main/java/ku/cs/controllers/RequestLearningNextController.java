@@ -1,4 +1,5 @@
 package ku.cs.controllers;
+import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -14,28 +15,21 @@ public class RequestLearningNextController {
     @FXML private TextField group;
     @FXML private TextField detail;
     private RequestController requestUser;
+    private modelRequest Request;
 
     @FXML public void initialize(){
     }
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
-            modelLearning request = new modelLearning(0,course.getText(), teacher.getText(), group.getText(), detail.getText());
-            request.addLearning(request);
-            com.github.saacsos.FXRouter.goTo("success_request");
+            modelRequest request = new modelRequest(Request.getSubject(),Request.getCategory(),Request.getTime(),Request.getStatus(),Request.getVotePoint());
+
+            modelLearning learning = new modelLearning(request,course.getText(), teacher.getText(), group.getText(), detail.getText());
+//            request.addLearning(request);
+            FXRouter.goTo("success_request");
 
         } catch (IOException e) {
             System.err.println("ไปที่หน้า success_request ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
-
-    public void handleBackRequestButton(ActionEvent actionEvent) {
-        try {
-            com.github.saacsos.FXRouter.goTo("request");
-
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า request ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }

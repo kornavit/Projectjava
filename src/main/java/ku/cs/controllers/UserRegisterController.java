@@ -85,9 +85,9 @@ public class UserRegisterController {
 
         // check password for user
         if (passwordReal.getText().equals("") || passwordAgain.getText().equals("")) {
-            checkError += "กรุณาปลอก รหัสผ่าน\n";
+            checkError += "กรุณากรอก รหัสผ่าน\n";
         } else if (!passwordReal.getText().equals(passwordAgain.getText())) {
-            checkError += "กรุณาปลอก รหัสผ่านให้ตรงกัน\n";
+            checkError += "กรุณากรอก รหัสผ่านให้ตรงกัน\n";
         }
 
         // check name for user

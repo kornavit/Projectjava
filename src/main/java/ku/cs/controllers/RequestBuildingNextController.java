@@ -21,14 +21,4 @@ public class RequestBuildingNextController {
         }
     }
 
-    public void handleBackRequestButton(ActionEvent actionEvent) {
-        try {
-            com.github.saacsos.FXRouter.goTo("request");
-
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า request ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
-
 }

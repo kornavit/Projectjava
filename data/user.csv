@@ -1,10 +1,10 @@
 name,username,password,role,image path
-anna,anna1345,kek,user
-joe,joesight,joeeee,staff
-boss,doss123,bossegh,admin
-ghost,noth,hello,user
-ghost,ghost,nini,user
+anna,anna1345,kek,user,-
+joe,joesight,joeeee,staff,-
+boss,doss123,bossegh,admin,boss.jpg
+ghost,noth,hello,user,-
+ghost,ghost,nini,user,-
 kmo,g,uuuuuuuu,user,default-profile.jpg
-456,456,456,user,2022-09-22_1663854359350.jpg
-123,123,123,user,2022-09-22_1663856351158.jpg
+456,456,456,user,2022-10-07_1665155898367.jpg
+123,123,123,user,2022-10-07_1665155880624.jpg
 poy,b6410451377,6410451377,user,2022-09-23_1663907519641.jpg

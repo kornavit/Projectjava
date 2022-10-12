@@ -27,7 +27,7 @@ public class RequestController implements Initializable{
 
 //    @FXML public void initialize(){
 //    }
-    ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย", "อื่นๆ");
+    ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย", "การเงินในมหาวิทยาลัย","อื่นๆ");
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
         complaintCategory.setItems(list);
@@ -54,27 +54,34 @@ public class RequestController implements Initializable{
                 select = 3;
             } else if (testCategory.compareTo(list.get(3)) == 0) {
                 select = 4;
+            }else if (testCategory.compareTo(list.get(4)) == 0){
+                select = 5;
             }
         }
         return select;
     }
 
+    /*ยังไม่ได้ใส่ของการเงิน*/
     public void handleNextButton(ActionEvent actionEvent) {
         name = (modelUser) FXRouter.getData();
-        modelRequest request = new modelRequest(name.getName(), test.getText(), headTextField.getText(),"ยังไม่ดำเนินการ" );
+        modelRequest request = new modelRequest(name.getName(), test.getText(), headTextField.getText(),"ยังไม่ดำเนินการ",0 );
         try {
             String checkError = "";
             if (changeCategory(actionEvent) == 1 && !headTextField.getText().equals("")) {
                 FXRouter.goTo("request_learning", request);
-                request.addLearning(request);
+//                request.addLearning(request);
             }
             else if (changeCategory(actionEvent) == 2 && !headTextField.getText().equals("")){
                 FXRouter.goTo("request_building", request);
-                request.addLearning(request);
+//                request.addLearning(request);
             }
-            else if (changeCategory(actionEvent) == 3 && !headTextField.getText().equals(""))
+            else if (changeCategory(actionEvent) == 3 && !headTextField.getText().equals("")) {
                 FXRouter.goTo("request_traffic", request);
-            else  if (changeCategory(actionEvent) == 4 && !headTextField.getText().equals(""))
+            }
+            else if (changeCategory(actionEvent) == 4 && !headTextField.getText().equals("")){
+                FXRouter.goTo("request_finance", request);
+            }
+            else  if (changeCategory(actionEvent) == 5 && !headTextField.getText().equals(""))
                 FXRouter.goTo("request_other", request);
             else {
                 checkError += "กรุณากรอกหัวเรื่อง หรือเลือกหมวดหมู่เรื่องร้องเรียน\n";

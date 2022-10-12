@@ -25,6 +25,11 @@ public class UserController {
         /*set Image*/
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + user.getImagePath());
         nisitPhoto.setImage(new Image(destDir.toURI().toString()));
+
+        /*profile*/
+        profile();
+        File photo = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + user.getImagePath());
+        nisitPhoto.setImage(new Image(photo.toURI().toString()));
     }
 
     private void showUserName(){
@@ -60,4 +65,18 @@ public class UserController {
         }
     }
 
+    public void profile(){
+        nisitPhoto.setOnMouseClicked(e ->{
+            changePhoto();
+        });
+    }
+    public void changePhoto(){
+        modelRegister profile = (modelRegister) FXRouter.getData();
+        try {
+            FXRouter.goTo("profile_user", profile);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

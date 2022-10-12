@@ -38,11 +38,6 @@ public class ProjectController {
         try {
             if (user.search_role().equals("user")) {
                 FXRouter.goTo("user",user);
-//                if (user.getValue_ban().equals("true")){
-//                    FXRouter.goTo("user");
-//                }//else{
-//                    FXRouter.goTo("");
-//                }
             } else if (user.search_role().equals("admin")) {
                 FXRouter.goTo("admin_main",user);
             } else if (user.search_role().equals("staff")) {

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.RequestOtherNextController">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.RequestFinanceNextController">
    <children>
-      <ImageView fitHeight="835.0" fitWidth="1080.0" layoutX="-15.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="659.0" fitWidth="875.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Bg_1.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="135.0" layoutY="24.0" prefHeight="732.0" prefWidth="793.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
+      <AnchorPane layoutX="40.0" layoutY="49.0" prefHeight="558.0" prefWidth="794.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
             <Label layoutX="158.0" layoutY="67.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
                <font>
@@ -34,29 +35,29 @@
                   <Image url="@../images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Button layoutX="304.0" layoutY="639.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
+            <Button layoutX="287.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Button>
             <Separator layoutX="20.0" layoutY="128.0" prefHeight="9.0" prefWidth="750.0" style="-fx-background-color: #006600;" />
-            <Label layoutX="17.0" layoutY="260.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
+            <Label layoutX="20.0" layoutY="209.0" prefHeight="35.0" prefWidth="225.0" text="ประเภทการทำธุรกรรม :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="208.0" prefHeight="35.0" prefWidth="81.0" text="หัวข้อ :" textAlignment="CENTER">
+            <Label layoutX="31.0" layoutY="269.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="165.0" layoutY="208.0" prefHeight="35.0" prefWidth="594.0" />
-            <Label layoutX="304.0" layoutY="144.0" text="หมวดหมู่ : อื่นๆ" textAlignment="CENTER" textFill="#302086">
+            <Label layoutX="187.0" layoutY="146.0" text="หมวดหมู่ : การเงินในมหาวิทยาลัย" textAlignment="CENTER" textFill="#302086">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextArea fx:id="detail" layoutX="165.0" layoutY="260.0" prefHeight="364.0" prefWidth="594.0" />
+            <ComboBox fx:id="complaintCategory" layoutX="246.0" layoutY="209.0" onAction="#changeCategory" prefHeight="35.0" prefWidth="236.0" promptText="---------------โปรดเลือก---------------" />
+            <TextArea layoutX="187.0" layoutY="269.0" prefHeight="200.0" prefWidth="585.0" />
          </children>
       </AnchorPane>
    </children>

@@ -5,12 +5,10 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class RequestTrafficNextController {
-
+public class RequestFinanceNextController {
     @FXML
     public void initialize(){
     }
-
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
             com.github.saacsos.FXRouter.goTo("success_request");
@@ -20,6 +18,5 @@ public class RequestTrafficNextController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-
 
 }
