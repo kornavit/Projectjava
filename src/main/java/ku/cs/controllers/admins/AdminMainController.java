@@ -49,7 +49,7 @@ public class AdminMainController {
     public void initialize(){
         admin = (modelRegister) FXRouter.getData();
         imageDataSource = new ImageDataSource();
-        userDataSource = new UserDataSource("data","test_user_ban.csv");
+        userDataSource = new UserDataSource("data","user.csv");
         name_admin.setText(admin.getName());
         File image_fact = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + admin.getImagePath());
         image_admin.setImage(new Image(image_fact.toURI().toString()));

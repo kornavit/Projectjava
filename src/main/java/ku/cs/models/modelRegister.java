@@ -33,17 +33,17 @@ public class modelRegister {
     public modelRegister(){}
 
     public boolean checkusername(){
-        person = new UserDataSource("data","test_user_ban.csv");
+        person = new UserDataSource("data","user.csv");
         return person.readfile_user(username);
     }
 
     public void add(modelRegister user){
-        person = new UserDataSource("data","test_user_ban.csv");
+        person = new UserDataSource("data","user.csv");
         person.writefile_user(user);
     }
 
     public String role() {
-        person = new UserDataSource("data", "test_user_ban.csv");
+        person = new UserDataSource("data", "user.csv");
         return person.search_role(this);
     }
 

@@ -67,7 +67,7 @@ public class AdminDataSource {
         }
     }
     public String pickImageUser(modelRegister user){ // choose from admin
-        String filePath = "data" + File.separator + "test_user_ban.csv";
+        String filePath = "data" + File.separator + "user.csv";
         File file = new File(filePath);
 
         FileReader reader = null;
@@ -386,7 +386,7 @@ public class AdminDataSource {
             }
             buffer.close();
 
-            filePath = "data" + File.separator + "test_user_ban.csv";
+            filePath = "data" + File.separator + "user.csv";
             file = new File(filePath);
 
             writer = new FileWriter(file);
@@ -432,7 +432,7 @@ public class AdminDataSource {
             }
             buffer.close();
 
-            filePath = "data" + File.separator + "test_user_ban.csv";
+            filePath = "data" + File.separator + "user.csv";
             file = new File(filePath);
 
             writer = new FileWriter(file);

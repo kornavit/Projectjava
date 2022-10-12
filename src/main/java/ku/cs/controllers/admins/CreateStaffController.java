@@ -34,7 +34,7 @@ public class CreateStaffController {
     private String[] partCategory = {"building","learning","traffic","finance","other"};
 
     @FXML public void initialize(){
-        dataSource = new UserDataSource("data","test_user_ban.csv");
+        dataSource = new UserDataSource("data","user.csv");
         category.setValue("-- หน่วยงาน --");
         category.getItems().addAll(partCategory);
         imageDataSource = new ImageDataSource();

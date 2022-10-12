@@ -118,7 +118,7 @@ public class AdminBanController {
     }
     @FXML
     public void handleBanUser(ActionEvent event) {
-        UserDataSource dataSource = new UserDataSource("data","test_user_ban.csv");
+        UserDataSource dataSource = new UserDataSource("data","user.csv");
         adminDataSource.banUser(adminDataSource.readBanUser("data","preBan.csv"),dataSource.readData(),banUser);
         tableUserBan.getItems().clear();
         clearSelectedListBan();

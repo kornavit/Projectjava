@@ -29,8 +29,6 @@ public class UserChangePasswordDataSource {
                 }
             }
             return false;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -56,8 +54,6 @@ public class UserChangePasswordDataSource {
             }
             return "รหัสผ่านเดิมไม่ถูกต้อง";
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -118,8 +114,6 @@ public class UserChangePasswordDataSource {
                 list.addUser(user);
             }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {

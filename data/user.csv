@@ -1,6 +1,7 @@
-name,username,password,role,image path
-anna,anna1345,kek,user,
-joe,joesight,joeeee,staff,
-boss,doss123,bossegh,admin,
-ghost,noth,hello,user,
-kmo,g,uuuuuuuu,user,default-profile.jpg
+realName,username,password,role,category,ban or unban,image path
+joe,joesight,joeeee,staff,building,true,joe.jpg
+boss,doss123,bossegh,admin,-,true,boss.jpg
+kmo,g,uuuu,user,-,true,default-profile.jpg
+poy,poy134,hello,user,-,true,default-profile.jpg
+WTF,bossstaff,123,staff,traffic,true,default-profile.jpg
+ghost,123,123,user,-,true,default-profile.jpg

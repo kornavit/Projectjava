@@ -45,14 +45,14 @@
                   <ColorAdjust />
                </effect>
             </Button>
-            <Label layoutX="47.0" layoutY="263.0" prefHeight="35.0" prefWidth="96.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
+            <Label layoutX="26.0" layoutY="258.0" prefHeight="44.0" prefWidth="111.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="64.0" layoutY="336.0" prefHeight="35.0" prefWidth="63.0" text="รหัสผ่าน" textAlignment="RIGHT">
+            <Label layoutX="53.0" layoutY="331.0" prefHeight="44.0" prefWidth="76.0" text="รหัสผ่าน" textAlignment="RIGHT">
                <font>
-                  <Font size="18.0" />
+                  <Font size="22.0" />
                </font>
             </Label>
             <Label layoutX="53.0" layoutY="179.0" prefHeight="45.0" prefWidth="454.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">

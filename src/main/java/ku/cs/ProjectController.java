@@ -31,7 +31,9 @@ public class ProjectController {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-
+        if (password.getText().equals("")){ // ในกรณีที่กดตรง show password ก่อน
+            password.setText(hiddenPassword.getText());
+        }
         user = new modelRegister(username.getText(),password.getText());
         user.setTime(formattedDate);
         AdminDataSource adminDataSource = new AdminDataSource("data","login_time_user.csv");

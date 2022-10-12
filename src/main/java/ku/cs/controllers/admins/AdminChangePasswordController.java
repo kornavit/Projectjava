@@ -27,7 +27,7 @@ public class AdminChangePasswordController {
 
     private UserChangePasswordDataSource dataSource; // use the change register
     @FXML public void initialize(){
-        dataSource = new UserChangePasswordDataSource("data","test_user_ban.csv");
+        dataSource = new UserChangePasswordDataSource("data","user.csv");
     }
     @FXML public void handleChangePasswordAdmin(){
         resultUsername.setTextFill(Color.RED);
