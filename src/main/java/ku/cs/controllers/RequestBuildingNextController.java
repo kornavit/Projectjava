@@ -30,7 +30,7 @@ public class RequestBuildingNextController {
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
             modelBuilding request = new modelBuilding(0,equiumentTextField.getText(),locationTextField.getText()
-                    ,detailTextField.getText(), pickTarge);
+                    ,detailTextField.getText(), pickTarge,"");
             request.addBuilding(request);
             com.github.saacsos.FXRouter.goTo("success_request");
 

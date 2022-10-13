@@ -8,10 +8,11 @@ public class modelLearning {
     private String group;
     private String detail;
     private int vote;
+    private String time;
     private UserDataSource request;
 
 
-    public modelLearning(Integer vote, String course, String teacher, String group, String detail) {
+    public modelLearning(Integer vote, String course, String teacher, String group, String detail, String time) {
         this.vote = vote;
         this.course = course;
         this.teacher = teacher;
@@ -38,5 +39,13 @@ public class modelLearning {
     }
     public int getVote() {
         return vote;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

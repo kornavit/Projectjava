@@ -6,6 +6,8 @@ import ku.cs.models.request.*;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class UserDataSource { // login and register
     private String directoryName;
@@ -220,6 +222,8 @@ public class UserDataSource { // login and register
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
+        user.setTime(timeData());
+
         try {
             writer = new FileWriter(file, true);
             buffer = new BufferedWriter(writer);
@@ -227,7 +231,8 @@ public class UserDataSource { // login and register
                     + user.getCourse() + ","
                     + user.getTeacher() + ","
                     + user.getGroup() + ","
-                    + user.getDetail());
+                    + user.getDetail() + ","
+                    + user.getTime());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {
@@ -243,6 +248,8 @@ public class UserDataSource { // login and register
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
+        user.setTime(timeData());
+
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
@@ -250,7 +257,8 @@ public class UserDataSource { // login and register
                     +user.getEquiument() + ","
                     +user.getLocation() + ","
                     +user.getDetail() + ","
-                    +user.getImagePath());
+                    +user.getImagePath() + ","
+                    +user.getTime());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {
@@ -265,13 +273,16 @@ public class UserDataSource { // login and register
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
+        user.setTime(timeData());
+
         try {
             writer = new FileWriter(file, true);
             buffer = new BufferedWriter(writer);
             buffer.append("," + user.getVote() + ","
                     +user.getLocation() + ","
                     +user.getDetailTraffic() + ","
-                    +user.getImagePath());
+                    +user.getImagePath() + ","
+                    +user.getTime());
             buffer.newLine();
             buffer.close();
         }catch (IOException e){
@@ -285,13 +296,16 @@ public class UserDataSource { // login and register
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
+        user.setTime(timeData());
+
         try {
             writer = new FileWriter(file, true);
             buffer = new BufferedWriter(writer);
             buffer.append("," + user.getVote() + ","
                     + user.getAmount() + ","
                     + user.getDetail() + ","
-                    + user.getImagePath());
+                    + user.getImagePath() + ","
+                    + user.getTime());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {
@@ -305,15 +319,27 @@ public class UserDataSource { // login and register
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
+        user.setTime(timeData());
+
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
             buffer.append("," + user.getVote() + ","
-                    +user.getDetail());
+                    + user.getDetail() + ","
+                    + user.getTime());
             buffer.newLine();
             buffer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String timeData(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+        System.out.println("time: " + formattedDate);
+
+        return formattedDate;
     }
 }

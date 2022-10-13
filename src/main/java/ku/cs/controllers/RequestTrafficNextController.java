@@ -31,7 +31,7 @@ public class RequestTrafficNextController {
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
-            modelTraffic request = new modelTraffic(0,locationTextField.getText(), detailTextArea.getText());
+            modelTraffic request = new modelTraffic(0,locationTextField.getText(), detailTextArea.getText(),"");
             request.setImagePath(pickTarge);
             request.addTraffic(request);
             com.github.saacsos.FXRouter.goTo("success_request");

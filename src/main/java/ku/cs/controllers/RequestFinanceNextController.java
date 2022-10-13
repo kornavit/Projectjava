@@ -33,7 +33,7 @@ public class RequestFinanceNextController {
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
-            modelFinance request = new modelFinance(0,Integer.parseInt(amountTextField.getText()), detailTextArea.getText());
+            modelFinance request = new modelFinance(0,Integer.parseInt(amountTextField.getText()), detailTextArea.getText(),"");
             request.setImagePath(pickTarge);
             request.addFinance(request);
             com.github.saacsos.FXRouter.goTo("success_request");

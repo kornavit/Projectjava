@@ -4,24 +4,30 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
 import ku.cs.models.modelUser;
 import ku.cs.services.RequestListDataSource;
+import ku.cs.services.TimeComparator;
 
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class TotalRequestsController {
+
+    @FXML private Label warningStatus;
+    @FXML private TextField moreThanVoteTextField;
+    @FXML private TextField untilTextField;
+    @FXML private TextField toTextField;
 
     @FXML private TableView<modelRequest> tableView;
     @FXML private TableColumn<modelRequest, String> subjectColumn;
@@ -30,8 +36,15 @@ public class TotalRequestsController {
     @FXML private TableColumn<modelRequest, String> statusColumn;
     @FXML private TableColumn<modelRequest, String> timeColumn;
 
-    @FXML private ComboBox<String> sortByComboBox;
-    ObservableList<String> list = FXCollections.observableArrayList("ยังไม่ถูกจัดการ", "กำลังดำเนินการ", "ถูกดำเนินการแล้ว");
+    @FXML private ComboBox<String> sortStatusComboBox;
+    @FXML private ComboBox<String> sortTimeComboBox;
+    @FXML private ComboBox<String> sortVoteComboBox;
+    @FXML private ComboBox<String> sortCategoryComboBox;
+    ObservableList<String> sortByList = FXCollections.observableArrayList("ยังไม่ดำเนินการ", "กำลังดำเนินการ", "ถูกดำเนินการแล้ว");
+    ObservableList<String> sortTimeList = FXCollections.observableArrayList("ล่าสุดไปเก่าสุด", "เก่าสุดไปล่าสุด");
+    ObservableList<String> sortVoteList = FXCollections.observableArrayList("มากสุดไปน้อยสุด", "น้อยสุดไปมากสุด");
+    ObservableList<String> sortCategoryList = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย","การเงินในมหาวิทยาลัย", "อื่นๆ");
+
     @FXML private Label usernameLabel;
     private modelUser userName;
     @FXML private ImageView nisitPhoto;
@@ -42,8 +55,15 @@ public class TotalRequestsController {
     private modelRequestList requestList;
 
 
+
     @FXML public void initialize(){
-        sortByComboBox.setItems(list);
+
+        sortStatusComboBox.setItems(sortByList);
+        sortTimeComboBox.setItems(sortTimeList);
+        sortVoteComboBox.setItems(sortVoteList);
+        sortCategoryComboBox.setItems(sortCategoryList);
+
+
         modelRegister user = (modelRegister) FXRouter.getData();
         userName = new modelUser(user.getName());
         usernameLabel.setText(userName.getName());
@@ -54,7 +74,8 @@ public class TotalRequestsController {
         requestList = dataSource.readfileRequest();
         dataRequestList = FXCollections.observableArrayList();
         setTableColumn();
-        loadTable();
+        loadTable(requestList);
+
     }
 
     public void handleBackStartButton(ActionEvent actionEvent) {
@@ -77,7 +98,7 @@ public class TotalRequestsController {
         }
     }
 
-    private void loadTable(){
+    private void loadTable(modelRequestList requestList){
         dataRequestList.addAll(requestList.getAllRequest());
         tableView.setItems(dataRequestList);
     }
@@ -88,4 +109,55 @@ public class TotalRequestsController {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
+
+    public void statusComboBoxSeleted(){
+        tableView.getItems().clear();
+        requestList = dataSource.searchStatus(dataSource.readfileRequest(), sortStatusComboBox.getValue());
+        loadTable(requestList);
+    }
+
+    public void handleSortTimeSelected(){
+        tableView.getItems().clear();
+        dataSource.sortTime(requestList,sortTimeComboBox.getValue());
+        loadTable(requestList);
+    }
+
+    public void handleSortVoteSelected(){
+        tableView.getItems().clear();
+        dataSource.sortVote(requestList,sortVoteComboBox.getValue());
+        loadTable(requestList);
+    }
+    public void handleMoreThanVoteSearchButton(){
+        if (sortVoteComboBox.getValue() == null && sortTimeComboBox.getValue() == null){
+            warningStatus.setText("กรุณาเลือกเวลาหรือโหวตก่อน");
+            warningStatus.setTextFill(Color.RED);
+        }else{
+            tableView.getItems().clear();
+            loadTable(dataSource.searchMoreThan(requestList, Integer.parseInt(moreThanVoteTextField.getText())));
+            moreThanVoteTextField.clear();
+        }
+    }
+    public void handleUntilVoteSearchButton(){
+        tableView.getItems().clear();
+        loadTable(dataSource.searchUntil(requestList, Integer.parseInt(untilTextField.getText()), Integer.parseInt(toTextField.getText())));
+        untilTextField.clear();
+        toTextField.clear();
+
+    }
+
+    public void handleSortCategorySelected(){
+        if (sortVoteComboBox.getValue() == null && sortTimeComboBox.getValue() == null){
+            warningStatus.setText("กรุณาเลือกเวลาหรือโหวตก่อน");
+            warningStatus.setTextFill(Color.RED);
+        }else {
+            warningStatus.setVisible(false);
+            tableView.getItems().clear();
+            requestList = dataSource.sortCategory(requestList, sortCategoryComboBox.getValue());
+            loadTable(requestList);
+        }
+    }
+
+
+
+
 }

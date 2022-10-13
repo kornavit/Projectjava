@@ -5,13 +5,13 @@ package ku.cs.models;
 import ku.cs.services.UserDataSource;
 
 public class modelRequest {
-    private String category;
-    private String subject; //คำร้อง
+    protected String category;
+    protected String subject; //คำร้อง
     private String realName; // ชื่อจริงๆของแต่ละ Account
 
-    private String userName;
-    private String status;
-    private int votePoint;
+    protected String userName;
+    protected String status;
+    protected int votePoint;
     private String detail;
 
     private String time;
@@ -28,7 +28,7 @@ public class modelRequest {
 
     //user_complaint
 
-    public modelRequest(String realName, String subject, String category, String status) {
+    public modelRequest(String realName, String category, String subject, String status) {
         this.realName = realName;
         this.subject = subject;
         this.category = category;
