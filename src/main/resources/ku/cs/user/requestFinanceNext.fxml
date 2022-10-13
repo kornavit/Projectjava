@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
@@ -9,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.RequestFinanceNextController">
    <children>
@@ -56,8 +55,8 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <ComboBox fx:id="complaintCategory" layoutX="246.0" layoutY="209.0" onAction="#changeCategory" prefHeight="35.0" prefWidth="236.0" promptText="---------------โปรดเลือก---------------" />
-            <TextArea layoutX="187.0" layoutY="269.0" prefHeight="200.0" prefWidth="585.0" />
+            <TextArea fx:id="detail" layoutX="187.0" layoutY="269.0" prefHeight="200.0" prefWidth="585.0" />
+            <ChoiceBox fx:id="complaintFinance" layoutX="246.0" layoutY="214.0" prefHeight="26.0" prefWidth="186.0" />
          </children>
       </AnchorPane>
    </children>

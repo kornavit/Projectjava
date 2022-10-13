@@ -31,7 +31,7 @@ public class ProjectApplication extends Application {
         FXRouter.when("request_learning", packageStr+"user/requestLearningNext.fxml");
         FXRouter.when("request_building", packageStr+"user/requestBuildingNext.fxml");
         FXRouter.when("request_traffic", packageStr+"user/requestTrafficNext.fxml");
-        FXRouter.when("request_finance", packageStr+"user/requestFinanceNext.fxml");
+        FXRouter.when("request_finance", packageStr+"user/requestFinanceNext.fxml",875.2,656.8);
         FXRouter.when("request_other", packageStr+"user/requestOtherNext.fxml");
 
         //totalRequest & report

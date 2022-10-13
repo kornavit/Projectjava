@@ -16,6 +16,10 @@ public class modelRequest {
     private String extra; //ข้อมูลเพิ่มเติม เช่น vote,type
     private String extraDetail; // ปริ้นตรง staff
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     private String time;
     protected int votePoint;
     private String[] vote;
@@ -71,20 +75,13 @@ public class modelRequest {
     }
 
     //user_complaint
-    public modelRequest(String subject, String category,String time, String status, int votePoint) {
+    public modelRequest(String username, String subject,String time, String status, int votePoint) {
+        this.username = username;
         this.subject = subject;
-        this.category = category;
         this.time = time;
         this.status = status;
         this.votePoint = votePoint;
 
-    }
-
-    public modelRequest(String username, String subject, String category, String status) {
-        this.username = username;
-        this.subject = subject;
-        this.category = category;
-        this.status = status;
     }
 
     //staff

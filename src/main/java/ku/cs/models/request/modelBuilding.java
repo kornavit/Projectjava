@@ -8,7 +8,7 @@ public class modelBuilding {
     private String detail;
     private String imagePath;
 
-    public modelBuilding(modelRequest request, String equipment, String location, String detail, String imagePath) {
+    public modelBuilding(String equipment, String location, String detail, String imagePath) {
         this.equipment = equipment;
         this.location = location;
         this.detail = detail;

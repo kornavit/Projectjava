@@ -16,25 +16,12 @@ public class RequestListDataSource {
     public RequestListDataSource(String directoryName, String fileName){
         this.directoryName = directoryName;
         this.fileName = fileName;
-        checkFileIsExisted();
     }
 
-    private void checkFileIsExisted(){
-        File file = new File(directoryName);
-        if ( !file.exists()){
-            file.mkdirs();
-        }
-
-        String filePath = directoryName + File.separator + fileName;
-        file = new File(filePath);
-        if ( ! file.exists()){
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public RequestListDataSource(String directoryName) {
+        this.directoryName = directoryName;
     }
+
 
     public modelRequestList readfileRequest(String name){
         modelRequestList requestList = new modelRequestList();
@@ -59,10 +46,12 @@ public class RequestListDataSource {
             String request = "";
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
+                //String username, String subject,String time, String status, int votePoint
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[9],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[7]);
-                    dataRequest.setManageDetail(data[12]);
+                    dataRequest.setManageDetail(data[11]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -76,9 +65,10 @@ public class RequestListDataSource {
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[7],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[7],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[6]);
-                    dataRequest.setManageDetail(data[11]);
+                    dataRequest.setManageDetail(data[9]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -92,9 +82,10 @@ public class RequestListDataSource {
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[9],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[8]);
-                    dataRequest.setManageDetail(data[12]);
+                    dataRequest.setManageDetail(data[11]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -108,9 +99,10 @@ public class RequestListDataSource {
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[7],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[7],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[5]);
-                    dataRequest.setManageDetail(data[10]);
+                    dataRequest.setManageDetail(data[8]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -124,9 +116,10 @@ public class RequestListDataSource {
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[9],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[7]);
-                    dataRequest.setManageDetail(data[12]);
+                    dataRequest.setManageDetail(data[10]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -144,7 +137,7 @@ public class RequestListDataSource {
     public void writeFileRequest(modelRequest request){
         String filePath = directoryName + File.separator + request.getCategory() + ".csv";
         File file = new File(filePath);
-
+        System.out.println(request.getCategory());
         FileWriter writer = null;
         BufferedWriter buffer = null;
 
@@ -160,14 +153,15 @@ public class RequestListDataSource {
                         +request.getVotePoint() + ","
                         +request.getBuilding().getEquipment() + ","
                         +request.getBuilding().getLocation() + ","
-                        +request.getBuilding().getDetail() + ","
-                        +request.getBuilding().getImagePath()
+                        +request.getBuilding().getDetail().replace("\n","|") + ","
+                        +request.getBuilding().getImagePath()+ ","
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,"
                 );
                 buffer.newLine();
                 buffer.close();
             }
             //finance
-            else if (request.getCategory().equals("finance")){
+            if (request.getCategory().equals("finance")){
                 writer = new FileWriter(file, true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
@@ -176,11 +170,14 @@ public class RequestListDataSource {
                         +request.getStatus() + ","
                         +request.getVotePoint() + ","
                         +request.getFinance().getType() + ","
-                        +request.getFinance().getDetail()
+                        +request.getFinance().getDetail().replace("\n","|")+ ","
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,"
                 );
+                buffer.newLine();
+                buffer.close();
             }
             //learning
-            else if (request.getCategory().equals("learning")){
+            if (request.getCategory().equals("learning")){
                 writer = new FileWriter(file,true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
@@ -191,13 +188,14 @@ public class RequestListDataSource {
                         +request.getLearning().getCourse() + ","
                         +request.getLearning().getTeacher() + ","
                         +request.getLearning().getGroup() + ","
-                        +request.getLearning().getDetail()
+                        +request.getLearning().getDetail().replace("\n","|")+ "," // staffGroup,staffName,การแก้ปัญหา(คันด้วย | พอขึ้นบรรทัดใหม่),คนที่มากด like(คันด้วย | )
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,"
                 );
                 buffer.newLine();
                 buffer.close();
             }
             //other
-            else if (request.getCategory().equals("other")) {
+            if (request.getCategory().equals("other")) {
                 writer = new FileWriter(file, true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
@@ -205,13 +203,14 @@ public class RequestListDataSource {
                         + request.getSubject() + ","
                         + request.getStatus() + ","
                         + request.getVotePoint() + ","
-                        +request.getOther().getDetail()
+                        +request.getOther().getDetail().replace("\n","|")+ ","
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,"
                 );
                 buffer.newLine();
                 buffer.close();
             }
             //traffic
-            else if (request.getCategory().equals("traffic")) {
+            if (request.getCategory().equals("traffic")) {
                 writer = new FileWriter(file, true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
@@ -220,8 +219,9 @@ public class RequestListDataSource {
                         + request.getStatus() + ","
                         + request.getVotePoint() + ","
                         +request.getTraffic().getLocation() + ","
-                        +request.getTraffic().getDetail() + ","
-                        +request.getTraffic().getImagePath()
+                        +request.getTraffic().getDetail().replace("\n","|") + ","
+                        +request.getTraffic().getImagePath()+ ","
+                        +request.getTime() + ",ยังไม่ได้รับเรื่องร้องเรียน,-,"
                 );
                 buffer.newLine();
                 buffer.close();

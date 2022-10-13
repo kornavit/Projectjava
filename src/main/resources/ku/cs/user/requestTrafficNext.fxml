@@ -34,7 +34,7 @@
                   <Image url="@../images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Button layoutX="287.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
+            <Button layoutX="287.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="181.0" layoutY="209.0" prefHeight="35.0" prefWidth="578.0" />
+            <TextField fx:id="address" layoutX="181.0" layoutY="209.0" prefHeight="35.0" prefWidth="578.0" />
             <Label layoutX="31.0" layoutY="253.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
@@ -56,18 +56,14 @@
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="357.0" layoutY="437.0" mnemonicParsing="false" style="-fx-background-radius: 90;" text="Upload File" />
-            <ImageView fitHeight="156.0" fitWidth="175.0" layoutX="302.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/default-profile.jpg" />
-               </image>
-            </ImageView>
+            <Button layoutX="357.0" layoutY="437.0" mnemonicParsing="false" onAction="#uploadPic" style="-fx-background-radius: 90;" text="Upload File" />
             <Label layoutX="187.0" layoutY="146.0" text="หมวดหมู่ : การจารจรในมหาวิทยาลัย" textAlignment="CENTER" textFill="#302086">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
             <TextArea fx:id="detail" layoutX="179.0" layoutY="253.0" prefHeight="172.0" prefWidth="578.0" />
+            <ImageView fx:id="imagePath" fitHeight="150.0" fitWidth="200.0" layoutX="295.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

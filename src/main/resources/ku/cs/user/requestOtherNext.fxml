@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -40,23 +39,17 @@
                </font>
             </Button>
             <Separator layoutX="20.0" layoutY="128.0" prefHeight="9.0" prefWidth="750.0" style="-fx-background-color: #006600;" />
-            <Label layoutX="17.0" layoutY="260.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
+            <Label layoutX="24.0" layoutY="205.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="208.0" prefHeight="35.0" prefWidth="81.0" text="หัวข้อ :" textAlignment="CENTER">
-               <font>
-                  <Font name="THChakraPetch" size="24.0" />
-               </font>
-            </Label>
-            <TextField layoutX="165.0" layoutY="208.0" prefHeight="35.0" prefWidth="594.0" />
             <Label layoutX="304.0" layoutY="144.0" text="หมวดหมู่ : อื่นๆ" textAlignment="CENTER" textFill="#302086">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextArea fx:id="detail" layoutX="165.0" layoutY="260.0" prefHeight="364.0" prefWidth="594.0" />
+            <TextArea fx:id="detail" layoutX="172.0" layoutY="205.0" prefHeight="413.0" prefWidth="594.0" />
          </children>
       </AnchorPane>
    </children>

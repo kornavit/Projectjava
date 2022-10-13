@@ -5,7 +5,7 @@ import ku.cs.models.modelRequest;
 public class modelOther {
     private String detail;
 
-    public modelOther(modelRequest request, String detail) {
+    public modelOther(String detail) {
         this.detail = detail;
     }
 

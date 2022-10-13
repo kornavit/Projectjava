@@ -7,7 +7,7 @@ public class modelTraffic {
     private String detail;
     private String imagePath;
 
-    public modelTraffic(modelRequest request, String location, String detail, String imagePath) {
+    public modelTraffic(String location, String detail, String imagePath) {
         this.location = location;
         this.detail = detail;
         this.imagePath = imagePath;

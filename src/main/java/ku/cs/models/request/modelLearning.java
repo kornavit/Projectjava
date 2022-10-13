@@ -10,18 +10,12 @@ public class modelLearning{
     private String group;
     private String detail;
 
-    public modelLearning(modelRequest request,String course, String teacher, String group, String detail) {
+    public modelLearning(String course, String teacher, String group, String detail) {
         this.course = course;
         this.teacher = teacher;
         this.group = group;
         this.detail = detail;
     }
-
-//    public void addLearning(modelLearning learning){
-//        request = new RequestListDataSource("data/category","learning.csv");
-//        request.readData(learning.toString());
-////        request.writefile_learning2(learning);
-//    }
 
     public String getCourse() {
         return course;

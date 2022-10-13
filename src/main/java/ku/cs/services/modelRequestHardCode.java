@@ -8,13 +8,13 @@ public class modelRequestHardCode {
 
     public modelRequestHardCode() {
         requestList = new modelRequestList();
-        readData();
+//        readData();
     }
 
-    public void readData() {
-        modelRequest test1 = new modelRequest("การจราจรในมหาวิทยาลัย","เส้นทางไม่เรียบ","6410451156 ปรริณ", "ยังไม่ดำเนินการ");
-        requestList.addRequest(test1);
-
-    }
+//    public void readData() {
+//        modelRequest test1 = new modelRequest("การจราจรในมหาวิทยาลัย","เส้นทางไม่เรียบ","6410451156 ปรริณ", "ยังไม่ดำเนินการ");
+//        requestList.addRequest(test1);
+//
+//    }
     public modelRequestList getRequestList() {return requestList;}
 }
