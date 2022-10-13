@@ -19,11 +19,6 @@ public class modelLearning {
         this.detail = detail;
     }
 
-    public void addLearning(modelLearning learning){
-        request = new UserDataSource("data/category","learning.csv");
-        request.writefile_learning(learning);
-    }
-
     public String getCourse() {
         return course;
     }

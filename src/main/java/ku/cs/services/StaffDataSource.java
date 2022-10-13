@@ -70,14 +70,12 @@ public class StaffDataSource {
 
 
 
-        public modelRequestList readData() {
+    public modelRequestList readData() {
         modelRequestList list = new modelRequestList();
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
         FileReader reader = null;
         BufferedReader buffer = null;
-
-
 
         try {
             reader = new FileReader(file);
@@ -127,20 +125,16 @@ public class StaffDataSource {
 
             for (modelRequest report : reportProblemList.getAllRequest()){
                 if ( report.getSubject().equals(reportProblem.getSubject()) &&
-                report.getCategory().equals(reportProblem.getCategory()) &&
-                report.getStaffGroup().equals(reportProblem.getStaffGroup()) ){
+                report.getCategory().equals(reportProblem.getCategory()) ){
                     save = report.getSubject() + ","
-                            +report.getStaffGroup() + ","
                             +report.getCategory() + ","
                             +report.getRequestDetail() + ","
                             +reportProblem.getStatus() + ","
                             +reportProblem.getStaffName() + ","
                             +reportProblem.getManageDetail();
-
                 }
                 else {
                     save = report.getSubject() + ","
-                            +report.getStaffGroup() + ","
                             +report.getCategory() + ","
                             +report.getRequestDetail() + ","
                             +report.getStatus() + ","

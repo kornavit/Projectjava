@@ -1,3 +1,4 @@
-username,category,head,status,0,detail(คันด้วย | พอขึ้นบรรทัดใหม่),time
-123,other,Ku engine Stop,ยังไม่ดำเนินการ,0,The Ku Stop When the time to register the class,time
-123,other,ระบบ KU ค้างบ่อย,ยังไม่ได้ดำเนินการ,0,คือพอเวลากดใช้งานไปมันก็เริ่มพังๆแล้วล่ะครับ,time
+username,category,head,status,vote,detail(คันด้วย | พอขึ้นบรรทัดใหม่),time,staffName,การแก้ปัญหา(คันด้วย | พอขึ้นบรรทัดใหม่),คนที่มากด like(คันด้วย | )
+123,other,ระบบ KU ค้างบ่อย,ยังไม่ได้ดำเนินการ,0,คือพอเวลากดใช้งานไปมันก็เริ่มพังๆแล้วล่ะครับ|ไม่เห็นว่ามันจะใช้ได้เลย,time,ยังไม่มีคนรับเรื่อง,
+123,other,Ku engine Stop,ยังไม่ดำเนินการ,0,The Ku Stop When the time to register the class,time,ยังไม่มีคนรับเรื่อง,
+123,other,ระบบ KU ค้างบ่อย,ยังไม่ได้ดำเนินการ,0,คือพอเวลากดใช้งานไปมันก็เริ่มพังๆแล้วล่ะครับ,time,ยังไม่มีคนรับเรื่อง,

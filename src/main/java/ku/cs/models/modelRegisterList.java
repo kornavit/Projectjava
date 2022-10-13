@@ -3,6 +3,7 @@ package ku.cs.models;
 import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class modelRegisterList {

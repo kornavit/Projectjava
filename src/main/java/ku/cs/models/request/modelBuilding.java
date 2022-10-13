@@ -18,12 +18,6 @@ public class modelBuilding {
         this.detail = detail;
         this.imagePath = imagePath;
     }
-
-    public void addBuilding(modelBuilding building){
-        request = new UserDataSource("data/category","building.csv");
-        request.writefile_building(building);
-    }
-
     public int getVote() {
         return vote;
     }

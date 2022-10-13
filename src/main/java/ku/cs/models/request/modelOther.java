@@ -13,11 +13,6 @@ public class modelOther {
         this.detail = detail;
     }
 
-    public void addOther(modelOther other){
-        request = new UserDataSource("data/category","other.csv");
-        request.writefile_other(other);
-    }
-
     public int getVote() {
         return vote;
     }

@@ -16,11 +16,6 @@ public class modelTraffic {
         this.detail = detail;
         this.imagePath = getClass().getResource("/ku/cs/images/default-image.jpg").toExternalForm();
     }
-
-    public void addTraffic(modelTraffic traffic){
-        request = new UserDataSource("data/category","traffic.csv");
-        request.writefile_traffic(traffic);
-    }
     public int getVote() {
         return vote;
     }

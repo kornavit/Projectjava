@@ -43,7 +43,6 @@ public class StaffWorking {
         status.getItems().addAll(chooseStatus);
 
         requestName.setText(request.getSubject());
-        staffGroup.setText(request.getStaffGroup());
         category.setText(request.getCategory());
         detailFromUser.setText(request.getRequestDetail());
         status.setValue(request.getStatus());

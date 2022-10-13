@@ -6,6 +6,7 @@ import ku.cs.models.request.*;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class UserDataSource { // login and register
     private String directoryName;
@@ -64,30 +65,6 @@ public class UserDataSource { // login and register
             }
         }
     }
-
-    public void writefile_user(modelRegister user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append(user.getName() + ","
-                    +user.getUsername() + ","
-                    +user.getPassword() + ","
-                    +user.getRole() + ","
-                    +user.getImagePath() + ","
-                    +user.getValue_ban() + ","
-                    +user.getCategory());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public modelRegisterList readData() {
         modelRegisterList list = new modelRegisterList();
         String filePath = directoryName + File.separator + fileName;
@@ -99,21 +76,21 @@ public class UserDataSource { // login and register
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
 
-            String userDataPath = "";
-            while (     (userDataPath = buffer.readLine())    != null     ){
-                String[] data = userDataPath.split(",");
+            String input_user = "";
+            while (     (input_user = buffer.readLine())    != null     ){
+                String[] data = input_user.split(",");
+                //realName,userName,password,role,category,ban or unban,image path
                 modelRegister user = new modelRegister(
                         data[0].trim(), //Real Name
                         data[1].trim(), //User Name
                         data[2].trim(), // Password
                         data[3].trim(), // role
-                        data[5].trim()); //User Picture
-                user.setCategory(data[4]); // category
+                        data[6].trim()); //User Picture
+                user.setCategory(data[4]);
+                user.setValue_ban(data[5]);
                 list.addUser(user);
             }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return list;
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -124,8 +101,64 @@ public class UserDataSource { // login and register
                 throw new RuntimeException(e);
             }
         }
-        return list;
+    }
 
+    public void writeImage(modelRegisterList userChangePicture, modelRegister person){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try{
+            writer = new FileWriter(file);
+            buffer = new BufferedWriter(writer);
+
+            for (modelRegister user : userChangePicture.getAllUsers()){
+                if (user.getUsername().equals(person.getUsername())){
+                    user.setImagePath(person.getImagePath());
+                    //realName,userName,password,role,team,image path
+                }
+                String userInfo = user.getName() + ","
+                        +user.getUsername() + ","
+                        +user.getPassword() + ","
+                        +user.getRole() + ","
+                        +user.getValue_ban() + ","
+                        +user.getCategory() + ","
+                        +user.getImagePath();
+
+                buffer.append(userInfo);
+                buffer.newLine();
+            }
+            buffer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writefile_user(modelRegister user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try { // realName,username,password,role,category,ban or unban,image path
+            writer = new FileWriter(file,true);
+            buffer = new BufferedWriter(writer);
+            buffer.append(user.getName() + ","
+                    +user.getUsername() + ","
+                    +user.getPassword() + ","
+                    +user.getRole() + ","
+                    +user.getCategory() + ","
+                    +user.getValue_ban() + ","
+                    +user.getImagePath());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void writeData(modelRegisterList userChangePicture, modelRegister person){
@@ -174,10 +207,12 @@ public class UserDataSource { // login and register
             String line_name = "";
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
-                // name,username,password,image path
+                // realName,userName,password,role,category,ban or unban,image path
                 if (data[1].equals(user.getUsername()) && data[2].equals(user.getPassword())){
-                    user.setName(data[0]);
-                    user.setImagePath(data[5]);
+                    user.setName(data[0]);// realName
+                    user.setCategory(data[4]); // category
+                    user.setValue_ban(data[5]);// ban or unban
+                    user.setImagePath(data[6]); // image
                     return data[3];
                 }
             }
@@ -191,129 +226,6 @@ public class UserDataSource { // login and register
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-    }
-
-    public void writefile_request(modelRequest user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append(user.getRealName() + ","
-                    +user.getCategory() + ","
-                    +user.getSubject() + ","
-                    +user.getStatus());
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void writefile_learning(modelLearning user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file, true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    + user.getCourse() + ","
-                    + user.getTeacher() + ","
-                    + user.getGroup() + ","
-                    + user.getDetail());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    public void writefile_building(modelBuilding user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    +user.getEquiument() + ","
-                    +user.getLocation() + ","
-                    +user.getDetail() + ","
-                    +user.getImagePath());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void writefile_traffic(modelTraffic user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file, true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    +user.getLocation() + ","
-                    +user.getDetailTraffic() + ","
-                    +user.getImagePath());
-            buffer.newLine();
-            buffer.close();
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }
-    public void writefile_Finance(modelFinance user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file, true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    + user.getAmount() + ","
-                    + user.getDetail() + ","
-                    + user.getImagePath());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void writefile_other(modelOther user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    +user.getDetail());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

@@ -1,14 +1,12 @@
 package ku.cs;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import com.github.saacsos.FXRouter;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import ku.cs.models.modelRegister;
 import javafx.fxml.FXML;
 import ku.cs.services.StaffDataSource;
+import ku.cs.services.AdminDataSource;
 
 
 import java.io.IOException;
@@ -17,14 +15,13 @@ import java.time.format.DateTimeFormatter;
 
 public class ProjectController {
     @FXML private PasswordField password;
-    @FXML private TextField hiddenpassword;
+    @FXML private TextField hiddenPassword;
     @FXML private TextField username;
     @FXML private CheckBox ShowPassword;
-    @FXML private Label resultlogin;
-
+    @FXML private Label resultLogin;
+    private StaffDataSource staffDataSource;
     private modelRegister user;
 
-    private StaffDataSource staffDataSource;
     public void handleNewRegisterButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("user_register");
@@ -38,26 +35,29 @@ public class ProjectController {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("time: " + formattedDate);
-
-        //System.out.println(password.getText());
-        modelRegister user = new modelRegister(username.getText(),password.getText());
+        if (password.getText().equals("")){ // ในกรณีที่กดตรง show password ก่อน
+            password.setText(hiddenPassword.getText());
+        }
+        user = new modelRegister(username.getText(),password.getText());
+        user.setTime(formattedDate);
+        AdminDataSource adminDataSource = new AdminDataSource("data","login_time_user.csv");
         try {
-            if (user.search_role().equals("user")) {
-                FXRouter.goTo("user",user);
-//                if (user.getValue_ban().equals("true")){
-//                    FXRouter.goTo("user");
-//                }//else{
-//                    FXRouter.goTo("");
-//                }
-            } else if (user.search_role().equals("admin")) {
-                FXRouter.goTo("admin_main");
-            } else if (user.search_role().equals("staff")) {
+            if (user.role().equals("user")) {
+                if (user.getValue_ban().equals("true")){
+                    adminDataSource.writeTimeLogin(user);
+                    FXRouter.goTo("user",user);
+                }else{
+                    FXRouter.goTo("ban",user);
+                }
+            } else if (user.role().equals("admin")) {
+                FXRouter.goTo("admin_main",user);
+            } else if (user.role().equals("staff")) {
+                adminDataSource.writeTimeLogin(user);
                 staffDataSource = new StaffDataSource("data", "user.csv");
                 staffDataSource.StaffLogin(user);
                 FXRouter.goTo("staff_main_menu", user);
-            }else {
-                resultlogin.setText(user.search_role());
+            } else {
+                resultLogin.setText(user.role());
             }
         }
         catch (IOException e){
@@ -66,7 +66,7 @@ public class ProjectController {
         }
     }
 
-    public void handleForgetPasswordButton(ActionEvent actionEvent) {
+    public void handleChangePasswordButton(ActionEvent actionEvent) {
         try{
             FXRouter.goTo("user_change_password");
         } catch (IOException e){
@@ -75,15 +75,16 @@ public class ProjectController {
         }
     }
     public void handleShowPassword(ActionEvent actionEvent){
-        hiddenpassword.setVisible(false);
+        hiddenPassword.setVisible(false);
         if (ShowPassword.isSelected()) {
-            hiddenpassword.setText(password.getText());
-            hiddenpassword.setVisible(true);
+            hiddenPassword.setText(password.getText());
+            hiddenPassword.setVisible(true);
             password.setVisible(false);
             return;
         }
-        password.setText(hiddenpassword.getText());
+        password.setText(hiddenPassword.getText());
         password.setVisible(true);
+        hiddenPassword.clear();
     }
 
 
