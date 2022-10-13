@@ -6,7 +6,7 @@ import ku.cs.models.modelRegister;
 
 import java.io.*;
 
-public class UserChangePasswordDataSource implements DataSource<modelRegisterList>{
+public class UserChangePasswordDataSource {
     private String directoryName;
     private String fileName;
 
@@ -29,15 +29,13 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
                 }
             }
             return false;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
     public String checkPassword(String userName,String oldPassword){
-        String filePath = "data" + File.separator + "user.csv";
+        String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
         FileReader reader = null;
@@ -56,8 +54,6 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
             }
             return "รหัสผ่านเดิมไม่ถูกต้อง";
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -104,21 +100,20 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
 
-            String userDataPath = "";
-            while (     (userDataPath = buffer.readLine())    != null     ){
-                String[] data = userDataPath.split(",");
+            String input_user = "";
+            while (     (input_user = buffer.readLine())    != null     ){
+                String[] data = input_user.split(","); // realName,username,password,role,category,ban or unban,image path
                 modelRegister user = new modelRegister(
                         data[0].trim(), //Real Name
                         data[1].trim(), //User Name
                         data[2].trim(), // Password
                         data[3].trim(), // role
-                        data[5].trim()); //User Picture
+                        data[6].trim()); //User Picture
                 user.setCategory(data[4]); // category
+                user.setValue_ban(data[5]); // value ban
                 list.addUser(user);
             }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -153,8 +148,8 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
                         +user.getPassword() + ","
                         +user.getRole() + ","
                         +user.getCategory() + ","
+                        +user.getValue_ban() + ","
                         +user.getImagePath();
-
                 buffer.append(userInfo);
                 buffer.newLine();
             }
@@ -164,5 +159,4 @@ public class UserChangePasswordDataSource implements DataSource<modelRegisterLis
             throw new RuntimeException(e);
         }
     }
-
 }

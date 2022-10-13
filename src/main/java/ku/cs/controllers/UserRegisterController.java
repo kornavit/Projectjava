@@ -31,13 +31,13 @@ public class UserRegisterController {
     private ImageDataSource getImage;
 
     @FXML public void initialize(){
-        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
+        File destDir = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
         nisitPhoto.setImage(new Image(destDir.toURI().toString()));
         pickTarge = "default-profile.jpg";
     }
 
     public boolean handleCheckUsernameButton() {
-        modelRegister user = new modelRegister(name.getText(),username.getText(),passwordReal.getText(),null,"user");
+        modelRegister user = new modelRegister(username.getText());
         if (user.checkUsername()){
             resultCheckUsername.setTextFill(Color.GREEN);
             resultCheckUsername.setText("ชื่อนี้ใช้ได้");
@@ -51,8 +51,11 @@ public class UserRegisterController {
 
     public void handleUploadNisitPhotoButton(ActionEvent actionEvent) {
         getImage = new ImageDataSource();
-        pickTarget = getImage.chooseImage("user_images");
-        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarget);
+        pickTarge = getImage.chooseImage("user_images");
+        if (pickTarge.equals("")){
+            return;
+        }
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
         nisitPhoto.setImage(new Image(destDir.toURI().toString()));
     }
 
@@ -85,9 +88,9 @@ public class UserRegisterController {
 
         // check password for user
         if (passwordReal.getText().equals("") || passwordAgain.getText().equals("")) {
-            checkError += "กรุณาปลอก รหัสผ่าน\n";
+            checkError += "กรุณากรอก รหัสผ่าน\n";
         } else if (!passwordReal.getText().equals(passwordAgain.getText())) {
-            checkError += "กรุณาปลอก รหัสผ่านให้ตรงกัน\n";
+            checkError += "กรุณากรอก รหัสผ่านให้ตรงกัน\n";
         }
 
         // check name for user
@@ -98,9 +101,8 @@ public class UserRegisterController {
         try {
             if (checkError.equals("")) {
                 modelRegister user = new modelRegister(name.getText(), username.getText(), passwordReal.getText(), "user", pickTarge);
-                user.setValue_ban("false");
+                user.setValue_ban("true");
                 user.setCategory("-");
-
                 user.add(user);
                 FXRouter.goTo("success");
             } else {

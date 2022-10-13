@@ -14,7 +14,6 @@ public class modelBuilding {
 
     private String time;
 
-    private UserDataSource request;
 
     public modelBuilding(int vote, String equiument, String location, String detail, String imagePath, String time) {
         this.vote = vote;
@@ -22,13 +21,6 @@ public class modelBuilding {
         this.location = location;
         this.detail = detail;
         this.imagePath = imagePath;
-    }
-
-
-
-    public void addBuilding(modelBuilding building){
-        request = new UserDataSource("data/category","building.csv");
-        request.writefile_building(building);
     }
 
     public int getVote() {

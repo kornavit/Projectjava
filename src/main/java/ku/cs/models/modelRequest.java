@@ -1,10 +1,9 @@
 package ku.cs.models;
 
-//import ku.cs.services.RequestDataSource;
-
-import ku.cs.services.UserDataSource;
+import ku.cs.models.request.*;
 
 public class modelRequest {
+
     protected String category;
     protected String subject; //คำร้อง
     private String realName; // ชื่อจริงๆของแต่ละ Account
@@ -13,32 +12,16 @@ public class modelRequest {
     protected String status;
     protected int votePoint;
     private String detail;
-
     private String time;
-    private String imagePath;
-
     private String staffName;
-    private String staffGroup;
-
     private String requestDetail;
-
     private String manageDetail;
+    private String reportDetail;
 
-
-
-    //user_complaint
-
-    public modelRequest(String realName, String category, String subject, String status) {
-        this.realName = realName;
-        this.subject = subject;
-        this.category = category;
-        this.status = status;
-    }
-
+    private String imagePath;
     //staff
-    public modelRequest(String subject, String staffGroup,String category, String status, String staffName){
+    public modelRequest(String subject,String category, String status, String staffName){
         this.subject = subject;
-        this.staffGroup = staffGroup;
         this.category = category;
         this.status = status;
         this.staffName = staffName;
@@ -63,32 +46,39 @@ public class modelRequest {
         this.status = status;
         this.votePoint = votePoint;
     }
+    // admin
+    public modelRequest(String realName,String subject,String category){
+        this.userName = realName;
+        this.subject = subject;
+        this.category = category;
+    }
 
-    public String getCategory() {
-        return category;
+    public String getReportDetail() {
+        return reportDetail;
     }
 
     public String getUserName() {
         return userName;
     }
-
-    public String getSubject() {
-        return subject;
+    public void setReportDetail(String reportDetail) {
+        this.reportDetail = reportDetail;
     }
 
-    private UserDataSource user;
+    public String getCategory() {return category;}
 
-    public String getRealName() {
-        return realName;
-    }
+    public String getSubject() {return subject;}
 
+    public void setSubject(String subject) {this.subject = subject;}
 
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public String getStatus() {return status;}
+    public void setStatus(String status) {this.status = status;}
+    public String getRequestDetail() {return requestDetail;}
+    public void setRequestDetail(String requestDetail) {this.requestDetail = requestDetail;}
+    public String getManageDetail() {return manageDetail;}
+    public void setManageDetail(String manageDetail) {this.manageDetail = manageDetail;}
+    public String getStaffName() {return staffName;}
+    public void setStaffName(String staffName) {this.staffName = staffName;}
+
     public int getVotePoint(){
         return votePoint;
     }
@@ -110,72 +100,10 @@ public class modelRequest {
     public void setDetail(String detail) {
         this.detail = detail;
     }
-
-    public String getRequestDetail() {
-        return requestDetail;
+    @Override
+    public String toString() {
+        return subject;
     }
-
-    public void setRequestDetail(String requestDetail) {
-        this.requestDetail = requestDetail;
-    }
-
-
-
-    public String getManageDetail() {
-        return manageDetail;
-    }
-
-    public void setManageDetail(String manageDetail) {
-        this.manageDetail = manageDetail;
-    }
-
-
-
-    public String getStaffName() {
-        return staffName;
-    }
-    public void setStaffName(String staffName) {
-        this.staffName = staffName;
-    }
-
-    public String getStaffGroup() {
-        return staffGroup;
-    }
-
-    public void setStaffGroup(String staffGroup) {
-        this.staffGroup = staffGroup;
-    }
-    public void addRequestLearning(modelRequest request) {
-        user = new UserDataSource("data/category", "learning.csv");
-        user.writefile_request(request);
-    }
-    public void addRequestTraffic(modelRequest request){
-        user = new UserDataSource("data/category", "traffic.csv");
-        user.writefile_request(request);
-    }
-
-    public void addRequestBuilding(modelRequest request){
-        user = new UserDataSource("data/category","building.csv");
-        user.writefile_request(request);
-    }
-    public void addRequestFinance(modelRequest request){
-        user = new UserDataSource("data/category", "finance.csv");
-        user.writefile_request(request);
-    }
-
-    public void addRequestOther(modelRequest request){
-        user = new UserDataSource("data/category", "other.csv");
-        user.writefile_request(request);
-    }
-
-//    private void addToAllRequest(modelRequest request){
-//        user.writefile_request(request);
-//        requests = new UserDataSource("data","nisit.csv");
-//        requests.writefile_request(request);
-//    }
-
-
-
 }
 
 

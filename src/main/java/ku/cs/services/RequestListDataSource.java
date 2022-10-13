@@ -161,6 +161,7 @@ public class RequestListDataSource {
         }
     }
 
+
     public modelRequestList readfileRequest(String name){
         modelRequestList requestList = new modelRequestList();
         String buildingPath = "data" + File.separator + "category" + File.separator + "building.csv";
@@ -175,17 +176,16 @@ public class RequestListDataSource {
         FileReader reader = null;
         BufferedReader buffer = null;
 
-        try{
+        try {
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-
             //read_building
             buffer.readLine();
             String request = "";
-            while (( request = buffer.readLine()) != null){
+            while ((request = buffer.readLine()) != null) {
                 String[] data = request.split(",");
-                if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[9],data[3],Integer.parseInt(data[4]));
+                if (data[0].equals(name)) {
+                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[9], data[3], Integer.parseInt(data[4]));
                     dataRequest.setRequestDetail(data[7]);
                     dataRequest.setManageDetail(data[12]);
                     //add request
@@ -198,10 +198,10 @@ public class RequestListDataSource {
             file = new File(financePath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while (( request = buffer.readLine()) != null){
+            while ((request = buffer.readLine()) != null) {
                 String[] data = request.split(",");
-                if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[7],data[3],Integer.parseInt(data[4]));
+                if (data[0].equals(name)) {
+                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[7], data[3], Integer.parseInt(data[4]));
                     dataRequest.setRequestDetail(data[6]);
                     dataRequest.setManageDetail(data[11]);
                     //add request
@@ -214,10 +214,10 @@ public class RequestListDataSource {
             file = new File(learningPath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while (( request = buffer.readLine()) != null){
+            while ((request = buffer.readLine()) != null) {
                 String[] data = request.split(",");
-                if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[9],data[3],Integer.parseInt(data[4]));
+                if (data[0].equals(name)) {
+                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[9], data[3], Integer.parseInt(data[4]));
                     dataRequest.setRequestDetail(data[8]);
                     dataRequest.setManageDetail(data[12]);
                     //add request
@@ -230,10 +230,10 @@ public class RequestListDataSource {
             file = new File(otherPath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while (( request = buffer.readLine()) != null){
+            while ((request = buffer.readLine()) != null) {
                 String[] data = request.split(",");
-                if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[7],data[3],Integer.parseInt(data[4]));
+                if (data[0].equals(name)) {
+                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[7], data[3], Integer.parseInt(data[4]));
                     dataRequest.setRequestDetail(data[5]);
                     dataRequest.setManageDetail(data[10]);
                     //add request
@@ -246,10 +246,10 @@ public class RequestListDataSource {
             file = new File(trafficPath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while (( request = buffer.readLine()) != null){
+            while ((request = buffer.readLine()) != null) {
                 String[] data = request.split(",");
-                if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[2],data[1],data[9],data[3],Integer.parseInt(data[4]));
+                if (data[0].equals(name)) {
+                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[9], data[3], Integer.parseInt(data[4]));
                     dataRequest.setRequestDetail(data[7]);
                     dataRequest.setManageDetail(data[12]);
                     //add request
@@ -261,6 +261,47 @@ public class RequestListDataSource {
             return requestList;
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                reader.close();
+                buffer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    public modelRequestList readAdminRequest(String category){
+        modelRequestList list = new modelRequestList();
+        String filePath = "data" + File.separator + "category" + File.separator + category + ".csv";
+        File file = new File(filePath);
+
+        FileReader reader = null;
+        BufferedReader buffer = null;
+        try{
+            reader = new FileReader(file);
+            buffer = new BufferedReader(reader);
+            String input = "";
+            while( (input = buffer.readLine()) != null){
+                // username,category,head
+                String[] data = input.split(",",4);
+                // realName,subject,category
+                modelRequest request = new modelRequest(data[0],data[2],data[1]);
+                request.setRequestDetail(data[3]);
+//                123
+//                ถนนชอบติดออกมาจากโรงเรียนสาธิตเวลาเลิกเรียน
+//                traffic
+//                ยังไม่ดำเนินการ,0,-,ซอยจักรพันธ์,พอถึงเวลาเลิกเรียนของนักเรียนโรงเรียนสาธิตทำให้ผู้ปกตรองที่รับนักเรียนมากันเยอะจนรถติดมาถึง ซอยสุวรรณวาจกกสิกิจ,-,ยังไม่มีคนรับเรื่อง,,
+                list.addRequest(request);
+            }return list;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                reader.close();
+                buffer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

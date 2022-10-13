@@ -27,30 +27,36 @@
                   </Label>
                </children>
             </Pane>
-            <ListView layoutX="20.0" layoutY="109.0" prefHeight="284.0" prefWidth="185.0" />
+            <ListView fx:id="tableListBan" layoutX="20.0" layoutY="109.0" prefHeight="284.0" prefWidth="185.0" />
             <Label layoutX="21.0" layoutY="73.0" prefHeight="30.0" prefWidth="114.0" text="รายชื่อคนที่ถูกแบน :" underline="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="233.0" layoutY="127.0" text="ชื่อ :">
+            <Label fx:id="textUsername" layoutX="233.0" layoutY="127.0" prefHeight="21.0" prefWidth="31.0" text="ชื่อ :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="233.0" layoutY="172.0" prefHeight="20.0" prefWidth="114.0" text="คำร้องข้อคืนสิทธิ์ :">
+            <Label fx:id="textDetail" layoutX="233.0" layoutY="199.0" prefHeight="20.0" prefWidth="114.0" text="คำร้องข้อคืนสิทธิ์ :">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="274.0" layoutY="129.0" prefHeight="17.0" prefWidth="299.0" />
-            <Label alignment="TOP_LEFT" layoutX="233.0" layoutY="192.0" prefHeight="201.0" prefWidth="331.0" />
-            <Button layoutX="475.0" layoutY="88.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" style="-fx-background-radius: 80; -fx-background-color: #00CC00;" text="ปลดล็อคจากการแบน" />
+            <Label fx:id="username" layoutX="264.0" layoutY="123.0" prefHeight="30.0" prefWidth="299.0" />
+            <Label fx:id="detailFromUser" alignment="TOP_LEFT" layoutX="233.0" layoutY="221.0" prefHeight="172.0" prefWidth="331.0" />
+            <Button fx:id="unbanButton" layoutX="475.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleunbanUser" prefHeight="30.0" prefWidth="122.0" style="-fx-background-radius: 80; -fx-background-color: #00CC00;" text="ปลดล็อคจากการแบน" />
             <Button layoutX="257.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleBackAdmin" prefHeight="36.0" prefWidth="114.0" style="-fx-background-radius: 80;" text="กลับไปยังหน้าหลัก">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="textLogin" layoutX="233.0" layoutY="159.0" text="การพยายามเข้าถึง :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="countLogin" layoutX="371.0" layoutY="159.0" prefHeight="21.0" prefWidth="211.0" />
          </children>
       </AnchorPane>
    </children>

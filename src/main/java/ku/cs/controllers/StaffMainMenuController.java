@@ -43,9 +43,6 @@ public class StaffMainMenuController implements Initializable {
     @FXML private TableColumn<modelRequest, String> category;
     @FXML private TableColumn<modelRequest, String> requestStatus;
     @FXML private TableColumn<modelRequest, String> staffName;
-
-    private StaffDataSource dataSource;
-
     private ObservableList<modelRequest> dataRequestList;
     private modelRequestList requestList;
 
@@ -58,7 +55,7 @@ public class StaffMainMenuController implements Initializable {
         staff.setText(staffLogin.getName());
         team.setText(staffLogin.getCategory());
 
-        dataSource = new StaffDataSource("data/staff","user_complaint.csv");
+        StaffDataSource dataSource = new StaffDataSource("data/category",staffLogin.getCategory() + ".csv");
         requestList = dataSource.readData();
         dataRequestList = FXCollections.observableArrayList();
         setMenuTable();
@@ -88,9 +85,7 @@ public class StaffMainMenuController implements Initializable {
     }
 
     private void loadTable(){
-        for (modelRequest input_request : requestList.getAllRequest()){
-            dataRequestList.add(input_request);
-        }
+        dataRequestList.addAll(requestList.getAllRequest());
         menuTable.setItems(dataRequestList);
         menuTable.setOnMouseClicked(e ->{
             event();

@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRegisterList;
+import ku.cs.services.AdminDataSource;
 import ku.cs.services.ImageDataSource;
 import ku.cs.services.UserDataSource;
 
@@ -39,17 +40,22 @@ public class AdminMainController {
     @FXML private Label user_username;
     @FXML private Label user_category;
     @FXML private Label time_login;
-    private UserDataSource dataSource;
+    private AdminDataSource dataSource;
     private ObservableList<modelRegister> login_board;
     private modelRegisterList user_list;
-
+    private modelRegister admin;
+    private ImageDataSource imageDataSource;
+    private UserDataSource userDataSource;
     public void initialize(){
-        name_admin.setText("boss");
-        File image_fact = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "boss.jpg");
+        admin = (modelRegister) FXRouter.getData();
+        imageDataSource = new ImageDataSource();
+        userDataSource = new UserDataSource("data","user.csv");
+        name_admin.setText(admin.getName());
+        File image_fact = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + admin.getImagePath());
         image_admin.setImage(new Image(image_fact.toURI().toString()));
 
-        dataSource = new UserDataSource("data","login_time_user.csv");
-        //user_list = dataSource.read_admin();
+        dataSource = new AdminDataSource("data","login_time_user.csv");
+        user_list = dataSource.read_admin();
         login_board = FXCollections.observableArrayList();
         setMenuTable();
         loadTable();
@@ -80,9 +86,20 @@ public class AdminMainController {
             user_username.setText(user.getUsername());
             user_category.setText(user.getCategory());
             time_login.setText(user.getTime());
-            File destdir_user = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + user.getImagePath());
+            File destdir_user = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + dataSource.pickImageUser(user));
             image_user.setImage(new Image(destdir_user.toURI().toString()));
         }
+    }
+
+    public void handleChangeImage(){
+        String pickTarge = imageDataSource.chooseImage("user_images");
+        if (pickTarge.equals("")){
+            return;
+        }
+        File destDir = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
+        image_admin.setImage(new Image(destDir.toURI().toString()));
+        admin.setImagePath(pickTarge);
+        userDataSource.writeImage(userDataSource.readData(),admin);
     }
     public void handleCreateStaffpage(){
         try{

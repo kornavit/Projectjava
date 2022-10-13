@@ -1,10 +1,10 @@
-realName,userName,password,role,category,image path
-anna,anna1345,kek,user,-,test1.jpg
-Sornsiri Hongsa,joesight,joestaff,staff,Building,2022-10-05_1664970227026.jpg
-test,testza,123,staff,Learning,joe.jpg
-boss,doss123,bossegh,admin,-,test2.jpg
-ghost,noth,hello,user,-,test3.jpg
-ghost,ghost,nini,user,-,2022-09-23_1663907519641.jpg
-kmo,g,uuuuuuuu,user,-,file:/D:/project_java/project211-whitenisitshirt/target/classes/ku/cs/images/default-profile.jpg
-ghost,ghost,nini,user,-,test4.jpg
-kmo,g,uuuuuuuu,user,-,default-profile.jpg
+realName,username,password,role,category,ban or unban,image path
+joe,joesight,joeeee,staff,building,true,joe.jpg
+test,testza,123,staff,Learning,true,joe.jpg
+boss,doss123,bossegh,admin,-,true,boss.jpg
+kmo,g,uuuu,user,-,true,default-profile.jpg
+poy,poy134,hello,user,-,true,default-profile.jpg
+WTF,bossstaff,123,staff,traffic,true,default-profile.jpg
+ghost,123,123,user,-,true,default-profile.jpg
+ghost,ghost,nini,user,-,true,test4.jpg
+ghost,noth,hello,user,-,true,test3.jpg
