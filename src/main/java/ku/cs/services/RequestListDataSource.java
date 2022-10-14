@@ -86,8 +86,8 @@ public class RequestListDataSource {
                             data[3], //status
                             Integer.parseInt(data[4]),  //vote
                             data[6], //detail   //data[5] = amount
-                            data[7], //imagePath
-                            data[8]);  //time);
+                            "", //imagePath
+                            data[7]);  //time);
                     //add request
                     requestList.addRequest(dataRequest);
             }

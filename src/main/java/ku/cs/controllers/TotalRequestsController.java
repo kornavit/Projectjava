@@ -117,12 +117,18 @@ public class TotalRequestsController {
     }
 
     public void handleSortTimeSelected(){
+        if (warningStatus.getText().equals("กรุณาเลือกเวลาหรือโหวตก่อน")){
+            warningStatus.setText("");
+        }
         tableView.getItems().clear();
         dataSource.sortTime(requestList,sortTimeComboBox.getValue());
         loadTable(requestList);
     }
 
     public void handleSortVoteSelected(){
+        if (warningStatus.getText().equals("กรุณาเลือกเวลาหรือโหวตก่อน")){
+            warningStatus.setText("");
+        }
         tableView.getItems().clear();
         dataSource.sortVote(requestList,sortVoteComboBox.getValue());
         loadTable(requestList);
@@ -156,8 +162,4 @@ public class TotalRequestsController {
             loadTable(requestList);
         }
     }
-
-
-
-
 }

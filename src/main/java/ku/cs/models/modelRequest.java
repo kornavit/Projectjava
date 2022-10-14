@@ -37,7 +37,7 @@ public class modelRequest {
         this.time = time;
         this.imagePath = imagePath;
     }
-    // username,category,head,status,vote
+
     public modelRequest(String userName,String category,String head,String status,int votePoint){
         this.category = category;
         this.subject = head;

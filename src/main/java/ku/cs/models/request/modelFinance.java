@@ -37,7 +37,7 @@ public class modelFinance {
 
     public void addFinance(modelFinance finance){
         request = new UserDataSource("data/category","finance.csv");
-        request.writefile_Finance(finance);
+        // request.writefile_Finance(finance);
     }
 
     public void setImagePath(String imagePath) {
