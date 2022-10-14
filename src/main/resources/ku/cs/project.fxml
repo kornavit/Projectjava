@@ -22,7 +22,7 @@
          <children>
             <Button layoutX="209.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleAboutButton" prefHeight="44.0" prefWidth="111.0" style="-fx-background-radius: 90; -fx-background-color: transparent;" text="About Us" textFill="#004dff">
                <font>
-                  <Font size="19.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
             <TextField fx:id="username" layoutX="146.0" layoutY="263.0" prefHeight="34.0" prefWidth="236.0">
@@ -37,9 +37,11 @@
                   <ColorAdjust />
                </effect>
             </Button>
-            <Button layoutX="176.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="39.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
+
+            <Button layoutX="158.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="14.0" />
+
                </font>
                <effect>
                   <ColorAdjust />
@@ -47,15 +49,19 @@
             </Button>
             <Label layoutX="26.0" layoutY="258.0" prefHeight="44.0" prefWidth="111.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
                <font>
-                  <Font size="22.0" />
+
+                  <Font size="20.0" />
+
                </font>
             </Label>
             <Label layoutX="53.0" layoutY="331.0" prefHeight="44.0" prefWidth="76.0" text="รหัสผ่าน" textAlignment="RIGHT">
                <font>
-                  <Font size="22.0" />
+
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="53.0" layoutY="179.0" prefHeight="45.0" prefWidth="454.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+            <Label layoutX="52.0" layoutY="180.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+
                <font>
                   <Font size="36.0" />
                </font>

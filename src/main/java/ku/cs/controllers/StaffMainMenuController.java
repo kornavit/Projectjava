@@ -56,7 +56,7 @@ public class StaffMainMenuController implements Initializable {
         team.setText(staffLogin.getCategory());
 
         StaffDataSource dataSource = new StaffDataSource("data/category",staffLogin.getCategory() + ".csv");
-        requestList = dataSource.readData();
+        // requestList = dataSource.readData();
         dataRequestList = FXCollections.observableArrayList();
         setMenuTable();
         loadTable();

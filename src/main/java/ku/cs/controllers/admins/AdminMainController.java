@@ -51,7 +51,7 @@ public class AdminMainController {
         imageDataSource = new ImageDataSource();
         userDataSource = new UserDataSource("data","user.csv");
         name_admin.setText(admin.getName());
-        File image_fact = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + admin.getImagePath());
+        File image_fact = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + admin.getImagePath());
         image_admin.setImage(new Image(image_fact.toURI().toString()));
 
         dataSource = new AdminDataSource("data","login_time_user.csv");
@@ -86,7 +86,7 @@ public class AdminMainController {
             user_username.setText(user.getUsername());
             user_category.setText(user.getCategory());
             time_login.setText(user.getTime());
-            File destdir_user = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + dataSource.pickImageUser(user));
+            File destdir_user = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + dataSource.pickImageUser(user));
             image_user.setImage(new Image(destdir_user.toURI().toString()));
         }
     }
@@ -96,7 +96,7 @@ public class AdminMainController {
         if (pickTarge.equals("")){
             return;
         }
-        File destDir = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
         image_admin.setImage(new Image(destDir.toURI().toString()));
         admin.setImagePath(pickTarge);
         userDataSource.writeImage(userDataSource.readData(),admin);

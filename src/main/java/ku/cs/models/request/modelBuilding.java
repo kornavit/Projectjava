@@ -2,6 +2,9 @@ package ku.cs.models.request;
 
 import ku.cs.services.UserDataSource;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class modelBuilding {
     private int vote;
     private String equiument;
@@ -9,15 +12,17 @@ public class modelBuilding {
     private String detail;
     private String imagePath;
 
-    private UserDataSource request;
+    private String time;
 
-    public modelBuilding(int vote, String equiument, String location, String detail, String imagePath) {
+
+    public modelBuilding(int vote, String equiument, String location, String detail, String imagePath, String time) {
         this.vote = vote;
         this.equiument = equiument;
         this.location = location;
         this.detail = detail;
         this.imagePath = imagePath;
     }
+
     public int getVote() {
         return vote;
     }
@@ -36,5 +41,13 @@ public class modelBuilding {
 
     public String getImagePath() {
         return imagePath;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

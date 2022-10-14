@@ -6,7 +6,8 @@ import ku.cs.models.request.*;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class UserDataSource { // login and register
     private String directoryName;
@@ -227,5 +228,132 @@ public class UserDataSource { // login and register
                 throw new RuntimeException(e);
             }
         }
+    }
+    public void writefile_learning(modelLearning user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        user.setTime(timeData());
+
+        try {
+            writer = new FileWriter(file, true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    + user.getCourse() + ","
+                    + user.getTeacher() + ","
+                    + user.getGroup() + ","
+                    + user.getDetail() + ","
+                    + user.getTime());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void writefile_building(modelBuilding user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        user.setTime(timeData());
+
+        try {
+            writer = new FileWriter(file,true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    +user.getEquiument() + ","
+                    +user.getLocation() + ","
+                    +user.getDetail() + ","
+                    +user.getImagePath() + ","
+                    +user.getTime());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writefile_traffic(modelTraffic user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        user.setTime(timeData());
+
+        try {
+            writer = new FileWriter(file, true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    +user.getLocation() + ","
+                    +user.getDetailTraffic() + ","
+                    +user.getImagePath() + ","
+                    +user.getTime());
+            buffer.newLine();
+            buffer.close();
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public void writefile_Finance(modelFinance user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        user.setTime(timeData());
+
+        try {
+            writer = new FileWriter(file, true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    + user.getAmount() + ","
+                    + user.getDetail() + ","
+                    + user.getImagePath() + ","
+                    + user.getTime());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void writefile_other(modelOther user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        user.setTime(timeData());
+
+        try {
+            writer = new FileWriter(file,true);
+            buffer = new BufferedWriter(writer);
+            buffer.append("," + user.getVote() + ","
+                    + user.getDetail() + ","
+                    + user.getTime());
+            buffer.newLine();
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String timeData(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+        System.out.println("time: " + formattedDate);
+
+        return formattedDate;
     }
 }

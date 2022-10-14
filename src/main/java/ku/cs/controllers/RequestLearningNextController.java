@@ -18,8 +18,8 @@ public class RequestLearningNextController {
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
-            modelLearning request = new modelLearning(0,course.getText(), teacher.getText(), group.getText(), detail.getText());
-            request.addLearning(request);
+            modelLearning request = new modelLearning(0,course.getText(), teacher.getText(), group.getText(), detail.getText(), "");
+            //request.addLearning(request);
             com.github.saacsos.FXRouter.goTo("success_request");
 
         } catch (IOException e) {

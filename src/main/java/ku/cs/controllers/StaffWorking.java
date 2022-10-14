@@ -59,14 +59,14 @@ public class StaffWorking {
 
     }
 
-    @FXML
-    void handleSubmitButton(ActionEvent event) {
-        request.setStatus(status.getValue());
-        request.setManageDetail(reportToUser.getText());
-        staffDataSource = new StaffDataSource("data/staff","user_complaint");
-        requestList = staffDataSource.readData();
-        staffDataSource.writeData(requestList, request);
-    }
+//    @FXML
+//    void handleSubmitButton(ActionEvent event) {
+//        request.setStatus(status.getValue());
+//        request.setManageDetail(reportToUser.getText());
+//        staffDataSource = new StaffDataSource("data/staff","user_complaint");
+//        requestList = staffDataSource.readData();
+//        staffDataSource.writeData(requestList, request);
+//    }
 
 }
 

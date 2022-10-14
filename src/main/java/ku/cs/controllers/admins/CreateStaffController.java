@@ -38,7 +38,7 @@ public class CreateStaffController {
         category.setValue("-- หน่วยงาน --");
         category.getItems().addAll(partCategory);
         imageDataSource = new ImageDataSource();
-        File destDir = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + "default-profile.jpg");
         photoStaff.setImage(new Image(destDir.toURI().toString()));
         pickTarget = "default-profile.jpg";
     }
@@ -49,7 +49,7 @@ public class CreateStaffController {
             return;
         }
         pickTarget = picture;
-        File destDir = new File("image" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarget);
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarget);
         photoStaff.setImage(new Image(destDir.toURI().toString()));
     }
 

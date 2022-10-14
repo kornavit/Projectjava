@@ -7,10 +7,11 @@ public class modelTraffic {
     private String location;
     private String detail;
     private String imagePath;
+    private String time;
 
     private UserDataSource request;
 
-    public modelTraffic(Integer vote, String location, String detail) {
+    public modelTraffic(Integer vote, String location, String detail, String time) {
         this.vote = vote;
         this.location = location;
         this.detail = detail;
@@ -32,4 +33,12 @@ public class modelTraffic {
     }
 
     public String getImagePath() {return imagePath;}
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
 }

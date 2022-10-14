@@ -4,6 +4,10 @@ import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
 public class RequestListDataSource {
     private String directoryName;
@@ -86,8 +90,6 @@ public class RequestListDataSource {
                             data[8]);  //time);
                     //add request
                     requestList.addRequest(dataRequest);
-
-
             }
             buffer.close();
 
@@ -97,14 +99,15 @@ public class RequestListDataSource {
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                    modelRequest dataRequest = new modelRequest(data[0], //usename
-                                                                data[1], //category
-                                                                data[2], //head
-                                                                data[3], //status
-                                                                Integer.parseInt(data[4]),// vote
-                                                                data[8], // detail data[5,6,7] = course,teacher,sec
-                                                                "", //image
-                                                                data[9]); //time
+                    modelRequest dataRequest = new modelRequest(
+                            data[0], //usename
+                            data[1], //category
+                            data[2], //head
+                            data[3], //status
+                            Integer.parseInt(data[4]),// vote
+                            data[8], // detail data[5,6,7] = course,teacher,sec
+                            "", //image
+                            data[9]); //time
                     //add request
                     requestList.addRequest(dataRequest);
 
@@ -119,17 +122,17 @@ public class RequestListDataSource {
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                    modelRequest dataRequest = new modelRequest(data[0], //username
-                                                                data[1], //category
-                                                                data[2], //head
-                                                                data[3], //status
-                                                                Integer.parseInt(data[4]), //vote
-                                                                data[5], // detail
-                                                                "", // imagePath
-                                                                data[6]); //time
+                    modelRequest dataRequest = new modelRequest(
+                            data[0], //username
+                            data[1], //category
+                            data[2], //head
+                            data[3], //status
+                            Integer.parseInt(data[4]), //vote
+                            data[5], // detail
+                            "", // imagePath
+                            data[6]); //time
                     //add request
                     requestList.addRequest(dataRequest);
-
             }
             buffer.close();
 
@@ -158,7 +161,8 @@ public class RequestListDataSource {
         }
     }
 
-    public modelRequestList readfileRequest(String name) {
+
+    public modelRequestList readfileRequest(String name){
         modelRequestList requestList = new modelRequestList();
         String buildingPath = "data" + File.separator + "category" + File.separator + "building.csv";
         String financePath = "data" + File.separator + "category" + File.separator + "finance.csv";
@@ -300,4 +304,93 @@ public class RequestListDataSource {
             }
         }
     }
+
+    public modelRequestList searchStatus(modelRequestList requestList,String status){
+        modelRequestList requestStatus = new modelRequestList();
+        for (modelRequest request : requestList.getAllRequest()){
+            if (request.getStatus().equals(status)){
+                requestStatus.addRequest(request);
+            }
+        }
+        return requestStatus;
+    }
+    public void sortTime(modelRequestList requestList,String time) {
+        TimeComparator timeComparator = new TimeComparator();
+        if (time.equals("ล่าสุดไปเก่าสุด")) {
+            timeComparator.setDescending(true);
+            Collections.sort(requestList.getAllRequest(), timeComparator);
+
+        } else {
+            Collections.sort(requestList.getAllRequest(), timeComparator);
+        }
+
+    }
+
+    public void sortVote(modelRequestList requestList, String vote){
+        VoteComparator voteComparator = new VoteComparator();
+        if (vote.equals("มากสุดไปน้อยสุด")){
+            voteComparator.setDescending(true);
+            Collections.sort(requestList.getAllRequest(), voteComparator);
+        }else {
+            Collections.sort(requestList.getAllRequest(), voteComparator);
+        }
+    }
+    public modelRequestList searchMoreThan(modelRequestList requestList,Integer more){
+        modelRequestList requestMorethan = new modelRequestList();
+        for (modelRequest request : requestList.getAllRequest()){
+            if (request.getVotePoint() > more){
+                requestMorethan.addRequest(request);
+            }
+        }
+        return requestMorethan;
+    }
+
+    public modelRequestList searchUntil(modelRequestList requestList, Integer until, Integer to){
+        modelRequestList requestUntil = new modelRequestList();
+        for (modelRequest request : requestList.getAllRequest()){
+            if (request.getVotePoint() >= until && request.getVotePoint() <= to){
+                requestUntil.addRequest(request);
+            }
+        }
+        return requestUntil;
+
+    }
+    public modelRequestList sortCategory(modelRequestList requestList, String category){
+
+        modelRequestList requestCategory = new modelRequestList();
+
+        if (category.equals("การเรียนการสอน")){
+            for (modelRequest request : requestList.getAllRequest()){
+                if (request.getCategory().equals("learning")){
+                    requestCategory.addRequest(request);
+                }
+            }
+        } else if ((category.equals("อาคาร สถานที่และสิ่งอำนวยความสะดวก"))){
+            for (modelRequest request : requestList.getAllRequest()){
+                if (request.getCategory().equals("building")){
+                    requestCategory.addRequest(request);
+                }
+            }
+        } else if (category.equals("การจราจรในมหาวิทยาลัย")){
+            for (modelRequest request : requestList.getAllRequest()){
+                if (request.getCategory().equals("traffic")){
+                    requestCategory.addRequest(request);
+                }
+            }
+        } else if (category.equals("การเงินในมหาวิทยาลัย")){
+            for (modelRequest request : requestList.getAllRequest()){
+                if (request.getCategory().equals("finance")){
+                    requestCategory.addRequest(request);
+                }
+            }
+        }else if (category.equals("อื่นๆ")){
+            for (modelRequest request : requestList.getAllRequest()){
+                if (request.getCategory().equals("other")){
+                    requestCategory.addRequest(request);
+                }
+            }
+        }
+        return requestCategory;
+    }
+
 }

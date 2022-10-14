@@ -12,11 +12,10 @@ public class modelFinance {
 
     private UserDataSource request;
 
-    public modelFinance(int vote, int amount, String detail) {
+    public modelFinance(int vote, int amount, String detail,  String time) {
         this.vote = vote;
         this.amount = amount;
         this.detail = detail;
-        this.imagePath = getClass().getResource("/ku/cs/images/default-image.jpg").toExternalForm();
     }
 
     public int getVote() {
@@ -45,4 +44,11 @@ public class modelFinance {
         this.imagePath = imagePath;
     }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
 }

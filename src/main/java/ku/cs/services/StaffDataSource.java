@@ -70,45 +70,45 @@ public class StaffDataSource {
 
 
 
-    public modelRequestList readData() {
-        modelRequestList list = new modelRequestList();
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-        FileReader reader = null;
-        BufferedReader buffer = null;
-
-        try {
-            reader = new FileReader(file);
-            buffer = new BufferedReader(reader);
-
-            String userComplain = "";
-            while (     (userComplain = buffer.readLine())    != null     ){
-                String[] data = userComplain.split(",");
-                modelRequest request = new modelRequest(
-                        data[0].trim(), //requestSubject
-                        data[1].trim(), //staffGroup
-                        data[2].trim(), //category
-                        data[4].trim(), //requestStatus
-                        data[5].trim()); //staffName
-                request.setRequestDetail(data[3].trim()); //requestDetail
-                list.addRequest(request);
-            }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try{
-                buffer.close();
-                reader.close();
-            } catch (IOException e){
-                throw new RuntimeException(e);
-            }
-        }
-        return list;
-
-    }
+//    public modelRequestList readData() {
+//        modelRequestList list = new modelRequestList();
+//        String filePath = directoryName + File.separator + fileName;
+//        File file = new File(filePath);
+//        FileReader reader = null;
+//        BufferedReader buffer = null;
+//
+//        try {
+//            reader = new FileReader(file);
+//            buffer = new BufferedReader(reader);
+//
+//            String userComplain = "";
+//            while (     (userComplain = buffer.readLine())    != null     ){
+//                String[] data = userComplain.split(",");
+//                modelRequest request = new modelRequest(
+//                        data[0].trim(), //requestSubject
+//                        data[1].trim(), //staffGroup
+//                        data[2].trim(), //category
+//                        data[4].trim(), //requestStatus
+//                        data[5].trim()); //staffName
+//                request.setRequestDetail(data[3].trim()); //requestDetail
+//                list.addRequest(request);
+//            }
+//
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//            try{
+//                buffer.close();
+//                reader.close();
+//            } catch (IOException e){
+//                throw new RuntimeException(e);
+//            }
+//        }
+//        return list;
+//
+//    }
 
     public void writeData(modelRequestList reportProblemList, modelRequest reportProblem){
         String filePath = directoryName + File.separator + fileName;

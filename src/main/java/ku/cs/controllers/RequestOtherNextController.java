@@ -17,8 +17,8 @@ public class RequestOtherNextController {
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
-            modelOther request = new modelOther(0,detailTextField.getText());
-            request.addOther(request);
+            modelOther request = new modelOther(0,detailTextField.getText(), "");
+            //request.addOther(request);
             com.github.saacsos.FXRouter.goTo("success_request");
 
         } catch (IOException e) {

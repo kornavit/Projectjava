@@ -3,12 +3,13 @@ package ku.cs.models;
 import ku.cs.models.request.*;
 
 public class modelRequest {
-    // Porrink
-    private String category;
-    private String subject; //คำร้อง
-    private String userName;
-    private String status;
-    private int votePoint;
+
+    protected String category;
+    protected String subject; //คำร้อง
+
+    protected String userName;
+    protected String status;
+    protected int votePoint;
     private String detail;
     private String time;
     private String staffName;
@@ -17,7 +18,6 @@ public class modelRequest {
     private String reportDetail;
 
     private String imagePath;
-
     //staff
     public modelRequest(String subject,String category, String status, String staffName){
         this.subject = subject;
