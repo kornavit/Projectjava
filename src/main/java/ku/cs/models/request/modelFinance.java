@@ -1,54 +1,28 @@
 package ku.cs.models.request;
 
-import ku.cs.services.UserDataSource;
+import ku.cs.models.modelRequest;
 
 public class modelFinance {
-    private int vote;
-    private int amount;
+    private String type;
     private String detail;
-    private String imagePath;
 
-    private String time;
-
-    private UserDataSource request;
-
-    public modelFinance(int vote, int amount, String detail,  String time) {
-        this.vote = vote;
-        this.amount = amount;
+    public modelFinance(String type, String detail) {
+        this.type = type;
         this.detail = detail;
     }
 
-    public int getVote() {
-        return vote;
+    public String getType() {
+        return type;
     }
 
-    public int getAmount() {
-        return amount;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDetail() {
         return detail;
     }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-
-    public void addFinance(modelFinance finance){
-        request = new UserDataSource("data/category","finance.csv");
-        request.writefile_Finance(finance);
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getTime() {
-        return time;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }

@@ -1,0 +1,85 @@
+package ku.cs.controllers;
+
+import com.github.saacsos.FXRouter;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import ku.cs.models.modelRequest;
+
+import java.io.File;
+import java.io.IOException;
+
+public class RequestDetailController {
+    @FXML private ImageView like;
+    @FXML private Label moreDetailLabel;
+    @FXML private Label detailLabel;
+    @FXML private Label staffDetailLabel;
+    @FXML private Label nameLabel;
+    @FXML private Label headLabel;
+    @FXML private Label categoryLabel;
+    @FXML private Label voteLabel;
+    @FXML private ImageView photoImageView;
+    private String photoLike;
+    private modelRequest request;
+
+    @FXML
+    public void initialize(){
+        //PhotoLike
+        File destDir = new File("image_user" + System.getProperty("file.separator") + "like" + System.getProperty("file.separator") + "like_1.png");
+        like.setImage(new Image(destDir.toURI().toString()));
+        changeLike();
+        photoLike = "like_1.png";
+
+        //setText
+        request = (modelRequest) FXRouter.getData();
+        moreDetailLabel.setWrapText(true);
+        detailLabel.setWrapText(true);
+        staffDetailLabel.setWrapText(true);
+
+        detailLabel.setText(request.getDetail());
+        moreDetailLabel.setText(request.getExtra());
+        staffDetailLabel.setText(request.getManageDetail());
+        nameLabel.setText(request.getUsername());
+        headLabel.setText(request.getSubject());
+        categoryLabel.setText(request.getCategory());
+        voteLabel.setText(request.getVotePoint() + "");
+        File imageCategory = new File("image_user" + System.getProperty("file.separator") + "request_" + request.getCategory() +System.getProperty("file.separator") + request.getImagePath());
+        photoImageView.setImage(new Image(imageCategory.toURI().toString()));
+    }
+    public void changeLike(){
+        like.setOnMouseClicked(e ->{
+            if (photoLike.equals("like_1.png")){
+                File destDir = new File("image_user" + System.getProperty("file.separator") + "like" + System.getProperty("file.separator") + "like_2.png");
+                like.setImage(new Image(destDir.toURI().toString()));
+                photoLike = "like_2.png";
+            }else {
+                File destDir = new File("image_user" + System.getProperty("file.separator") + "like" + System.getProperty("file.separator") + "like_1.png");
+                like.setImage(new Image(destDir.toURI().toString()));
+                photoLike = "like_1.png";
+            }
+        });
+    }
+    public void handleReportButton(ActionEvent actionEvent) {
+        try {
+            com.github.saacsos.FXRouter.goTo("report");
+
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า report ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+    public void handleBackTotalRequestButton(ActionEvent actionEvent) {
+        try {
+            com.github.saacsos.FXRouter.goTo("total_complaint");
+
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า total_complaint ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+
+
+}

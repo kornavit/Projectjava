@@ -51,6 +51,10 @@ public class modelRegister {
         return person.search_role(this);
     }
 
+    public void change_image(String imagePath){
+        person = new UserDataSource("data", "user.csv");
+        person.change_image(person.readData(), imagePath, this);
+    }
 
     public String getName() {return realname;}
     public String getUsername(){return username;}

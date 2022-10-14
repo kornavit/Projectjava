@@ -27,16 +27,23 @@ public class ProjectApplication extends Application {
         FXRouter.when("user", packageStr+"user/user.fxml");
         FXRouter.when("request", packageStr+"user/request.fxml",796,598);
 
+        //request
         FXRouter.when("request_learning", packageStr+"user/requestLearningNext.fxml");
         FXRouter.when("request_building", packageStr+"user/requestBuildingNext.fxml");
         FXRouter.when("request_traffic", packageStr+"user/requestTrafficNext.fxml");
+        FXRouter.when("request_finance", packageStr+"user/requestFinanceNext.fxml",875.2,656.8);
         FXRouter.when("request_other", packageStr+"user/requestOtherNext.fxml");
-        FXRouter.when("request_finance",packageStr+ "user/requestFinanceNext.fxml");
 
+        //totalRequest & report
         FXRouter.when("total_complaint", packageStr+"user/totalComplaints.fxml");
         FXRouter.when("success_request", packageStr+"user/successRequest.fxml");
         FXRouter.when("report", packageStr+"user/report.fxml",845,647);
         FXRouter.when("success_report", packageStr+"user/successReport.fxml");
+        FXRouter.when("request_detail", packageStr+"user/requestDetail.fxml",999.2,760);
+
+        //profile
+        FXRouter.when("profile_user", packageStr+"user/profileUser.fxml",1007.6,756.4);
+
 
         //staff
         FXRouter.when("staff_main_menu",packageStr+"staff/staff_main_menu.fxml",960,600);

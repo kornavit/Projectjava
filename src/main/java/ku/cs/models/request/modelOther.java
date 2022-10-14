@@ -1,33 +1,19 @@
 package ku.cs.models.request;
 
-import ku.cs.services.UserDataSource;
+import ku.cs.models.modelRequest;
 
 public class modelOther {
-    private int vote;
     private String detail;
-    private String time;
 
-    private UserDataSource request;
-
-    public modelOther(int vote, String detail, String time) {
-        this.vote = vote;
+    public modelOther(String detail) {
         this.detail = detail;
-    }
-
-    public int getVote() {
-        return vote;
     }
 
     public String getDetail() {
         return detail;
     }
 
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getTime() {
-        return time;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }

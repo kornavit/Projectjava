@@ -19,45 +19,51 @@
       </ImageView>
       <AnchorPane layoutX="135.0" layoutY="24.0" prefHeight="732.0" prefWidth="793.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <TextField fx:id="locationTextField" layoutX="234.0" layoutY="205.0" prefHeight="26.0" prefWidth="483.0" />
             <ImageView fitHeight="120.0" fitWidth="86.0" layoutX="50.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
-            <Label layoutX="165.0" layoutY="39.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน">
-               <font>
-                  <Font name="THChakraPetch" size="36.0" />
-               </font></Label>
-            <Label layoutX="165.0" layoutY="70.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต">
-               <font>
-                  <Font size="36.0" />
-               </font></Label>
-            <Label layoutX="136.0" layoutY="204.0" text="สถานที่ :">
+            <Button layoutX="577.0" layoutY="638.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
-               </font></Label>
-            <Label layoutX="109.0" layoutY="252.0" text="รายละเอียด :">
+               </font></Button>
+            <Label layoutX="79.0" layoutY="200.0" text="สถานที่ :">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
-               </font></Label>
-            <Label layoutX="27.0" layoutY="414.0" text="รูปภาพประกอบการแจ้ง :">
+               </font>
+            </Label>
+            <TextField fx:id="address" layoutX="183.0" layoutY="206.0" prefHeight="26.0" prefWidth="578.0" />
+            <Label layoutX="31.0" layoutY="253.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
-               </font></Label>
-            <Button layoutX="234.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleUploadRequestPhotoButton" style="-fx-background-radius: 90;" text="Upload File" />
-            <Button layoutX="350.0" layoutY="663.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="39.0" prefWidth="163.0" style="-fx-background-radius: 90; -fx-background-color: #006600;" text="Submit" textFill="WHITE" />
-            <ImageView fx:id="requestImageView" fitHeight="150.0" fitWidth="200.0" layoutX="234.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/default-image.jpg" />
-               </image></ImageView>
-            <Separator layoutX="33.0" layoutY="139.0" prefHeight="7.0" prefWidth="726.0" style="-fx-background-color: #006600;" />
-            <TextArea fx:id="detailTextArea" layoutX="234.0" layoutY="252.0" prefHeight="138.0" prefWidth="483.0" />
-            <Label layoutX="165.0" layoutY="146.0" text="หมวดหมู่ : การจราจรในมหาวิทยาลัย" textFill="#302086">
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="468.0" prefHeight="35.0" prefWidth="317.0" text="รูปภาพ/เอกสาร ประกอบการแจ้ง :" textAlignment="CENTER">
+               <font>
+                  <Font name="THChakraPetch" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="351.0" layoutY="473.0" mnemonicParsing="false" onAction="#uploadPic" style="-fx-background-radius: 90;" text="Upload File" />
+            <Label layoutX="187.0" layoutY="146.0" text="หมวดหมู่ : การจารจรในมหาวิทยาลัย" textAlignment="CENTER" textFill="#302086">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-         </children></AnchorPane>
+            <TextArea fx:id="detail" layoutX="183.0" layoutY="253.0" prefHeight="197.0" prefWidth="578.0" />
+            <ImageView fx:id="imagePath" fitHeight="197.0" fitWidth="466.0" layoutX="58.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="156.0" layoutY="31.0" prefHeight="54.0" prefWidth="465.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
+               <font>
+                  <Font name="THChakraPetch-Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="158.0" layoutY="73.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Separator layoutX="30.0" layoutY="138.0" prefHeight="9.0" prefWidth="750.0" style="-fx-background-color: #006600;" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,43 +21,25 @@
       </ImageView>
       <AnchorPane layoutX="20.0" layoutY="24.0" prefHeight="728.0" prefWidth="1018.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <ImageView fx:id="nisitPhoto" fitHeight="98.0" fitWidth="98.0" layoutX="860.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/default-profile.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="104.0" layoutY="31.0" prefHeight="54.0" prefWidth="399.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
+            <Label layoutX="413.0" layoutY="26.0" prefHeight="54.0" prefWidth="399.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <ImageView fitHeight="98.0" fitWidth="89.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="98.0" fitWidth="89.0" layoutX="323.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/KU_Logo_PNG.png" />
                </image>
             </ImageView>
             <Separator layoutX="20.0" layoutY="144.0" prefHeight="6.0" prefWidth="937.0" style="-fx-background-color: #006600;" />
-            <Button layoutX="704.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleBackStartButton" prefHeight="51.0" prefWidth="164.0" style="-fx-background-color: transparent;" text="ออกจากระบบ" textFill="RED">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <effect>
-                  <ColorAdjust />
-               </effect>
-            </Button>
             <Button layoutX="50.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleBackUserButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="กลับสู่หน้าหลัก" textFill="WHITE">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>
             </Button>
-            <Label layoutX="104.0" layoutY="77.0" prefHeight="54.0" prefWidth="399.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
+            <Label layoutX="413.0" layoutY="72.0" prefHeight="54.0" prefWidth="399.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
                <font>
                   <Font size="26.0" />
-               </font>
-            </Label>
-            <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" layoutX="506.0" layoutY="36.0" prefHeight="46.0" prefWidth="343.0" text="ชื่อสำหรับเข้าสู่ระบบ" textFill="#1400c4">
-               <font>
-                  <Font size="30.0" />
                </font>
             </Label>
             <Label layoutX="27.0" layoutY="197.0" text="เรียงตามสถานะ :">

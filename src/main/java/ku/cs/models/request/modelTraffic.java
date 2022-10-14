@@ -1,44 +1,40 @@
+
 package ku.cs.models.request;
 
-import ku.cs.services.UserDataSource;
+import ku.cs.models.modelRequest;
 
 public class modelTraffic {
-    private int vote;
     private String location;
     private String detail;
     private String imagePath;
-    private String time;
 
-    private UserDataSource request;
-
-    public modelTraffic(Integer vote, String location, String detail, String time) {
-        this.vote = vote;
+    public modelTraffic(String location, String detail, String imagePath) {
         this.location = location;
         this.detail = detail;
-        this.imagePath = getClass().getResource("/ku/cs/images/default-image.jpg").toExternalForm();
+        this.imagePath = imagePath;
     }
-    public int getVote() {
-        return vote;
-    }
+
     public String getLocation() {
         return location;
     }
 
-    public String getDetailTraffic() {
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDetail() {
         return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
-    }
-
-    public String getImagePath() {return imagePath;}
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getTime() {
-        return time;
     }
 }

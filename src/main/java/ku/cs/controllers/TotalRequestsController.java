@@ -45,16 +45,12 @@ public class TotalRequestsController {
     ObservableList<String> sortVoteList = FXCollections.observableArrayList("มากสุดไปน้อยสุด", "น้อยสุดไปมากสุด");
     ObservableList<String> sortCategoryList = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย","การเงินในมหาวิทยาลัย", "อื่นๆ");
 
-    @FXML private Label usernameLabel;
-    private modelUser userName;
-    @FXML private ImageView nisitPhoto;
-
     private RequestListDataSource dataSource;
 
     private ObservableList<modelRequest> dataRequestList;
     private modelRequestList requestList;
 
-
+    private modelRegister user;
 
     @FXML public void initialize(){
 
@@ -64,20 +60,29 @@ public class TotalRequestsController {
         sortCategoryComboBox.setItems(sortCategoryList);
 
 
-        modelRegister user = (modelRegister) FXRouter.getData();
-        userName = new modelUser(user.getName());
-        usernameLabel.setText(userName.getName());
-
-        File destDir = new File("image_user" + File.separator + "user_images" + File.separator + user.getImagePath());
-        nisitPhoto.setImage(new Image(destDir.toURI().toString()));
+        user = (modelRegister) FXRouter.getData();
         dataSource = new RequestListDataSource();
         requestList = dataSource.readfileRequest();
         dataRequestList = FXCollections.observableArrayList();
         setTableColumn();
         loadTable(requestList);
+        event();
 
     }
 
+    private void event(){
+        modelRequest request = tableView.getSelectionModel().getSelectedItem();
+        if (request != null){
+            try {
+//                System.out.println(request.getUsername());
+//                System.out.println(request.getCategory());
+                request.setGuest(user.getUsername());
+                FXRouter.goTo("request_detail",request);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
     public void handleBackStartButton(ActionEvent actionEvent) {
         try {
             com.github.saacsos.FXRouter.goTo("start");
@@ -101,6 +106,9 @@ public class TotalRequestsController {
     private void loadTable(modelRequestList requestList){
         dataRequestList.addAll(requestList.getAllRequest());
         tableView.setItems(dataRequestList);
+        tableView.setOnMouseClicked(e->{
+            event();
+        });
     }
     private void setTableColumn(){
         categoryColumn.setCellValueFactory(new  PropertyValueFactory<>("category"));
@@ -117,16 +125,23 @@ public class TotalRequestsController {
     }
 
     public void handleSortTimeSelected(){
+        if (warningStatus.getText().equals("กรุณาเลือกเวลาหรือโหวตก่อน")){
+            warningStatus.setText("");
+        }
         tableView.getItems().clear();
         dataSource.sortTime(requestList,sortTimeComboBox.getValue());
         loadTable(requestList);
     }
 
     public void handleSortVoteSelected(){
+        if (warningStatus.getText().equals("กรุณาเลือกเวลาหรือโหวตก่อน")){
+            warningStatus.setText("");
+        }
         tableView.getItems().clear();
         dataSource.sortVote(requestList,sortVoteComboBox.getValue());
         loadTable(requestList);
     }
+
     public void handleMoreThanVoteSearchButton(){
         if (sortVoteComboBox.getValue() == null && sortTimeComboBox.getValue() == null){
             warningStatus.setText("กรุณาเลือกเวลาหรือโหวตก่อน");

@@ -13,5 +13,5 @@ module cs.ku {
     opens ku.cs.controllers.admins to javafx.fxml;
 
     exports ku.cs.models;
-    opens ku.cs.models.request to javafx.fxml;
+    opens ku.cs.models to javafx.fxml;
 }

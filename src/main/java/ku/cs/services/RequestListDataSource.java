@@ -1,7 +1,11 @@
 package ku.cs.services;
 
+import ku.cs.models.modelRegister;
+import ku.cs.models.modelRegisterList;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
+import ku.cs.models.request.modelBuilding;
+import ku.cs.models.request.modelLearning;
 
 import java.io.*;
 import java.util.Arrays;
@@ -13,30 +17,12 @@ public class RequestListDataSource {
     private String directoryName;
     private String fileName;
 
-    public RequestListDataSource(String directoryName, String fileName){
-        this.directoryName = directoryName;
-        this.fileName = fileName;
-        checkFileIsExisted();
-    }
     public RequestListDataSource(){}
 
-    private void checkFileIsExisted(){
-        File file = new File(directoryName);
-        if ( !file.exists()){
-            file.mkdirs();
-        }
-
-        String filePath = directoryName + File.separator + fileName;
-        file = new File(filePath);
-        if ( ! file.exists()){
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public RequestListDataSource(String directoryName) {
+        this.directoryName = directoryName;
     }
-
+//total_request
     public modelRequestList readfileRequest(){
         modelRequestList requestList = new modelRequestList();
         String buildingPath = "data" + File.separator + "category" + File.separator + "building.csv";
@@ -67,7 +53,9 @@ public class RequestListDataSource {
                             Integer.parseInt(data[4]),  //vote
                             data[7], //detail   data[5] = equiment data[6] = location
                             data[8], //imagePath
-                            data[9]); //time
+                            data[9]);//time
+                dataRequest.setManageDetail(data[11]);
+                dataRequest.setExtra("อุปกรณ์ที่ชำรุด : " + data[5] + "\n" + "สถานที่ : \n" + data[6]);
                     //add request
                     requestList.addRequest(dataRequest);
 
@@ -85,9 +73,11 @@ public class RequestListDataSource {
                             data[2],  //head
                             data[3], //status
                             Integer.parseInt(data[4]),  //vote
-                            data[6], //detail   //data[5] = amount
-                            data[7], //imagePath
-                            data[8]);  //time);
+                            data[6], //detail
+                            "", //imagePath
+                            data[7]);  //time);
+                dataRequest.setManageDetail(data[9]);
+                dataRequest.setExtra("ประเภทการทำธุรกรรม : " + data[5]);
                     //add request
                     requestList.addRequest(dataRequest);
             }
@@ -108,6 +98,8 @@ public class RequestListDataSource {
                             data[8], // detail data[5,6,7] = course,teacher,sec
                             "", //image
                             data[9]); //time
+                dataRequest.setManageDetail(data[11]);
+                dataRequest.setExtra("รายวิชา : " + data[5] + "\nอาจารย์ผู้คุมรายวิชา : " + data[6] +"\nหมู่ : "+ data[7]);
                     //add request
                     requestList.addRequest(dataRequest);
 
@@ -131,6 +123,8 @@ public class RequestListDataSource {
                             data[5], // detail
                             "", // imagePath
                             data[6]); //time
+                dataRequest.setManageDetail(data[8]);
+                dataRequest.setExtra("ไม่มีในหมวดหมู่นี้");
                     //add request
                     requestList.addRequest(dataRequest);
             }
@@ -150,6 +144,8 @@ public class RequestListDataSource {
                             data[6], //detail     //data[5] = location
                             data[7], //image
                             data[8]); //time
+                dataRequest.setManageDetail(data[11]);
+                dataRequest.setExtra("สถานที่ : \n" + data[5]);
                     //add request
                     requestList.addRequest(dataRequest);
             }
@@ -161,7 +157,7 @@ public class RequestListDataSource {
         }
     }
 
-
+//request
     public modelRequestList readfileRequest(String name){
         modelRequestList requestList = new modelRequestList();
         String buildingPath = "data" + File.separator + "category" + File.separator + "building.csv";
@@ -172,22 +168,24 @@ public class RequestListDataSource {
 
         File file = new File(buildingPath);
 
-
         FileReader reader = null;
         BufferedReader buffer = null;
 
-        try {
+        try{
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
+
             //read_building
             buffer.readLine();
             String request = "";
-            while ((request = buffer.readLine()) != null) {
+            while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                if (data[0].equals(name)) {
-                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[9], data[3], Integer.parseInt(data[4]));
+                //String username, String subject,String time, String status, int votePoint
+                if (data[0].equals(name)){
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[7]);
-                    dataRequest.setManageDetail(data[12]);
+                    dataRequest.setManageDetail(data[11]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -198,12 +196,13 @@ public class RequestListDataSource {
             file = new File(financePath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while ((request = buffer.readLine()) != null) {
+            while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                if (data[0].equals(name)) {
-                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[7], data[3], Integer.parseInt(data[4]));
+                if (data[0].equals(name)){
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[7],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[6]);
-                    dataRequest.setManageDetail(data[11]);
+                    dataRequest.setManageDetail(data[9]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -214,12 +213,13 @@ public class RequestListDataSource {
             file = new File(learningPath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while ((request = buffer.readLine()) != null) {
+            while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                if (data[0].equals(name)) {
-                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[9], data[3], Integer.parseInt(data[4]));
+                if (data[0].equals(name)){
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[8]);
-                    dataRequest.setManageDetail(data[12]);
+                    dataRequest.setManageDetail(data[11]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -230,12 +230,13 @@ public class RequestListDataSource {
             file = new File(otherPath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while ((request = buffer.readLine()) != null) {
+            while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                if (data[0].equals(name)) {
-                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[7], data[3], Integer.parseInt(data[4]));
+                if (data[0].equals(name)){
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[7],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[5]);
-                    dataRequest.setManageDetail(data[10]);
+                    dataRequest.setManageDetail(data[8]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -246,12 +247,13 @@ public class RequestListDataSource {
             file = new File(trafficPath);
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
-            while ((request = buffer.readLine()) != null) {
+            while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
-                if (data[0].equals(name)) {
-                    modelRequest dataRequest = new modelRequest(data[2], data[1], data[9], data[3], Integer.parseInt(data[4]));
+                if (data[0].equals(name)){
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[7]);
-                    dataRequest.setManageDetail(data[12]);
+                    dataRequest.setManageDetail(data[10]);
                     //add request
                     requestList.addRequest(dataRequest);
                 }
@@ -259,15 +261,10 @@ public class RequestListDataSource {
             buffer.close();
 
             return requestList;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-                reader.close();
-                buffer.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
     public modelRequestList readAdminRequest(String category){
@@ -393,4 +390,105 @@ public class RequestListDataSource {
         return requestCategory;
     }
 
+    public void writeFileRequest(modelRequest request){
+        String filePath = directoryName + File.separator + request.getCategory() + ".csv";
+        File file = new File(filePath);
+        System.out.println(request.getCategory());
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+
+        try {
+            //building
+            if (request.getCategory().equals("building")){
+                writer = new FileWriter(file,true);
+                buffer = new BufferedWriter(writer);
+                buffer.append(request.getUsername() + ","
+                        +request.getCategory() + ","
+                        +request.getSubject() + ","
+                        +request.getStatus() + ","
+                        +request.getVotePoint() + ","
+                        +request.getBuilding().getEquipment() + ","
+                        +request.getBuilding().getLocation() + ","
+                        +request.getBuilding().getDetail().replace("\n","|") + ","
+                        +request.getBuilding().getImagePath()+ ","
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,-"
+                );
+                buffer.newLine();
+                buffer.close();
+            }
+            //finance
+            if (request.getCategory().equals("finance")){
+                writer = new FileWriter(file, true);
+                buffer = new BufferedWriter(writer);
+                buffer.append(request.getUsername() + ","
+                        +request.getCategory() + ","
+                        +request.getSubject() + ","
+                        +request.getStatus() + ","
+                        +request.getVotePoint() + ","
+                        +request.getFinance().getType() + ","
+                        +request.getFinance().getDetail().replace("\n","|")+ ","
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,-"
+                );
+                buffer.newLine();
+                buffer.close();
+            }
+            //learning
+            if (request.getCategory().equals("learning")){
+                writer = new FileWriter(file,true);
+                buffer = new BufferedWriter(writer);
+                buffer.append(request.getUsername() + ","
+                        +request.getCategory() + ","
+                        +request.getSubject() + ","
+                        +request.getStatus() + ","
+                        +request.getVotePoint() + ","
+                        +request.getLearning().getCourse() + ","
+                        +request.getLearning().getTeacher() + ","
+                        +request.getLearning().getGroup() + ","
+                        +request.getLearning().getDetail().replace("\n","|")+ "," // staffGroup,staffName,การแก้ปัญหา(คันด้วย | พอขึ้นบรรทัดใหม่),คนที่มากด like(คันด้วย | )
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,-"
+                );
+                buffer.newLine();
+                buffer.close();
+            }
+            //other
+            if (request.getCategory().equals("other")) {
+                writer = new FileWriter(file, true);
+                buffer = new BufferedWriter(writer);
+                buffer.append(request.getUsername() + ","
+                        + request.getCategory() + ","
+                        + request.getSubject() + ","
+                        + request.getStatus() + ","
+                        + request.getVotePoint() + ","
+                        +request.getOther().getDetail().replace("\n","|")+ ","
+                        +request.getTime() + ",ยังไม่มีเจ้าหน้าที่รับเรื่อง,-,-"
+                );
+                buffer.newLine();
+                buffer.close();
+            }
+            //traffic
+            if (request.getCategory().equals("traffic")) {
+                writer = new FileWriter(file, true);
+                buffer = new BufferedWriter(writer);
+                buffer.append(request.getUsername() + ","
+                        + request.getCategory() + ","
+                        + request.getSubject() + ","
+                        + request.getStatus() + ","
+                        + request.getVotePoint() + ","
+                        +request.getTraffic().getLocation() + ","
+                        +request.getTraffic().getDetail().replace("\n","|") + ","
+                        +request.getTraffic().getImagePath()+ ","
+                        +request.getTime() + ",ยังไม่ได้รับเรื่องร้องเรียน,-,-"
+                );
+                buffer.newLine();
+                buffer.close();
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String checkLike(){
+        return
+    }
 }

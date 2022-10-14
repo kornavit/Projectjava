@@ -223,7 +223,7 @@ public class AdminDataSource {
             if (request.getCategory().equals("building")){
                 while((readDetail = buffer.readLine()) != null ){
                     String[] data = readDetail.split(",");
-                    if (data[0].equals(request.getUserName()) && data[2].equals(request.getSubject())){
+                    if (data[0].equals(request.getUsername()) && data[2].equals(request.getSubject())){
                         request.setRequestDetail(data[7]);
                         break;
                     }
@@ -231,7 +231,7 @@ public class AdminDataSource {
             }else if (request.getCategory().equals("finance")) {
                 while((readDetail = buffer.readLine()) != null ){
                     String[] data = readDetail.split(",");
-                    if (data[0].equals(request.getUserName()) && data[2].equals(request.getSubject())){
+                    if (data[0].equals(request.getUsername()) && data[2].equals(request.getSubject())){
                         request.setRequestDetail(data[6]);
                         break;
                     }
@@ -239,7 +239,7 @@ public class AdminDataSource {
             }else if (request.getCategory().equals("learning")){
                 while((readDetail = buffer.readLine()) != null ){
                     String[] data = readDetail.split(",");
-                    if (data[0].equals(request.getUserName()) && data[2].equals(request.getSubject())){
+                    if (data[0].equals(request.getUsername()) && data[2].equals(request.getSubject())){
                         request.setRequestDetail(data[8]);
                         break;
                     }
@@ -247,7 +247,7 @@ public class AdminDataSource {
             }else if (request.getCategory().equals("traffic")){
                 while((readDetail = buffer.readLine()) != null ){
                     String[] data = readDetail.split(",");
-                    if (data[0].equals(request.getUserName()) && data[2].equals(request.getSubject())){
+                    if (data[0].equals(request.getUsername()) && data[2].equals(request.getSubject())){
                         request.setRequestDetail(data[6]);
                         break;
                     }
@@ -255,7 +255,7 @@ public class AdminDataSource {
             }else if (request.getCategory().equals("other")){
                 while((readDetail = buffer.readLine()) != null ){
                     String[] data = readDetail.split(",");
-                    if (data[0].equals(request.getUserName()) && data[2].equals(request.getSubject())){
+                    if (data[0].equals(request.getUsername()) && data[2].equals(request.getSubject())){
                         request.setRequestDetail(data[5]);
                         break;
                     }
@@ -275,9 +275,9 @@ public class AdminDataSource {
             writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
             for (modelRequest request : requestList.getAllRequest()){
-                if (!(request.getUserName().equals(deleteRequest.getUserName()) && request.getSubject().equals(deleteRequest.getSubject()))){
+                if (!(request.getUsername().equals(deleteRequest.getUsername()) && request.getSubject().equals(deleteRequest.getSubject()))){
                     // username,category,head
-                    String writeRequest = request.getUserName() + "," + request.getCategory() + "," + request.getSubject() + request.getRequestDetail();
+                    String writeRequest = request.getUsername() + "," + request.getCategory() + "," + request.getSubject() + request.getRequestDetail();
                     buffer.append(writeRequest);
                     buffer.newLine();
                 }
@@ -291,9 +291,9 @@ public class AdminDataSource {
             buffer.append("username,head,category,detail(ของการรายงานเนื้อหานั้น)");
             buffer.newLine();
             for (modelRequest request : reportRequest.getAllRequest()){
-                if (!(request.getUserName().equals(deleteRequest.getUserName()) && request.getSubject().equals(deleteRequest.getSubject()))){
+                if (!(request.getUsername().equals(deleteRequest.getUsername()) && request.getSubject().equals(deleteRequest.getSubject()))){
                     // username,head,category,detail(ของการรายงานเนื้อหานั้น)
-                    String writeReport = request.getUserName() + "," + request.getSubject() + "," + request.getCategory() + "," + request.getReportDetail();
+                    String writeReport = request.getUsername() + "," + request.getSubject() + "," + request.getCategory() + "," + request.getReportDetail();
                     buffer.append(writeReport);
                     buffer.newLine();
                 }

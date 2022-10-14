@@ -19,11 +19,6 @@
       </ImageView>
       <AnchorPane layoutX="18.0" layoutY="73.0" prefHeight="451.0" prefWidth="758.0" style="-fx-background-color: #ffff; -fx-background-radius: 80;">
          <children>
-            <Label fx:id="test" layoutX="236.0" layoutY="210.0" prefWidth="315.0" text="Label" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
             <TextField fx:id="headTextField" layoutX="271.0" layoutY="302.0" prefHeight="35.0" prefWidth="445.0" />
             <Label layoutX="149.0" layoutY="302.0" prefHeight="35.0" prefWidth="111.0" text="หัวเรื่อง(*) :" textAlignment="CENTER">
                <font>

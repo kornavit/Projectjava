@@ -205,6 +205,7 @@ public class UserDataSource { // login and register
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
 
+
             String line_name = "";
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
@@ -229,131 +230,41 @@ public class UserDataSource { // login and register
             }
         }
     }
-    public void writefile_learning(modelLearning user){
+
+    public void change_image(modelRegisterList users,String pickTarget, modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
         FileWriter writer = null;
         BufferedWriter buffer = null;
-
-        user.setTime(timeData());
-
         try {
-            writer = new FileWriter(file, true);
+            writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    + user.getCourse() + ","
-                    + user.getTeacher() + ","
-                    + user.getGroup() + ","
-                    + user.getDetail() + ","
-                    + user.getTime());
-            buffer.newLine();
+
+            for (modelRegister nisit : users.getAllUsers()){
+                if (nisit.getUsername().equals(user.getUsername()) ){
+                    nisit.setImagePath(pickTarget);
+                }
+                String userInfo = nisit.getName() + ","
+                        +nisit.getUsername() + ","
+                        +nisit.getPassword() + ","
+                        +nisit.getRole() + ","
+                        +nisit.getImagePath();
+
+                buffer.append(userInfo);
+                buffer.newLine();
+            }
             buffer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try{
+                buffer.close();
+                writer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-
-    public void writefile_building(modelBuilding user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        user.setTime(timeData());
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    +user.getEquiument() + ","
-                    +user.getLocation() + ","
-                    +user.getDetail() + ","
-                    +user.getImagePath() + ","
-                    +user.getTime());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void writefile_traffic(modelTraffic user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        user.setTime(timeData());
-
-        try {
-            writer = new FileWriter(file, true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    +user.getLocation() + ","
-                    +user.getDetailTraffic() + ","
-                    +user.getImagePath() + ","
-                    +user.getTime());
-            buffer.newLine();
-            buffer.close();
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }
-    public void writefile_Finance(modelFinance user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        user.setTime(timeData());
-
-        try {
-            writer = new FileWriter(file, true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    + user.getAmount() + ","
-                    + user.getDetail() + ","
-                    + user.getImagePath() + ","
-                    + user.getTime());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void writefile_other(modelOther user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        user.setTime(timeData());
-
-        try {
-            writer = new FileWriter(file,true);
-            buffer = new BufferedWriter(writer);
-            buffer.append("," + user.getVote() + ","
-                    + user.getDetail() + ","
-                    + user.getTime());
-            buffer.newLine();
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private String timeData(){
-        LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("time: " + formattedDate);
-
-        return formattedDate;
-    }
 }

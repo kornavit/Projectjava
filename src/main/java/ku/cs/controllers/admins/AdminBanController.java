@@ -74,7 +74,7 @@ public class AdminBanController {
         if (request != null){
             paneDeleteDetail.setVisible(true);
             head.setText(request.getSubject());
-            usernameReport.setText(request.getUserName());
+            usernameReport.setText(request.getUsername());
             adminDataSource.readRequestDetailReport(request);
             detail.setText(request.getRequestDetail().replace("|","\n"));
             detailReport.setText(request.getReportDetail().replace("|","\n"));
