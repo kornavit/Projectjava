@@ -1,4 +1,4 @@
-name,username,password,role,image path
+realName,username,password,role,category,ban or unban,image path
 anna,anna1345,kek,user,-
 joe,joesight,joeeee,staff,-
 boss,doss123,bossegh,admin,boss.jpg

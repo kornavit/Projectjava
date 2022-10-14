@@ -170,7 +170,6 @@ public class modelRequest {
     public void setStaffName(String staffName) {
         this.staffName = staffName;
     }
-
     public String getStaffGroup() {
         return staffGroup;
     }
@@ -178,19 +177,6 @@ public class modelRequest {
     public void setStaffGroup(String staffGroup) {
         this.staffGroup = staffGroup;
     }
-
-    public void addRequestTraffic(modelRequest request){
-        user = new RequestListDataSource("data/category", "traffic.csv"); //if
-    }
-
-    public void addRequestBuilding(modelRequest request){
-        user = new RequestListDataSource("data/category","building.csv");
-    }
-
-    public void addRequestOther(modelRequest request){
-        user = new RequestListDataSource("data/category", "other.csv");
-    }
-
 
     public String getExtra() {
         return extra;
