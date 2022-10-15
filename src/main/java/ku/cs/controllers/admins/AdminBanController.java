@@ -5,7 +5,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
@@ -74,7 +73,7 @@ public class AdminBanController {
         if (request != null){
             paneDeleteDetail.setVisible(true);
             head.setText(request.getSubject());
-            usernameReport.setText(request.getUserName());
+            usernameReport.setText(request.getUsername());
             adminDataSource.readRequestDetailReport(request);
             detail.setText(request.getRequestDetail().replace("|","\n"));
             detailReport.setText(request.getReportDetail().replace("|","\n"));

@@ -1,53 +1,49 @@
 package ku.cs.models.request;
 
-import ku.cs.services.UserDataSource;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import ku.cs.models.modelRequest;
 
 public class modelBuilding {
-    private int vote;
-    private String equiument;
+    private String equipment;
     private String location;
     private String detail;
     private String imagePath;
 
-    private String time;
-
-
-    public modelBuilding(int vote, String equiument, String location, String detail, String imagePath, String time) {
-        this.vote = vote;
-        this.equiument = equiument;
+    public modelBuilding(String equipment, String location, String detail, String imagePath) {
+        this.equipment = equipment;
         this.location = location;
         this.detail = detail;
         this.imagePath = imagePath;
     }
 
-    public int getVote() {
-        return vote;
+    public String getEquipment() {
+        return equipment;
     }
 
-    public String getEquiument() {
-        return equiument;
+    public void setEquipment(String equipment) {
+        this.equipment = equipment;
     }
 
     public String getLocation() {
         return location;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getDetail() {
         return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public String getImagePath() {
         return imagePath;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

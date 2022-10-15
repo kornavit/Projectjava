@@ -1,19 +1,15 @@
 package ku.cs.models.request;
 
+import ku.cs.models.modelRequest;
+import ku.cs.services.RequestListDataSource;
 import ku.cs.services.UserDataSource;
 
-public class modelLearning {
+public class modelLearning{
     private String course;
     private String teacher;
     private String group;
     private String detail;
-    private int vote;
-    private String time;
-    private UserDataSource request;
-
-
-    public modelLearning(Integer vote, String course, String teacher, String group, String detail, String time) {
-        this.vote = vote;
+    public modelLearning(String course, String teacher, String group, String detail) {
         this.course = course;
         this.teacher = teacher;
         this.group = group;
@@ -31,16 +27,5 @@ public class modelLearning {
     }
     public String getDetail() {
         return detail;
-    }
-    public int getVote() {
-        return vote;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 }

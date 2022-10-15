@@ -205,6 +205,7 @@ public class UserDataSource { // login and register
             reader = new FileReader(file);
             buffer = new BufferedReader(reader);
 
+
             String line_name = "";
             while ( (line_name = buffer.readLine()) != null){
                 String[] data = line_name.split(",");
@@ -230,12 +231,40 @@ public class UserDataSource { // login and register
         }
     }
 
-    private String timeData(){
-        LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("time: " + formattedDate);
+    public void change_image(modelRegisterList users,String pickTarget, modelRegister user){
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
 
-        return formattedDate;
+        FileWriter writer = null;
+        BufferedWriter buffer = null;
+        try {
+            writer = new FileWriter(file);
+            buffer = new BufferedWriter(writer);
+
+            for (modelRegister nisit : users.getAllUsers()){
+                if (nisit.getUsername().equals(user.getUsername()) ){
+                    nisit.setImagePath(pickTarget);
+                }
+                String userInfo = nisit.getName() + ","
+                        +nisit.getUsername() + ","
+                        +nisit.getPassword() + ","
+                        +nisit.getRole() + ","
+                        +nisit.getImagePath();
+
+                buffer.append(userInfo);
+                buffer.newLine();
+            }
+            buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try{
+                buffer.close();
+                writer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
+
 }
