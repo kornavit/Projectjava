@@ -35,7 +35,7 @@
                   <Font name="THChakraPetch-Bold" size="36.0" />
                </font>
             </Label>
-            <Button layoutX="30.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackUserButton" prefHeight="43.0" prefWidth="134.0" style="-fx-background-radius: 90;" text="กลับสู่หน้าหลัก">
+            <Button layoutX="30.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackUserButton" prefHeight="51.0" prefWidth="167.0" style="-fx-background-radius: 90;" text="กลับสู่หน้าหลัก">
                <font>
                   <Font name="THChakraPetch" size="24.0" />
                </font>

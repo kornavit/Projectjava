@@ -57,7 +57,7 @@
                   <TableColumn fx:id="voteColumn" editable="false" prefWidth="96.7999267578125" sortable="false" text="คะแนนโหวต" />
               </columns>
             </TableView>
-            <AnchorPane layoutX="749.0" layoutY="251.0" prefHeight="370.0" prefWidth="246.0" style="-fx-background-color: #eaeaea; -fx-background-radius: 50;">
+            <AnchorPane layoutX="749.0" layoutY="291.0" prefHeight="317.0" prefWidth="246.0" style="-fx-background-color: #eaeaea; -fx-background-radius: 50;">
                <children>
                   <ComboBox fx:id="sortTimeComboBox" layoutX="14.0" layoutY="57.0" onAction="#handleSortTimeSelected" prefWidth="150.0" />
                   <Label layoutX="14.0" layoutY="31.0" text="เรียงตามเวลา" />
@@ -80,7 +80,7 @@
                   <Label layoutX="14.0" layoutY="198.0" text="ตั้งแต่" />
                   <Button layoutX="191.0" layoutY="195.0" mnemonicParsing="false" onAction="#handleUntilVoteSearchButton" text="ค้นหา" />
                </children></AnchorPane>
-            <Label fx:id="warningStatus" layoutX="749.0" layoutY="224.0" prefHeight="18.0" prefWidth="225.0" textFill="RED" />
+            <Label fx:id="warningStatus" layoutX="760.0" layoutY="264.0" prefHeight="18.0" prefWidth="225.0" textFill="RED" />
          </children>
       </AnchorPane>
    </children>

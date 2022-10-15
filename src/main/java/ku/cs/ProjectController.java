@@ -59,10 +59,8 @@ public class ProjectController {
             } else {
                 resultLogin.setText(user.role());
             }
-        }
-        catch (IOException e){
-            System.err.println("ไปที่หน้าที่กำลัง login ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

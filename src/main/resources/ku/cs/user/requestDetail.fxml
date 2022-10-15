@@ -87,7 +87,7 @@
                         <Font name="THChakraPetch" size="24.0" />
                      </font>
                   </Button>
-                  <Label fx:id="voteLabel" contentDisplay="CENTER" layoutX="94.0" layoutY="22.0" prefHeight="21.0" prefWidth="143.0" text="score" textOverrun="CENTER_ELLIPSIS">
+                  <Label fx:id="voteLabel" contentDisplay="CENTER" layoutX="101.0" layoutY="30.0" prefHeight="21.0" prefWidth="143.0" text="score" textOverrun="CENTER_ELLIPSIS">
                      <font>
                         <Font size="24.0" />
                      </font>

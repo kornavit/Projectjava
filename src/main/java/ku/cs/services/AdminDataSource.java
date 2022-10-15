@@ -324,17 +324,10 @@ public class AdminDataSource {
                 buffer.append(input_user);
                 buffer.newLine();
             }
+            buffer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }finally {
-            try {
-                writer.close();
-                buffer.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
-
     }
     public void writeBanDetailUser(modelBanUserList userBan, String detail, String username){ // detail to unban
         String filePath = "data" + File.separator + "ban.csv";

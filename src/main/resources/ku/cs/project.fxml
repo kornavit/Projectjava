@@ -29,7 +29,7 @@
                <font>
                   <Font size="11.0" />
                </font></TextField>
-            <Button layoutX="276.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
+            <Button layoutX="276.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleNewRegisterButton" prefHeight="39.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="สมัครสมาชิกใหม่" underline="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -38,7 +38,7 @@
                </effect>
             </Button>
 
-            <Button layoutX="158.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
+            <Button layoutX="191.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
                <font>
                   <Font size="14.0" />
 
@@ -50,14 +50,14 @@
             <Label layoutX="26.0" layoutY="258.0" prefHeight="44.0" prefWidth="111.0" text="ชื่อเข้าสู่ระบบ" textAlignment="CENTER">
                <font>
 
-                  <Font size="20.0" />
+                  <Font size="22.0" />
 
                </font>
             </Label>
             <Label layoutX="53.0" layoutY="331.0" prefHeight="44.0" prefWidth="76.0" text="รหัสผ่าน" textAlignment="RIGHT">
                <font>
 
-                  <Font size="20.0" />
+                  <Font size="22.0" />
                </font>
             </Label>
             <Label layoutX="52.0" layoutY="180.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
