@@ -22,9 +22,9 @@ public class RequestDetailController {
     @FXML private Label categoryLabel;
     @FXML private Label voteLabel;
     @FXML private ImageView photoImageView;
+    @FXML private Label showNoImage;
     private String photoLike;
     private modelRequest request;
-
     private RequestListDataSource dataSource;
     @FXML
     public void initialize(){
@@ -51,9 +51,12 @@ public class RequestDetailController {
         nameLabel.setText(request.getUsername());
         headLabel.setText(request.getSubject());
         categoryLabel.setText(request.getCategory());
-        voteLabel.setText(request.getVotePoint() + "");
-        File imageCategory = new File("image_user" + System.getProperty("file.separator") + "request_" + request.getCategory() +System.getProperty("file.separator") + request.getImagePath());
-        photoImageView.setImage(new Image(imageCategory.toURI().toString()));
+        voteLabel.setText(String.valueOf(request.getVotePoint()));
+        if (request.getCategory().equals("building") || request.getCategory().equals("traffic")){
+            File imageCategory = new File("image_user" + System.getProperty("file.separator") + "request_" + request.getCategory() +System.getProperty("file.separator") + request.getImagePath());
+            photoImageView.setImage(new Image(imageCategory.toURI().toString()));
+            showNoImage.setVisible(false);
+        }
         changeLike();
     }
     public void changeLike(){

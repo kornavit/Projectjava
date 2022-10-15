@@ -3,10 +3,12 @@ package ku.cs.controllers;
 import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import ku.cs.models.modelRequest;
 import ku.cs.models.request.modelBuilding;
 import ku.cs.services.ImageDataSource;
@@ -20,6 +22,7 @@ public class RequestBuildingNextController {
     @FXML private TextField address;
     @FXML private TextArea detail;
     @FXML private ImageView imagePath;
+    @FXML private Label inputImage;
     private modelRequest request;
     private String pickTarget;
     private ImageDataSource getImage;
@@ -40,6 +43,11 @@ public class RequestBuildingNextController {
         imagePath.setImage(new Image(destDir.toURI().toString()));
     }
     public void handleSubmitButton(ActionEvent actionEvent) {
+        if (pickTarget.equals("")){
+            inputImage.setTextFill(Color.RED);
+            inputImage.setText("อย่าลืมใส่รูปปัญหาของสิ่งก่อสร้าง");
+            return;
+        }
         modelBuilding building = new modelBuilding(equipment.getText(),address.getText(),detail.getText(),pickTarget);
         request.setBuilding(building);
         RequestListDataSource dataSource = new RequestListDataSource("data/category");

@@ -74,6 +74,11 @@
                   <Image url="@../../../../../../image_user/user_images/default-profile.jpg" />
                </image>
             </ImageView>
+            <Label fx:id="inputImage" layoutX="465.0" layoutY="466.0" prefHeight="42.0" prefWidth="305.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
