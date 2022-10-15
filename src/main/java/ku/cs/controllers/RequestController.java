@@ -57,35 +57,33 @@ public class RequestController implements Initializable{
         return select;
     }
 
-    public void handleNextButton(ActionEvent actionEvent) {
-        name = (modelUser) FXRouter.getData();
-        modelRequest request = new modelRequest(name.getName(), test.getText(), headTextField.getText(),"ยังไม่ดำเนินการ" );
-        try {
-            String checkError = "";
-            if (changeCategory(actionEvent) == 1 && !headTextField.getText().equals("")) {
-                FXRouter.goTo("request_learning", request);
-                request.addRequestLearning(request);
-            } else if (changeCategory(actionEvent) == 2 && !headTextField.getText().equals("")) {
-                FXRouter.goTo("request_building", request);
-                request.addRequestBuilding(request);
-            } else if (changeCategory(actionEvent) == 3 && !headTextField.getText().equals("")){
-                FXRouter.goTo("request_traffic", request);
-                request.addRequestTraffic(request);
-            } else if (changeCategory(actionEvent) == 4 && !headTextField.getText().equals("")){
-                FXRouter.goTo("request_other", request);
-                request.addRequestOther(request);
-            }else {
-                checkError += "กรุณากรอกหัวเรื่อง หรือเลือกหมวดหมู่เรื่องร้องเรียน\n";
-                showerror.setTextFill(Color.RED);
-                showerror.setText(checkError);
-                showerror.setWrapText(true);
-            }
-
-
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า request_next ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
-        }
-    }
-
+//    public void handleNextButton(ActionEvent actionEvent) {
+//        name = (modelUser) FXRouter.getData();
+//        modelRequest request = new modelRequest(name.getName(), test.getText(), headTextField.getText(),"ยังไม่ดำเนินการ" );
+//        try {
+//            String checkError = "";
+//            if (changeCategory(actionEvent) == 1 && !headTextField.getText().equals("")) {
+//                FXRouter.goTo("request_learning", request);
+//                request.addRequestLearning(request);
+//            } else if (changeCategory(actionEvent) == 2 && !headTextField.getText().equals("")) {
+//                FXRouter.goTo("request_building", request);
+//                request.addRequestBuilding(request);
+//            } else if (changeCategory(actionEvent) == 3 && !headTextField.getText().equals("")){
+//                FXRouter.goTo("request_traffic", request);
+//                request.addRequestTraffic(request);
+//            } else if (changeCategory(actionEvent) == 4 && !headTextField.getText().equals("")){
+//                FXRouter.goTo("request_other", request);
+//                request.addRequestOther(request);
+//            }else {
+//                checkError += "กรุณากรอกหัวเรื่อง หรือเลือกหมวดหมู่เรื่องร้องเรียน\n";
+//                showerror.setTextFill(Color.RED);
+//                showerror.setText(checkError);
+//                showerror.setWrapText(true);
+//            }
+//
+//
+//        } catch (IOException e) {
+//            System.err.println("ไปที่หน้า request_next ไม่ได้");
+//            System.err.println("ให้ตรวจสอบการกำหนด route");
+//        }
 }

@@ -207,7 +207,7 @@ public class UserDataSource { // login and register
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
-            buffer.append(user.getRealName() + ","
+            buffer.append(user.getUsername() + ","
                     +user.getCategory() + ","
                     +user.getSubject() + ","
                     +user.getStatus());

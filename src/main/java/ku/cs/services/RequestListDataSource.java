@@ -72,13 +72,10 @@ public class RequestListDataSource {
         try {
             writer = new FileWriter(file,true);
             buffer = new BufferedWriter(writer);
-            buffer.append(request.getRealName() + ","
+            buffer.append(request.getUsername() + ","
                     +request.getCategory() + ","
                     +request.getSubject() + ","
-                    +request.getRealName() + ","
-                    +request.getFaculty() + ","
-                    +request.getDepartment() + ","
-                    +request.getTelephone() + ","
+                    +request.getUsername() + ","
                     +request.getStatus());
 
             buffer.newLine();

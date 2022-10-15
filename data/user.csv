@@ -1,8 +1,21 @@
-realName,userName,password,role,category,image path
-anna,anna1345,kek,user,-,test1.jpg
-Sornsiri Hongsa,joesight,joestaff,staff,Building,2022-10-05_1664970227026.jpg
-test,testza,123,staff,Learning,joe.jpg
-boss,doss123,bossegh,admin,-,test2.jpg
-ghost,noth,hello,user,-,test3.jpg
-ghost,ghost,nini,user,-,test4.jpg
-kmo,g,uuuuuuuu,user,-,default-profile.jpg
+realName,username,password,role,category,ban or unban,image path
+boss,doss123,bossegh,admin,-,true,boss.jpg
+kiriko,golden,uuuu,user,-,true,default-profile.jpg
+poy,poy134,hello,user,-,true,default-profile.jpg
+bas,sukanut,nini,user,-,true,default-profile.jpg
+nueng,ratchapon,1kung,user,-,true,default-profile.jpg
+Tak,staff1,worker1,staff,building,true,default-profile.jpg
+Joe,joesight,joeyboy,staff,building,true,default-profile.jpg
+Ice,staff2,worker2,staff,building,true,default-profile.jpg
+Non,staff3,worker3,staff,finance,true,default-profile.jpg
+Tong,staff4,worker4,staff,finance,true,default-profile.jpg
+Max,staff5,worker5,staff,finance,true,default-profile.jpg
+George,staff6,worker6,staff,learning,true,default-profile.jpg
+Jew,staff7,worker7,staff,learning,true,default-profile.jpg
+Champ,staff8,worker8,staff,learning,true,default-profile.jpg
+Safe,staff9,worker9,staff,other,true,default-profile.jpg
+Arm,staff10,worker10,staff,other,true,default-profile.jpg
+Ping,staff11,worker11,staff,other,true,default-profile.jpg
+Sayuri,staff12,worker12,staff,traffic,true,default-profile.jpg
+Kyoko,staff13,worker13,staff,traffic,true,default-profile.jpg
+Karen,staff14,worker14,staff,traffic,true,default-profile.jpg

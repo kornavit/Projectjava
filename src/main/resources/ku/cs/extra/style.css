@@ -1,0 +1,25 @@
+.body{
+    -fx-background-color: #3CB371;
+}
+.sub{
+     -fx-background-color: #fff;
+     -fx-background-radius: 10;
+}
+
+.group{
+     -fx-background-color: #81FBB8;
+     -fx-background-radius: 10;
+}
+
+.box{
+     -fx-background-color: #90EE90;
+     -fx-background-radius: 20;
+}
+
+.button{
+     -fx-background-color: #2E8B57;
+     -fx-background-radius: 5,7;
+     -fx-background-insets: 0,2;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.7), 3, 0.0, 0, 1);
+     -fx-text-fill: #ffffff;
+}
