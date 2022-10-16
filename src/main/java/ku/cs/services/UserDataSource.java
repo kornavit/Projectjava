@@ -230,7 +230,6 @@ public class UserDataSource { // login and register
             }
         }
     }
-
     public void change_image(modelRegisterList users,String pickTarget, modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);

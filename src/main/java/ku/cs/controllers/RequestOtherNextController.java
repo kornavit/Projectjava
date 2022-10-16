@@ -21,7 +21,7 @@ public class RequestOtherNextController {
     }
 
     public void handleSubmitButton(ActionEvent actionEvent) {
-        modelOther other = new modelOther(detail.getText());
+        modelOther other = new modelOther(detail.getText().replace("\n","|"));
         request.setOther(other);
 
         RequestListDataSource dataSource = new RequestListDataSource("data/category");

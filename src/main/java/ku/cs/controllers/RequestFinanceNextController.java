@@ -30,7 +30,7 @@ public class RequestFinanceNextController {
     }
 
     public void handleSubmitButton(ActionEvent actionEvent) {
-        modelFinance finance = new modelFinance(complaintFinance.getValue(),detail.getText());
+        modelFinance finance = new modelFinance(complaintFinance.getValue(),detail.getText().replace("\n","|"));
         request.setFinance(finance);
 
         RequestListDataSource dataSource = new RequestListDataSource("data/category");

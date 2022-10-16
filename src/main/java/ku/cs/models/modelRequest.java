@@ -16,12 +16,13 @@ public class modelRequest {
     private String detail;
     private String time;
     private String staffName;
-    private String requestDetail;
-    private String manageDetail;
-    private String reportDetail;
+    private String requestDetail; //รายละเอียดคำร้อง
+    private String manageDetail; //รายละเอียดการจัดการคำร้อง
+    private String reportDetail; //รายงานเนื้อหาที่ไม่เหมาะสมไปยัง admin
     private String imagePath;
     private String extra; //ข้อมูลเพิ่มเติม เช่น vote,type
     private String extraDetail; // ปริ้นตรง staff
+    private String report; //รายละเอียดการจัดการคำร้อง
 
     private String guest;
 
@@ -32,12 +33,16 @@ public class modelRequest {
     protected modelOther other;
     protected modelTraffic traffic;
 
-    //staff
-    public modelRequest(String subject,String category, String status, String staffName){
-        this.subject = subject;
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    //staff-working
+    public modelRequest(String category, String subject, String status,String staffName){
         this.category = category;
+        this.subject = subject;
         this.status = status;
-        this.staffName = staffName;
     }
 
     //Read File Request [ALL]
@@ -51,7 +56,6 @@ public class modelRequest {
         this.time = time;
         this.imagePath = imagePath;
     }
-
 
     // request
     public modelRequest(String username,String head,String time,String status,int votePoint){
@@ -125,40 +129,15 @@ public class modelRequest {
         return reportDetail;
     }
 
-    public String getUsername() {
-        return username;
-    }
+
     public void setReportDetail(String reportDetail) {
         this.reportDetail = reportDetail;
     }
-
-    public String getCategory() {return category;}
-
-    public String getSubject() {return subject;}
-
-    public void setSubject(String subject) {this.subject = subject;}
-
-    public String getStatus() {return status;}
-    public void setStatus(String status) {this.status = status;}
-    public String getRequestDetail() {return requestDetail;}
-    public void setRequestDetail(String requestDetail) {this.requestDetail = requestDetail;}
     public String getManageDetail() {return manageDetail;}
     public void setManageDetail(String manageDetail) {this.manageDetail = manageDetail;}
-    public String getStaffName() {return staffName;}
-    public void setStaffName(String staffName) {this.staffName = staffName;}
 
-    public int getVotePoint(){
-        return votePoint;
-    }
     public String getTime(){
         return time;
-    }
-    public void setVotePoint(int votePoint) {
-        this.votePoint = votePoint;
-    }
-
-    public String getImagePath() {
-        return imagePath;
     }
 
     public String getDetail() {
@@ -172,12 +151,6 @@ public class modelRequest {
     public String toString() {
         return subject;
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
     public String getExtra() {
         return extra;
     }
@@ -185,7 +158,24 @@ public class modelRequest {
     public void setExtra(String extra) {
         this.extra = extra;
     }
+    public String getGuest() {
+        return guest;
+    }
 
+    public void setGuest(String guest) {
+        this.guest = guest;
+    }
+
+    public String getVote() {
+        String userVote = "";
+        for (String s : vote){
+            userVote += s + "|";
+        }
+        return userVote;
+    }
+    public void setVote(String[] vote) {
+        this.vote = vote;
+    }
     public String getExtraDetail() {
         return extraDetail;
     }
@@ -194,13 +184,72 @@ public class modelRequest {
         this.extraDetail = extraDetail;
     }
 
-    public String getGuest() {
-        return guest;
+
+    public int getVotePoint() {
+        return votePoint;
     }
 
-    public void setGuest(String guest) {
-        this.guest = guest;
+    public void setVotePoint(int votePoint) {
+        this.votePoint = votePoint;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRequestDetail() {
+        return requestDetail;
+    }
+
+    public void setRequestDetail(String requestDetail) {
+        this.requestDetail = requestDetail;
+    }
+
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
 }
 
 

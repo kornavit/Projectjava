@@ -46,7 +46,7 @@ public class RequestTrafficNextController {
             inputImage.setText("อย่าลืมใส่รูปปัญหาของจราจร");
             return;
         }
-        modelTraffic traffic = new modelTraffic(address.getText(),detail.getText(),pickTarget);
+        modelTraffic traffic = new modelTraffic(address.getText(),detail.getText().replace("\n","|"),pickTarget);
         request.setTraffic(traffic);
 
         RequestListDataSource dataSource = new RequestListDataSource("data/category");

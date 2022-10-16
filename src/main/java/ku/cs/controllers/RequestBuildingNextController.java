@@ -48,7 +48,7 @@ public class RequestBuildingNextController {
             inputImage.setText("อย่าลืมใส่รูปปัญหาของสิ่งก่อสร้าง");
             return;
         }
-        modelBuilding building = new modelBuilding(equipment.getText(),address.getText(),detail.getText(),pickTarget);
+        modelBuilding building = new modelBuilding(equipment.getText(),address.getText(),detail.getText().replace("\n","|"),pickTarget);
         request.setBuilding(building);
         RequestListDataSource dataSource = new RequestListDataSource("data/category");
         dataSource.writeFileRequest(request);

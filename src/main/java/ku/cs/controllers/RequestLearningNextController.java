@@ -26,7 +26,7 @@ public class RequestLearningNextController {
 
     public void handleSubmitButton(ActionEvent actionEvent) {
         try {
-            modelLearning learning = new modelLearning(course.getText(), teacher.getText(), group.getText(), detail.getText());
+            modelLearning learning = new modelLearning(course.getText(), teacher.getText(), group.getText(), detail.getText().replace("\n","|"));
             request.setLearning(learning);
             RequestListDataSource dataSource = new RequestListDataSource("data/category");
             dataSource.writeFileRequest(request); // ใน method นี้มันคือเขียนในไฟล์อะไรก็ได้น่ะ ขอแค่รับเรื่อง request มา

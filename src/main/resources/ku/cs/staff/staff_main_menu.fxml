@@ -4,14 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StaffMainMenuController">
    <children>
-      <AnchorPane prefHeight="116.0" prefWidth="960.0" style="-fx-background-color: #e1e1e1;">
+      <AnchorPane layoutX="-5.0" prefHeight="126.0" prefWidth="975.0" style="-fx-background-color: #e1e1e1;">
          <children>
             <ImageView fx:id="logo" fitHeight="75.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,34 +30,43 @@
                   <Font name="THChakraPetch" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="861.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="98.0" text="ออกจากระบบ">
+            <Button layoutX="867.0" layoutY="-1.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="98.0" text="ออกจากระบบ">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="team" layoutX="535.0" layoutY="18.0" prefHeight="38.0" prefWidth="187.0" text="staffTeam" textAlignment="CENTER">
+            <Label fx:id="team" layoutX="473.0" layoutY="18.0" prefHeight="38.0" prefWidth="205.0" text="Category" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="355.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleChangeProfilePic" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="เปลี่ยนรูปภาพ" underline="true">
+            <Button layoutX="332.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleChangeProfilePic" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="เปลี่ยนรูปภาพ" underline="true">
                <font>
                   <Font name="THChakraPetch" size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="116.0" prefHeight="482.0" prefWidth="960.0">
+      <AnchorPane layoutY="126.0" prefHeight="480.0" prefWidth="975.0" styleClass="body" stylesheets="@../extra/style.css">
          <children>
-            <TableView fx:id="menuTable" layoutX="37.0" layoutY="40.0" prefHeight="401.0" prefWidth="702.0">
+            <TableView fx:id="menuTable" layoutX="144.0" layoutY="52.0" prefHeight="401.0" prefWidth="686.0">
               <columns>
-                <TableColumn fx:id="request" prefWidth="148.79995346069336" text="คำร้องเรียน" />
-                <TableColumn fx:id="staffTeam" prefWidth="172.80006408691406" text="หน่วยงานที่รับผิดชอบ" />
-                  <TableColumn fx:id="category" prefWidth="128.800048828125" text="หมวดหมู่" />
-                  <TableColumn fx:id="requestStatus" prefWidth="127.20001220703125" text="สถานะ" />
-                  <TableColumn fx:id="staffName" prefWidth="121.60001220703123" text="เจ้าหน้าที่รับผิดชอบ" />
+                <TableColumn fx:id="request" editable="false" prefWidth="279.1999931335449" text="คำร้องเรียน" />
+                  <TableColumn fx:id="category" editable="false" prefWidth="130.0" text="หมวดหมู่" />
+                  <TableColumn fx:id="requestStatus" editable="false" prefWidth="130.0" text="สถานะ" />
+                  <TableColumn fx:id="staffName" editable="false" prefWidth="144.0" text="เจ้าหน้าที่รับผิดชอบ" />
               </columns>
             </TableView>
+            <TextField fx:id="searchFilter" layoutX="302.0" layoutY="13.0" prefHeight="26.0" prefWidth="322.0" />
+            <HBox layoutX="138.0" layoutY="11.0" prefHeight="30.0" prefWidth="137.0" styleClass="box" stylesheets="@../extra/style.css">
+               <children>
+                  <Label fx:id="findComplaint" alignment="CENTER" prefHeight="27.0" prefWidth="142.0" text="ค้นหาคำร้องเรียน :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

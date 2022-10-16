@@ -14,14 +14,14 @@ import java.time.LocalDate;
 
 public class ImageDataSource {
 
-    public String chooseImage(String image_directory){
+    public String chooseImage(String imageDirectory){
         FileChooser chooser = new FileChooser();
         chooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("images JPG PNG", "*.png", "*.jpg", "*.jpeg"));
         File file = chooser.showOpenDialog(new Stage());
         if (file != null){
             try {
-                File destDir = new File("image_user" + System.getProperty("file.separator") + image_directory);
+                File destDir = new File("image_user" + System.getProperty("file.separator") + imageDirectory);
                 if (!destDir.exists()) destDir.mkdirs();
                 String[] fileSplit = file.getName().split("\\.");
                 String filename = LocalDate.now() + "_"+System.currentTimeMillis() + "."

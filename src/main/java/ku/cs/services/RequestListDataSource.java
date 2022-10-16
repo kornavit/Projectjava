@@ -479,7 +479,6 @@ public class RequestListDataSource {
                 buffer.newLine();
                 buffer.close();
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

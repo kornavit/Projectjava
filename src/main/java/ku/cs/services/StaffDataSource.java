@@ -46,8 +46,9 @@ public class StaffDataSource {
             String staffLogin = "";
             while ( (staffLogin = buffer.readLine()) != null ){
                 String[] data = staffLogin.split(",");
-                if(data[1].equals(login.getUsername()) && data[2].equals(login.getPassword())   ){
+                if(  data[1].equals(login.getUsername()) && data[2].equals(login.getPassword())  ){
                     login.setCategory(data[4]);
+                    System.out.println(login.getCategory());
                     break;
                 }
             }
@@ -66,51 +67,105 @@ public class StaffDataSource {
             }
         }
     }
+    public modelRequestList readData() {
+        modelRequestList list = new modelRequestList();
+        String filePath = directoryName + File.separator + fileName;
+        File file = new File(filePath);
+        FileReader reader = null;
+        BufferedReader buffer = null;
 
+        try {
+            reader = new FileReader(file);
+            buffer = new BufferedReader(reader);
 
+            String userComplain = "";
+            while ((userComplain = buffer.readLine()) != null) {
+                String[] data = userComplain.split(",");
+                modelRequest request = new modelRequest(
+                        data[1].trim(), //category
+                        data[2].trim(), //head
+                        data[3].trim(), //status
+                        data[4].trim()); //staffName
+                if (fileName.equals("building.csv")){
+                    request.setUsername(data[0]);
+                    request.setVotePoint(Integer.parseInt(data[4]));
+                    request.setExtra(data[5] + "," + data[6]);
+                    request.setExtraDetail("รายละเอียดความเสียหาย : " + data[5].trim() + "\n"
+                            + "สถานที่ : " + data[6].trim());
+                    request.setRequestDetail(data[7].trim());
+                    request.setImagePath(data[8].trim());
+                    request.setTime(data[9].trim());
+                    request.setStaffName(data[10].trim());
+                    request.setReport(data[11].trim());
+                    request.setVote(data[12].split("\\|"));
+                }
 
+                if (fileName.equals("finance.csv")) {
+                    request.setUsername(data[0]);
+                    request.setVotePoint(Integer.parseInt(data[4]));
+                    request.setExtra(data[5]);
+                    request.setExtraDetail("การทำธุรกรรมเกี่ยวกับการเงิน : " + data[5].trim());
+                    request.setRequestDetail(data[6].trim());
+                    request.setTime(data[7].trim());
+                    request.setStaffName(data[8].trim());
+                    request.setReport(data[9].trim());
+                    request.setVote(data[10].split("\\|"));
+                }
 
-//    public modelRequestList readData() {
-//        modelRequestList list = new modelRequestList();
-//        String filePath = directoryName + File.separator + fileName;
-//        File file = new File(filePath);
-//        FileReader reader = null;
-//        BufferedReader buffer = null;
-//
-//        try {
-//            reader = new FileReader(file);
-//            buffer = new BufferedReader(reader);
-//
-//            String userComplain = "";
-//            while (     (userComplain = buffer.readLine())    != null     ){
-//                String[] data = userComplain.split(",");
-//                modelRequest request = new modelRequest(
-//                        data[0].trim(), //requestSubject
-//                        data[1].trim(), //staffGroup
-//                        data[2].trim(), //category
-//                        data[4].trim(), //requestStatus
-//                        data[5].trim()); //staffName
-//                request.setRequestDetail(data[3].trim()); //requestDetail
-//                list.addRequest(request);
-//            }
-//
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//            try{
-//                buffer.close();
-//                reader.close();
-//            } catch (IOException e){
-//                throw new RuntimeException(e);
-//            }
-//        }
-//        return list;
-//
-//    }
+                if (fileName.equals("learning.csv")){
+                    request.setUsername(data[0]);
+                    request.setVotePoint(Integer.parseInt(data[4]));
+                    request.setExtra(data[5] + "," + data[6] + "," + data[7]);
+                    request.setExtraDetail("วิชา : " + data[5].trim() + "\n"
+                            + "อาจารย์ : " + data[6].trim() + "\n"
+                            + "หมู่เรียน : " + data[7].trim() + "\n");
+                    request.setRequestDetail(data[8].trim());
+                    request.setTime(data[9].trim());
+                    request.setStaffName(data[10].trim());
+                    request.setReport(data[11].trim());
+                    request.setVote(data[12].split("\\|"));
 
-    public void writeData(modelRequestList reportProblemList, modelRequest reportProblem){
+                }
+
+                if (fileName.equals("other.csv")){
+                    request.setUsername(data[0]);
+                    request.setVotePoint(Integer.parseInt(data[4]));
+                    request.setRequestDetail(data[5].trim());
+                    request.setTime(data[6].trim());
+                    request.setStaffName(data[7].trim());
+                    request.setReport(data[8].trim());
+                    request.setVote(data[9].split("\\|"));
+                }
+
+                if (fileName.equals("traffic.csv")){
+                    request.setUsername(data[0]);
+                    request.setVotePoint(Integer.parseInt(data[4]));
+                    request.setExtra(data[5]);
+                    request.setExtraDetail("สถานที่ : " + data[5].trim());
+                    request.setRequestDetail(data[6].trim().replace("|", "\n"));
+                    request.setImagePath(data[7].trim());
+                    request.setTime(data[8].trim());
+                    request.setStaffName(data[9].trim());
+                    request.setReport(data[10].trim());
+                    request.setVote(data[11].split("\\|"));
+                }
+                list.addRequest(request);
+            }
+            return list;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                buffer.close();
+                reader.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void writeData(modelRequestList reportProblemList, modelRequest reportProblem,String staffName,String status){
+        //reportProblem = data that staff change
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -123,31 +178,127 @@ public class StaffDataSource {
 
             String save = "";
 
-            for (modelRequest report : reportProblemList.getAllRequest()){
-                if ( report.getSubject().equals(reportProblem.getSubject()) &&
-                report.getCategory().equals(reportProblem.getCategory()) ){
-                    save = report.getSubject() + ","
-                            +report.getCategory() + ","
-                            +report.getRequestDetail() + ","
-                            +reportProblem.getStatus() + ","
-                            +reportProblem.getStaffName() + ","
-                            +reportProblem.getManageDetail();
+            for (modelRequest report : reportProblemList.getAllRequest()) {
+                if (fileName.equals("building.csv")) {
+                    if (report.getSubject().equals(reportProblem.getSubject()) &&
+                            report.getUsername().equals(reportProblem.getUsername()) &&
+                            report.getTime().equals(reportProblem.getTime())) {
+                        report.setStatus(status);
+                        report.setStaffName(staffName);
+                        report.setReport(reportProblem.getReport());
+                    }
+                    save = report.getUsername() + ","
+                            + report.getCategory() + ","
+                            + report.getSubject() + ","
+                            + report.getStatus() + ","
+                            + report.getVotePoint() + ","
+                            + report.getExtra() + ","
+                            + report.getRequestDetail() + ","
+                            + report.getImagePath() + ","
+                            + report.getTime() + ","
+                            + report.getStaffName() + ","
+                            + report.getReport() + ","
+                            + report.getVote();
+                    buffer.append(save);
+                    buffer.newLine();
                 }
-                else {
-                    save = report.getSubject() + ","
-                            +report.getCategory() + ","
-                            +report.getRequestDetail() + ","
-                            +report.getStatus() + ","
-                            +report.getStaffName() + ","
-                            +report.getManageDetail();
+
+                else if (fileName.equals("finance.csv")) {
+                    if (report.getSubject().equals(reportProblem.getSubject()) &&
+                            report.getUsername().equals(reportProblem.getUsername()) &&
+                            report.getTime().equals(reportProblem.getTime())) {
+                        report.setStatus(status);
+                        report.setStaffName(staffName);
+                        report.setReport(reportProblem.getReport());
+                    }
+                    save = report.getUsername() + ","
+                            + report.getCategory() + ","
+                            + report.getSubject() + ","
+                            + report.getStatus() + ","
+                            + report.getVotePoint() + ","
+                            + report.getExtra() + ","
+                            + report.getRequestDetail() + ","
+                            + report.getTime() + ","
+                            + report.getStaffName() + ","
+                            + report.getReport() + ","
+                            + report.getVote();
+                        buffer.append(save);
+                        buffer.newLine();
+                    }
+
+                else if (fileName.equals("learning.csv")) {
+                    if (report.getSubject().equals(reportProblem.getSubject()) &&
+                            report.getUsername().equals(reportProblem.getUsername()) &&
+                            report.getTime().equals(reportProblem.getTime())) {
+                        report.setStatus(status);
+                        report.setStaffName(staffName);
+                        report.setReport(reportProblem.getReport());
+                    }
+                    save = report.getUsername() + ","
+                            + report.getCategory() + ","
+                            + report.getSubject() + ","
+                            + report.getStatus() + ","
+                            + report.getVotePoint() + ","
+                            + report.getExtra() + ","
+                            + report.getRequestDetail() + ","
+                            + report.getTime() + ","
+                            + report.getStaffName() + ","
+                            + report.getReport() + ","
+                            + report.getVote();
+                        buffer.append(save);
+                        buffer.newLine();
                 }
-                buffer.append(save);
-                buffer.newLine();
+
+                else if (fileName.equals("other.csv")) {
+                    if (report.getSubject().equals(reportProblem.getSubject()) &&
+                            report.getUsername().equals(reportProblem.getUsername()) &&
+                            report.getTime().equals(reportProblem.getTime())) {
+                        report.setStatus(status);
+                        report.setStaffName(staffName);
+                        report.setReport(reportProblem.getReport());
+                    }
+                    save = report.getUsername() + ","
+                            + report.getCategory() + ","
+                            + report.getSubject() + ","
+                            + report.getStatus() + ","
+                            + report.getVotePoint() + ","
+                            + report.getExtra() + ","
+                            + report.getRequestDetail() + ","
+                            + report.getTime() + ","
+                            + report.getStaffName() + ","
+                            + report.getReport() + ","
+                            + report.getVote();
+                        buffer.append(save);
+                        buffer.newLine();
+                    }
+
+                else if (fileName.equals("traffic.csv")) {
+                    if (report.getSubject().equals(reportProblem.getSubject()) &&
+                            report.getUsername().equals(reportProblem.getUsername()) &&
+                            report.getTime().equals(reportProblem.getTime())) {
+                        report.setStatus(status);
+                        report.setStaffName(staffName);
+                        report.setReport(reportProblem.getReport());
+                    }
+                    save = report.getUsername() + ","
+                            + report.getCategory() + ","
+                            + report.getSubject() + ","
+                            + report.getStatus() + ","
+                            + report.getVotePoint() + ","
+                            + report.getExtra() + ","
+                            + report.getRequestDetail().replace("\n","|") + ","
+                            + report.getImagePath() + ","
+                            + report.getTime() + ","
+                            + report.getStaffName() + ","
+                            + report.getReport() + ","
+                            + report.getVote();
+                        buffer.append(save);
+                        buffer.newLine();
+                    }
             }
             buffer.close();
-
         } catch (IOException e) {
-            throw new RuntimeException(e);
+           throw new RuntimeException(e);
         }
     }
 }

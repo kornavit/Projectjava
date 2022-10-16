@@ -59,7 +59,6 @@ public class RequestController implements Initializable{
         }
         return select;
     }
-
     public void handleNextButton(ActionEvent actionEvent) {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -98,10 +97,8 @@ public class RequestController implements Initializable{
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-//            System.err.println("ไปที่หน้า request_next ไม่ได้");
-//            System.err.println("ให้ตรวจสอบการกำหนด route");
+
         }
     }
-
 
 }
