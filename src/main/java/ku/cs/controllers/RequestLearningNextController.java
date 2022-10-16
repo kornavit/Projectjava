@@ -4,9 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
-import ku.cs.models.modelUser;
 import ku.cs.models.request.modelLearning;
 import ku.cs.services.RequestListDataSource;
 
@@ -21,6 +19,7 @@ public class RequestLearningNextController {
     private modelRequest request;
 
     @FXML public void initialize(){
+        detail.setWrapText(true);
         request = (modelRequest) FXRouter.getData();
     }
 

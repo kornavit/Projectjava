@@ -30,8 +30,7 @@ public class RequestBuildingNextController {
     @FXML
     public void initialize(){
         request = (modelRequest) FXRouter.getData();
-        File destDir = new File("image_user" + File.separator + "request_building" +File.separator + pickTarget);
-        imagePath.setImage(new Image(destDir.toURI().toString()));
+        detail.setWrapText(true);
     }
 
     @FXML

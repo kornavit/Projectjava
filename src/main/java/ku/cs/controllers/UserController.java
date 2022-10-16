@@ -6,7 +6,6 @@ import com.github.saacsos.FXRouter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ku.cs.models.modelRegister;
-import ku.cs.models.modelUser;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,14 +14,11 @@ public class UserController {
     @FXML private Label nameLabel;
     @FXML private ImageView nisitPhoto;
 
-    private modelUser userName;
-
     private modelRegister user;
     @FXML public void initialize(){
         /*set User*/
         user = (modelRegister) FXRouter.getData();
-        userName = new modelUser(user.getName());
-        nameLabel.setText(userName.getName());
+        nameLabel.setText(user.getName());
 
         /*set Image*/
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + user.getImagePath());
@@ -35,7 +31,7 @@ public class UserController {
     }
 
     private void showUserName(){
-        nameLabel.setText(userName.getName());
+        nameLabel.setText(user.getName());
     }
     public void handleBackStartButton(ActionEvent actionEvent) {
         try {
@@ -49,7 +45,7 @@ public class UserController {
 
     public void handleRequestButton(ActionEvent actionEvent){
         try {
-            FXRouter.goTo("request", userName);
+            FXRouter.goTo("request", user);
 
         } catch (IOException e) {
             System.err.println("ไปที่หน้า request ไม่ได้");

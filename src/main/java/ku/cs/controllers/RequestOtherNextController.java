@@ -18,6 +18,7 @@ public class RequestOtherNextController {
     @FXML
     public void initialize(){
         request = (modelRequest) FXRouter.getData();
+        detail.setWrapText(true);
     }
 
     public void handleSubmitButton(ActionEvent actionEvent) {

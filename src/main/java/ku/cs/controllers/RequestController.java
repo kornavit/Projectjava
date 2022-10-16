@@ -10,8 +10,8 @@ import javafx.fxml.Initializable;
 
 import com.github.saacsos.FXRouter;
 import javafx.scene.paint.Color;
+import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
-import ku.cs.models.modelUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,15 +21,16 @@ import java.util.ResourceBundle;
 
 public class RequestController implements Initializable{
 
-    private modelUser name;
     @FXML private ComboBox<String> complaintCategory;
     @FXML private TextField headTextField;
-    @FXML private Label showerror;
+    @FXML private Label showError;
+
+    private modelRegister user;
 
     ObservableList<String> list = FXCollections.observableArrayList("การเรียนการสอน", "อาคาร สถานที่และสิ่งอำนวยความสะดวก", "การจราจรในมหาวิทยาลัย","การเงินในมหาวิทยาลัย", "อื่นๆ");
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
-        name = (modelUser) FXRouter.getData();
+        user = (modelRegister) FXRouter.getData();
         complaintCategory.setItems(list);
     }
     public void handleBackUserButton(ActionEvent actionEvent) {
@@ -63,7 +64,7 @@ public class RequestController implements Initializable{
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-        modelRequest request = new modelRequest(name.getName(), headTextField.getText(),formattedDate,"ยังไม่ดำเนินการ",0 );
+        modelRequest request = new modelRequest(user.getUsername(), headTextField.getText(),formattedDate,"ยังไม่ดำเนินการ",0 );
         try {
             String checkError = "";
             if (changeCategory(actionEvent) == 1 && !headTextField.getText().equals("")) {
@@ -88,9 +89,9 @@ public class RequestController implements Initializable{
             }
             else {
                 checkError += "กรุณากรอกหัวเรื่อง หรือเลือกหมวดหมู่เรื่องร้องเรียน\n";
-                showerror.setTextFill(Color.RED);
-                showerror.setText(checkError);
-                showerror.setWrapText(true);
+                showError.setTextFill(Color.RED);
+                showError.setText(checkError);
+                showError.setWrapText(true);
                 System.err.println("ยังไม่ได้กรอกหัวเรื่อง หรือเลือกหมวดหมู่");
             }
 

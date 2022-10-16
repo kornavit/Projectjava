@@ -74,7 +74,7 @@ public class UserChangePasswordController {
         }
         @FXML public void handleBackButton(ActionEvent actionEvent){
             try {
-                com.github.saacsos.FXRouter.goTo("start");
+                FXRouter.goTo("start");
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า start ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");

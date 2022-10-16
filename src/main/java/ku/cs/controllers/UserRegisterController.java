@@ -77,6 +77,11 @@ public class UserRegisterController {
         textPasswordAgin.setVisible(false);
     }
     public void handleSubmitButton(ActionEvent actionEvent) {
+        if (passwordReal.getText().equals("")){
+            passwordReal.setText(textRealpassword.getText());
+        }else{
+            passwordReal.setText(passwordReal.getText());
+        }
         String checkError = "";
         // check username for user
         if (username.getText().equals("")) {

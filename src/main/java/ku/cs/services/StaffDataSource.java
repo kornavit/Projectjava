@@ -5,8 +5,9 @@ import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
-public class StaffDataSource {
+public class StaffDataSource implements DataSource<modelRequestList>{
     private String directoryName;
     private String fileName;
 
@@ -40,7 +41,7 @@ public class StaffDataSource {
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file, StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String staffLogin = "";
@@ -52,13 +53,9 @@ public class StaffDataSource {
                     break;
                 }
             }
-        }
-        catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             try{
                 buffer.close();
                 reader.close();
@@ -67,6 +64,7 @@ public class StaffDataSource {
             }
         }
     }
+    @Override
     public modelRequestList readData() {
         modelRequestList list = new modelRequestList();
         String filePath = directoryName + File.separator + fileName;
@@ -75,7 +73,7 @@ public class StaffDataSource {
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String userComplain = "";
@@ -96,7 +94,7 @@ public class StaffDataSource {
                     request.setImagePath(data[8].trim());
                     request.setTime(data[9].trim());
                     request.setStaffName(data[10].trim());
-                    request.setReport(data[11].trim());
+                    request.setReport(data[11].trim().replace("|","\n"));
                     request.setVote(data[12].split("\\|"));
                 }
 
@@ -108,7 +106,7 @@ public class StaffDataSource {
                     request.setRequestDetail(data[6].trim());
                     request.setTime(data[7].trim());
                     request.setStaffName(data[8].trim());
-                    request.setReport(data[9].trim());
+                    request.setReport(data[9].trim().replace("|","\n"));
                     request.setVote(data[10].split("\\|"));
                 }
 
@@ -122,7 +120,7 @@ public class StaffDataSource {
                     request.setRequestDetail(data[8].trim());
                     request.setTime(data[9].trim());
                     request.setStaffName(data[10].trim());
-                    request.setReport(data[11].trim());
+                    request.setReport(data[11].trim().replace("|","\n"));
                     request.setVote(data[12].split("\\|"));
 
                 }
@@ -133,7 +131,7 @@ public class StaffDataSource {
                     request.setRequestDetail(data[5].trim());
                     request.setTime(data[6].trim());
                     request.setStaffName(data[7].trim());
-                    request.setReport(data[8].trim());
+                    request.setReport(data[8].trim().replace("|","\n"));
                     request.setVote(data[9].split("\\|"));
                 }
 
@@ -146,7 +144,7 @@ public class StaffDataSource {
                     request.setImagePath(data[7].trim());
                     request.setTime(data[8].trim());
                     request.setStaffName(data[9].trim());
-                    request.setReport(data[10].trim());
+                    request.setReport(data[10].trim().replace("|","\n"));
                     request.setVote(data[11].split("\\|"));
                 }
                 list.addRequest(request);
@@ -173,7 +171,7 @@ public class StaffDataSource {
         BufferedWriter buffer = null;
 
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             String save = "";

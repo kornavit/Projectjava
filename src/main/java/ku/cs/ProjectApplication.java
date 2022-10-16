@@ -11,6 +11,7 @@ import java.io.IOException;
 public class ProjectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setResizable(false); // ทำให้ไม่สามารถ set ขนาดต่างๆได้
         FXRouter.bind(this, stage, "white_nisit_shirt", 1024, 768);
         configRoute();
         FXRouter.goTo("start");

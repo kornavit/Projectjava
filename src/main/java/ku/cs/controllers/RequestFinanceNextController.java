@@ -27,6 +27,7 @@ public class RequestFinanceNextController {
         complaintFinance.setValue("----------โปรดเลือก----------");
 
         request = (modelRequest) FXRouter.getData();
+        detail.setWrapText(true);
     }
 
     public void handleSubmitButton(ActionEvent actionEvent) {

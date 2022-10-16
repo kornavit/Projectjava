@@ -30,6 +30,7 @@ public class RequestTrafficNextController {
         request = (modelRequest) FXRouter.getData();
         File destDir = new File("image_user" + File.separator + "request_traffic" +File.separator + pickTarget);
         imagePath.setImage(new Image(destDir.toURI().toString()));
+        detail.setWrapText(true);
     }
 
     @FXML

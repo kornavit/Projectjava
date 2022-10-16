@@ -20,29 +20,29 @@ import java.io.File;
 import java.io.IOException;
 
 public class AdminMainController {
-    @FXML private TableView<modelRegister> user_board;
+    @FXML private TableView<modelRegister> userBoard;
     @FXML private TableColumn<modelRegister, String> name;
     @FXML private TableColumn<modelRegister, String> username;
     @FXML private TableColumn<modelRegister, String> category;
     @FXML private TableColumn<modelRegister, String> time;
     // admin pane
-    @FXML private Label name_admin;
-    @FXML private ImageView image_admin;
+    @FXML private Label nameAdmin;
+    @FXML private ImageView imageAdmin;
     //text
-    @FXML private Label text_name;
-    @FXML private Label text_username;
-    @FXML private Label text_category;
-    @FXML private Label text_time;
+    @FXML private Label textName;
+    @FXML private Label textUsername;
+    @FXML private Label textCategory;
+    @FXML private Label textTime;
 
     //selected user
-    @FXML private ImageView image_user;
-    @FXML private Label user_name;
-    @FXML private Label user_username;
-    @FXML private Label user_category;
-    @FXML private Label time_login;
+    @FXML private ImageView imageUser;
+    @FXML private Label userName;
+    @FXML private Label userUsername;
+    @FXML private Label userCategory;
+    @FXML private Label timeLogin;
     private AdminDataSource dataSource;
-    private ObservableList<modelRegister> login_board;
-    private modelRegisterList user_list;
+    private ObservableList<modelRegister> loginBoard;
+    private modelRegisterList userList;
     private modelRegister admin;
     private ImageDataSource imageDataSource;
     private UserDataSource userDataSource;
@@ -50,13 +50,13 @@ public class AdminMainController {
         admin = (modelRegister) FXRouter.getData();
         imageDataSource = new ImageDataSource();
         userDataSource = new UserDataSource("data","user.csv");
-        name_admin.setText(admin.getName());
+        nameAdmin.setText(admin.getName());
         File image_fact = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + admin.getImagePath());
-        image_admin.setImage(new Image(image_fact.toURI().toString()));
+        imageAdmin.setImage(new Image(image_fact.toURI().toString()));
 
         dataSource = new AdminDataSource("data","login_time_user.csv");
-        user_list = dataSource.read_admin();
-        login_board = FXCollections.observableArrayList();
+        userList = dataSource.readData();
+        loginBoard = FXCollections.observableArrayList();
         setMenuTable();
         loadTable();
         event();
@@ -68,26 +68,26 @@ public class AdminMainController {
         time.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
     private void loadTable(){
-        login_board.addAll(user_list.getAllUsers());
-        user_board.setItems(login_board);
-        user_board.setOnMouseClicked(e ->{
+        loginBoard.addAll(userList.getAllUsers());
+        userBoard.setItems(loginBoard);
+        userBoard.setOnMouseClicked(e ->{
             event();
         });
     }
     private void event(){
-        modelRegister user = user_board.getSelectionModel().getSelectedItem();
+        modelRegister user = userBoard.getSelectionModel().getSelectedItem();
         if (user != null){ // มันอาจจะเป็น null
-            text_name.setText("name : ");
-            text_username.setText("username : ");
-            text_category.setText("category : ");
-            text_time.setText("time : ");
+            textName.setText("name : ");
+            textUsername.setText("username : ");
+            textCategory.setText("category : ");
+            textTime.setText("time : ");
 
-            user_name.setText(user.getName());
-            user_username.setText(user.getUsername());
-            user_category.setText(user.getCategory());
-            time_login.setText(user.getTime());
+            userName.setText(user.getName());
+            userUsername.setText(user.getUsername());
+            userCategory.setText(user.getCategory());
+            timeLogin.setText(user.getTime());
             File destdir_user = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + dataSource.pickImageUser(user));
-            image_user.setImage(new Image(destdir_user.toURI().toString()));
+            imageUser.setImage(new Image(destdir_user.toURI().toString()));
         }
     }
 
@@ -97,7 +97,7 @@ public class AdminMainController {
             return;
         }
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarge);
-        image_admin.setImage(new Image(destDir.toURI().toString()));
+        imageAdmin.setImage(new Image(destDir.toURI().toString()));
         admin.setImagePath(pickTarge);
         userDataSource.writeImage(userDataSource.readData(),admin);
     }

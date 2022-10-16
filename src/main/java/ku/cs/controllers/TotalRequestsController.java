@@ -6,21 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
-import ku.cs.models.modelUser;
 import ku.cs.services.RequestListDataSource;
-import ku.cs.services.TimeComparator;
 
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class TotalRequestsController {
 
@@ -57,12 +50,14 @@ public class TotalRequestsController {
         sortStatusComboBox.setItems(sortByList);
         sortTimeComboBox.setItems(sortTimeList);
         sortVoteComboBox.setItems(sortVoteList);
+        sortCategoryComboBox.setPromptText("เลือกหมวดหมู่");
         sortCategoryComboBox.setItems(sortCategoryList);
 
 
         user = (modelRegister) FXRouter.getData();
         dataSource = new RequestListDataSource();
-        requestList = dataSource.readfileRequest();
+        requestList = dataSource.readData();
+        dataSource.sortTime(requestList,"ล่าสุดไปเก่าสุด");
         dataRequestList = FXCollections.observableArrayList();
         setTableColumn();
         loadTable(requestList);
@@ -79,15 +74,6 @@ public class TotalRequestsController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-    }
-    public void handleBackStartButton(ActionEvent actionEvent) {
-        try {
-            FXRouter.goTo("start");
-
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า start ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
 
@@ -118,14 +104,21 @@ public class TotalRequestsController {
 
     public void statusComboBoxSeleted(){
         tableView.getItems().clear();
-        requestList = dataSource.searchStatus(dataSource.readfileRequest(), sortStatusComboBox.getValue());
+        requestList = dataSource.searchStatus(dataSource.readData(), sortStatusComboBox.getValue());
         loadTable(requestList);
     }
-
+    private void clear(){
+        moreThanVoteTextField.clear();
+        untilTextField.clear();
+        toTextField.clear();
+        sortCategoryComboBox.valueProperty().set(null);
+        sortCategoryComboBox.setPromptText("เลือกหมวดหมู่");
+    }
     public void handleSortTimeSelected(){
         if (warningStatus.getText().equals("กรุณาเลือกเวลาหรือโหวตก่อน")){
             warningStatus.setText("");
         }
+        clear();
         tableView.getItems().clear();
         dataSource.sortTime(requestList,sortTimeComboBox.getValue());
         loadTable(requestList);
@@ -135,6 +128,7 @@ public class TotalRequestsController {
         if (warningStatus.getText().equals("กรุณาเลือกเวลาหรือโหวตก่อน")){
             warningStatus.setText("");
         }
+        clear();
         tableView.getItems().clear();
         dataSource.sortVote(requestList,sortVoteComboBox.getValue());
         loadTable(requestList);
@@ -151,11 +145,15 @@ public class TotalRequestsController {
         }
     }
     public void handleUntilVoteSearchButton(){
-        tableView.getItems().clear();
-        loadTable(dataSource.searchUntil(requestList, Integer.parseInt(untilTextField.getText()), Integer.parseInt(toTextField.getText())));
-        untilTextField.clear();
-        toTextField.clear();
-
+        if (sortVoteComboBox.getValue() == null && sortTimeComboBox.getValue() == null){
+            warningStatus.setText("กรุณาเลือกเวลาหรือโหวตก่อน");
+            warningStatus.setTextFill(Color.RED);
+        }else{
+            tableView.getItems().clear();
+            loadTable(dataSource.searchUntil(requestList, Integer.parseInt(untilTextField.getText()), Integer.parseInt(toTextField.getText())));
+            untilTextField.clear();
+            toTextField.clear();
+        }
     }
 
     public void handleSortCategorySelected(){
@@ -165,8 +163,10 @@ public class TotalRequestsController {
         }else {
             warningStatus.setVisible(false);
             tableView.getItems().clear();
-            requestList = dataSource.sortCategory(requestList, sortCategoryComboBox.getValue());
-            loadTable(requestList);
+            if (sortCategoryComboBox.getValue() != null){
+                requestList = dataSource.sortCategory(requestList, sortCategoryComboBox.getValue());
+                loadTable(requestList);
+            }
         }
     }
 }
