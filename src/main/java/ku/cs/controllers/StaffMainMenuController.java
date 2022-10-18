@@ -133,12 +133,12 @@ public class StaffMainMenuController implements Initializable {
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + target);
         staffProfile.setImage(new Image(destDir.toURI().toString()));
         staffLogin.setImagePath(target);
-        data.writeData(data.readData(),staffLogin);
+        data.writeImage(data.readData(),staffLogin);
     }
 
     @FXML public void handleChangePass(ActionEvent actionEvent){
         try {
-            com.github.saacsos.FXRouter.goTo("staff_change_password");
+            FXRouter.goTo("staff_change_password");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า change password ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -147,7 +147,7 @@ public class StaffMainMenuController implements Initializable {
 
     @FXML public void ExitBtn(){
         try {
-            com.github.saacsos.FXRouter.goTo("start");
+            FXRouter.goTo("start");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า start ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

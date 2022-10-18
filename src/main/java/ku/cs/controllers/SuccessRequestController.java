@@ -1,4 +1,5 @@
 package ku.cs.controllers;
+import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -10,7 +11,7 @@ public class SuccessRequestController {
 
     public void handleBackToUserButton(ActionEvent actionEvent) {
         try {
-            com.github.saacsos.FXRouter.goTo("user");
+            FXRouter.goTo("user");
 
         } catch (IOException e) {
             System.err.println("ไปที่หน้า user ไม่ได้");

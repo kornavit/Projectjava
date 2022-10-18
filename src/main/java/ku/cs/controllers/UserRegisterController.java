@@ -60,6 +60,8 @@ public class UserRegisterController {
 
     @FXML
     public void handleCheckPassword(ActionEvent actionEvent){
+        textRealpassword.setVisible(false);
+        textPasswordAgin.setVisible(false);
         if (showPassword.isSelected()){
             textPasswordAgin.setText(passwordAgain.getText());
             textRealpassword.setText(passwordReal.getText());
@@ -73,10 +75,22 @@ public class UserRegisterController {
         passwordAgain.setText(textPasswordAgin.getText());
         passwordReal.setVisible(true);
         passwordAgain.setVisible(true);
-        textRealpassword.setVisible(false);
-        textPasswordAgin.setVisible(false);
+        textRealpassword.clear();
+        textPasswordAgin.clear();
     }
     public void handleSubmitButton(ActionEvent actionEvent) {
+        if (passwordReal.getText().equals("") || !passwordReal.getText().equals("")){
+            if (textRealpassword.getText().equals("") || textPasswordAgin.getText().equals("")){
+                passwordReal.setText(textRealpassword.getText());
+                passwordAgain.setText(textPasswordAgin.getText());
+            }else{
+                passwordReal.setText(passwordReal.getText());
+                passwordAgain.setText(passwordAgain.getText());
+            }
+        }else {
+            passwordReal.setText(passwordReal.getText());
+            passwordAgain.setText(passwordAgain.getText());
+        }
         String checkError = "";
         // check username for user
         if (username.getText().equals("")) {

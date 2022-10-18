@@ -45,9 +45,13 @@ public class RequestDetailController {
         detailLabel.setWrapText(true);
         staffDetailLabel.setWrapText(true);
 
-        detailLabel.setText(request.getDetail());
+        detailLabel.setText(request.getDetail().replace("|","\n"));
         moreDetailLabel.setText(request.getExtra());
-        staffDetailLabel.setText(request.getManageDetail());
+        if (request.getManageDetail().equals("-")){
+            staffDetailLabel.setText("ยังไม่มีเจ้าหน้าที่จัดการเรื่องนี้");
+        }else{
+            staffDetailLabel.setText(request.getManageDetail().replace("|","\n"));
+        }
         nameLabel.setText(request.getUsername());
         headLabel.setText(request.getSubject());
         categoryLabel.setText(request.getCategory());

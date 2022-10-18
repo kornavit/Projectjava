@@ -55,7 +55,11 @@ public class StaffWorking {
         head.setText(request.getSubject());
         extra.setText(request.getExtraDetail());
         category.setText(request.getCategory());
-        reportToUser.setText(request.getReport());
+        if (request.getReport().equals("-")){
+            reportToUser.setText("");
+        }else {
+            reportToUser.setText(request.getReport());
+        }
         //System.out.println(request.getReport());
 
         head.setWrapText(true);
@@ -79,7 +83,7 @@ public class StaffWorking {
     @FXML
     void handleBackButton(ActionEvent event) {
         try {
-            com.github.saacsos.FXRouter.goTo("staff_main_menu");
+            FXRouter.goTo("staff_main_menu");
         } catch (IOException e) {
             System.err.println("ไปที่หน้า staff_main_menu ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -88,7 +92,7 @@ public class StaffWorking {
     @FXML
     void handleSubmitButton(ActionEvent event) {
         request.setStatus(status.getValue());
-        if (reportToUser.getText() == null){
+        if (reportToUser.getText() == null || reportToUser.getText().equals("")){
             caution.setTextFill(Color.RED);
             caution.setText("อย่าลืมใส่รายละเอียดการจัดการ");
             return;

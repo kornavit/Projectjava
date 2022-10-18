@@ -2,8 +2,9 @@ package ku.cs.services;
 import ku.cs.models.*;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
-public class AdminDataSource {
+public class AdminDataSource implements DataSource<modelRegisterList>{
     private String directoryName;
     private String fileName;
 
@@ -30,7 +31,8 @@ public class AdminDataSource {
         }
     }
 
-    public modelRegisterList read_admin() { // main admin program
+    @Override
+    public modelRegisterList readData() { // main admin program
         modelRegisterList user_list = new modelRegisterList();
         modelRegisterList user_list_sort = new modelRegisterList();
         String filePath = directoryName + File.separator + fileName;
@@ -39,7 +41,7 @@ public class AdminDataSource {
         FileReader reader = null;
         BufferedReader buffer = null;
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file, StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             buffer.readLine();
             String input_user = "";
@@ -76,7 +78,7 @@ public class AdminDataSource {
         BufferedReader buffer = null;
 
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             String fileRegister = ""; // realName,username,password,role,category,ban or unban,image path
             while ( (fileRegister = buffer.readLine()) != null){
@@ -104,7 +106,7 @@ public class AdminDataSource {
         FileWriter writer = null;
         BufferedWriter buffer = null;
         try { // name,username,category,date and time
-            writer = new FileWriter(file,true);
+            writer = new FileWriter(file,StandardCharsets.UTF_8,true);
             buffer = new BufferedWriter(writer);
             buffer.append(user.getName() + ","
                     + user.getUsername() + ","
@@ -117,14 +119,14 @@ public class AdminDataSource {
         }
     }
 
-    public boolean checkuserban(String username){ // check on user is banned login
+    public boolean checkUserBan(String username){ // check on user is banned login
         String filePath = "data" + File.separator + "ban.csv";
         File file = new File(filePath);
 
         FileReader reader = null;
         BufferedReader buffer = null;
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             buffer.readLine();
             String user = "";
@@ -155,7 +157,7 @@ public class AdminDataSource {
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             String Ban = "";
             buffer.readLine();
@@ -188,7 +190,7 @@ public class AdminDataSource {
         FileReader reader = null;
         BufferedReader buffer = null;
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             String report = "";
             buffer.readLine();
@@ -217,7 +219,7 @@ public class AdminDataSource {
         BufferedReader buffer = null;
         
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             String readDetail = "";
             if (request.getCategory().equals("building")){
@@ -272,7 +274,7 @@ public class AdminDataSource {
         FileWriter writer = null;
         BufferedWriter buffer = null;
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             for (modelRequest request : requestList.getAllRequest()){
                 if (!(request.getUsername().equals(deleteRequest.getUsername()) && request.getSubject().equals(deleteRequest.getSubject()))){
@@ -286,7 +288,7 @@ public class AdminDataSource {
             filePath = "data" + File.separator + "deleteDetail.csv";
             file = new File(filePath);
 
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             buffer.append("username,head,category,detail(ของการรายงานเนื้อหานั้น)");
             buffer.newLine();
@@ -310,7 +312,7 @@ public class AdminDataSource {
         FileWriter writer = null;
         BufferedWriter buffer = null;
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             buffer.append("username,login,detail");
             buffer.newLine();
@@ -337,7 +339,7 @@ public class AdminDataSource {
         BufferedWriter buffer = null;
 
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             buffer.append("username,login,detail");
             buffer.newLine();
@@ -366,7 +368,7 @@ public class AdminDataSource {
         BufferedWriter buffer = null;
 
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             buffer.append("username,login,detail");
             buffer.newLine();
@@ -384,7 +386,7 @@ public class AdminDataSource {
             filePath = "data" + File.separator + "user.csv";
             file = new File(filePath);
 
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             for (modelRegister user : users.getAllUsers()){
                 if (user.getUsername().equals(userBan.getUsername()) && user.getValue_ban().equals("false")){
@@ -413,7 +415,7 @@ public class AdminDataSource {
         BufferedWriter buffer = null;
 
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             buffer.append("username,detail");
             buffer.newLine();
@@ -430,7 +432,7 @@ public class AdminDataSource {
             filePath = "data" + File.separator + "user.csv";
             file = new File(filePath);
 
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             for (modelRegister user : users.getAllUsers()){
                 if (user.getUsername().equals(banUser.getUsername()) && user.getValue_ban().equals("true")){
@@ -451,7 +453,7 @@ public class AdminDataSource {
             filePath = "data" + File.separator + "ban.csv";
             file = new File(filePath);
 
-            writer = new FileWriter(file,true);
+            writer = new FileWriter(file,StandardCharsets.UTF_8,true);
             buffer = new BufferedWriter(writer);
             buffer.append(banUser.getUsername()).append(",0,ยังไม่มีการขอคืนสิทธิ์");
             buffer.newLine();

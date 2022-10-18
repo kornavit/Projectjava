@@ -11,7 +11,6 @@ import ku.cs.models.modelRegister;
 import ku.cs.services.AdminDataSource;
 
 import java.io.IOException;
-import java.util.Date;
 
 public class BanUserController {
     @FXML
@@ -39,7 +38,7 @@ public class BanUserController {
             return;
         }
         adminDataSource = new AdminDataSource("data","ban.csv");
-        if (adminDataSource.checkuserban(userUsername.getText())){
+        if (adminDataSource.checkUserBan(userUsername.getText())){
             checkUsername.setTextFill(Color.GREEN);
             checkUsername.setText("มีชื่อนี้อยู่ในการแบน");
             if (!userDetail.getText().equals("")){

@@ -9,14 +9,14 @@ import ku.cs.models.request.modelBuilding;
 import ku.cs.models.request.modelLearning;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class RequestListDataSource {
+public class RequestListDataSource implements DataSource<modelRequestList>{
     private String directoryName;
-    private String fileName;
 
     public RequestListDataSource(){}
 
@@ -24,7 +24,8 @@ public class RequestListDataSource {
         this.directoryName = directoryName;
     }
 //total_request
-    public modelRequestList readfileRequest(){
+    @Override
+    public modelRequestList readData(){
         modelRequestList requestList = new modelRequestList();
         String buildingPath = "data" + File.separator + "category" + File.separator + "building.csv";
         String financePath = "data" + File.separator + "category" + File.separator + "finance.csv";
@@ -39,7 +40,7 @@ public class RequestListDataSource {
         BufferedReader buffer = null;
 
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             //read_building
@@ -64,7 +65,7 @@ public class RequestListDataSource {
 
             //read_finance
             file = new File(financePath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
@@ -85,7 +86,7 @@ public class RequestListDataSource {
 
             //read_learning
             file = new File(learningPath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
@@ -110,7 +111,7 @@ public class RequestListDataSource {
 
             //read_other
             file = new File(otherPath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
@@ -132,7 +133,7 @@ public class RequestListDataSource {
 
             //read_traffic
             file = new File(trafficPath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
@@ -158,7 +159,7 @@ public class RequestListDataSource {
     }
 
 //request
-    public modelRequestList readfileRequest(String name){
+    public modelRequestList readData(String name){
         modelRequestList requestList = new modelRequestList();
         String buildingPath = "data" + File.separator + "category" + File.separator + "building.csv";
         String financePath = "data" + File.separator + "category" + File.separator + "finance.csv";
@@ -172,7 +173,7 @@ public class RequestListDataSource {
         BufferedReader buffer = null;
 
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             //read_building
@@ -193,7 +194,7 @@ public class RequestListDataSource {
 
             //read_finance
             file = new File(financePath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
@@ -210,7 +211,7 @@ public class RequestListDataSource {
 
             //read_learning
             file = new File(learningPath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
@@ -227,12 +228,12 @@ public class RequestListDataSource {
 
             //read_other
             file = new File(otherPath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[7],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[6],data[3],Integer.parseInt(data[4]));
                     dataRequest.setCategory(data[1]);
                     dataRequest.setRequestDetail(data[5]);
                     dataRequest.setManageDetail(data[8]);
@@ -244,14 +245,14 @@ public class RequestListDataSource {
 
             //read_traffic
             file = new File(trafficPath);
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             while (( request = buffer.readLine()) != null){
                 String[] data = request.split(",");
                 if (data[0].equals(name)){
-                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[9],data[3],Integer.parseInt(data[4]));
+                    modelRequest dataRequest = new modelRequest(data[0],data[2],data[8],data[3],Integer.parseInt(data[4]));
                     dataRequest.setCategory(data[1]);
-                    dataRequest.setRequestDetail(data[7]);
+                    dataRequest.setRequestDetail(data[6]);
                     dataRequest.setManageDetail(data[10]);
                     //add request
                     requestList.addRequest(dataRequest);
@@ -272,7 +273,7 @@ public class RequestListDataSource {
         FileReader reader = null;
         BufferedReader buffer = null;
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
             String input = "";
             while( (input = buffer.readLine()) != null){
@@ -397,7 +398,7 @@ public class RequestListDataSource {
         try {
             //building
             if (request.getCategory().equals("building")){
-                writer = new FileWriter(file,true);
+                writer = new FileWriter(file, StandardCharsets.UTF_8,true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
                         +request.getCategory() + ","
@@ -415,7 +416,7 @@ public class RequestListDataSource {
             }
             //finance
             if (request.getCategory().equals("finance")){
-                writer = new FileWriter(file, true);
+                writer = new FileWriter(file,StandardCharsets.UTF_8, true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
                         +request.getCategory() + ","
@@ -431,7 +432,7 @@ public class RequestListDataSource {
             }
             //learning
             if (request.getCategory().equals("learning")){
-                writer = new FileWriter(file,true);
+                writer = new FileWriter(file,StandardCharsets.UTF_8,true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
                         +request.getCategory() + ","
@@ -449,7 +450,7 @@ public class RequestListDataSource {
             }
             //other
             if (request.getCategory().equals("other")) {
-                writer = new FileWriter(file, true);
+                writer = new FileWriter(file,StandardCharsets.UTF_8, true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
                         + request.getCategory() + ","
@@ -464,7 +465,7 @@ public class RequestListDataSource {
             }
             //traffic
             if (request.getCategory().equals("traffic")) {
-                writer = new FileWriter(file, true);
+                writer = new FileWriter(file,StandardCharsets.UTF_8, true);
                 buffer = new BufferedWriter(writer);
                 buffer.append(request.getUsername() + ","
                         + request.getCategory() + ","
@@ -492,7 +493,7 @@ public class RequestListDataSource {
         BufferedReader buffer = null;
 
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String vote = "";
@@ -526,7 +527,7 @@ public class RequestListDataSource {
         FileWriter writer = null;
         BufferedWriter buffer = null;
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
             if (photoLike.equals("unlike")){
                 if (!checkLike(requestSelected,guest)){ // เอาไปลด

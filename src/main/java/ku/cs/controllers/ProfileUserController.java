@@ -11,13 +11,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import ku.cs.models.modelRegister;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
-import ku.cs.models.modelUser;
 import ku.cs.services.ImageDataSource;
 import ku.cs.services.RequestListDataSource;
+import ku.cs.services.UserDataSource;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,8 +31,9 @@ public class ProfileUserController {
     private String pickTarget;
 
     //model
-    private modelUser userName;
     private modelRegister user;
+
+    private UserDataSource userDataSource;
 
     /*Table*/
     @FXML private TableView<modelRequest> tableView;
@@ -66,8 +66,8 @@ public class ProfileUserController {
     public void initialize(){
         /*set User*/
         user = (modelRegister) FXRouter.getData();
-        userName = new modelUser(user.getName());
-        nameLabel.setText(userName.getName());
+        userDataSource = new UserDataSource("data","user.csv");
+        nameLabel.setText(user.getName());
         detailLabel.setWrapText(true);
         staffdetailLabel.setWrapText(true);
         headLabel.setWrapText(true);
@@ -78,7 +78,8 @@ public class ProfileUserController {
 
         /*set Table*/
         dataSource = new RequestListDataSource("data");
-        requestList = dataSource.readfileRequest(user.getName());
+        requestList = dataSource.readData(user.getUsername());
+        dataSource.sortTime(requestList,"ล่าสุดไปเก่าสุด");
         login_board = FXCollections.observableArrayList();
         setMenuTable();
         loadTable();
@@ -108,8 +109,12 @@ public class ProfileUserController {
 
             categoryLabel.setText(user.getCategory());
             headLabel.setText(user.getSubject());
-            detailLabel.setText(user.getRequestDetail());
-            staffdetailLabel.setText(user.getManageDetail());
+            detailLabel.setText(user.getRequestDetail().replace("|","\n"));
+            if (user.getManageDetail().equals("-")){
+                staffdetailLabel.setText("ยังไม่มีเจ้าหน้าที่จัดการเรื่องนี้");
+            }else {
+                staffdetailLabel.setText(user.getManageDetail().replace("|","\n"));
+            }
         }
     }
 
@@ -137,6 +142,6 @@ public class ProfileUserController {
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + pickTarget);
         nisitPhoto.setImage(new Image(destDir.toURI().toString()));
         user.setImagePath(pickTarget);
-        user.change_image(pickTarget);
+        userDataSource.writeImage(userDataSource.readData(),user);
     }
 }

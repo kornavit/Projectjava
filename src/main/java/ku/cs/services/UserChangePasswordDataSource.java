@@ -3,10 +3,12 @@ package ku.cs.services;
 
 import ku.cs.models.modelRegisterList;
 import ku.cs.models.modelRegister;
+import ku.cs.models.modelRequestList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
-public class UserChangePasswordDataSource {
+public class UserChangePasswordDataSource implements DataSource<modelRegisterList> {
     private String directoryName;
     private String fileName;
 
@@ -18,7 +20,7 @@ public class UserChangePasswordDataSource {
         BufferedReader buffer = null;
 
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line = "";
@@ -42,7 +44,7 @@ public class UserChangePasswordDataSource {
         BufferedReader buffer = null;
 
         try{
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line = "";
@@ -89,6 +91,7 @@ public class UserChangePasswordDataSource {
         }
     }
 
+    @Override
     public modelRegisterList readData() {
         modelRegisterList list = new modelRegisterList();
         String filePath = directoryName + File.separator + fileName;
@@ -97,7 +100,7 @@ public class UserChangePasswordDataSource {
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String input_user = "";
@@ -136,7 +139,7 @@ public class UserChangePasswordDataSource {
         BufferedWriter buffer = null;
 
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file, StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             for (modelRegister user : user_changePassword.getAllUsers()){

@@ -38,22 +38,17 @@ public class modelRegister {
 
     public boolean checkUsername(){
         person = new UserDataSource("data","user.csv");
-        return person.readfile_user(username);
+        return person.readFileUser(username);
     }
 
     public void add(modelRegister user){
         person = new UserDataSource("data","user.csv");
-        person.writefile_user(user);
+        person.writeFileUser(user);
     }
 
     public String role() {
         person = new UserDataSource("data", "user.csv");
-        return person.search_role(this);
-    }
-
-    public void change_image(String imagePath){
-        person = new UserDataSource("data", "user.csv");
-        person.change_image(person.readData(), imagePath, this);
+        return person.searchRole(this);
     }
 
     public String getName() {return realname;}

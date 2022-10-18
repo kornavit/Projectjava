@@ -33,11 +33,6 @@ public class modelRequest {
     protected modelOther other;
     protected modelTraffic traffic;
 
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     //staff-working
     public modelRequest(String category, String subject, String status,String staffName){
         this.category = category;
@@ -139,6 +134,10 @@ public class modelRequest {
     public String getTime(){
         return time;
     }
+    public void setTime(String time) {
+        this.time = time;
+    }
+
 
     public String getDetail() {
         return detail;

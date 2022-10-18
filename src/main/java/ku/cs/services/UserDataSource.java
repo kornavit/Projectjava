@@ -1,15 +1,12 @@
 package ku.cs.services;
 
 import ku.cs.models.modelRegister;
-import ku.cs.models.modelRequest;
-import ku.cs.models.request.*;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.nio.charset.StandardCharsets;
 
-public class UserDataSource { // login and register
+public class UserDataSource implements DataSource<modelRegisterList>{ // login and register
     private String directoryName;
     private String fileName;
 
@@ -36,14 +33,14 @@ public class UserDataSource { // login and register
         }
     }
 
-    public boolean readfile_user(String username){ //check username
+    public boolean readFileUser(String username){ //check username
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
         FileReader reader = null;
         BufferedReader buffer = null;
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line_name = "";
@@ -66,6 +63,7 @@ public class UserDataSource { // login and register
             }
         }
     }
+    @Override
     public modelRegisterList readData() {
         modelRegisterList list = new modelRegisterList();
         String filePath = directoryName + File.separator + fileName;
@@ -74,7 +72,7 @@ public class UserDataSource { // login and register
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file, StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String input_user = "";
@@ -112,7 +110,7 @@ public class UserDataSource { // login and register
         BufferedWriter buffer = null;
 
         try{
-            writer = new FileWriter(file);
+            writer = new FileWriter(file,StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             for (modelRegister user : userChangePicture.getAllUsers()){
@@ -124,8 +122,8 @@ public class UserDataSource { // login and register
                         +user.getUsername() + ","
                         +user.getPassword() + ","
                         +user.getRole() + ","
-                        +user.getValue_ban() + ","
                         +user.getCategory() + ","
+                        +user.getValue_ban() + ","
                         +user.getImagePath();
 
                 buffer.append(userInfo);
@@ -138,7 +136,7 @@ public class UserDataSource { // login and register
         }
     }
 
-    public void writefile_user(modelRegister user){
+    public void writeFileUser(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -146,7 +144,7 @@ public class UserDataSource { // login and register
         BufferedWriter buffer = null;
 
         try { // realName,username,password,role,category,ban or unban,image path
-            writer = new FileWriter(file,true);
+            writer = new FileWriter(file,StandardCharsets.UTF_8,true);
             buffer = new BufferedWriter(writer);
             buffer.append(user.getName() + ","
                     +user.getUsername() + ","
@@ -162,47 +160,14 @@ public class UserDataSource { // login and register
         }
     }
 
-    public void writeData(modelRegisterList userChangePicture, modelRegister person){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-
-        try{
-            writer = new FileWriter(file);
-            buffer = new BufferedWriter(writer);
-
-            for (modelRegister user : userChangePicture.getAllUsers()){
-                if (user.getUsername().equals(person.getUsername())){
-                    user.setImagePath(person.getImagePath());
-                    //realName,userName,password,role,team,image path
-                }
-                String userInfo = user.getName() + ","
-                        +user.getUsername() + ","
-                        +user.getPassword() + ","
-                        +user.getRole() + ","
-                        +user.getCategory() + ","
-                        +user.getImagePath();
-
-                buffer.append(userInfo);
-                buffer.newLine();
-            }
-            buffer.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public String search_role(modelRegister user){
+    public String searchRole(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
         FileReader reader = null;
         BufferedReader buffer = null;
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file,StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
 
@@ -225,41 +190,6 @@ public class UserDataSource { // login and register
             try{
                 buffer.close();
                 reader.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-    public void change_image(modelRegisterList users,String pickTarget, modelRegister user){
-        String filePath = directoryName + File.separator + fileName;
-        File file = new File(filePath);
-
-        FileWriter writer = null;
-        BufferedWriter buffer = null;
-        try {
-            writer = new FileWriter(file);
-            buffer = new BufferedWriter(writer);
-
-            for (modelRegister nisit : users.getAllUsers()){
-                if (nisit.getUsername().equals(user.getUsername()) ){
-                    nisit.setImagePath(pickTarget);
-                }
-                String userInfo = nisit.getName() + ","
-                        +nisit.getUsername() + ","
-                        +nisit.getPassword() + ","
-                        +nisit.getRole() + ","
-                        +nisit.getImagePath();
-
-                buffer.append(userInfo);
-                buffer.newLine();
-            }
-            buffer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try{
-                buffer.close();
-                writer.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
