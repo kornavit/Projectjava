@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import ku.cs.models.modelRequest;
 import ku.cs.models.modelRequestList;
+import ku.cs.services.AlertService;
 import ku.cs.services.StaffDataSource;
 
 import java.io.File;
@@ -43,6 +44,8 @@ public class StaffWorking {
 
     private modelRequestList requestList;
     private modelRequest request;
+
+    private AlertService alertService;
 
     public void initialize(){
         request = (modelRequest) FXRouter.getData();
@@ -94,6 +97,8 @@ public class StaffWorking {
         staffDataSource = new StaffDataSource("data/category",request.getCategory() + ".csv");
         requestList = staffDataSource.readData();
         staffDataSource.writeData(requestList, request,request.getStaffName(),status.getValue());
+        alertService = new AlertService();
+        alertService.alertInformation();
     }
 }
 
