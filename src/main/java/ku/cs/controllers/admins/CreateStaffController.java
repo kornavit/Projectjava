@@ -62,7 +62,7 @@ public class CreateStaffController {
         if (usernameStaff.getText().equals("")){
             checkUsername.setText("กรุณาใส่ username");
             return ;
-        } else if (!dataSource.readfile_user(usernameStaff.getText())){
+        } else if (!dataSource.readFileUser(usernameStaff.getText())){
             checkUsername.setText("มีชื่อนี้อยู่ในระบบแล้ว");
             return;
         }else {
@@ -94,7 +94,7 @@ public class CreateStaffController {
         modelRegister staff = new modelRegister(nameStaff.getText(),usernameStaff.getText(),passwordReal.getText(),"staff",pickTarget); // String name,String username,String password,String role,String image
         staff.setCategory(category.getValue());
         staff.setValue_ban("true");
-        dataSource.writefile_user(staff);
+        dataSource.writeFileUser(staff);
         try {
             FXRouter.goTo("admin_main");
         } catch (IOException e) {

@@ -34,7 +34,7 @@ public class StaffDataSource implements DataSource<modelRequestList>{
         }
     }
 
-    public void StaffLogin(modelRegister login){
+    public void staffLogin(modelRegister login){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
         FileReader reader = null;

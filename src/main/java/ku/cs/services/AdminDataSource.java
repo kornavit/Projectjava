@@ -119,7 +119,7 @@ public class AdminDataSource implements DataSource<modelRegisterList>{
         }
     }
 
-    public boolean checkuserban(String username){ // check on user is banned login
+    public boolean checkUserBan(String username){ // check on user is banned login
         String filePath = "data" + File.separator + "ban.csv";
         File file = new File(filePath);
 

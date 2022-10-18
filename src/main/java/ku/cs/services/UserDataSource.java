@@ -1,14 +1,10 @@
 package ku.cs.services;
 
 import ku.cs.models.modelRegister;
-import ku.cs.models.modelRequest;
-import ku.cs.models.request.*;
 import ku.cs.models.modelRegisterList;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class UserDataSource implements DataSource<modelRegisterList>{ // login and register
     private String directoryName;
@@ -37,7 +33,7 @@ public class UserDataSource implements DataSource<modelRegisterList>{ // login a
         }
     }
 
-    public boolean readfile_user(String username){ //check username
+    public boolean readFileUser(String username){ //check username
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -140,7 +136,7 @@ public class UserDataSource implements DataSource<modelRegisterList>{ // login a
         }
     }
 
-    public void writefile_user(modelRegister user){
+    public void writeFileUser(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -164,7 +160,7 @@ public class UserDataSource implements DataSource<modelRegisterList>{ // login a
         }
     }
 
-    public String search_role(modelRegister user){
+    public String searchRole(modelRegister user){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 

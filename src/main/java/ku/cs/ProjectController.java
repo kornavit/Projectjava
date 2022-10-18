@@ -35,11 +35,16 @@ public class ProjectController {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
-        if (password.getText().equals("")){ // ในกรณีที่กดตรง show password ก่อน
-            password.setText(hiddenPassword.getText());
-        }else{
+        if (password.getText().equals("") || !password.getText().equals("")){ // ในกรณีที่กดตรง show password ก่อน
+            if (hiddenPassword.getText().equals("")){
+                password.setText(password.getText());
+            }else{
+                password.setText(hiddenPassword.getText());
+            }
+        } else {
             password.setText(password.getText());
         }
+        System.out.println(password.getText());
         user = new modelRegister(username.getText(),password.getText());
         user.setTime(formattedDate);
         AdminDataSource adminDataSource = new AdminDataSource("data","login_time_user.csv");
@@ -56,7 +61,7 @@ public class ProjectController {
             } else if (user.role().equals("staff")) {
                 adminDataSource.writeTimeLogin(user);
                 staffDataSource = new StaffDataSource("data", "user.csv");
-                staffDataSource.StaffLogin(user);
+                staffDataSource.staffLogin(user);
                 FXRouter.goTo("staff_main_menu", user);
             } else {
                 resultLogin.setText(user.role());
