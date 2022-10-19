@@ -31,6 +31,7 @@ public class RequestBuildingNextController {
     public void initialize(){
         request = (modelRequest) FXRouter.getData();
         detail.setWrapText(true);
+        pickTarget = "";
     }
 
     @FXML
