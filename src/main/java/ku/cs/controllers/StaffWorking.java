@@ -49,7 +49,6 @@ public class StaffWorking {
 
     public void initialize(){
         request = (modelRequest) FXRouter.getData();
-        //System.out.println(request.getStaffName());
         status.getItems().addAll(chooseStatus);
 
         head.setText(request.getSubject());
@@ -60,7 +59,6 @@ public class StaffWorking {
         }else {
             reportToUser.setText(request.getReport());
         }
-        //System.out.println(request.getReport());
 
         head.setWrapText(true);
         extra.setWrapText(true);

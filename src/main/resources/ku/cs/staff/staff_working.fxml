@@ -21,7 +21,7 @@
       </ImageView>
       <VBox layoutX="41.0" layoutY="26.0" prefHeight="130.0" prefWidth="340.0">
          <children>
-            <Label prefHeight="49.0" prefWidth="63.0" text="คำร้อง :">
+            <Label prefHeight="50.0" prefWidth="110.0" text="คำร้อง :" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -39,7 +39,7 @@
       </VBox>
       <VBox layoutX="41.0" layoutY="180.0" prefHeight="130.0" prefWidth="180.0">
          <children>
-            <Label prefHeight="38.0" prefWidth="80.0" text="หมวดหมู่ :">
+            <Label prefHeight="38.0" prefWidth="121.0" text="หมวดหมู่ :" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -61,7 +61,7 @@
       </VBox>
       <VBox layoutX="41.0" layoutY="328.0" prefHeight="215.0" prefWidth="340.0">
          <children>
-            <Label prefHeight="50.0" prefWidth="178.0" text="ข้อมูลเพิ่มเติม :">
+            <Label prefHeight="50.0" prefWidth="178.0" text="ข้อมูลเพิ่มเติม :" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -79,7 +79,7 @@
       </VBox>
       <VBox layoutX="426.0" layoutY="26.0" prefHeight="160.0" prefWidth="462.0">
          <children>
-            <Label prefHeight="50.0" prefWidth="180.0" text="รายละเอียดเรื่องร้องเรียน :">
+            <Label prefHeight="50.0" prefWidth="235.0" text="รายละเอียดเรื่องร้องเรียน :" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -99,7 +99,7 @@
          <children>
             <HBox prefHeight="38.0" prefWidth="307.0">
                <children>
-                  <Label prefHeight="50.0" prefWidth="170.0" text="รายละเอียดการจัดการ :">
+                  <Label prefHeight="50.0" prefWidth="275.0" text="รายละเอียดการจัดการ :" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -118,7 +118,7 @@
             </TextArea>
          </children>
       </VBox>
-      <Label layoutX="426.0" layoutY="361.0" prefHeight="36.0" prefWidth="115.0" text="รูปภาพประกอบ">
+      <Label layoutX="426.0" layoutY="361.0" prefHeight="36.0" prefWidth="144.0" text="รูปภาพประกอบ" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -130,7 +130,7 @@
       </VBox>
       <VBox layoutX="733.0" layoutY="361.0" prefHeight="130.0" prefWidth="152.0">
          <children>
-            <Label prefHeight="50.0" prefWidth="116.0" text="สถานะคำร้อง :">
+            <Label prefHeight="50.0" prefWidth="151.0" text="สถานะคำร้อง :" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>

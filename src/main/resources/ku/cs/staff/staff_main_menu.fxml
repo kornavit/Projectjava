@@ -13,36 +13,36 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StaffMainMenuController">
    <children>
-      <AnchorPane layoutX="-5.0" prefHeight="126.0" prefWidth="975.0" style="-fx-background-color: #e1e1e1;">
+      <AnchorPane prefHeight="126.0" prefWidth="975.0" styleClass="top" stylesheets="@../extra/style.css">
          <children>
             <ImageView fx:id="logo" fitHeight="75.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/KU_Logo_PNG.png" />
                </image></ImageView>
             <ImageView fx:id="staffProfile" fitHeight="128.0" fitWidth="118.0" layoutX="88.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="staff" layoutX="223.0" layoutY="18.0" prefHeight="38.0" prefWidth="218.0" text="staffName" textAlignment="CENTER">
+            <Label fx:id="staff" layoutX="260.0" layoutY="20.0" prefHeight="38.0" prefWidth="160.0" text="staffName" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="206.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleChangePass" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="เปลี่ยนรหัสผ่าน" underline="true">
+            <Button layoutX="260.0" layoutY="75.0" mnemonicParsing="false" onAction="#handleChangePass" prefHeight="30.0" prefWidth="130.0" stylesheets="@../extra/style.css" text="เปลี่ยนรหัสผ่าน" underline="true" wrapText="true">
                <font>
                   <Font name="THChakraPetch" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="867.0" layoutY="-1.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="98.0" text="ออกจากระบบ">
+            <Label fx:id="team" layoutX="500.0" layoutY="20.0" prefHeight="38.0" prefWidth="172.0" text="category" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="500.0" layoutY="75.0" mnemonicParsing="false" onAction="#handleChangeProfilePic" prefHeight="30.0" prefWidth="130.0" stylesheets="@../extra/style.css" text="เปลี่ยนรูปภาพ" underline="true">
+               <font>
+                  <Font name="THChakraPetch" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="860.0" layoutY="1.0" mnemonicParsing="false" onAction="#ExitBtn" prefHeight="38.0" prefWidth="98.0" stylesheets="@../extra/style.css" text="ออกจากระบบ">
                <font>
                   <Font size="14.0" />
-               </font>
-            </Button>
-            <Label fx:id="team" layoutX="473.0" layoutY="18.0" prefHeight="38.0" prefWidth="205.0" text="Category" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button layoutX="332.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleChangeProfilePic" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="เปลี่ยนรูปภาพ" underline="true">
-               <font>
-                  <Font name="THChakraPetch" size="14.0" />
                </font>
             </Button>
          </children>
@@ -57,10 +57,10 @@
                   <TableColumn fx:id="staffName" editable="false" prefWidth="144.0" text="เจ้าหน้าที่รับผิดชอบ" />
               </columns>
             </TableView>
-            <TextField fx:id="searchFilter" layoutX="302.0" layoutY="13.0" prefHeight="26.0" prefWidth="322.0" />
-            <HBox layoutX="138.0" layoutY="11.0" prefHeight="30.0" prefWidth="137.0" styleClass="box" stylesheets="@../extra/style.css">
+            <TextField fx:id="searchFilter" layoutX="400.0" layoutY="13.0" prefHeight="26.0" prefWidth="350.0" />
+            <HBox layoutX="220.0" layoutY="11.0" prefHeight="30.0" prefWidth="137.0" styleClass="box" stylesheets="@../extra/style.css">
                <children>
-                  <Label fx:id="findComplaint" alignment="CENTER" prefHeight="27.0" prefWidth="142.0" text="ค้นหาคำร้องเรียน :">
+                  <Label fx:id="findComplaint" alignment="CENTER" prefHeight="27.0" prefWidth="142.0" text="ค้นหา :">
                      <font>
                         <Font size="18.0" />
                      </font>

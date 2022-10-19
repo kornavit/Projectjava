@@ -1,6 +1,11 @@
 .body{
     -fx-background-color: #3CB371;
 }
+
+.top{
+     -fx-background-color: #FFFAFA;
+}
+
 .sub{
      -fx-background-color: #fff;
      -fx-background-radius: 10;

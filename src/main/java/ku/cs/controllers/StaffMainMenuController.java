@@ -48,12 +48,11 @@ public class StaffMainMenuController implements Initializable {
 
     private modelRegister staffLogin;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         staffLogin = (modelRegister) FXRouter.getData();
         staff.setText(staffLogin.getName());
+        staff.setWrapText(true);
         team.setText(staffLogin.getCategory()); //ต้องแสดงหน่วยงานของเจ้าหน้าที่คนนั้น
         File destDir = new File("image_user" + System.getProperty("file.separator") + "user_images" + System.getProperty("file.separator") + staffLogin.getImagePath());
         staffProfile.setImage(new Image(destDir.toURI().toString()));

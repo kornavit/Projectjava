@@ -3,6 +3,7 @@ package ku.cs.controllers;
 import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,6 +13,8 @@ import ku.cs.services.AlertService;
 import ku.cs.services.UserChangePasswordDataSource;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class StaffChangePassword {
     @FXML
@@ -21,10 +24,9 @@ public class StaffChangePassword {
 
     @FXML
     private PasswordField newPassword; // รหัสผ่าน password field
-    @FXML
-    private Label showError1;
-    @FXML
-    private Label showError2;
+    @FXML private Label showError1;
+
+    @FXML private Label showError2;
 
     private UserChangePasswordDataSource dataSource;
     private modelRegisterList userList;
@@ -67,7 +69,6 @@ public class StaffChangePassword {
             dataSource.writeData(userList, userName.getText(), newPassword.getText());
             alertService = new AlertService();
             alertService.alertInformation();
-            //FXRouter.goTo("staff_main_menu");
         }
     }
     public void handleBackButton (ActionEvent actionEvent){
@@ -79,5 +80,6 @@ public class StaffChangePassword {
         }
 
     }
+
 }
 
