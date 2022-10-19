@@ -31,6 +31,7 @@ public class RequestTrafficNextController {
         File destDir = new File("image_user" + File.separator + "request_traffic" +File.separator + pickTarget);
         imagePath.setImage(new Image(destDir.toURI().toString()));
         detail.setWrapText(true);
+        pickTarget = "";
     }
 
     @FXML
