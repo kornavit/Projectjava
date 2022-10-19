@@ -22,7 +22,7 @@
             <TextField fx:id="headTextField" layoutX="271.0" layoutY="302.0" prefHeight="35.0" prefWidth="445.0" />
             <Label layoutX="149.0" layoutY="302.0" prefHeight="35.0" prefWidth="111.0" text="หัวเรื่อง(*) :" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font name="Sylfaen" size="24.0" />
                </font>
             </Label>
             <Label layoutX="133.0" layoutY="58.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
@@ -32,12 +32,12 @@
             </Label>
             <Label layoutX="133.0" layoutY="21.0" prefHeight="54.0" prefWidth="465.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch-Bold" size="36.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
             <Button layoutX="30.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackUserButton" prefHeight="51.0" prefWidth="167.0" style="-fx-background-radius: 90;" text="กลับสู่หน้าหลัก">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
             <ImageView fitHeight="108.0" fitWidth="111.0" layoutX="32.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
@@ -47,7 +47,7 @@
             </ImageView>
             <Button layoutX="556.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="43.0" prefWidth="185.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="ต่อไป" textFill="WHITE">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
             <Label layoutX="206.0" layoutY="166.0" text="แจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER" textFill="#302086">
@@ -58,7 +58,7 @@
             <Separator layoutY="139.0" prefHeight="10.0" prefWidth="758.0" style="-fx-background-color: #006600;" />
             <Label layoutX="40.0" layoutY="242.0" prefHeight="35.0" prefWidth="218.0" text="หมวดหมู่เรื่องร้องเรียน :" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font name="Sylfaen" size="24.0" />
                </font>
             </Label>
             <ComboBox fx:id="complaintCategory" layoutX="268.0" layoutY="242.0" onAction="#changeCategory" prefHeight="35.0" prefWidth="236.0" promptText="---------------โปรดเลือก---------------" />

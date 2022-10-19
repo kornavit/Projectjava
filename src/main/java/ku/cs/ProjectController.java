@@ -9,9 +9,12 @@ import ku.cs.services.StaffDataSource;
 import ku.cs.services.AdminDataSource;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import java.awt.Desktop;
 
 public class ProjectController {
     @FXML private PasswordField password;
@@ -28,6 +31,18 @@ public class ProjectController {
         } catch (IOException e) {
             System.err.println("ไปที่หน้า nisit_register ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+    }
+    public void handlePickPDF(ActionEvent actionEvent){
+        File filePDF = new File("finish" + File.separator + ".pdf");
+        try{
+            if(filePDF.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(filePDF);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
     public void handleLoginButton(ActionEvent actionEvent){

@@ -26,7 +26,7 @@
             </ImageView>
             <Label layoutX="156.0" layoutY="25.0" prefHeight="54.0" prefWidth="465.0" text="มหาวิทยาลัยเกษตรศาสตร์ บางเขน" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch-Bold" size="36.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
             <Label layoutX="158.0" layoutY="67.0" text="ระบบแจ้งเรื่องร้องเรียนสำหรับนิสิต" textAlignment="CENTER">
@@ -37,27 +37,27 @@
             <Separator layoutX="20.0" layoutY="128.0" prefHeight="9.0" prefWidth="750.0" style="-fx-background-color: #006600;" />
             <Button layoutX="486.0" layoutY="658.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="42.0" prefWidth="175.0" style="-fx-background-radius: 90; -fx-background-color: #1d8700;" text="Submit" textFill="WHITE">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
             <Label layoutX="23.0" layoutY="203.0" prefHeight="35.0" prefWidth="175.0" text="อุปกรณ์ที่เสียหาย :" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="111.0" layoutY="255.0" prefHeight="35.0" prefWidth="87.0" text="สถานที่ :" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="50.0" layoutY="314.0" prefHeight="35.0" prefWidth="144.0" text="รายละเอียด(*) :" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="38.0" layoutY="467.0" prefHeight="35.0" prefWidth="317.0" text="รูปภาพ/เอกสาร ประกอบการแจ้ง :" textAlignment="CENTER">
                <font>
-                  <Font name="THChakraPetch" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Button layoutX="364.0" layoutY="474.0" mnemonicParsing="false" onAction="#uploadPic" style="-fx-background-radius: 90;" text="Upload File" />
