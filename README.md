@@ -7,7 +7,7 @@
 3. ใน folder finish จะมีไฟล์ที่ชื่อว่า white_nisit_shirt.zip
 4. ทำการแตกไฟล์ zip นั้น
 5. หลังจากนั้น ดับเบิ้ลคลิกที่ไฟล์ white_nisit_shirt.jar เพื่อทำการใช้งาน
-## *ข้อควรระวังถ้านำไฟล์ white_nisit_shirt.jar ไปที่ไหนต้องเอา folder data และ image_user ที่หลังจากแตกไฟล์แล้วไปอยู่ใน folder เดียวกับ white_nisit_shirt.jar ด้วย*
+## *ข้อควรระวังถ้านำไฟล์ white_nisit_shirt.jar ไปที่ไหนต้องเอา folder data image_user และ finish ที่หลังจากแตกไฟล์แล้วไปอยู่ใน folder เดียวกับ white_nisit_shirt.jar ด้วย*
 
 ---
 > ### folder ที่ใช้ใน project
